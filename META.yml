@@ -8,7 +8,7 @@ build_requires:
   ExtUtils::MakeMaker: 6.42
   File::Spec: 0
   String::Diff: 0
-  Tapper::Test: 3.000001
+  Tapper::Test: 3.000002
   Test::Fixture::DBIC::Schema: 0
   Test::MockModule: 0
   Test::More: 0.88
@@ -46,14 +46,14 @@ requires:
   Net::SSH::Expect: 0
   Perl6::Junction: 0
   Socket: 0
-  Tapper::Base: 3.000001
-  Tapper::Cmd: 3.000001
-  Tapper::Config: 3.000001
-  Tapper::Model: 3.000001
-  Tapper::Schema: 3.000001
+  Tapper::Base: 3.000002
+  Tapper::Cmd: 3.000002
+  Tapper::Config: 3.000002
+  Tapper::Model: 3.000002
+  Tapper::Schema: 3.000002
   Template: 0
-  YAML: 0
+  YAML: 0.72
   aliased: 0
   parent: 0
   perl: 5.010
-version: 3.000001
+version: 3.000002

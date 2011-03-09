@@ -7,7 +7,7 @@ use 5.010;
 
 use Moose::Role;
 
-requires 'testrun', 'cfg';
+requires 'testrun', 'cfg', 'log';
 
 =head2 prc_headerlines
 
@@ -76,7 +76,6 @@ sub tap_report_away
 Send information of current test run status to report framework using TAP
 protocol.
 
-@param int   - test run id
 @param array -  report array
 @param array - header lines
 
