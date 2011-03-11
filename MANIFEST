@@ -110,6 +110,7 @@ t/tapper-mcp-state.t
 t/tapper-mcp.t
 t/tapper_schema_reportsdb_test.sqlite
 t/tapper_schema_testrundb_test.sqlite
+t/tapper_schema_testrundb_test.sqlite-journal
 xt/Account.pm
 xt/BusinessLogic.pm
 xt/critic.t
