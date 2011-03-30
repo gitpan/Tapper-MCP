@@ -357,7 +357,7 @@ sub parse_image_precondition
         if ($opt_pkg) {
                 push @{$config->{preconditions}}, $opt_pkg;
                 push @{$config->{preconditions}}, {precondition_type => 'exec',
-                                                   filename => '/opt/tapper/bin/tapper-testsuite-hwtrack',
+                                                   filename => '/opt/tapper/perl/perls/current/bin/tapper-testsuite-hwtrack',
                                                    continue_on_error => 1 };
         }
         return $config;
@@ -571,6 +571,7 @@ sub get_common_config
         $config->{files}                     = $self->cfg->{files};
         $config->{mcp_host}                  = Sys::Hostname::hostname() || $self->cfg->{mcp_host};
         $config->{mcp_server}                = $config->{mcp_host};
+        $config->{mcp_port}                  = $self->cfg->{mcp_port};
         $config->{sync_port}                 = $self->cfg->{sync_port};
         $config->{report_server}             = $self->cfg->{report_server};
         $config->{report_port}               = $self->cfg->{report_port};
@@ -578,6 +579,7 @@ sub get_common_config
         $config->{prc_nfs_server}            = $self->cfg->{prc_nfs_server}
           if $self->cfg->{prc_nfs_server}; # prc_nfs_path is set by merging paths above
         $config->{test_run}                  = $testrun->id;
+        $config->{testrun_id}                = $testrun->id;
 
         if ($self->testrun->scenario_element) {
                 $config->{scenario_id} = $self->testrun->scenario_element->scenario_id;
