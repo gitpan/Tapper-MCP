@@ -1,5 +1,5 @@
 bin/tapper-mcp
-bin/tapper-mcp-runloop
+bin/tapper-mcp-daemon
 ChangeLog
 inc/Module/Install.pm
 inc/Module/Install/AuthorRequires.pm
@@ -104,6 +104,7 @@ t/tapper-mcp-scheduler-with-db-run2.t
 t/tapper-mcp-scheduler-with-db-run3.t
 t/tapper-mcp-scheduler-with-db-run4.t
 t/tapper-mcp-state-revive.t
+t/tapper-mcp-state-states.t
 t/tapper-mcp-state-timeout.t
 t/tapper-mcp-state-valid.t
 t/tapper-mcp-state.t

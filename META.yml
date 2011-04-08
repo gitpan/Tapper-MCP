@@ -1,13 +1,14 @@
 ---
 abstract: 'Tapper - Central master control program of Tapper automation'
 author:
+  - 'AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>'
   - 'AMD OSRC Tapper Team <tapper@amd64.org>'
 build_requires:
   Cwd: 0
   ExtUtils::MakeMaker: 6.42
   File::Spec: 0
   String::Diff: 0
-  Tapper::Test: 3.000002
+  Tapper::Test: 3.000010
   Test::Fixture::DBIC::Schema: 0
   Test::MockModule: 0
   Test::More: 0.88
@@ -15,7 +16,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.91'
+generated_by: 'Module::Install version 1.00'
 license: freebsd
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -45,11 +46,11 @@ requires:
   Net::SSH::Expect: 0
   Perl6::Junction: 0
   Socket: 0
-  Tapper::Base: 3.000002
-  Tapper::Cmd: 3.000002
-  Tapper::Config: 3.000002
-  Tapper::Model: 3.000002
-  Tapper::Schema: 3.000002
+  Tapper::Base: 3.000010
+  Tapper::Cmd: 3.000010
+  Tapper::Config: 3.000010
+  Tapper::Model: 3.000010
+  Tapper::Schema: 3.000010
   Template: 0
   YAML: 0.72
   aliased: 0
@@ -58,4 +59,4 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-MCP
   repository: git://github.com/amd/Tapper-MCP.git
-version: 3.000005
+version: 3.000010
