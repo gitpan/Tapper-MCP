@@ -12,7 +12,7 @@ use MUser;
 use MFoo;
 
 my $user = MUser->new({ hotstuff => "Affe" }); # DBIC takes hashrefs
-diag Dumper($user);
+#diag Dumper($user);
 my $foo  = MFoo->new;
 $foo->hello($user);
 

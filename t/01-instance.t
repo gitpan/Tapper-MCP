@@ -16,7 +16,7 @@ construct_fixture( schema  => testrundb_schema, fixture => 't/fixtures/testrundb
 # -----------------------------------------------------------------------------------------------------------------
 
 
-my @modules = ('Tapper::MCP', 
+my @modules = ('Tapper::MCP',
                'Tapper::MCP::Child',
                'Tapper::MCP::Control',
                'Tapper::MCP::Config',
@@ -25,7 +25,6 @@ my @modules = ('Tapper::MCP',
                'Tapper::MCP::Startup',
                'Tapper::MCP::Scheduler::Algorithm',
                'Tapper::MCP::Scheduler::Builder',
-               'Tapper::MCP::Scheduler::PreconditionProducer',
                'Tapper::MCP::Scheduler::Controller',
               );
 
@@ -53,6 +52,4 @@ foreach my $module(@modules) {
         isa_ok($obj, $module);
         print $@ if $@;
 }
-
-diag( "Testing Tapper::MCP $Tapper::MCP::VERSION,Perl $], $^X" );
 

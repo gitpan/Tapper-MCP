@@ -1,59 +1,115 @@
+
 use strict;
 use warnings;
 
-use inc::Module::Install;
+use 5.010;
 
-name     'Tapper-MCP';
-all_from 'lib/Tapper/MCP.pm';
-author   'AMD OSRC Tapper Team <tapper@amd64.org>';
-license  'freebsd';
+use ExtUtils::MakeMaker 6.30;
 
-build_requires 'Test::Fixture::DBIC::Schema' => 0;
-build_requires 'Test::Perl::Critic'          => 0;
-build_requires 'Test::MockModule'            => 0;
-build_requires 'Test::More'                  => '0.88';
-build_requires 'Tapper::Test' => "3.000010";
-build_requires 'Cwd'                         => 0;
-build_requires 'String::Diff'                => 0;
-build_requires 'File::Spec'                  => 0;
 
-author_requires 'Module::Install::WriteAll';
 
-requires 'perl'                       => '5.010';
-#requires 'App::Daemon'                => 0;
-requires 'Tapper::Base' => "3.000010";
-requires 'Tapper::Config' => "3.000010";
-requires 'Tapper::Model' => "3.000010";
-requires 'Tapper::Schema' => "3.000010";
-requires 'Tapper::Cmd' => "3.000010";
-requires 'Perl6::Junction'            => 0;
-requires 'Carp'                       => 0;
-requires 'Data::Dumper'               => 0;
-requires 'Devel::Backtrace'           => 0;
-requires 'File::Basename'             => 0;
-requires 'File::Path'                 => 0;
-requires 'File::Path::Tiny'           => 0;
-requires 'File::Spec'                 => 0;
-requires 'IO::Handle'                 => 0;
-requires 'IO::Select'                 => 0;
-requires 'IO::Socket::INET'           => 0;
-requires 'Log::Log4perl'              => 0;
-requires 'Moose'                      => 0;
-requires 'MooseX::Declare'            => "0.27";
-requires 'MooseX::Traits'             => "0";
-#requires 'MooseX::Method::Signatures' => "0.16";
-requires 'Net::SSH'                   => 0;
-requires 'Net::SSH::Expect'           => 0;
-requires 'Socket'                     => 0;
-requires 'Template'                   => 0;
-requires 'YAML'                       => "0.72";
-requires 'parent'                     => 0;
-requires 'aliased'                    => 0;
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "Tapper - Central master control program of Tapper automation",
+  "AUTHOR" => "AMD OSRC Tapper Team <tapper\@amd64.org>",
+  "BUILD_REQUIRES" => {
+    "Class::C3" => 0,
+    "Cwd" => 0,
+    "Data::Dumper" => 0,
+    "File::Spec::Functions" => 0,
+    "MRO::Compat" => 0,
+    "String::Diff" => 0,
+    "TAP::DOM" => 0,
+    "Tapper::Producer::DummyProducer" => 0,
+    "Tapper::Producer::Kernel" => 0,
+    "Tapper::Producer::NewestPackage" => 0,
+    "Tapper::Producer::SimnowKernel" => 0,
+    "Tapper::Schema::TestTools" => 0,
+    "Tapper::Schema::TestrunDB::Result::Queue" => 0,
+    "Test::Deep" => 0,
+    "Test::Fixture::DBIC::Schema" => 0,
+    "Test::MockModule" => 0,
+    "Test::More" => "0.88"
+  },
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "Tapper-MCP",
+  "EXE_FILES" => [
+    "bin/tapper-mcp",
+    "bin/tapper-mcp-daemon"
+  ],
+  "LICENSE" => "open_source",
+  "NAME" => "Tapper::MCP",
+  "PREREQ_PM" => {
+    "App::Daemon" => 0,
+    "Class::Load" => 0,
+    "Data::DPath" => 0,
+    "Devel::Backtrace" => 0,
+    "English" => 0,
+    "Fcntl" => 0,
+    "File::Basename" => 0,
+    "File::Path" => 0,
+    "File::Spec" => 0,
+    "File::Temp" => 0,
+    "Hash::Merge::Simple" => 0,
+    "IO::Handle" => 0,
+    "IO::Select" => 0,
+    "IO::Socket::INET" => 0,
+    "LWP::UserAgent" => 0,
+    "List::Util" => 0,
+    "LockFile::Simple" => 0,
+    "Log::Log4perl" => 0,
+    "Moose" => 0,
+    "Moose::Role" => 0,
+    "MooseX::Traits" => 0,
+    "Net::OpenSSH" => 0,
+    "Net::SCP" => 0,
+    "Net::SSH" => 0,
+    "POSIX" => 0,
+    "Perl6::Junction" => 0,
+    "Socket" => 0,
+    "Sys::Hostname" => 0,
+    "Tapper::Base" => 0,
+    "Tapper::Cmd::Testrun" => 0,
+    "Tapper::Config" => 0,
+    "Tapper::Model" => 0,
+    "Tapper::Producer" => 0,
+    "Tapper::Schema::TestrunDB::Result::TestrunScheduling" => 0,
+    "Try::Tiny" => 0,
+    "UNIVERSAL" => 0,
+    "YAML" => 0,
+    "YAML::Syck" => 0,
+    "aliased" => 0,
+    "base" => 0,
+    "constant" => 0,
+    "parent" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "VERSION" => "4.0.1",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
+);
 
-install_script glob('bin/*');
 
-repository 'git://github.com/amd/Tapper-MCP.git';
-bugtracker 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-MCP';
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
-WriteAll;
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 

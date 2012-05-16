@@ -28,7 +28,7 @@ sub message_create
         $message->insert;
         return $message;
 }
-        
+
 
 ########################################################
 #                                                      #

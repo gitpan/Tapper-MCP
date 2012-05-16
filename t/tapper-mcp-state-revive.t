@@ -20,8 +20,6 @@ sub message_create
         $message->insert;
         return $message;
 }
-        
-
 
 # -----------------------------------------------------------------------------------------------------------------
 construct_fixture( schema  => testrundb_schema, fixture => 't/fixtures/testrundb/testrun_with_preconditions.yml' );
@@ -72,7 +70,7 @@ my ($retval, $timeout);
 {
         my $state = Tapper::MCP::State->new(23);
         isa_ok($state, 'Tapper::MCP::State');
-        
+
         $retval = $state->state_init($initial_state);
         ($retval, $timeout) = $state->update_state(message_create({state => 'takeoff'}));
         ($retval, $timeout) = $state->update_state(message_create({state => 'start-install'}));
@@ -83,20 +81,16 @@ my ($retval, $timeout);
         ($retval, $timeout) = $state->update_state(message_create({ state => 'start-testing', prc_number => 0}));
         $retval = $state->state_details->current_state();
         is($retval, 'testing', 'Current state after 3. guest started');
-        
+
 }
 
 {
         my $state = Tapper::MCP::State->new(23);
         isa_ok($state, 'Tapper::MCP::State');
-        
+
         $retval = $state->state_init(undef, 1);
         is( $state->state_details->current_state, 'testing', 'State after revive');
 
 }
-
-
-
-
 
 done_testing();

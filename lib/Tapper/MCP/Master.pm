@@ -1,16 +1,24 @@
-use MooseX::Declare;
-
 ## no critic (RequireUseStrict)
-class Tapper::MCP::Master extends Tapper::MCP
+package Tapper::MCP::Master;
+BEGIN {
+  $Tapper::MCP::Master::AUTHORITY = 'cpan:AMD';
+}
 {
+  $Tapper::MCP::Master::VERSION = '4.0.1';
+}
+# ABSTRACT: Wait for new testruns and start a new child when needed
+
+        use 5.010;
+        use Moose;
+        use parent "Tapper::MCP";
         use Devel::Backtrace;
         use File::Path;
         use IO::Select;
         use IO::Handle;
         use Log::Log4perl;
         use POSIX ":sys_wait_h";
+        use Try::Tiny;
         use UNIVERSAL;
-
 
         use Tapper::Cmd::Testrun;
         use Tapper::MCP::Child;
@@ -19,63 +27,21 @@ class Tapper::MCP::Master extends Tapper::MCP
         use Tapper::Model 'model';
 
 
-=head1 NAME
-
-Tapper::MCP::Master - Wait for new testruns and start a new child when needed.
-
-=head1 SYNOPSIS
-
- use Tapper::MCP::Master;
- my $mcp = Tapper::MCP::Master->new();
- $mcp->run();
-
-=head1 Attributes
-
-
-=head2 dead_child
-
-Number of pending dead child processes.
-
-=cut
-
         has dead_child   => (is => 'rw', default => 0);
 
-=head2 child
-
-Contains all information about all child processes.
-
-=cut
 
         has child        => (is => 'rw', isa => 'HashRef', default => sub {{}});
 
-=head2 consolefiles
-
-Output files for console logs ordered by file descriptor number.
-
-=cut
 
         has consolefiles => (is => 'rw', isa => 'ArrayRef', default => sub {[]});
 
 
-=head2 readset
-
-IO::Select object containing all opened console file handles.
-
-=cut
 
         has readset      => (is => 'rw');
 
-=head2
-
-Associated Scheduler object.
-
-=cut
 
         has scheduler    => (is => 'rw', isa => 'Tapper::MCP::Scheduler::Controller');
 
-=head1 FUNCTIONS
-
-=cut
 
 sub BUILD
 {
@@ -84,13 +50,6 @@ sub BUILD
 }
 
 
-=head2 set_interrupt_handlers
-
-Set interrupt handlers for important signals. No parameters, no return values.
-
-@return success - 0
-
-=cut
 
         sub set_interrupt_handlers
         {
@@ -101,9 +60,15 @@ Set interrupt handlers for important signals. No parameters, no return values.
 
                 # give me a stack trace when ^C
                 $SIG{INT} = sub {
-                        $SIG{INT}='ignore'; # not reentrant, don't handle signal twice
-                        my $backtrace = Devel::Backtrace->new(-start=>2, -format => '%I. %s');
+                        $SIG{INT}  = 'IGNORE'; # make handler reentrant, don't handle signal twice
 
+                        # stop all children
+                        $SIG{CHLD} = 'IGNORE';
+                        foreach my $this_child (keys %{$self->child}) {
+                                kill 15, $self->child->{$this_child}->{pid};
+                        }
+
+                        my $backtrace = Devel::Backtrace->new(-start=>2, -format => '%I. %s');
                         print $backtrace;
 
                         exit -1;
@@ -111,19 +76,6 @@ Set interrupt handlers for important signals. No parameters, no return values.
                 return 0;
         }
 
-=head2 console_open
-
-Open console connection for given host and appropriate console log output file
-for the testrun on host. Returns console on success or an error string for
-failure.
-
-@param string - system name
-@param int    - testrun id
-
-@retval success - IO::Socket::INET
-@retval error   - error string
-
-=cut
 
         sub console_open
         {
@@ -154,22 +106,17 @@ failure.
 
 
                 $path .= "console";
-                open(my $fh,">>",$path) or return "Can't open console log file $path for test on host $system:$!";
+                my $fh;
+                open($fh,">>",$path) or do {
+                        $self->readset->remove($console);
+                        close $console;
+                        return "Can't open console log file $path for test on host $system:$!";
+                };
                 $self->consolefiles->[$console->fileno()] = $fh;
                 return $console;
         }
 
 
-=head2 console_close
-
-Close a given console connection.
-
-@param IO::Socket::INET - console connection socket
-
-@retval success - 0
-@retval error   - error string
-
-=cut
 
         sub console_close
         {
@@ -185,13 +132,6 @@ Close a given console connection.
                 return 0;
         }
 
-=head2 handle_dead_children
-
-Each test run is handled by a child process. All information needed for
-communication with this child process is kept in $self->child. Reset all these
-information when the test run is finished and the child process ends.
-
-=cut
 
         sub handle_dead_children
         {
@@ -218,16 +158,6 @@ information when the test run is finished and the child process ends.
         }
 
 
-=head2 consolelogfrom
-
-Read console log from a handle and write it to the appropriate file.
-
-@param file handle - read from this handle
-
-@retval success - 0
-@retval error   - error string
-
-=cut
 
         sub consolelogfrom
         {
@@ -235,39 +165,48 @@ Read console log from a handle and write it to the appropriate file.
                 my ($buffer, $readsize);
                 my $timeout = 2;
                 my $maxread = 1024; # XXX configure
+                my $errormsg;
+
                 eval {
-                        local $SIG{ALRM}=sub{die 'Timeout'};
+                        local $SIG{ALRM} = sub { die "Timeout ($timeout) reached" };
                         alarm $timeout;
                         $readsize  = sysread($handle, $buffer, $maxread);
                 };
                 alarm 0;
-                if ($@) {
-                        return ("Timeout of $timeout seconds reached while trying to read from console")
-                          if $@=~/Timeout/;
-                        return ("Error while reading from console handle: $@");
-                }
 
-                return "Can't read from console:$!" if not defined $readsize;
+                $errormsg = "Error while reading console: $@" if $@;
+                $errormsg = "Can't read from console: $!"     if not defined $readsize;
 
                 my $file    = $self->consolefiles->[$handle->fileno()];
                 return "Can't get console file:$!" if not defined $file;
-                $readsize     = syswrite($file, $buffer, $readsize);
+
+                $buffer  .= "*** Tapper: $errormsg ***" if $errormsg;
+
+                $readsize = syswrite($file, $buffer);
                 return "Can't write console data to file :$!" if not defined $readsize;
+
+                return $errormsg if $errormsg;
                 return 0;
         }
 
 
-=head2 run_due_tests
+        sub notify_event
+        {
+                my ($self, $event, $message) = @_;
+                try
+                {
+                        my $new_event = model('ReportsDB')->resultset('NotificationEvent')->new({type => $event,
+                                                                                                 message => $message,
+                                                                                                });
+                        $new_event->insert();
+                } catch {
+                        $self->log->error("Unable notify user of event $event: $_");
+                };
 
-Run the tests that are due.
+                return;
+        }
 
-@param TestrunScheduling - job to run
-@param boolean - are we in revive mode?
 
-@retval success - 0
-@retval error   - error string
-
-=cut
 
         sub run_due_tests
         {
@@ -296,6 +235,8 @@ Run the tests that are due.
                         };
                         $retval = $@ if $@;
 
+                        $self->notify_event('testrun_finished', {testrun_id => 42});
+
                         if ( ($retval or $child->rerun) and $job->testrun->rerun_on_error) {
                                 my $cmd  = Tapper::Cmd::Testrun->new();
                                 my $new_id;
@@ -306,14 +247,14 @@ Run the tests that are due.
                                         $self->log->error($@);
                                 } else {
                                         $self->log->debug("Restarted testrun $id with new id $new_id because ".
-                                                          "an error occured and rerun_on_error was ".
+                                                          "an error occurred and rerun_on_error was ".
                                                           $job->testrun->rerun_on_error);
                                 }
                         }
                         if ($retval) {
-                                $self->log->error("An error occured while trying to run testrun $id on $system: $retval");
+                                $self->log->error("Testrun $id ($system) error occurred: $retval");
                         } else {
-                                $self->log->info("Runtest $id finished successfully");
+                                $self->log->info("Testrun $id ($system) finished successfully");
                         }
                         exit 0;
                 } else {
@@ -334,12 +275,6 @@ Run the tests that are due.
         }
 
 
-=head2 runloop
-
-Main loop of this module. Checks for new tests and runs them. The looping
-itself is put outside of function to allow testing.
-
-=cut
 
         sub runloop
         {
@@ -388,13 +323,6 @@ itself is put outside of function to allow testing.
         }
 
 
-=head2 prepare_server
-
-Create communication data structures used in MCP.
-
-@return
-
-=cut
 
         sub prepare_server
         {
@@ -409,13 +337,6 @@ Create communication data structures used in MCP.
                 return 0;
         }
 
-=head2 revive_children
-
-Restart the children that were running before MCP was shut
-down/crashed. The function expects no parameters and has no return
-values.
-
-=cut
 
 sub revive_children
 {
@@ -428,11 +349,6 @@ sub revive_children
 
 
 
-=head2 run
-
-Set up all needed data structures then wait for new tests.
-
-=cut
 
         sub run
         {
@@ -446,32 +362,139 @@ Set up all needed data structures then wait for new tests.
                 }
 
         }
-}
-
 
 1;
 
+__END__
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+Tapper::MCP::Master - Wait for new testruns and start a new child when needed
+
+=head1 SYNOPSIS
+
+ use Tapper::MCP::Master;
+ my $mcp = Tapper::MCP::Master->new();
+ $mcp->run();
+
+=head1 Attributes
+
+=head2 dead_child
+
+Number of pending dead child processes.
+
+=head2 child
+
+Contains all information about all child processes.
+
+=head2 consolefiles
+
+Output files for console logs ordered by file descriptor number.
+
+=head2 readset
+
+IO::Select object containing all opened console file handles.
+
+=head2
+
+Associated Scheduler object.
+
+=head1 FUNCTIONS
+
+=head2 set_interrupt_handlers
+
+Set interrupt handlers for important signals. No parameters, no return values.
+
+@return success - 0
+
+=head2 console_open
+
+Open console connection for given host and appropriate console log output file
+for the testrun on host. Returns console on success or an error string for
+failure.
+
+@param string - system name
+@param int    - testrun id
+
+@retval success - IO::Socket::INET
+@retval error   - error string
+
+=head2 console_close
+
+Close a given console connection.
+
+@param IO::Socket::INET - console connection socket
+
+@retval success - 0
+@retval error   - error string
+
+=head2 handle_dead_children
+
+Each test run is handled by a child process. All information needed for
+communication with this child process is kept in $self->child. Reset all these
+information when the test run is finished and the child process ends.
+
+=head2 consolelogfrom
+
+Read console log from a handle and write it to the appropriate file.
+
+@param file handle - read from this handle
+
+@retval success - 0
+@retval error   - error string
+
+=head2 notify_event
+
+Inform the notification framework that an event occured in MCP.
+
+@param string - event name
+@param hash ref - message
+
+=head2 run_due_tests
+
+Run the tests that are due.
+
+@param TestrunScheduling - job to run
+@param boolean - are we in revive mode?
+
+@retval success - 0
+@retval error   - error string
+
+=head2 runloop
+
+Main loop of this module. Checks for new tests and runs them. The looping
+itself is put outside of function to allow testing.
+
+=head2 prepare_server
+
+Create communication data structures used in MCP.
+
+@return
+
+=head2 revive_children
+
+Restart the children that were running before MCP was shut
+down/crashed. The function expects no parameters and has no return
+values.
+
+=head2 run
+
+Set up all needed data structures then wait for new tests.
+
 =head1 AUTHOR
 
-AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-None.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
-=head1 SUPPORT
+This is free software, licensed under:
 
-You can find documentation for this module with the perldoc command.
+  The (two-clause) FreeBSD License
 
- perldoc Tapper
-
-
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
-
-This program is released under the following license: freebsd
+=cut
 

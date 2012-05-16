@@ -1,9 +1,14 @@
 package Tapper::MCP;
+BEGIN {
+  $Tapper::MCP::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::VERSION = '4.0.1';
+}
+# ABSTRACT: Tapper - Central master control program of Tapper automation
 
 use warnings;
 use strict;
-
-our $VERSION = '3.000010';
 
 use Tapper::Config;
 use Moose;
@@ -16,37 +21,28 @@ sub cfg
         return Tapper::Config->subconfig();
 }
 
+1;
+
+__END__
+=pod
+
+=encoding utf-8
+
 =head1 NAME
 
 Tapper::MCP - Tapper - Central master control program of Tapper automation
 
-=head1 SYNOPSIS
-
- use Tapper::MCP;
-
-=cut
-
-1;
-
 =head1 AUTHOR
 
-AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-None.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
-=head1 SUPPORT
+This is free software, licensed under:
 
-You can find documentation for this module with the perldoc command.
+  The (two-clause) FreeBSD License
 
-    perldoc Tapper::MCP
-
-=head1 ACKNOWLEDGEMENTS
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
-
-This program is released under the following license: freebsd
+=cut
 

@@ -29,7 +29,7 @@ construct_fixture( schema  => testrundb_schema, fixture => 't/fixtures/testrundb
 my $mockmaster = Test::MockModule->new('Tapper::MCP::Master');
 $mockmaster->mock('console_open',sub{use IO::Socket::INET;
                                      my $sock = IO::Socket::INET->new(Listen=>0);
-                                     return $sock;});                                    
+                                     return $sock;});
 $mockmaster->mock('console_close',sub{return "mocked console_close";});
 
 my $mockchild = Test::MockModule->new('Tapper::MCP::Child');

@@ -1,4 +1,10 @@
 package Tapper::MCP::Control;
+BEGIN {
+  $Tapper::MCP::Control::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::Control::VERSION = '4.0.1';
+}
 
 use strict;
 use warnings;
@@ -14,18 +20,6 @@ has testrun  => (is => 'ro',
                 );
 
 
-=head1 NAME
-
-Tapper::MCP::Control - Shared code for all modules that only handle one
-                        specifid testrun
-
-=head1 SYNOPSIS
-
- use Tapper::MCP::Control;
-
-=head1 FUNCTIONS
-
-=cut
 
 around BUILDARGS => sub {
         my $orig  = shift;
@@ -47,6 +41,27 @@ around BUILDARGS => sub {
 
 1;
 
+
+__END__
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+Tapper::MCP::Control
+
+=head1 SYNOPSIS
+
+ use Tapper::MCP::Control;
+
+=head1 NAME
+
+Tapper::MCP::Control - Shared code for all modules that only handle one
+                        specifid testrun
+
+=head1 FUNCTIONS
+
 =head1 AUTHOR
 
 AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
@@ -61,12 +76,25 @@ You can find documentation for this module with the perldoc command.
 
  perldoc Tapper
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 COPYRIGHT & LICENSE
 
 Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
 
 This program is released under the following license: freebsd
+
+=head1 AUTHOR
+
+AMD OSRC Tapper Team <tapper@amd64.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
+
+This is free software, licensed under:
+
+  The (two-clause) FreeBSD License
+
+=cut
+

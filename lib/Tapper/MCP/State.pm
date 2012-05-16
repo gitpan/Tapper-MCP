@@ -1,4 +1,10 @@
 package Tapper::MCP::State;
+BEGIN {
+  $Tapper::MCP::State::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::State::VERSION = '4.0.1';
+}
 
 use 5.010;
 use strict;
@@ -10,6 +16,7 @@ use Perl6::Junction qw/any/;
 
 use Tapper::MCP::State::Details;
 use Tapper::Model 'model';
+use Class::Load ':all';
 
 has state_details => (is => 'rw',
                       default => sub { {current_state => 'invalid'} }
@@ -32,10 +39,22 @@ has cfg => (is => 'rw',
            isa => 'HashRef',
            default => sub {{}},
            );
+has callbacks => (is => 'ro',
+                  lazy => 1,
+                  default => sub { my $self  = shift;
+                                   return if not $self->cfg->{mcp_callback_handler}{plugin};
+                                   my $class = "Tapper::MCP::State::Plugin::";
+                                   $class   .= $self->cfg->{mcp_callback_handler}{plugin};
+                                   load_class($class);
+                                   $class->new({cfg => $self->cfg})
+                           },
+                 );
+
+
 
 
 has valid_states  => (is => 'ro',
-                      default => sub { return  { 'takeoff'          => ['started'],
+                      default => sub { return  {'takeoff'           => ['started'],
                                                 'start-install'     => ['reboot_install'],
                                                 'end-install'       => ['installing'],
                                                 'error-install'     => ['installing'],
@@ -47,7 +66,8 @@ has valid_states  => (is => 'ro',
                                                 'error-testprogram' => ['testing'],
                                                 'end-testprogram'   => ['testing'],
                                                 'reboot'            => ['testing'],
-                                                }
+                                                'keep-alive'        => ['ALL'],
+                                               }
                                }
                      );
 
@@ -82,37 +102,16 @@ sub BUILD
         my ($self, $args) = @_;
 
         $self->state_details(Tapper::MCP::State::Details->new({testrun_id => $args->{testrun_id}}));
+
 }
 
-=head1 NAME
-
-Tapper::MCP::State - Keep state information for one specific test run
-
-=head1 SYNOPSIS
-
- use Tapper::MCP::State;
- my $state_handler = Tapper::MCP::State->new($testrun_id);
- my $state = $state_handler->get_current_state();
- $self->compare_given_state($state);
-
-=head1 FUNCTIONS
-
-=head2 is_msg_valid
-
-Check whether received message is valid in current state.
-
-@param hash ref - message
-
-@return valid   - 1
-@return invalid - 0
-
-=cut
 
 sub is_msg_valid
 {
         my ($self, $msg) = @_;
 
         return 1 if $msg->{state} eq 'quit';
+        return 1 if $self->valid_states->{$msg->{state}} eq 'ALL';
         if (not $self->state_details->current_state eq any(@{$self->valid_states->{$msg->{state}}})){
                 my $result =
                 {
@@ -137,19 +136,6 @@ sub is_msg_valid
         return(1);
 }
 
-=head2 compare_given_state
-
-Compare the current state to a given state name. Return -1 if the given
-state is earlier then the current, 1 if the current state is earlier
-then the given one and 0 if both are equal.
-
-@param string - state name
-
-@return current state is earlier -  1
-@return given   state is earlier - -1
-@return states are equal         -  0
-
-=cut
 
 sub compare_given_state
 {
@@ -157,46 +143,28 @@ sub compare_given_state
         return $self->all_states->{$given_state} <=> $self->all_states->{$self->state_details->current_state};
 }
 
-=head2 get_current_timeout_span
-
-Returns the time in seconds until the next timeout hits. When multiple
-timeouts are currently running (during test with multiple PRCs) the
-lowest of these timeouts is choosen. This value can be used for sleeping
-in reads.
-
-@return int - timeout span in seconds
-
-=cut
 
 sub get_current_timeout_span
 {
         my ($self) = @_;
-        my $new_timeout;
+        my $new_timeout_date;
+        my $keep_alive_timeout_date = $self->state_details->keep_alive_timeout_date;
         given ($self->state_details->current_state){
-                when(['invalid', 'finished', 'started']){ return 60;}
-                when(['reboot_install', 'installing']){$new_timeout = $self->state_details->installer_timeout_current_date }
-                when('reboot_test'){ $new_timeout = $self->state_details->prc_timeout_current_date(0)}
+                when(['invalid', 'finished', 'started']){ $new_timeout_date = time + 60;}
+                when(['reboot_install', 'installing']){$new_timeout_date = $self->state_details->installer_timeout_current_date }
+                when('reboot_test'){ $new_timeout_date = $self->state_details->prc_timeout_current_date(0)}
                 when('testing'){
-                        $new_timeout = $self->state_details->prc_timeout_current_date(0);
+                        $new_timeout_date = $self->state_details->prc_timeout_current_date(0);
                         for (my $prc_num = 1; $prc_num < $self->state_details->prc_count; $prc_num++) {
-                                $new_timeout = mindef($new_timeout, $self->state_details->prc_timeout_current_date($prc_num));
+                                $new_timeout_date = mindef($new_timeout_date, $self->state_details->prc_timeout_current_date($prc_num));
                         }
                 }
         }
-        return $new_timeout - time();
+
+
+        return (mindef($new_timeout_date, $keep_alive_timeout_date)  - time);
 }
 
-=head2 state_init
-
-Initialize the state or reload it from database.
-
-@param hash ref - initial state data (ignored in revive mode)
-@param bool     - are we in revive mode?
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub state_init
 {
@@ -208,14 +176,6 @@ sub state_init
 }
 
 
-=head2 update_installer_timeout
-
-Update the timeout during installation.
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub update_installer_timeout
 {
@@ -236,16 +196,6 @@ sub update_installer_timeout
         return (0, $installer_timeout_date - $now);
 }
 
-=head2 update_prc_timeout
-
-Check and update timeouts for one PRC.
-
-@param  int     - PRC number
-
-@return success - new timeout
-@return error   - undef
-
-=cut
 
 sub update_prc_timeout
 {
@@ -263,22 +213,20 @@ sub update_prc_timeout
                         when ('test'){
                                 $result->{msg} .= 'while waiting for testprogram ';
                                 $result->{msg} .= $self->state_details->prc_current_test_number($prc_number);
-                                return $self->state_details->prc_next_timeout($prc_number);
+                        }
+                        when ('lasttest'){
+                                $result->{msg} .= 'while waiting for message "all tests finished"';
+                                $self->state_details->prc_state($prc_number, 'finished')
                         }
                         default { return }
                 }
+                $self->state_details->results($result);
+                $self->state_details->prc_results($prc_number, $result);
+                return $self->state_details->prc_next_timeout($prc_number);
         }
         return $self->state_details->prc_timeout_current_date($prc_number) - $now;
 }
 
-=head2 update_test_timeout
-
-Update timeouts during test phase.
-
-@return success - (1, new timeout)
-@return error   - (0, undef)
-
-=cut
 
 sub update_test_timeout
 {
@@ -286,8 +234,8 @@ sub update_test_timeout
         my $now = time();
 
         if ($self->state_details->current_state ~~ 'reboot_test') {
-                my $prc0_timeout = $self->state_details->prc_timeout_current_date(0);
-                if ( $prc0_timeout <= $now) {
+                my $prc0_timeout_date = $self->state_details->prc_timeout_current_date(0);
+                if ( $prc0_timeout_date <= $now) {
                         my $msg = 'Timeout while booting testmachine';
                         $self->state_details->prc_results(0, {error => 1, msg => $msg});
                         $self->state_details->results({error => 1, msg => $msg});
@@ -295,10 +243,10 @@ sub update_test_timeout
                         return (1, undef);
                 }
                 else {
-                        return (0, $prc0_timeout - $now);
+                        return (0, $prc0_timeout_date - $now);
                 }
         }
-        my $new_timeout;
+        my $new_timeout_span;
         # we need the PRC number, thus not foreach
  PRC:
         for (my $prc_num = 0; $prc_num < $self->state_details->prc_count; $prc_num++) {
@@ -312,35 +260,57 @@ sub update_test_timeout
                                         $self->state_details->prc_state($prc_num, 'finished');
                                 }
                                 else {
-                                        $new_timeout = mindef($new_timeout,
+                                        $new_timeout_span = mindef($new_timeout_span,
                                                                $self->state_details->prc_timeout_current_date($prc_num) - time());
                                 }
                         }
-                        when ('test') {
-                                $new_timeout = mindef($new_timeout, $self->update_prc_timeout($prc_num));
+                        when ( ['test', 'lasttest'] ) {
+                                $new_timeout_span = mindef($new_timeout_span, $self->update_prc_timeout($prc_num));
                         }
+
                 }
         }
-        return (0, $new_timeout);
+
+        if ($self->state_details->is_all_prcs_finished()) {
+                $self->state_details->current_state('finished');
+                return (1, undef);
+        }
+
+        return (0, $new_timeout_span);
 }
 
-=head2 update_timeouts
 
-Update the timeouts in $self->state_details structure.
 
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
-
-sub update_timeouts
+sub update_keep_alive_timeout
 {
         my ($self) = @_;
+        return (0, undef) if not defined $self->state_details->keep_alive_timeout_span;
+        my $timeout_cpan = $self->state_details->keep_alive_timeout_date - time();
+        if ($timeout_cpan > 0) {
+                return (0, $timeout_cpan);
+        } else {
+                if (not $self->callbacks) {
+                        my $result = { error => 1,
+                                       msg   => "No plugin defined in keep_alive. I deactivate keep-alive for this testrun."};
+                        $self->state_details->results($result);
+                        $self->state_details->set_keep_alive_timeout_span( undef );
+                        return (0, undef);
+                }
+                return $self->callbacks->keep_alive($self->state_details);
+        }
+}
+
+
+
+sub update_timeouts {
+        my ($self) = @_;
+        my ( $error, $timeout_span );
+
         given($self->state_details->current_state){
                 when ( ['started', 'reboot_install', 'installing'] ) {
-                        return $self->update_installer_timeout() }
+                        ( $error, $timeout_span) =  $self->update_installer_timeout() }
                 when ( ['reboot_test','testing'] ) {
-                        return $self->update_test_timeout() }
+                        ( $error, $timeout_span) =  $self->update_test_timeout() }
                 when ('finished')               {
                         return( 1, undef) } # no timeout handling when finished
                 default {
@@ -348,39 +318,25 @@ sub update_timeouts
                         $msg   .= $self->state_details->current_state;
                         $msg   .= ' during update_timeouts';
                         $self->state_details->results({error => 1, msg => $msg});
+                        return( 1, undef);
                 }
         }
-        return (1, undef);
+
+        my ( $alive_error, $alive_timeout_span ) = $self->update_keep_alive_timeout();
+        return ($1, undef) if $error or $alive_error;
+        return (0, mindef($alive_timeout_span, $timeout_span));
 
 }
 
-=head2 msg_takeoff
-
-The reboot call was successfully executed, now update the state for
-waiting for the first message.
-
-@return success - (0, timeout span for next state change)
-
-=cut
 
 sub msg_takeoff
 {
         my ($self) = @_;
-        my $timeout = $self->state_details->takeoff();
-        return (0, $timeout);
+        my $timeout_span = $self->state_details->takeoff();
+        return (0, $timeout_span);
 }
 
 
-=head2 msg_start_install
-
-Handle message start-install
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_start_install
 {
@@ -390,22 +346,12 @@ sub msg_start_install
         if ($self->cfg->{autoinstall}) {
                 my $net    = Tapper::MCP::Net->new();
                 $net->write_grub_file($self->cfg->{hostname},
-                                      "timeout 2\n\ntitle Boot from first hard disc\n\tchainloader (hd0,1)+1");
+                                      "timeout 2\n\ntitle Boot from first hard disc\n\tchainloader (hd0,1)+1\n");
 
         }
         return (0, $self->state_details->start_install);
 }
 
-=head2 msg_end_install
-
-Handle message end-install
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_end_install
 {
@@ -418,16 +364,6 @@ sub msg_end_install
         return (0, $self->state_details->prc_boot_start(0));
 }
 
-=head2 msg_error_install
-
-Handle message error-install
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_error_install
 {
@@ -441,16 +377,6 @@ sub msg_error_install
         return (1, undef);
 }
 
-=head2 msg_warn_install
-
-Handle message error-install
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_warn_install
 {
@@ -463,27 +389,19 @@ sub msg_warn_install
 }
 
 
-=head2 msg_error_guest
-
-Handle message error-guest
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_error_guest
 {
         my ($self, $msg) = @_;
         my $nr = $msg->{prc_number};
 
-        $self->state_details->prc_state($nr, 'fail');
-        $self->state_details->prc_results
-          ( $nr, { error => 1,
-                   msg   => "Starting guest failed: ".$msg->{error},
-                 });
+        $self->state_details->prc_state($nr, 'finished');
+
+        my $result = { error => 1,
+                       msg   => "Starting guest $nr failed: ".$msg->{error},
+                     };
+        $self->state_details->results($result);
+        $self->state_details->prc_results( $nr, $result);
 
         if ($self->state_details->is_all_prcs_finished()) {
                 $self->state_details->current_state('finished');
@@ -494,16 +412,6 @@ sub msg_error_guest
 }
 
 
-=head2 msg_start_guest
-
-Handle message start-guest
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_start_guest
 {
@@ -518,16 +426,6 @@ sub msg_start_guest
 }
 
 
-=head2 msg_start_testing
-
-Handle message start-testing
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_start_testing
 {
@@ -543,16 +441,6 @@ sub msg_start_testing
 }
 
 
-=head2 msg_end_testing
-
-Handle message end-testing
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_end_testing
 {
@@ -578,16 +466,6 @@ sub msg_end_testing
 
 
 
-=head2 msg_end_testprogram
-
-Handle message end-testprogram
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_end_testprogram
 {
@@ -611,16 +489,6 @@ sub msg_end_testprogram
 }
 
 
-=head2 msg_error_testprogram
-
-Handle message error-testprogram
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_error_testprogram
 {
@@ -648,16 +516,6 @@ sub msg_error_testprogram
         return (0, $self->state_details->get_min_prc_timeout());
 }
 
-=head2 msg_reboot
-
-Handle message reboot
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub msg_reboot
 {
@@ -671,44 +529,40 @@ sub msg_reboot
         $self->state_details->prc_results($nr, $result);
         $self->state_details->results($result);
 
+        # reset testprogram counter
+        $self->state_details->prc_current_test_number($nr, 0);
+
         $self->state_details->prc_next_timeout($nr);
         return (0, $self->state_details->get_min_prc_timeout());
 }
 
-=head2 msg_quit
-
-Handle message quit
-
-@param hash ref - message
-
-@return (1, undef)
-
-=cut
 
 sub msg_quit
 {
         my ($self, $msg) = @_;
 
         my $result = {error => 1,
-                      msg => "Testrun cancelled during state '".$self->state_details->current_state()."'",
+                      msg => "Testrun cancelled during state '".$self->state_details->current_state()."': ".($msg->{error} // "no reason provided"),
                      };
         $result->{comment} = $msg->{error} if $msg->{error};
         $self->state_details->results($result);
         $self->state_details->current_state('finished');
+        $self->state_details->set_all_prcs_current_state('finished');
+
         return (1, undef);
 }
 
 
-=head2 next_state
+sub msg_keep_alive
+{
+        my ($self) = @_;
+        if (defined($self->state_details->keep_alive_timeout_span)) {
+                $self->state_details->keep_alive_timeout_date( $self->state_details->keep_alive_timeout_span + time() );
+        }
+        return;
+}
 
-Update state machine based on message.
 
-@param Result class - message
-
-@return success - 1
-@return error   - undef
-
-=cut
 
 sub next_state
 {
@@ -718,6 +572,11 @@ sub next_state
         my $valid = $self->is_msg_valid($msg);
         return if not $valid;
 
+        ########################################################################################################################
+        #
+        # FIXME! return values of all msg_* functions is ignored. This is ok, but why do they generate a return value then?
+        #
+        #######################################################################################################################
         given ($msg->{state}) {
                 when ('quit')              { ($error, $timeout_span) = $self->msg_quit($msg)           };
                 when ('takeoff')           { ($error, $timeout_span) = $self->msg_takeoff($msg)           };
@@ -732,26 +591,19 @@ sub next_state
                 when ('error-testprogram') { ($error, $timeout_span) = $self->msg_error_testprogram($msg) };
                 when ('end-testprogram')   { ($error, $timeout_span) = $self->msg_end_testprogram($msg)   };
                 when ('reboot')            { ($error, $timeout_span) = $self->msg_reboot($msg)            };
+                when ('keep-alive')        { ($error, $timeout_span) = $self->msg_keep_alive($msg)        };
                                 # (TODO) add default
+        }
+
+        # every message resets the keep-alive timeout
+        if (defined($self->state_details->keep_alive_timeout_span)) {
+                $self->state_details->keep_alive_timeout_date( $self->state_details->keep_alive_timeout_span + time() );
         }
 
         return (1);
 }
 
 
-=head2
-
-Update the state based on a message received from caller. The function
-returns a timeout span value that is the lowest of all currently active
-timeouts. The given message can be empty. In this case only timeouts are
-checked and updated if needed.
-
-@param hash ref - message
-
-@return success - (0, timeout span for next state change)
-@return error   - (1, undef)
-
-=cut
 
 sub update_state
 {
@@ -768,7 +620,7 @@ sub update_state
                 $self->next_state($msg_hash);
                 $msg_obj->delete;
 
-        } else {
+        } elsif (ref $msg_obj eq 'DBIx::Class::ResultSet'){
                 foreach my $msg_result ($msg_obj->all) {
                         my $msg_hash = $msg_result->message;
                         my ($success ) = $self->next_state($msg_hash);
@@ -781,6 +633,255 @@ sub update_state
         return ($error, $timeout_span);
 }
 
+
+sub testrun_finished
+{
+        shift->state_details->current_state eq 'finished' ? 1 : 0;
+}
+
+1;
+
+__END__
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+Tapper::MCP::State
+
+=head1 SYNOPSIS
+
+ use Tapper::MCP::State;
+ my $state_handler = Tapper::MCP::State->new($testrun_id);
+ my $state = $state_handler->get_current_state();
+ $self->compare_given_state($state);
+
+=head1 NAME
+
+Tapper::MCP::State - Keep state information for one specific test run
+
+=head1 FUNCTIONS
+
+=head2 is_msg_valid
+
+Check whether received message is valid in current state.
+
+@param hash ref - message
+
+@return valid   - 1
+@return invalid - 0
+
+=head2 compare_given_state
+
+Compare the current state to a given state name. Return -1 if the given
+state is earlier then the current, 1 if the current state is earlier
+then the given one and 0 if both are equal.
+
+@param string - state name
+
+@return current state is earlier -  1
+@return given   state is earlier - -1
+@return states are equal         -  0
+
+=head2 get_current_timeout_span
+
+Returns the time in seconds until the next timeout hits. When multiple
+timeouts are currently running (during test with multiple PRCs) the
+lowest of these timeouts is choosen. This value can be used for sleeping
+in reads.
+
+@return int - timeout span in seconds
+
+=head2 state_init
+
+Initialize the state or reload it from database.
+
+@param hash ref - initial state data (ignored in revive mode)
+@param bool     - are we in revive mode?
+
+@return success - 0
+@return error   - error string
+
+=head2 update_installer_timeout
+
+Update the timeout during installation.
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 update_prc_timeout
+
+Check and update timeouts for one PRC.
+
+@param  int     - PRC number
+
+@return success - new timeout
+@return error   - undef
+
+=head2 update_test_timeout
+
+Update timeouts during test phase.
+
+@return success - (1, new timeout)
+@return error   - (0, undef)
+
+=head2 update_keep_alive_timeout
+
+Check whether keep-alive timeout has ended and if so, act accordingly.
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 update_timeouts
+
+Update the timeouts in $self->state_details structure.
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_takeoff
+
+The reboot call was successfully executed, now update the state for
+waiting for the first message.
+
+@return success - (0, timeout span for next state change)
+
+=head2 msg_start_install
+
+Handle message start-install
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_end_install
+
+Handle message end-install
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_error_install
+
+Handle message error-install
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_warn_install
+
+Handle message error-install
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_error_guest
+
+Handle message error-guest
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_start_guest
+
+Handle message start-guest
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_start_testing
+
+Handle message start-testing
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_end_testing
+
+Handle message end-testing
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_end_testprogram
+
+Handle message end-testprogram
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_error_testprogram
+
+Handle message error-testprogram
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_reboot
+
+Handle message reboot
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
+=head2 msg_quit
+
+Handle message quit
+
+@param hash ref - message
+
+@return (1, undef)
+
+=head2 msg_keep_alive
+
+Handle message keep-alive. This function does not return anything
+because the caller ignores the return value anyway.
+
+@param hash ref - message
+
+=head2 next_state
+
+Update state machine based on message.
+
+@param Result class - message
+
+@return success - 1
+@return error   - undef
+
+=head2
+
+Update the state based on a message received from caller. The function
+returns a timeout span value that is the lowest of all currently active
+timeouts. The given message can be empty. In this case only timeouts are
+checked and updated if needed.
+
+@param hash ref - message
+
+@return success - (0, timeout span for next state change)
+@return error   - (1, undef)
+
 =head2 testrun_finished
 
 Tells caller whether the testrun is already finished or not.
@@ -788,38 +889,17 @@ Tells caller whether the testrun is already finished or not.
 @return TR     finished - 1
 @return TR not finished - 0
 
-=cut
-
-sub testrun_finished
-{
-        shift->state_details->current_state eq 'finished' ? 1 : 0;
-}
-
-
-
-1;
-
 =head1 AUTHOR
 
-AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-None.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
-=head1 SUPPORT
+This is free software, licensed under:
 
-You can find documentation for this module with the perldoc command.
+  The (two-clause) FreeBSD License
 
- perldoc Tapper
-
-
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
-
-This program is released under the following license: freebsd
+=cut
 

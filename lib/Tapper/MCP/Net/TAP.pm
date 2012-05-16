@@ -1,20 +1,19 @@
 package Tapper::MCP::Net::TAP;
-
-use strict;
-use warnings;
+BEGIN {
+  $Tapper::MCP::Net::TAP::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::Net::TAP::VERSION = '4.0.1';
+}
 
 use 5.010;
+use strict;
+use warnings;
 
 use Moose::Role;
 
 requires 'testrun', 'cfg', 'log';
 
-=head2 prc_headerlines
-
-Generate header lines for the TAP report containing the results of the
-PRC with the number provided as argument.
-
-=cut
 
 sub prc_headerlines {
         my ($self, $prc_number) = @_;
@@ -23,7 +22,7 @@ sub prc_headerlines {
 
         my $testrun_id = $self->testrun->id;
         my $suitename =  ($prc_number > 0) ? "Guest-Overview-$prc_number" : "PRC0-Overview";
-        
+
         my $headerlines = [
                            "# Tapper-reportgroup-testrun: $testrun_id",
                            "# Tapper-suite-name: $suitename",
@@ -36,24 +35,14 @@ sub prc_headerlines {
 }
 
 
-=head2 tap_report_away
-
-Actually send the tap report to receiver.
-
-@param string - report to be sent
-
-@return success - (0, report id)
-@return error   - (1, error string)
-
-=cut
 
 sub tap_report_away
 {
         my ($self, $tap) = @_;
         my $reportid;
         if (my $sock = IO::Socket::INET->new(PeerAddr => $self->cfg->{report_server},
-					     PeerPort => $self->cfg->{report_port},
-					     Proto    => 'tcp')) {
+                                             PeerPort => $self->cfg->{report_port},
+                                             Proto    => 'tcp')) {
                 eval{
                         my $timeout = 100;
                         local $SIG{ALRM}=sub{die("timeout for sending tap report ($timeout seconds) reached.");};
@@ -63,26 +52,14 @@ sub tap_report_away
                 };
                 alarm(0);
                 $self->log->error($@) if $@;
-		close $sock;
-	} else {
+                close $sock;
+        } else {
                 return(1,"Can not connect to report server: $!");
-	}
+        }
         return (0,$reportid);
 
 }
 
-=head2 tap_report_send
-
-Send information of current test run status to report framework using TAP
-protocol.
-
-@param array -  report array
-@param array - header lines
-
-@return success - (0, report id)
-@return error   - (1, error string)
-
-=cut
 
 sub tap_report_send
 {
@@ -92,14 +69,6 @@ sub tap_report_send
         return $self->tap_report_away($tap);
 }
 
-=head2 associated_hostname
-
-Return the name of the host associated to this testrun or 'No hostname
-set'.
-
-@return string - hostname
-
-=cut
 
 sub associated_hostname
 {
@@ -114,15 +83,6 @@ sub associated_hostname
 }
 
 
-=head2 suite_headerlines
-
-Generate TAP header lines for the main MCP report.
-
-@param int - testrun id
-
-@return array ref - header lines 
-
-=cut
 
 sub mcp_headerlines {
         my ($self) = @_;
@@ -143,17 +103,6 @@ sub mcp_headerlines {
         return $headerlines;
 }
 
-=head2 tap_report_create
-
-Create a report string from a report in array form. Since the function only
-does data transformation, no error should ever occur.
-
-@param array ref - report array
-@param array ref - header lines
-
-@return report string
-
-=cut
 
 sub tap_report_create
 {
@@ -180,17 +129,6 @@ sub tap_report_create
 }
 
 
-=head2 upload_files
-
-Upload files written in one stage of the testrun to report framework.
-
-@param int - report id
-@param int - testrun id
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub upload_files
 {
@@ -198,8 +136,9 @@ sub upload_files
         my $host = $self->cfg->{report_server};
         my $port = $self->cfg->{report_api_port};
 
-        my $path = $self->cfg->{paths}{output_dir};
-        $path .= "/$testrunid/";
+        my $outputdir = $self->cfg->{paths}{output_dir};
+        my $path = "$outputdir/$testrunid/";
+        return 0 unless -d $path;
         my @files=`find $path -type f`;
         $self->log->debug(@files);
         foreach my $file(@files) {
@@ -224,8 +163,93 @@ sub upload_files
                 close($FH);
                 $server->close();
         }
+        system(qq{find "$outputdir" -maxdepth 1 -type d -mtime +30 -exec rm -fr \\{\\} \\;});
         return 0;
 }
 
 
 1;
+
+__END__
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+Tapper::MCP::Net::TAP
+
+=head2 prc_headerlines
+
+Generate header lines for the TAP report containing the results of the
+PRC with the number provided as argument.
+
+=head2 tap_report_away
+
+Actually send the tap report to receiver.
+
+@param string - report to be sent
+
+@return success - (0, report id)
+@return error   - (1, error string)
+
+=head2 tap_report_send
+
+Send information of current test run status to report framework using TAP
+protocol.
+
+@param array -  report array
+@param array - header lines
+
+@return success - (0, report id)
+@return error   - (1, error string)
+
+=head2 associated_hostname
+
+Return the name of the host associated to this testrun or 'No hostname
+set'.
+
+@return string - hostname
+
+=head2 suite_headerlines
+
+Generate TAP header lines for the main MCP report.
+
+@param int - testrun id
+
+@return array ref - header lines
+
+=head2 tap_report_create
+
+Create a report string from a report in array form. Since the function only
+does data transformation, no error should ever occur.
+
+@param array ref - report array
+@param array ref - header lines
+
+@return report string
+
+=head2 upload_files
+
+Upload files written in one stage of the testrun to report framework.
+
+@param int - report id
+@param int - testrun id
+
+@return success - 0
+@return error   - error string
+
+=head1 AUTHOR
+
+AMD OSRC Tapper Team <tapper@amd64.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
+
+This is free software, licensed under:
+
+  The (two-clause) FreeBSD License
+
+=cut
+

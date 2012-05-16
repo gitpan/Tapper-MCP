@@ -1,4 +1,10 @@
 package Tapper::MCP::State::Details;
+BEGIN {
+  $Tapper::MCP::State::Details::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::State::Details::VERSION = '4.0.1';
+}
 
 use 5.010;
 use strict;
@@ -28,14 +34,6 @@ sub BUILD
 
 
 
-=head2 db_update
-
-Update database entry.
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub db_update
 {
@@ -46,27 +44,6 @@ sub db_update
 }
 
 
-=head1 NAME
-
-Tapper::MCP::State::Details - Encapsulate state_details attribute of MCP::State
-
-=head1 SYNOPSIS
-
- use Tapper::MCP::State::Details;
- my $state_details = Tapper::MCP::State::Details->new();
- $state_details->prc_results(0, {success => 0, mg => 'No success'});
-
-=head1 FUNCTIONS
-
-
-=head2 results
-
-Getter and setter for results array for whole test. Setter adds given
-parameter instead of substituting.
-
-@param hash ref - containing success(bool) and msg(string)
-
-=cut
 
 sub results
 {
@@ -78,14 +55,6 @@ sub results
         return $self->state_details->{results};
 }
 
-=head2 state_init
-
-Initialize the state or read it back from database.
-
-@return success - 0
-@return error   - error string
-
-=cut
 
 sub state_init
 {
@@ -94,6 +63,7 @@ sub state_init
         $self->state_details->{current_state} = 'started';
         $self->state_details->{results} = [];
         $self->state_details->{prcs} ||= [];
+        $self->state_details->{keep_alive}{timeout_date} = $self->state_details->{keep_alive}{timeout_span} + time if defined $self->state_details->{keep_alive}{timeout_span};
         foreach my $this_prc (@{$self->state_details->{prcs}}) {
                 $this_prc->{results} ||= [];
         }
@@ -103,14 +73,6 @@ sub state_init
 
 
 
-=head2 takeoff
-
-The reboot call was successfully executed, now update the state for
-waiting for the first message.
-
-@return int - new timeout
-
-=cut
 
 sub takeoff
 {
@@ -122,14 +84,6 @@ sub takeoff
         return ($install->{timeout_current_date});
 }
 
-=head2 current_state
-
-Getter and setter for current state name.
-
-@param  string - state name (optional)
-@return string - state name
-
-=cut
 
 sub current_state
 {
@@ -142,15 +96,42 @@ sub current_state
 }
 
 
-=head2 installer_timeout_current_date
+sub set_all_prcs_current_state
+{
+        my ($self, $state) = @_;
+        if (defined $state) {
+                for ( my $prc_num = 0; $prc_num < @{$self->state_details->{prcs}}; $prc_num++) {
+                        $self->state_details->{prcs}[$prc_num]{current_state} = $state;
+                }
+                $self->db_update;
+        }
+}
 
-Getter and setter for installer timeout date.
 
-@param  int    - new installer timeout date
+sub keep_alive_timeout_date
+{
+        my ($self, $timeout_date) = @_;
+        $self->state_details->{keep_alive}{timeout_date} = $timeout_date if defined $timeout_date;
+        $self->state_details->{keep_alive}{timeout_date};
+}
 
-@return string - installer timeout date
 
-=cut
+
+
+sub set_keep_alive_timeout_span
+{
+        my ($self, $timeout_span) = @_;
+        $self->state_details->{keep_alive}{timeout_date} = $timeout_span;
+}
+
+
+sub keep_alive_timeout_span
+{
+        my ($self) = @_;
+        return $self->state_details->{keep_alive}{timeout_span};
+}
+
+
 
 sub installer_timeout_current_date
 {
@@ -162,13 +143,6 @@ sub installer_timeout_current_date
         return $self->state_details->{install}{timeout_current_date};
 }
 
-=head2 start_install
-
-Update timeouts for "installation started".
-
-@return int - new timeout span
-
-=cut
 
 sub start_install
 {
@@ -180,16 +154,6 @@ sub start_install
 }
 
 
-=head2 prc_boot_start
-
-Sets timeouts for given PRC to the ones associated with booting of this
-PRC started.
-
-@param  int - PRC number
-
-@return int - boot timeout span
-
-=cut
 
 sub prc_boot_start
 {
@@ -201,15 +165,6 @@ sub prc_boot_start
         return $self->state_details->{prcs}->[$num]->{timeout_boot_span};
 }
 
-=head2 prc_timeout_current_span
-
-Get the current timeout date for given PRC
-
-@param  int - PRC number
-
-@return int - timeout date
-
-=cut
 
 sub prc_timeout_current_date
 {
@@ -218,16 +173,6 @@ sub prc_timeout_current_date
 }
 
 
-=head2 prc_results
-
-Getter and setter for results array for of one PRC. Setter adds given
-parameter instead of substituting. If no argument is given, all PRC
-results are returned.
-
-@param int      - PRC number (optional)
-@param hash ref - containing success(bool) and msg(string) (optional)
-
-=cut
 
 sub prc_results
 {
@@ -246,13 +191,6 @@ sub prc_results
         return $self->state_details->{prcs}->[$num]->{results};
 }
 
-=head2 prc_count
-
-Return number of PRCs
-
-@return int - number of PRCs
-
-=cut
 
 sub prc_count
 {
@@ -260,16 +198,6 @@ sub prc_count
 }
 
 
-=head2 prc_state
-
-Getter and setter for current state of given PRC.
-
-@param  int    - PRC number
-@param  string - state name (optional)
-
-@return string - state name
-
-=cut
 
 sub prc_state
 {
@@ -283,14 +211,6 @@ sub prc_state
 }
 
 
-=head2 is_all_prcs_finished
-
-Check whether all PRCs have finished already.
-
-@param     all PRCs finished - 1
-@param not all PRCs finished - 0
-
-=cut
 
 sub is_all_prcs_finished
 {
@@ -307,15 +227,6 @@ sub is_all_prcs_finished
 }
 
 
-=head2 prc_next_timeout
-
-Set next PRC timeout as current and return it as timeout span.
-
-@param int - PRC number
-
-@return int - next timeout span
-
-=cut
 
 sub prc_next_timeout
 {
@@ -335,13 +246,23 @@ sub prc_next_timeout
                 }
                 when('test') {
                         my $testprogram_number = $prc->{number_current_test};
-                        $prc->{number_current_test} = ++$testprogram_number;
+                        ++$testprogram_number;
                         if (ref $prc->{timeout_testprograms_span} eq 'ARRAY' and
                             exists $prc->{timeout_testprograms_span}[$testprogram_number]){
+                                $prc->{number_current_test} = $testprogram_number;
                                 $next_timeout = $prc->{timeout_testprograms_span}[$testprogram_number];
                         } else {
+                                $prc->{current_state} = 'lasttest';
                                 $next_timeout = $default_timeout;
                         }
+                }
+                when('lasttest') {
+                        my $result = { error => 1,
+                                       msg   => "prc_next_timeout called in state testfin. This is a bug. Please report it!"};
+                        $self->prc_results($num, $result);
+                }
+                when('finished') {
+                        return;
                 }
         }
 
@@ -351,18 +272,6 @@ sub prc_next_timeout
         return $next_timeout;
 }
 
-=head2 prc_current_test_number
-
-Get or set the number of the testprogram currently running in given PRC.
-
-@param int - PRC number
-@param int - test number (optional)
-
-
-@return test running    - test number starting from 0
-@return no test running - undef
-
-=cut
 
 sub prc_current_test_number
 {
@@ -374,14 +283,6 @@ sub prc_current_test_number
         return $self->state_details->{prcs}->[$num]{number_current_test};
 }
 
-=head2 get_min_prc_timeout
-
-Check all PRCs and return the minimum of their upcoming timeouts in
-seconds.
-
-@return timeout span for the next state change during testing
-
-=cut
 
 sub get_min_prc_timeout
 {
@@ -400,3 +301,192 @@ sub get_min_prc_timeout
 
 
 1;
+
+__END__
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+Tapper::MCP::State::Details
+
+=head1 SYNOPSIS
+
+ use Tapper::MCP::State::Details;
+ my $state_details = Tapper::MCP::State::Details->new();
+ $state_details->prc_results(0, {success => 0, mg => 'No success'});
+
+=head2 db_update
+
+Update database entry.
+
+@return success - 0
+@return error   - error string
+
+=head1 NAME
+
+Tapper::MCP::State::Details - Encapsulate state_details attribute of MCP::State
+
+=head1 FUNCTIONS
+
+=head2 results
+
+Getter and setter for results array for whole test. Setter adds given
+parameter instead of substituting.
+
+@param hash ref - containing success(bool) and msg(string)
+
+=head2 state_init
+
+Initialize the state or read it back from database.
+
+@return success - 0
+@return error   - error string
+
+=head2 takeoff
+
+The reboot call was successfully executed, now update the state for
+waiting for the first message.
+
+@return int - new timeout
+
+=head2 current_state
+
+Getter and setter for current state name.
+
+@param  string - state name (optional)
+@return string - state name
+
+=head2 set_all_prcs_current_state
+
+Set current_state of all PRCs to given state.
+
+@param  string - state name
+
+=head2 keep_alive_timeout_date
+
+Getter and setter for keep_alive_timeout_date
+
+@optparam int - new timeout_date for keep_alive
+
+@return int - timeout date for keep_alive
+
+=head2 set_keep_alive_timeout_span
+
+Getter for keep_alive_timeout_date
+
+@param int  - new timeout date for keep_alive
+
+@return int - new timeout date for keep_alive
+
+=head2 keep_alive_timeout_span
+
+Getter and setter for keep_alive_timeout_span.
+Note: This function can not set the timeout to undef.
+
+@optparam int - new timeout_span
+
+@return int - timeout date for keep_alive
+
+=head2 installer_timeout_current_date
+
+Getter and setter for installer timeout date.
+
+@param  int    - new installer timeout date
+
+@return string - installer timeout date
+
+=head2 start_install
+
+Update timeouts for "installation started".
+
+@return int - new timeout span
+
+=head2 prc_boot_start
+
+Sets timeouts for given PRC to the ones associated with booting of this
+PRC started.
+
+@param  int - PRC number
+
+@return int - boot timeout span
+
+=head2 prc_timeout_current_span
+
+Get the current timeout date for given PRC
+
+@param  int - PRC number
+
+@return int - timeout date
+
+=head2 prc_results
+
+Getter and setter for results array for of one PRC. Setter adds given
+parameter instead of substituting. If no argument is given, all PRC
+results are returned.
+
+@param int      - PRC number (optional)
+@param hash ref - containing success(bool) and msg(string) (optional)
+
+=head2 prc_count
+
+Return number of PRCs
+
+@return int - number of PRCs
+
+=head2 prc_state
+
+Getter and setter for current state of given PRC.
+
+@param  int    - PRC number
+@param  string - state name (optional)
+
+@return string - state name
+
+=head2 is_all_prcs_finished
+
+Check whether all PRCs have finished already.
+
+@param     all PRCs finished - 1
+@param not all PRCs finished - 0
+
+=head2 prc_next_timeout
+
+Set next PRC timeout as current and return it as timeout span.
+
+@param int - PRC number
+
+@return int - next timeout span
+
+=head2 prc_current_test_number
+
+Get or set the number of the testprogram currently running in given PRC.
+
+@param int - PRC number
+@param int - test number (optional)
+
+@return test running    - test number starting from 0
+@return no test running - undef
+
+=head2 get_min_prc_timeout
+
+Check all PRCs and return the minimum of their upcoming timeouts in
+seconds.
+
+@return timeout span for the next state change during testing
+
+=head1 AUTHOR
+
+AMD OSRC Tapper Team <tapper@amd64.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
+
+This is free software, licensed under:
+
+  The (two-clause) FreeBSD License
+
+=cut
+

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 8;
 
 BEGIN { use_ok( 'Tapper::MCP::Info' ); }
 
@@ -26,3 +26,8 @@ is_deeply(\@received_list, [20, 10, 5, 30], 'Setting and getting testprogram tim
 is($info->get_prc_count(), 3, 'Get PRC count');
 my $state = $info->get_state_config();
 is(@{$state->{prcs}}, 4, 'All PRCs handled in state_config');
+is_deeply($state->{prcs}->[3]->{timeout_testprograms_span}, [ 20, 10, 5, 30 ], 'Testprogram timeouts given');
+
+$info->keep_alive_timeout(0);
+$timeout = $info->keep_alive_timeout();
+is($timeout, 0, 'Keep_alive_timeout set');

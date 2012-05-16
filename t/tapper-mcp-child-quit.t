@@ -60,7 +60,7 @@ $mock_conf->mock('write_config',sub{return 0;});
 
 
 
-                 
+
 my @tap_reports;
 my $mock_child = Test::MockModule->new('Tapper::MCP::Child');
 $mock_child->mock('tap_report_away', sub { my (undef, $new_tap_report) = @_; push @tap_reports, $new_tap_report; return (0,0)});
@@ -108,7 +108,7 @@ is($tap_reports[1], "1..1
 # Tapper-machine-name: bullock
 # Tapper-section: MCP overview
 # Tapper-reportgroup-primary: 1
-not ok 1 - Testrun cancelled during state 'installing'
+not ok 1 - Testrun cancelled during state 'installing': killed by admin
 # killed by admin
 ", 'Report for quit during installation');
 
@@ -145,7 +145,7 @@ is($tap_reports[1], "1..2
 # Tapper-section: MCP overview
 # Tapper-reportgroup-primary: 1
 ok 1 - Installation finished
-not ok 2 - Testrun cancelled during state 'reboot_test'
+not ok 2 - Testrun cancelled during state 'reboot_test': killed by admin
 # killed by admin
 ", 'Report for quit during installation');
 

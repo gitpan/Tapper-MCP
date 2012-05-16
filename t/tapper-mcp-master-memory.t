@@ -36,7 +36,7 @@ construct_fixture( schema  => testrundb_schema, fixture => 't/fixtures/testrundb
 my $mockmaster = Test::MockModule->new('Tapper::MCP::Master');
 # $mockmaster->mock('console_open',sub{use IO::Socket::INET;
 #                                      my $sock = IO::Socket::INET->new(Listen=>0);
-#                                      return $sock;});                                    
+#                                      return $sock;});
 # $mockmaster->mock('console_close',sub{return "mocked console_close";});
 
 my $mockchild = Test::MockModule->new('Tapper::MCP::Child');
@@ -47,7 +47,7 @@ $mocknet->mock('upload_files',sub{return(0);});
 
 
 $mockchild->mock('install',sub{my ($self, $hostname, $fh) = @_;
-                               my $pid = fork();               
+                               my $pid = fork();
                                if ($pid == 0) {
                                        my $timeout = 0;
                                        sleep($timeout);
@@ -64,20 +64,20 @@ $mockchild->mock('install',sub{my ($self, $hostname, $fh) = @_;
                                        close $sock;
                                        print STDERR "Wrote end-install\n";
 
-                                       
+
                                        sleep($timeout);
                                        $sock = IO::Socket::INET->new(PeerAddr => 'localhost', PeerPort => $port, Proto => 'tcp');
                                        $sock->print("prc_number:0,start-testprogram\n");
                                        close $sock;
                                        print STDERR "Wrote start-testprogram\n";
 
-                                       
+
                                        sleep(600);
                                        $sock = IO::Socket::INET->new(PeerAddr => 'localhost', PeerPort => $port, Proto => 'tcp');
                                        $sock->print("prc_number:0,end-testprogram\n");
                                        close $sock;
                                        print STDERR "Wrote end-testprogram\n";
-                                       
+
                                        exit 0;
                                }
                                $self->cfg->{times}->{boot_timeout} = 30;
@@ -97,7 +97,7 @@ my $retval;
 $master->set_interrupt_handlers();
 $master->prepare_server();
 #$master->cfg->{times}{poll_intervall} = 0;
-foreach (1..10) 
+foreach (1..10)
 {
         my $lastrun = time();
         $master->runloop($lastrun);

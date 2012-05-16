@@ -1,9 +1,16 @@
-use MooseX::Declare;
-
-use 5.010;
-
 ## no critic (RequireUseStrict)
-class Tapper::MCP::Scheduler::Controller extends Tapper::Base with Tapper::MCP::Net::TAP {
+package Tapper::MCP::Scheduler::Controller;
+BEGIN {
+  $Tapper::MCP::Scheduler::Controller::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::Scheduler::Controller::VERSION = '4.0.1';
+}
+# ABSTRACT: Main class of the scheduler
+
+        use 5.010;
+        use Moose;
+        use base "Tapper::Base";
         use Tapper::Model 'model';
         use aliased 'Tapper::MCP::Scheduler::Algorithm';
         use aliased 'Tapper::MCP::Scheduler::PrioQueue';
@@ -24,18 +31,12 @@ class Tapper::MCP::Scheduler::Controller extends Tapper::Base with Tapper::MCP::
         has testrun   => (is => 'rw');
         has cfg       => (is => 'ro', default => sub {{}});
 
+        with "Tapper::MCP::Net::TAP";
 
-=head2
 
-Check whether we need to change from scheduling white bandwidth to black bandwidth.
+        sub toggle_bandwith_color {
+                my ($self, $free_hosts, $queue) = @_;
 
-@return black - 1
-@return white - 0
-
-=cut
-
-        method toggle_bandwith_color($free_hosts, $queue)
-        {
                 return 0 if $queue->queued_testruns->count == 0;
                 foreach my $free_host( map {$_->{host} } @$free_hosts) {
                         if ($free_host->queuehosts->count){
@@ -53,19 +54,10 @@ Check whether we need to change from scheduling white bandwidth to black bandwid
         }
 
 
-=head2 get_next_job
 
-Pick a testrequest and prepare it for execution. Returns 0 if not testrequest
-fits any of the free hosts.
+        sub get_next_job {
+                my ($self, %args) = @_;
 
-@param ArrayRef - array of host objects associated to hosts with no current test
-
-@return success   - job object
-@return no job    - 0
-
-=cut 
-
-        method get_next_job(Any %args) {
                 my ($queue, $job);
 
                 do {{
@@ -109,17 +101,6 @@ fits any of the free hosts.
                                 last QUEUE if not %$queues;
                         }
 
-                        my $error;
-                        eval{
-                                 $error=$job->produce_preconditions() if $job;
-                         };
-                        if ($error or $@) {
-                                $error //=$@;
-                                $self->testrun($job->testrun);
-                                $self->tap_report_send([{error => 1, msg => $error}], $self->mcp_headerlines());
-                                $self->mark_job_as_finished($job);
-                                return;
-                        }
                         if ($job and $job->testrun->scenario_element) {
                                 $self->mark_job_as_running($job);
                                 if ($job->testrun->scenario_element->peers_need_fitting > 0) {
@@ -135,52 +116,61 @@ fits any of the free hosts.
                 return $job || () ;
         }
 
-        method mark_job_as_running ($job) {
+        sub mark_job_as_running {
+                my ($self, $job) = @_;
+
                 $job->testrun->starttime_testrun(model('TestrunDB')->storage->datetime_parser->format_datetime(DateTime->now));
                 $job->testrun->update();
                 $job->mark_as_running;
         }
 
-        method mark_job_as_finished ($job) {
+        sub mark_job_as_finished {
+                my ($self, $job) = @_;
+
                 $job->testrun->endtime_test_program(model('TestrunDB')->storage->datetime_parser->format_datetime(DateTime->now));
                 $job->testrun->update();
                 $job->mark_as_finished;
         }
 
-}
+1; # End of Tapper::MCP::Scheduler::Controller
 
-{
-        # help the CPAN indexer
-        package Tapper::MCP::Scheduler::Controller;
-}
+__END__
+=pod
 
+=encoding utf-8
 
 =head1 NAME
 
 Tapper::MCP::Scheduler::Controller - Main class of the scheduler
 
-=head1 SYNOPSIS
+=head2
 
-=head1 FUNCTIONS
+Check whether we need to change from scheduling white bandwidth to black bandwidth.
 
+@return black - 1
+@return white - 0
+
+=head2 get_next_job
+
+Pick a testrequest and prepare it for execution. Returns 0 if not testrequest
+fits any of the free hosts.
+
+@param ArrayRef - array of host objects associated to hosts with no current test
+
+@return success   - job object
+@return no job    - 0
 
 =head1 AUTHOR
 
-Maik Hentsche, C<< <maik.hentsche at amd.com> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-Please report any bugs or feature requests to C<bug-wfq at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WFQ>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
+This is free software, licensed under:
 
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
-
-This program is released under the following license: freebsd
+  The (two-clause) FreeBSD License
 
 =cut
 
-1; # End of Tapper::MCP::Scheduler::Controller

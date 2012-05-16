@@ -1,15 +1,24 @@
 package Tapper::MCP::Net::Reset::PM211MIP;
+BEGIN {
+  $Tapper::MCP::Net::Reset::PM211MIP::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.0.1';
+}
 
 use strict;
 use warnings;
 
 use LWP::UserAgent;
+use Moose;
+
+extends 'Tapper::Base';
 
 sub reset_host
 {
-        my ($mcpnet, $host, $options) = @_;
+        my ($self, $host, $options) = @_;
 
-        $mcpnet->log->info("Reboot via Infratec PM211MIP multi-socket outlet");
+        $self->log->info("Reboot via Infratec PM211MIP multi-socket outlet");
 
         my $ip       = $options->{ip};
         my $user     = $options->{user};
@@ -21,14 +30,14 @@ sub reset_host
 
         my $ua = LWP::UserAgent->new;
 
-        $mcpnet->log->info("turn off '$host' via $uri_off");
+        $self->log->info("turn off '$host' via $uri_off");
         my $response1 = $ua->get($uri_off)->decoded_content;
 
         my $sleep = 5;
-        $mcpnet->log->info("sleep $sleep seconds");
+        $self->log->info("sleep $sleep seconds");
         sleep $sleep;
 
-        $mcpnet->log->info("turn on '$host' via $uri_on");
+        $self->log->info("turn on '$host' via $uri_on");
         my $response2 = $ua->get($uri_on)->decoded_content;
 
         my $error  = $response1 =~ /Done\./ && $response2 =~ /Done\./ ? 0 : 1;
@@ -38,11 +47,15 @@ sub reset_host
 
 1;
 
-__END__
+
+
+=pod
+
+=encoding utf-8
 
 =head1 NAME
 
-Tapper::MCP::Net::Reset::PM211MIP - Reset via Infratec PM211MIP multi-socket outlet
+Tapper::MCP::Net::Reset::PM211MIP
 
 =head1 DESCRIPTION
 
@@ -50,6 +63,10 @@ This is a plugin for Tapper.
 
 It provides resetting a machine via the ethernet controllable PM211MIP
 multi-socket outlet.
+
+=head1 NAME
+
+Tapper::MCP::Net::Reset::PM211MIP - Reset via Infratec PM211MIP multi-socket outlet
 
 =head1
 
@@ -70,9 +87,27 @@ outlet number 0 and the host C<sarahconnor> on outlet number 1.
 
 =head1 FUNCTIONS
 
-=head2 reset_host ($mcpnet, $host, $options)
+=head2 reset_host ($self, $host, $options)
 
 The primary plugin function.
 
 It is called with the Tapper::MCP::Net object (for Tapper logging),
 the hostname to reset and the options from the config file.
+
+=head1 AUTHOR
+
+AMD OSRC Tapper Team <tapper@amd64.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
+
+This is free software, licensed under:
+
+  The (two-clause) FreeBSD License
+
+=cut
+
+
+__END__
+

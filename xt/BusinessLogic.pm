@@ -1,12 +1,11 @@
-use MooseX::Declare;
-
-use 5.010;
-
-use TypeLib;
-
-class BusinessLogic {
-        method hello(TypeLib::XAccount $act) {
+package BusinessLogic;
+        use 5.010;
+        use Moose;
+        use TypeLib;
+        sub hello {
+                my ($self, $act) = @_;
                 say "HELLO ", $act->name;
         }
-}
+
+1;
 

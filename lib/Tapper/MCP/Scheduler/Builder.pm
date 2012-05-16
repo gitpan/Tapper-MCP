@@ -1,17 +1,33 @@
-use MooseX::Declare;
-    
 ## no critic (RequireUseStrict)
-class Tapper::MCP::Scheduler::Builder {
+package Tapper::MCP::Scheduler::Builder;
+BEGIN {
+  $Tapper::MCP::Scheduler::Builder::AUTHORITY = 'cpan:AMD';
+}
+{
+  $Tapper::MCP::Scheduler::Builder::VERSION = '4.0.1';
+}
+# ABSTRACT: Generate Testruns
+
+        use Moose;
+
+
+        sub build {
+                my ($self, $hostname) = @_;
+
+                print "We are we are: The youth of the nation";
+                return 0;
+        }
+
+1;
+
+__END__
+=pod
+
+=encoding utf-8
 
 =head1 NAME
-        
-   Tapper::MCP::Scheduler::Builder - Generate Testruns
 
-=cut
-
-=head1 SYNOPSIS
-
-
+Tapper::MCP::Scheduler::Builder - Generate Testruns
 
 =head1 FUNCTIONS
 
@@ -23,30 +39,17 @@ Create files needed for a testrun and put it into db.
 
 @return success - testrun id
 
-=cut
-        
-        method build(Str $hostname) {
-                print "We are we are: The youth of the nation";
-                return 0;
-        }
-}
-
-{
-        # just for CPAN
-        package Tapper::MCP::Scheduler::Builder;
-}
-
-
 =head1 AUTHOR
 
-Maik Hentsche, C<< <maik.hentsche at amd.com> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
-This program is released under the following license: freebsd
+This is free software, licensed under:
+
+  The (two-clause) FreeBSD License
 
 =cut
 
-1; # End of WFQ

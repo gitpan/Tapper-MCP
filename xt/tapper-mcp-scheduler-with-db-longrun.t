@@ -16,9 +16,9 @@ use Tapper::Model 'model';
 use Data::Dumper;
 use Test::Fixture::DBIC::Schema;
 use Tapper::Schema::TestTools;
-use Tapper::MCP::Scheduler::PreconditionProducer::Temare;
+use Tapper::Producer::Temare;
 
-use Test::More;
+use Test::More 0.88;
 use Test::Deep;
 use Test::MockModule;
 use Devel::Backtrace;
@@ -36,9 +36,11 @@ use Devel::Backtrace;
 # --------------------------------------------------------------------------------
 construct_fixture( schema  => testrundb_schema,  fixture => 't/fixtures/testrundb/testrun_with_scheduling_long.yml' );
 # --------------------------------------------------------------------------------
-qx(tapper-testrun updatehost --name bullock --addqueue KVM);
-qx(tapper-testrun updatehost --name bascha --addqueue Xen);
+model('TestrunDB')->resultset('QueueHost')->new({host_id  => 2, queue_id => 2 })->insert; # addqueue bullock:KVM
+model('TestrunDB')->resultset('QueueHost')->new({host_id  => 5, queue_id => 1 })->insert; # addqueue bascha:Xen
 # --------------------------------------------------
+
+srand(17); # same random numbers every time
 
 my $algorithm = Algorithm->new_with_traits ( traits => [WFQ] );
 my $scheduler = Controller->new (algorithm => $algorithm);
@@ -67,7 +69,7 @@ my %jobs;
 
 eval{
         for (my $i=0; $i<180; $i++) {
-                
+
                 $next_job   = $scheduler->get_next_job();
                 if ($next_job) {
                         print STDERR ".";
@@ -85,13 +87,13 @@ eval{
 };
 print $@ if $@;
 
-print STDERR Dumper \%jobs;
-print STDERR join ", ", @jobqueue;
+print STDERR "\n# ".Dumper \%jobs;
+print STDERR "# ".join(", ", @jobqueue);
 
-# is($jobs{Kernel}, 100,'Kernel queue bandwith');
-# is($jobs{KVM}, 200,'KVM queue bandwith');
-# is($jobs{Xen}, 300, 'Xen queue bandwith');
-# is($jobs{none}, 0, 'Always jobs');
+is($jobs{Kernel}, 18,'Kernel queue bandwith');
+is($jobs{KVM}, 59,'KVM queue bandwith');
+is($jobs{Xen}, 70, 'Xen queue bandwith');
+is($jobs{none}, 33, 'Always jobs');
 
 ok(1, 'Dummy');
 

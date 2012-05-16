@@ -1,0 +1,53 @@
+Revision history for Tapper-MCP
+
+4.0.1     2012-05-16
+        - *lots* of enhancements in whole automation layer
+        - MCP is now a stop/resume-able state engine,
+          based on event queues,
+          making the whole automation persistent,
+          inclusive still correctly recalculating timeouts
+        - introduce SSH-connect to test without complete machine setup
+        - introduce 'notification framework' to conditionally
+          trigger notifications on incoming results
+        - SIGUSR1 based live debugging, testrun-id part of process name
+        - introduced keep-alive detection
+        - reworked API for reset plugins
+        - OSRC-RESET plugin with watchdog-style success checking
+        - configurable and host-dependent grub-config
+        - improved integration with kickstart/autoyast/debinst installers
+        - allow lazy precondition producers also in "virt" preconditions
+        - big Dist::Zilla roundhouse kick
+
+2011-03-30 Steffen Schwigon <steffen.schwigon@amd.com>
+
+	* v3.0.5
+
+	* rewritable shebang line
+	* yet another timeout increase
+	* [FIX] access to PRC number in message
+	* [FIX] handle warn-install message
+	* [FIX] provide testrun to TAP role
+	* [FIX] show error message when console can't be opened
+	* [FIX] provide MCP port
+
+2011-03-10 Steffen Schwigon <steffen.schwigon@amd.com>
+
+	* v3.0.4
+
+	* distro maintenance
+
+2011-03-08 Steffen Schwigon <steffen.schwigon@amd.com>
+
+	* v3.000002
+
+	* fix scheduler report sending with T::MCP::Net::TAP
+
+	* Make timouts more robust in tests
+
+	* try to force YAML versions
+
+2011-03-02 Steffen Schwigon <steffen.schwigon@amd.com>
+
+	* v3.0.1
+
+	* cpan release

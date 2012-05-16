@@ -43,7 +43,7 @@ sub initial_state
 
         {'current_state' => 'started',
           'install' => {
-                        'timeout_install_span' => '7200',
+                        'timeout_install_span' => $timeout_span,
                         'timeout_boot_span' => $timeout_span,
                         'timeout_current_date' => undef
                        },
@@ -53,8 +53,14 @@ sub initial_state
                                      'timeout_current_date' => undef,
                                      'results' => [],
                                      'current_state' => 'preload',
-                                     # not evaluated, just needed to know the number of testprograms
-                                     'timeout_testprograms_span' => [ 5, 5 ],
+                                     'timeout_testprograms_span' => [ $timeout_span ],
+                                    },
+                                    {
+                                     'timeout_boot_span' => $timeout_span,
+                                     'timeout_current_date' => undef,
+                                     'results' => [],
+                                     'current_state' => 'preload',
+                                     'timeout_testprograms_span' => [ 1 ],
                                     },
                                    ],
                                      'results' => []
@@ -63,21 +69,14 @@ sub initial_state
 
 my ($error, $timeout);
 $error = $state->state_init(initial_state());
-is($error, 0, 'Init succeeded');
 ($error, $timeout) = $state->update_state(message_create({state => 'takeoff'}));
-is($error, 0, 'State takeoff');
 ($error, $timeout) = $state->update_state(message_create({state => 'start-install'}));
-is($error, 0, 'State start-install');
 ($error, $timeout) = $state->update_state(message_create({state => 'end-install'}));
-is($error, 0, 'State end-install');
 ($error, $timeout) = $state->update_state(message_create({state => 'start-testing', prc_number=> 0}));
-is($error, 0, 'State start-testing');
 ($error, $timeout) = $state->update_state(message_create({state => 'end-testprogram', prc_number=> 0, testprogram=> 0}));
-is($error, 0, 'End first testprogram');
-($error, $timeout) = $state->update_state(message_create({state => 'end-testprogram', prc_number=> 0, testprogram=> 1}));
-is($error, 0, 'End second testprogram');
 ($error, $timeout) = $state->update_state(message_create({state => 'end-testing', prc_number=> 0}));
-is($error, 1, 'End testing');
+($error, $timeout) = $state->update_state(message_create({state => 'start-guest', prc_number=> 1}));
+($error, $timeout) = $state->update_state(message_create({state => 'start-testing', prc_number=> 1}));
 
 
 is_deeply($state->state_details->state_details->{results},
@@ -92,7 +91,18 @@ is_deeply($state->state_details->state_details->{results},
            }
           ], 'MCP results');
 
+sleep 2; # make sure timeout of test0 in PRC1 hits
+my $message = model('TestrunDB')->resultset('Message')->search({message => 'does not exist' , testrun_id => 23});
+($error, $timeout) = $state->update_state($message);
 
+# This is some kind of a hack. When all runs as expected PRC1 is now in
+# state lasttest, i.e. it waits for "end-testing". It has 60 seconds
+# timeout for this message (which is hardcoded because no config is
+# available at the relevant point). We do not want to wait that long and
+# thus simply force a timeout_date in the past.
+$state->state_details->state_details->{prcs}->[1]->{timeout_current_date} = 1;
 
+($error, $timeout) = $state->update_state($message);
+is($state->state_details->current_state(), 'finished', 'Timeout of testprogram handles correctly in PRC1');
 
 done_testing();

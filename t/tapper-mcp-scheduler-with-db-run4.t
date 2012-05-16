@@ -45,14 +45,17 @@ $free_hosts = model("TestrunDB")->resultset("Host")->free_hosts;
 @free_host_names = map { $_->name } $free_hosts->all;
 cmp_bag(\@free_host_names, [qw(iring bullock)], "free hosts");
 
-$next_job = $scheduler->get_next_job();
+{
+        local $^W;
+        $next_job = $scheduler->get_next_job();
+}
 is($next_job->host->name, "iring", "fitting host iring");
 $scheduler->mark_job_as_running($next_job);
 my $job1=$next_job;
 
 {
         local $^W;
-$next_job = $scheduler->get_next_job();
+        $next_job = $scheduler->get_next_job();
 }
 is($next_job, undef, "no job since only bullock free");
 

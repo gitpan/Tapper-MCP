@@ -8,8 +8,9 @@ use YAML;
 
 use Tapper::Schema::TestTools;
 
-use Test::More;
+use Test::More 0.88;
 use Test::Deep;
+use Data::Dumper;
 
 BEGIN { use_ok('Tapper::MCP::Config'); }
 
@@ -58,6 +59,7 @@ cmp_deeply($config->{preconditions},
                                                          'timeout' => 36000,
                                                          },
                                                         ],
+                                    'total_guests' => 1,
                                     'guest_number' => 1,
                                    },
                        'mountpartition' => undef,
@@ -69,7 +71,7 @@ cmp_deeply($config->{preconditions},
 is($config->{installer_stop}, 1, 'installer_stop');
 
 
-my $info = $producer->get_mcp_info();
+my $info = $producer->mcp_info;
 isa_ok($info, 'Tapper::MCP::Info', 'mcp_info');
 my @timeout = $info->get_testprogram_timeouts(1);
 is_deeply(\@timeout,[36000],'Timeout for testprogram in PRC 1');
@@ -79,7 +81,7 @@ $config = $producer->create_config();
 is(ref($config),'HASH', 'Config created');
 is($config->{preconditions}->[3]->{config}->{max_reboot}, 2, 'Reboot test');
 
-$info = $producer->get_mcp_info();
+$info = $producer->mcp_info;
 isa_ok($info, 'Tapper::MCP::Info', 'mcp_info');
 my $timeout = $info->get_boot_timeout(0);
 is($timeout, 5, 'Timeout booting PRC 0');
@@ -95,7 +97,7 @@ is(ref($config),'HASH', 'Config created');
 my $expected_grub = qr(timeout 2
 
 title RHEL 5
-kernel /tftpboot/stable/rhel/5/x86_64/vmlinuz  console=ttyS0,115200 ks=http://bancroft/autoinstall/stable/rhel/5/x86_64/tapper-ai.ks ksdevice=eth0 noapic tapper_ip=\d{1,3}\.\d{1,3}.\d{1,3}.\d{1,3} tapper_host=$config->{mcp_host} tapper_environment=test testrun=$config->{test_run}
+kernel /tftpboot/stable/rhel/5/x86_64/vmlinuz  console=ttyS0,115200 ks=http://bancroft/autoinstall/stable/rhel/5/x86_64/tapper-ai.ks ksdevice=eth0 noapic tapper_ip=\d{1,3}\.\d{1,3}.\d{1,3}.\d{1,3} tapper_port=\d+ testrun=$config->{test_run} tapper_host=$config->{mcp_host} tapper_environment=test
 initrd /tftpboot/stable/rhel/5/x86_64/initrd.img
 );
 
@@ -118,6 +120,7 @@ cmp_deeply($config->{preconditions},
                                                           timeout => 36000,
                                                          },
                                                         ],
+                                    'total_guests' => 1,
                                     'guest_number' => 1,
                                    },
                        'mountpartition' => undef,
@@ -207,6 +210,7 @@ cmp_deeply($config->{preconditions},
                                                           'timeout' => '36000',
                                                           }
                                                         ],
+                                    'total_guests' => 1,
                                     'guest_number' => 1
                                    },
                        'mountpartition' => undef,
@@ -229,5 +233,6 @@ cmp_deeply($config->{preconditions},
                        }
                      ),
            'PRC installed even without test program(s)');
+
 
 done_testing();

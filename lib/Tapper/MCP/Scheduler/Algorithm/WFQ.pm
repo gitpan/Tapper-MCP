@@ -1,23 +1,30 @@
-use MooseX::Declare;
-
-use 5.010;
-
 ## no critic (RequireUseStrict)
-role Tapper::MCP::Scheduler::Algorithm::WFQ
+package Tapper::MCP::Scheduler::Algorithm::WFQ;
+BEGIN {
+  $Tapper::MCP::Scheduler::Algorithm::WFQ::AUTHORITY = 'cpan:AMD';
+}
 {
+  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.0.1';
+}
+# ABSTRACT: Scheduling algorithm "Weighted Fair Queueing"
+
+        use Moose::Role;
+        use 5.010;
         requires 'queues';
 
 #        use aliased 'Tapper::Schema::TestrunDB::Result::Queue';
 
-        method get_virtual_finishing_time($queue) # Queue
-        {
+        sub get_virtual_finishing_time {
+                my ($self, $queue) = @_;
+
                 my $prio = $queue->priority || 1;
                 return ($queue->runcount + 1.0) / $prio;
         }
 
 
-        method lookup_next_queue($queues)
-        {
+        sub lookup_next_queue {
+                my ($self, $queues) = @_;
+
                 my $vft;
                 my $queue;
 
@@ -44,23 +51,30 @@ role Tapper::MCP::Scheduler::Algorithm::WFQ
 
 
 
-        method get_next_queue()
+        sub get_next_queue
         {
+                my ($self) = @_;
+
                 my $vft;
                 my $queue = $self->lookup_next_queue($self->queues);
                 $self->update_queue($queue);
                 return $queue;
         }
 
-        method update_queue( $q) { # Queue
+        sub update_queue {
+                my ($self, $q) = @_;
+
                 $q->runcount ( $q->runcount + 1 );
                 $q->update;
         }
-}
 
 1;
 
-__END__
+
+
+=pod
+
+=encoding utf-8
 
 =head1 NAME
 
@@ -69,7 +83,6 @@ Tapper::MCP::Scheduler::Algorithm::WFQ - Scheduling algorithm "Weighted Fair Que
 =head1 SYNOPSIS
 
 Implements a test for weighted fair queueing scheduling algorithm.
-
 
 =head1 FUNCTIONS
 
@@ -90,12 +103,18 @@ Evaluate which client has to be scheduled next.
 
 =head1 AUTHOR
 
-AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
+AMD OSRC Tapper Team <tapper@amd64.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
+This software is Copyright (c) 2012 by Advanced Micro Devices, Inc..
 
-This program is released under the following license: proprietary
+This is free software, licensed under:
 
+  The (two-clause) FreeBSD License
+
+=cut
+
+
+__END__
 
