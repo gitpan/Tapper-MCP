@@ -15,7 +15,6 @@ my %WriteMakefileArgs = (
     "Class::C3" => 0,
     "Cwd" => 0,
     "Data::Dumper" => 0,
-    "File::Spec::Functions" => 0,
     "MRO::Compat" => 0,
     "String::Diff" => 0,
     "TAP::DOM" => 0,
@@ -50,6 +49,7 @@ my %WriteMakefileArgs = (
     "File::Basename" => 0,
     "File::Path" => 0,
     "File::Spec" => 0,
+    "File::Spec::Functions" => 0,
     "File::Temp" => 0,
     "Hash::Merge::Simple" => 0,
     "IO::Handle" => 0,
@@ -86,7 +86,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "4.0.1",
+  "VERSION" => "4.0.2",
   "test" => {
     "TESTS" => "t/*.t"
   }

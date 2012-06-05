@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::VERSION = '4.0.1';
+  $Tapper::MCP::VERSION = '4.0.2';
 }
 # ABSTRACT: Tapper - Central master control program of Tapper automation
 

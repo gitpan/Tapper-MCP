@@ -1,0 +1,46 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_Carp {
+	label="DBIx::Class::Carp";
+	"DBIx::Class::Carp::__find_caller";
+}
+subgraph cluster_DBIx_Class_Exception {
+	label="DBIx::Class::Exception";
+	"DBIx::Class::Exception::BEGIN@9";
+	"DBIx::Class::Exception::BEGIN@6";
+	"DBIx::Class::Exception::BEGIN@3";
+	"DBIx::Class::Exception::BEGIN@4";
+	"DBIx::Class::Exception::CORE:subst";
+	"DBIx::Class::Exception::throw";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::throw_exception";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::BEGIN@8";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"DBIx::Class::Exception::throw" -> "DBIx::Class::Carp::__find_caller";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@3";
+"DBIx::Class::Exception::BEGIN@9" -> "overload::import";
+"DBIx::Class::Exception::BEGIN@4" -> "warnings::import";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@4";
+"DBIx::Class::Exception::BEGIN@3" -> "strict::import";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@6";
+"DBIx::Class::Schema::throw_exception" -> "DBIx::Class::Exception::throw";
+"DBIx::Class::Exception::throw" -> "DBIx::Class::Exception::CORE:subst";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@9";
+}

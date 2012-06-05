@@ -1,0 +1,38 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DateTime_Format_Builder_Parser {
+	label="DateTime::Format::Builder::Parser";
+	"DateTime::Format::Builder::Parser::BEGIN@1.39";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Quick {
+	label="DateTime::Format::Builder::Parser::Quick";
+	"DateTime::Format::Builder::Parser::Quick::BEGIN@3";
+	"DateTime::Format::Builder::Parser::Quick::BEGIN@4";
+	"DateTime::Format::Builder::Parser::Quick::BEGIN@2";
+	"DateTime::Format::Builder::Parser::Quick::BEGIN@5";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"DateTime::Format::Builder::Parser::Quick::BEGIN@4" -> "Exporter::import";
+"DateTime::Format::Builder::Parser::BEGIN@1.39" -> "DateTime::Format::Builder::Parser::Quick::BEGIN@4";
+"DateTime::Format::Builder::Parser::Quick::BEGIN@5" -> "base::import";
+"DateTime::Format::Builder::Parser::BEGIN@1.39" -> "DateTime::Format::Builder::Parser::Quick::BEGIN@3";
+"DateTime::Format::Builder::Parser::Quick::BEGIN@3" -> "vars::import";
+"DateTime::Format::Builder::Parser::BEGIN@1.39" -> "DateTime::Format::Builder::Parser::Quick::BEGIN@5";
+"DateTime::Format::Builder::Parser::Quick::BEGIN@2" -> "strict::import";
+"DateTime::Format::Builder::Parser::BEGIN@1.39" -> "DateTime::Format::Builder::Parser::Quick::BEGIN@2";
+}

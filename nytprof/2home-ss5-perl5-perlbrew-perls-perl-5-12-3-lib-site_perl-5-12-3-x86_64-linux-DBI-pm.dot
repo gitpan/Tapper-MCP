@@ -1,0 +1,282 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBI_db {
+	label="DBI::db";
+	"DBI::db::connected";
+	"DBI::db::begin_work";
+	"DBI::db::ping";
+	"DBI::db::prepare";
+	"DBI::db::prepare_cached";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_DBD___dr {
+	label="DBD::_::dr";
+	"DBD::_::dr::BEGIN@1449";
+}
+subgraph cluster_DBI_common {
+	label="DBI::common";
+	"DBI::common::trace_msg";
+	"DBI::common::FIRSTKEY";
+	"DBI::common::_not_impl";
+	"DBI::common::STORE";
+	"DBI::common::FETCH";
+}
+subgraph cluster_DBD_SQLite_db {
+	label="DBD::SQLite::db";
+	"DBD::SQLite::db::prepare";
+}
+subgraph cluster_DBD___st {
+	label="DBD::_::st";
+	"DBD::_::st::BEGIN@1821";
+}
+subgraph cluster_DBI_var {
+	label="DBI::var";
+	"DBI::var::TIESCALAR";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::export_ok_tags";
+}
+subgraph cluster_DBD___common {
+	label="DBD::_::common";
+	"DBD::_::common::_not_impl";
+	"DBD::_::common::FIRSTKEY";
+	"DBD::_::common::BEGIN@1343";
+	"DBD::_::common::CORE:match";
+	"DBD::_::common::trace_msg";
+	"DBD::_::common::install_method";
+}
+subgraph cluster_SQL_Translator_Schema_Field {
+	label="SQL::Translator::Schema::Field";
+	"SQL::Translator::Schema::Field::data_type";
+}
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::bootstrap";
+}
+subgraph cluster_DBI {
+	label="DBI";
+	"DBI::SQL_TIME";
+	"DBI::BEGIN@274";
+	"DBI::SQL_SMALLINT";
+	"DBI::SQL_LONGVARCHAR";
+	"DBI::bootstrap";
+	"DBI::SQL_VARBINARY";
+	"DBI::CORE:match";
+	"DBI::BEGIN@157";
+	"DBI::BEGIN@831";
+	"DBI::BEGIN@684";
+	"DBI::_new_sth";
+	"DBI::SQL_DATE";
+	"DBI::END";
+	"DBI::SQL_CHAR";
+	"DBI::SQL_INTEGER";
+	"DBI::install_driver";
+	"DBI::BEGIN@862";
+	"DBI::BEGIN@13";
+	"DBI::CORE:subst";
+	"DBI::connect";
+	"DBI::SQL_DATETIME";
+	"DBI::BEGIN@797";
+	"DBI::SQL_VARCHAR";
+	"DBI::BEGIN@161";
+	"DBI::BEGIN@159";
+	"DBI::setup_driver";
+	"DBI::BEGIN@527";
+	"DBI::BEGIN@158";
+	"DBI::SQL_BLOB";
+	"DBI::_new_handle";
+	"DBI::SQL_TIMESTAMP";
+	"DBI::SQL_NUMERIC";
+	"DBI::SQL_DECIMAL";
+	"DBI::__ANON__[DBI.pm:725]";
+	"DBI::BEGIN@959";
+	"DBI::SQL_BINARY";
+	"DBI::_concat_hash_sorted";
+	"DBI::_new_dbh";
+	"DBI::_install_method";
+	"DBI::disconnect_all";
+	"DBI::BEGIN@1030";
+	"DBI::SQL_DOUBLE";
+	"DBI::_new_drh";
+	"DBI::BEGIN@270";
+	"DBI::SQL_UNKNOWN_TYPE";
+	"DBI::SQL_BIT";
+}
+subgraph cluster_DBD_SQLite {
+	label="DBD::SQLite";
+	"DBD::SQLite::BEGIN@9";
+	"DBD::SQLite::BEGIN@34";
+	"DBD::SQLite::BEGIN@3";
+	"DBD::SQLite::BEGIN@4";
+	"DBD::SQLite::BEGIN@10";
+	"DBD::SQLite::BEGIN@6";
+	"DBD::SQLite::BEGIN@12";
+	"DBD::SQLite::BEGIN@30";
+	"DBD::SQLite::driver";
+	"DBD::SQLite::BEGIN@8";
+	"DBD::SQLite::BEGIN@5";
+}
+subgraph cluster_DBD_SQLite__WriteOnceHash {
+	label="DBD::SQLite::_WriteOnceHash";
+	"DBD::SQLite::_WriteOnceHash::STORE";
+	"DBD::SQLite::_WriteOnceHash::TIEHASH";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_DBD_SQLite_dr {
+	label="DBD::SQLite::dr";
+	"DBD::SQLite::dr::connect";
+	"DBD::SQLite::dr::BEGIN@178";
+}
+subgraph cluster_Exporter_Heavy {
+	label="Exporter::Heavy";
+	"Exporter::Heavy::heavy_export_ok_tags";
+}
+subgraph cluster_DBI_dr {
+	label="DBI::dr";
+	"DBI::dr::disconnect_all";
+	"DBI::dr::connect";
+}
+subgraph cluster_DBIx_Class_Storage_DBI_SQLite {
+	label="DBIx::Class::Storage::DBI::SQLite";
+	"DBIx::Class::Storage::DBI::SQLite::bind_attribute_by_data_type";
+	"DBIx::Class::Storage::DBI::SQLite::_dbi_attrs_for_bind";
+}
+subgraph cluster_SQL_Translator_Schema_Table {
+	label="SQL::Translator::Schema::Table";
+	"SQL::Translator::Schema::Table::BEGIN@44";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]";
+}
+subgraph cluster_DBD___db {
+	label="DBD::_::db";
+	"DBD::_::db::begin_work";
+	"DBD::_::db::BEGIN@1510";
+	"DBD::_::db::ping";
+	"DBD::_::db::prepare_cached";
+}
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_VARBINARY";
+"DBI::db::begin_work" -> "DBD::_::db::begin_work";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_DATETIME";
+"DBI::db::prepare_cached" -> "DBD::_::db::prepare_cached";
+"DBI::disconnect_all" -> "DBI::dr::disconnect_all";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@12";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::var::TIESCALAR";
+"DBD::_::db::prepare_cached" -> "DBI::db::prepare";
+"DBD::_::db::prepare_cached" -> "DBI::_concat_hash_sorted";
+"DBD::SQLite::dr::connect" -> "DBI::_new_dbh";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@8";
+"SQL::Translator::Schema::Field::data_type" -> "DBI::SQL_UNKNOWN_TYPE";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_SMALLINT";
+"DBI::BEGIN@161" -> "Exporter::export_ok_tags";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@157";
+"DBD::_::db::prepare_cached" -> "DBI::common::FETCH";
+"DBD::_::db::begin_work" -> "DBI::common::FETCH";
+"DBD::_::db::ping" -> "DBI::common::FETCH";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@5";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@797";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_VARCHAR";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBD::_::db::BEGIN@1510";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@1030";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@270";
+"DBD::_::common::_not_impl" -> "DBI::common::trace_msg";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@274";
+"DBD::_::common::install_method" -> "DBD::_::common::CORE:match";
+"DBI::__ANON__[DBI.pm:725]" -> "DBI::db::connected";
+"DBD::SQLite::db::prepare" -> "DBI::_new_sth";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBD::_::st::BEGIN@1821";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_CHAR";
+"DBI::connect" -> "DBI::install_driver";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBD::_::common::BEGIN@1343";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@9";
+"DBI::BEGIN@862" -> "strict::unimport";
+"DBI::BEGIN@797" -> "strict::unimport";
+"DBI::BEGIN@1030" -> "strict::unimport";
+"DBI::BEGIN@270" -> "strict::unimport";
+"DBI::BEGIN@527" -> "strict::unimport";
+"DBI::BEGIN@959" -> "strict::unimport";
+"DBI::BEGIN@831" -> "strict::unimport";
+"DBI::BEGIN@684" -> "strict::unimport";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@527";
+"DBI::connect" -> "DBI::__ANON__[DBI.pm:725]";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::_install_method";
+"DBD::_::common::install_method" -> "DBI::_install_method";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_DOUBLE";
+"DBI::install_driver" -> "DBD::SQLite::dr::BEGIN@178";
+"DBI::END" -> "DBD::_::common::trace_msg";
+"DynaLoader::bootstrap" -> "DBI::bootstrap";
+"DBI::BEGIN@161" -> "DBI::CORE:match";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@684";
+"DBI::install_driver" -> "DBD::SQLite::_WriteOnceHash::TIEHASH";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@10";
+"DBI::__ANON__[DBI.pm:725]" -> "DBI::dr::connect";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@6";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@159";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_NUMERIC";
+"DBD::_::db::BEGIN@1510" -> "strict::import";
+"DBI::BEGIN@274" -> "strict::import";
+"DBD::_::st::BEGIN@1821" -> "strict::import";
+"DBD::_::common::BEGIN@1343" -> "strict::import";
+"DBD::_::dr::BEGIN@1449" -> "strict::import";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBD::_::dr::BEGIN@1449";
+"DBD::_::db::begin_work" -> "DBI::common::STORE";
+"DBI::__ANON__[DBI.pm:725]" -> "DBI::common::STORE";
+"DBI::connect" -> "DBI::common::STORE";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_LONGVARCHAR";
+"main::RUNTIME" -> "DBI::END";
+"DBI::install_driver" -> "DynaLoader::bootstrap";
+"DBI::BEGIN@161" -> "DynaLoader::bootstrap";
+"DBI::BEGIN@161" -> "Exporter::Heavy::heavy_export_ok_tags";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@161";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_DECIMAL";
+"DBD::SQLite::driver" -> "DBD::_::common::install_method";
+"DBI::common::_not_impl" -> "DBD::_::common::_not_impl";
+"DBI::install_driver" -> "DBD::SQLite::driver";
+"DBD::SQLite::driver" -> "DBI::_new_drh";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_BIT";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_TIME";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@862";
+"DBI::install_driver" -> "DBI::CORE:subst";
+"DBI::connect" -> "DBI::CORE:subst";
+"DBD::_::db::ping" -> "DBI::common::_not_impl";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@3";
+"DBI::install_driver" -> "DBI::setup_driver";
+"DBD::SQLite::driver" -> "DBI::setup_driver";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::setup_driver";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_BLOB";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@158";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_TIMESTAMP";
+"DBI::install_driver" -> "DBD::SQLite::_WriteOnceHash::STORE";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_DATE";
+"DBI::db::ping" -> "DBD::_::db::ping";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@34";
+"DBI::setup_driver" -> "UNIVERSAL::isa";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@4";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_BINARY";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@959";
+"DBI::END" -> "DBI::disconnect_all";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@831";
+"DBIx::Class::Storage::DBI::SQLite::bind_attribute_by_data_type" -> "DBI::SQL_INTEGER";
+"DBIx::Class::Storage::DBI::SQLite::_dbi_attrs_for_bind" -> "DBI::SQL_INTEGER";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "DBI::SQL_INTEGER";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::BEGIN@13";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:1300]" -> "DBI::connect";
+"DBI::install_driver" -> "DBD::SQLite::BEGIN@30";
+"DBI::_new_dbh" -> "DBI::_new_handle";
+"DBI::_new_sth" -> "DBI::_new_handle";
+"DBI::_new_drh" -> "DBI::_new_handle";
+"DBI::common::FIRSTKEY" -> "DBD::_::common::FIRSTKEY";
+}

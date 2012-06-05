@@ -1,0 +1,56 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBIx_Class_ResultSource_View {
+	label="DBIx::Class::ResultSource::View";
+	"DBIx::Class::ResultSource::View::BEGIN@4";
+	"DBIx::Class::ResultSource::View::BEGIN@3";
+	"DBIx::Class::ResultSource::View::BEGIN@6";
+	"DBIx::Class::ResultSource::View::new";
+	"DBIx::Class::ResultSource::View::BEGIN@8";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_DBIx_Class_ResultSource {
+	label="DBIx::Class::ResultSource";
+	"DBIx::Class::ResultSource::new";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy_Table {
+	label="DBIx::Class::ResultSourceProxy::Table";
+	"DBIx::Class::ResultSourceProxy::Table::table";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_next {
+	label="next";
+	"next::method";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::clone";
+	"DBIx::Class::Schema::_register_source";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"DBIx::Class::ResultSource::View::new" -> "DBIx::Class::ResultSource::new";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::ResultSource::View::BEGIN@8";
+"DBIx::Class::ResultSource::View::BEGIN@8" -> "base::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::ResultSource::View::BEGIN@6";
+"DBIx::Class::ResultSource::View::BEGIN@4" -> "warnings::import";
+"DBIx::Class::ResultSource::View::BEGIN@3" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::ResultSource::View::BEGIN@3";
+"DBIx::Class::ResultSource::View::new" -> "next::method";
+"DBIx::Class::Schema::clone" -> "DBIx::Class::ResultSource::View::new";
+"DBIx::Class::Schema::_register_source" -> "DBIx::Class::ResultSource::View::new";
+"DBIx::Class::ResultSourceProxy::Table::table" -> "DBIx::Class::ResultSource::View::new";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::ResultSource::View::BEGIN@4";
+}

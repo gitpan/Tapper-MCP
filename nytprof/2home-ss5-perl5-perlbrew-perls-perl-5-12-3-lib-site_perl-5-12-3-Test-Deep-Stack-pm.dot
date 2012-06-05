@@ -1,0 +1,49 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Test_Deep_MM {
+	label="Test::Deep::MM";
+	"Test::Deep::MM::import";
+	"Test::Deep::MM::BEGIN@16";
+	"Test::Deep::MM::BEGIN@31";
+}
+subgraph cluster_Test_Deep {
+	label="Test::Deep";
+	"Test::Deep::BEGIN@1.34";
+	"Test::Deep::BEGIN@8";
+	"Test::Deep::BEGIN@2.35";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Test_Deep_Stack {
+	label="Test::Deep::Stack";
+	"Test::Deep::Stack::BEGIN@2";
+	"Test::Deep::Stack::BEGIN@7";
+	"Test::Deep::Stack::BEGIN@1";
+	"Test::Deep::Stack::BEGIN@9";
+	"Test::Deep::Stack::BEGIN@6";
+}
+"Test::Deep::Stack::BEGIN@7" -> "Exporter::import";
+"Test::Deep::Stack::BEGIN@6" -> "Exporter::import";
+"Test::Deep::Stack::BEGIN@9" -> "Test::Deep::MM::BEGIN@31";
+"Test::Deep::Stack::BEGIN@9" -> "Test::Deep::MM::import";
+"Test::Deep::Stack::BEGIN@9" -> "Test::Deep::Stack::BEGIN@2";
+"Test::Deep::BEGIN@8" -> "Test::Deep::Stack::BEGIN@7";
+"Test::Deep::BEGIN@2.35" -> "warnings::import";
+"Test::Deep::BEGIN@1.34" -> "strict::import";
+"Test::Deep::Stack::BEGIN@9" -> "Test::Deep::MM::BEGIN@16";
+"Test::Deep::BEGIN@8" -> "Test::Deep::Stack::BEGIN@6";
+"Test::Deep::BEGIN@8" -> "Test::Deep::BEGIN@2.35";
+"Test::Deep::BEGIN@8" -> "Test::Deep::BEGIN@1.34";
+"Test::Deep::BEGIN@8" -> "Test::Deep::Stack::BEGIN@9";
+"Test::Deep::Stack::BEGIN@9" -> "Test::Deep::Stack::BEGIN@1";
+}

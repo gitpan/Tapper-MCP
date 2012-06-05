@@ -1,0 +1,59 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DateTime_Format_Builder_Parser {
+	label="DateTime::Format::Builder::Parser";
+	"DateTime::Format::Builder::Parser::BEGIN@626";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_Factory_Util {
+	label="Class::Factory::Util";
+	"Class::Factory::Util::CORE:open_dir";
+	"Class::Factory::Util::BEGIN@17";
+	"Class::Factory::Util::CORE:ftfile";
+	"Class::Factory::Util::BEGIN@6";
+	"Class::Factory::Util::BEGIN@3";
+	"Class::Factory::Util::CORE:subst";
+	"Class::Factory::Util::CORE:sort";
+	"Class::Factory::Util::_scandir";
+	"Class::Factory::Util::_subclasses";
+	"Class::Factory::Util::CORE:closedir";
+	"Class::Factory::Util::CORE:ftdir";
+	"Class::Factory::Util::BEGIN@4";
+	"Class::Factory::Util::import";
+	"Class::Factory::Util::CORE:readdir";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_Format_SQLite {
+	label="DateTime::Format::SQLite";
+	"DateTime::Format::SQLite::BEGIN@16";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@3";
+"Class::Factory::Util::BEGIN@6" -> "Exporter::import";
+"Class::Factory::Util::_scandir" -> "Class::Factory::Util::CORE:readdir";
+"Class::Factory::Util::_scandir" -> "Class::Factory::Util::CORE:ftfile";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@6";
+"Class::Factory::Util::_subclasses" -> "Class::Factory::Util::CORE:subst";
+"Class::Factory::Util::_scandir" -> "Class::Factory::Util::CORE:ftdir";
+"Class::Factory::Util::_subclasses" -> "Class::Factory::Util::_scandir";
+"Class::Factory::Util::BEGIN@17" -> "strict::unimport";
+"Class::Factory::Util::BEGIN@4" -> "vars::import";
+"DateTime::Format::SQLite::BEGIN@16" -> "Class::Factory::Util::_subclasses";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::import";
+"Class::Factory::Util::_subclasses" -> "Class::Factory::Util::CORE:sort";
+"Class::Factory::Util::BEGIN@3" -> "strict::import";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@17";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@4";
+"Class::Factory::Util::_scandir" -> "Class::Factory::Util::CORE:closedir";
+"Class::Factory::Util::_scandir" -> "Class::Factory::Util::CORE:open_dir";
+}

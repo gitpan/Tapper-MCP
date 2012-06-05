@@ -1,0 +1,76 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Tap {
+	label="Tapper::Schema::ReportsDB::Result::Tap";
+	"Tapper::Schema::ReportsDB::Result::Tap::result_source_instance";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy {
+	label="DBIx::Class::ResultSourceProxy";
+	"DBIx::Class::ResultSourceProxy::add_columns";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+	"Class::C3::Componentised::BEGIN@2";
+	"Class::C3::Componentised::BEGIN@1";
+}
+subgraph cluster_DBIx_Class_ResultSource {
+	label="DBIx::Class::ResultSource";
+	"DBIx::Class::ResultSource::columns_info";
+}
+subgraph cluster_DBIx_Class_TimeStamp {
+	label="DBIx::Class::TimeStamp";
+	"DBIx::Class::TimeStamp::add_columns";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportComment {
+	label="Tapper::Schema::ReportsDB::Result::ReportComment";
+	"Tapper::Schema::ReportsDB::Result::ReportComment::result_source_instance";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DBIx_Class_DynamicDefault {
+	label="DBIx::Class::DynamicDefault";
+	"DBIx::Class::DynamicDefault::BEGIN@6";
+	"DBIx::Class::DynamicDefault::CORE:sort";
+	"DBIx::Class::DynamicDefault::add_columns";
+	"DBIx::Class::DynamicDefault::__column_dynamic_default_triggers";
+}
+subgraph cluster_next {
+	label="next";
+	"next::method";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportFile {
+	label="Tapper::Schema::ReportsDB::Result::ReportFile";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::result_source_instance";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Report {
+	label="Tapper::Schema::ReportsDB::Result::Report";
+	"Tapper::Schema::ReportsDB::Result::Report::result_source_instance";
+}
+"DBIx::Class::DynamicDefault::add_columns" -> "Tapper::Schema::ReportsDB::Result::Report::result_source_instance";
+"Class::C3::Componentised::ensure_class_loaded" -> "Class::C3::Componentised::BEGIN@2";
+"DBIx::Class::TimeStamp::add_columns" -> "DBIx::Class::DynamicDefault::add_columns";
+"DBIx::Class::DynamicDefault::BEGIN@6" -> "base::import";
+"DBIx::Class::DynamicDefault::add_columns" -> "Tapper::Schema::ReportsDB::Result::Tap::result_source_instance";
+"Class::C3::Componentised::BEGIN@2" -> "warnings::import";
+"DBIx::Class::DynamicDefault::add_columns" -> "Tapper::Schema::ReportsDB::Result::ReportComment::result_source_instance";
+"DBIx::Class::DynamicDefault::add_columns" -> "DBIx::Class::DynamicDefault::CORE:sort";
+"Class::C3::Componentised::BEGIN@1" -> "strict::import";
+"DBIx::Class::DynamicDefault::add_columns" -> "Tapper::Schema::ReportsDB::Result::ReportFile::result_source_instance";
+"Class::C3::Componentised::ensure_class_loaded" -> "Class::C3::Componentised::BEGIN@1";
+"DBIx::Class::DynamicDefault::add_columns" -> "DBIx::Class::ResultSource::columns_info";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::DynamicDefault::BEGIN@6";
+"DBIx::Class::DynamicDefault::add_columns" -> "next::method";
+"DBIx::Class::DynamicDefault::add_columns" -> "DBIx::Class::ResultSourceProxy::add_columns";
+"DBIx::Class::DynamicDefault::add_columns" -> "DBIx::Class::DynamicDefault::__column_dynamic_default_triggers";
+}

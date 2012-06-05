@@ -1,0 +1,134 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DateTime_TimeZone_Floating {
+	label="DateTime::TimeZone::Floating";
+	"DateTime::TimeZone::Floating::BEGIN@9";
+	"DateTime::TimeZone::Floating::BEGIN@7";
+	"DateTime::TimeZone::Floating::BEGIN@6";
+}
+subgraph cluster_DateTime_TimeZone_Catalog {
+	label="DateTime::TimeZone::Catalog";
+	"DateTime::TimeZone::Catalog::BEGIN@15";
+	"DateTime::TimeZone::Catalog::BEGIN@13";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::VERSION";
+}
+subgraph cluster_Params_Validate_XS {
+	label="Params::Validate::XS";
+	"Params::Validate::XS::validate";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::_handle_offset_modifier";
+	"DateTime::set_time_zone";
+	"DateTime::BEGIN@48";
+	"DateTime::_new";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::BEGIN@9";
+	"DateTime::TimeZone::BEGIN@28";
+	"DateTime::TimeZone::BEGIN@11";
+	"DateTime::TimeZone::BEGIN@19";
+	"DateTime::TimeZone::BEGIN@23";
+	"DateTime::TimeZone::BEGIN@24";
+	"DateTime::TimeZone::BEGIN@13";
+	"DateTime::TimeZone::BEGIN@6";
+	"DateTime::TimeZone::is_floating";
+	"DateTime::TimeZone::BEGIN@14";
+	"DateTime::TimeZone::BEGIN@25";
+	"DateTime::TimeZone::BEGIN@27";
+	"DateTime::TimeZone::CORE:match";
+	"DateTime::TimeZone::BEGIN@8";
+	"DateTime::TimeZone::BEGIN@16";
+	"DateTime::TimeZone::BEGIN@22";
+	"DateTime::TimeZone::new";
+	"DateTime::TimeZone::BEGIN@12";
+	"DateTime::TimeZone::BEGIN@26";
+	"DateTime::TimeZone::BEGIN@15";
+	"DateTime::TimeZone::BEGIN@18";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DateTime_TimeZone_Local {
+	label="DateTime::TimeZone::Local";
+	"DateTime::TimeZone::Local::BEGIN@10";
+	"DateTime::TimeZone::Local::BEGIN@7";
+	"DateTime::TimeZone::Local::BEGIN@11";
+	"DateTime::TimeZone::Local::BEGIN@6";
+	"DateTime::TimeZone::Local::BEGIN@9";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_Class_Singleton {
+	label="Class::Singleton";
+	"Class::Singleton::instance";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Testrun {
+	label="Tapper::Schema::TestrunDB::ResultSet::Testrun";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12";
+}
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@11";
+"DateTime::_handle_offset_modifier" -> "DateTime::TimeZone::is_floating";
+"DateTime::set_time_zone" -> "DateTime::TimeZone::is_floating";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@27";
+"DateTime::TimeZone::new" -> "DateTime::TimeZone::CORE:match";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@8";
+"DateTime::TimeZone::BEGIN@16" -> "Exporter::import";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@19";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@23";
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Catalog::BEGIN@13";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@28";
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Catalog::BEGIN@15";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@18";
+"DateTime::TimeZone::new" -> "Params::Validate::XS::validate";
+"DateTime::TimeZone::BEGIN@27" -> "constant::import";
+"DateTime::TimeZone::BEGIN@22" -> "constant::import";
+"DateTime::TimeZone::BEGIN@18" -> "constant::import";
+"DateTime::TimeZone::BEGIN@19" -> "constant::import";
+"DateTime::TimeZone::BEGIN@23" -> "constant::import";
+"DateTime::TimeZone::BEGIN@24" -> "constant::import";
+"DateTime::TimeZone::BEGIN@25" -> "constant::import";
+"DateTime::TimeZone::BEGIN@28" -> "constant::import";
+"DateTime::TimeZone::BEGIN@26" -> "constant::import";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@24";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@14";
+"DateTime::TimeZone::BEGIN@9" -> "warnings::import";
+"DateTime::TimeZone::new" -> "Class::Singleton::instance";
+"DateTime::TimeZone::BEGIN@13" -> "DateTime::TimeZone::Local::BEGIN@9";
+"DateTime::TimeZone::BEGIN@8" -> "strict::import";
+"DateTime::TimeZone::BEGIN@16" -> "UNIVERSAL::VERSION";
+"DateTime::TimeZone::BEGIN@13" -> "DateTime::TimeZone::Local::BEGIN@6";
+"DateTime::TimeZone::BEGIN@13" -> "DateTime::TimeZone::Local::BEGIN@11";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@13";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@25";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@16";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Floating::BEGIN@7";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@26";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@9";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Floating::BEGIN@9";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@22";
+"DateTime::TimeZone::BEGIN@13" -> "DateTime::TimeZone::Local::BEGIN@10";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@12";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@15";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::TimeZone::new";
+"DateTime::set_time_zone" -> "DateTime::TimeZone::new";
+"DateTime::_new" -> "DateTime::TimeZone::new";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Floating::BEGIN@6";
+"DateTime::TimeZone::BEGIN@13" -> "DateTime::TimeZone::Local::BEGIN@7";
+"DateTime::BEGIN@48" -> "DateTime::TimeZone::BEGIN@6";
+}

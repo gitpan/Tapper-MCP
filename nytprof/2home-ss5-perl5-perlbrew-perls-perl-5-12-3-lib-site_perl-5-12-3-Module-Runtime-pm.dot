@@ -1,0 +1,163 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_Traits {
+	label="MooseX::Traits";
+	"MooseX::Traits::BEGIN@6";
+	"MooseX::Traits::BEGIN@7";
+	"MooseX::Traits::BEGIN@2";
+	"MooseX::Traits::BEGIN@4";
+	"MooseX::Traits::BEGIN@86";
+	"MooseX::Traits::BEGIN@9";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::extends";
+}
+subgraph cluster_Class_Load {
+	label="Class::Load";
+	"Class::Load::__ANON__[Class/Load.pm:180]";
+	"Class::Load::try_load_class";
+	"Class::Load::BEGIN@10";
+}
+subgraph cluster_Params_Validate_XS {
+	label="Params::Validate::XS";
+	"Params::Validate::XS::BEGIN@3";
+	"Params::Validate::XS::BEGIN@35";
+	"Params::Validate::XS::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Object_Trait {
+	label="Moose::Meta::Object::Trait";
+	"Moose::Meta::Object::Trait::BEGIN@10";
+	"Moose::Meta::Object::Trait::BEGIN@3";
+}
+subgraph cluster_Module_Runtime {
+	label="Module::Runtime";
+	"Module::Runtime::CORE:regcomp";
+	"Module::Runtime::import";
+	"Module::Runtime::_is_string";
+	"Module::Runtime::is_module_name";
+	"Module::Runtime::BEGIN@120";
+	"Module::Runtime::require_module";
+	"Module::Runtime::check_module_name";
+	"Module::Runtime::BEGIN@296";
+	"Module::Runtime::CORE:match";
+	"Module::Runtime::CORE:subst";
+	"Module::Runtime::BEGIN@116";
+	"Module::Runtime::module_notional_filename";
+	"Module::Runtime::CORE:qr";
+	"Module::Runtime::BEGIN@289";
+}
+subgraph cluster_Tapper_MCP {
+	label="Tapper::MCP";
+	"Tapper::MCP::BEGIN@5";
+	"Tapper::MCP::BEGIN@7";
+	"Tapper::MCP::BEGIN@4";
+	"Tapper::MCP::BEGIN@8";
+}
+subgraph cluster_Class_MOP_Class_Immutable_Trait {
+	label="Class::MOP::Class::Immutable::Trait";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@15";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@46";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@10";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@9";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@12";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@2";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@36";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@14";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+}
+subgraph cluster_Module_Implementation {
+	label="Module::Implementation";
+	"Module::Implementation::BEGIN@9";
+	"Module::Implementation::__ANON__[Module/Implementation.pm:87]";
+}
+subgraph cluster_MooseX_Log_Log4perl {
+	label="MooseX::Log::Log4perl";
+	"MooseX::Log::Log4perl::BEGIN@5";
+	"MooseX::Log::Log4perl::BEGIN@3";
+	"MooseX::Log::Log4perl::BEGIN@4";
+}
+subgraph cluster_Class_Load_XS {
+	label="Class::Load::XS";
+	"Class::Load::XS::BEGIN@6";
+	"Class::Load::XS::BEGIN@7";
+	"Class::Load::XS::BEGIN@9";
+}
+subgraph cluster_Tapper_MCP_Net_TAP {
+	label="Tapper::MCP::Net::TAP";
+	"Tapper::MCP::Net::TAP::BEGIN@3";
+	"Tapper::MCP::Net::TAP::BEGIN@5";
+	"Tapper::MCP::Net::TAP::BEGIN@7";
+	"Tapper::MCP::Net::TAP::BEGIN@4";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::has";
+	"Moose::Role::requires";
+}
+"Module::Runtime::require_module" -> "Moose::Meta::Object::Trait::BEGIN@3";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::BEGIN@116";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@15";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@7";
+"Module::Runtime::require_module" -> "Tapper::MCP::BEGIN@4";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@3";
+"Class::Load::try_load_class" -> "Module::Runtime::module_notional_filename";
+"Module::Runtime::require_module" -> "Module::Runtime::module_notional_filename";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@14";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@9";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@36";
+"Module::Runtime::require_module" -> "Params::Validate::XS::BEGIN@35";
+"Module::Runtime::require_module" -> "Tapper::MCP::BEGIN@7";
+"Module::Runtime::require_module" -> "Tapper::MCP::BEGIN@8";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@2";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@10";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@2";
+"Module::Runtime::require_module" -> "Params::Validate::XS::BEGIN@4";
+"Module::Runtime::require_module" -> "Moose::extends";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::BEGIN@296";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@9";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@7";
+"Module::Runtime::require_module" -> "B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+"Module::Runtime::require_module" -> "Params::Validate::XS::BEGIN@3";
+"Module::Implementation::__ANON__[Module/Implementation.pm:87]" -> "Module::Runtime::require_module";
+"Class::Load::__ANON__[Class/Load.pm:180]" -> "Module::Runtime::require_module";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@4";
+"Module::Runtime::is_module_name" -> "Module::Runtime::_is_string";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@4";
+"Module::Runtime::require_module" -> "Class::Load::XS::BEGIN@7";
+"Module::Runtime::require_module" -> "MooseX::Log::Log4perl::BEGIN@5";
+"Module::Runtime::require_module" -> "Moose::Role::requires";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::BEGIN@289";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::import";
+"Class::Load::BEGIN@10" -> "Module::Runtime::import";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::BEGIN@120";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@5";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::CORE:qr";
+"Class::Load::try_load_class" -> "Module::Runtime::check_module_name";
+"Module::Runtime::module_notional_filename" -> "Module::Runtime::check_module_name";
+"Module::Runtime::require_module" -> "Moose::Meta::Object::Trait::BEGIN@10";
+"Module::Runtime::require_module" -> "MooseX::Log::Log4perl::BEGIN@4";
+"Module::Runtime::import" -> "Module::Runtime::CORE:match";
+"Module::Runtime::is_module_name" -> "Module::Runtime::CORE:match";
+"Module::Runtime::module_notional_filename" -> "Module::Runtime::CORE:subst";
+"Module::Runtime::require_module" -> "Tapper::MCP::BEGIN@5";
+"Module::Runtime::require_module" -> "XSLoader::load";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@12";
+"Module::Runtime::check_module_name" -> "Module::Runtime::is_module_name";
+"Module::Runtime::require_module" -> "Class::MOP::Class::Immutable::Trait::BEGIN@46";
+"Module::Runtime::require_module" -> "Moose::Role::has";
+"Module::Runtime::require_module" -> "Class::Load::XS::BEGIN@6";
+"Module::Implementation::BEGIN@9" -> "Module::Runtime::CORE:regcomp";
+"Module::Runtime::is_module_name" -> "Module::Runtime::CORE:regcomp";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@86";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@6";
+"Module::Runtime::require_module" -> "MooseX::Log::Log4perl::BEGIN@3";
+"Module::Runtime::require_module" -> "Class::Load::XS::BEGIN@9";
+}

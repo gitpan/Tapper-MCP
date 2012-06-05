@@ -1,0 +1,78 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_feature {
+	label="feature";
+	"feature::import";
+}
+subgraph cluster_Fcntl {
+	label="Fcntl";
+	"Fcntl::BEGIN@62";
+	"Fcntl::BEGIN@214";
+	"Fcntl::BEGIN@58";
+	"Fcntl::BEGIN@64";
+	"Fcntl::BEGIN@239";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_LockFile_Simple {
+	label="LockFile::Simple";
+	"LockFile::Simple::BEGIN@16";
+	"LockFile::Simple::BEGIN@72";
+	"LockFile::Simple::BEGIN@70";
+	"LockFile::Simple::BEGIN@2";
+}
+subgraph cluster_common_sense {
+	label="common::sense";
+	"common::sense::import";
+}
+subgraph cluster_LockFile_Lock_Simple {
+	label="LockFile::Lock::Simple";
+	"LockFile::Lock::Simple::BEGIN@16";
+	"LockFile::Lock::Simple::BEGIN@23";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+}
+subgraph cluster_Tapper_Base {
+	label="Tapper::Base";
+	"Tapper::Base::BEGIN@12";
+	"Tapper::Base::BEGIN@16.2";
+	"Tapper::Base::BEGIN@60";
+	"Tapper::Base::BEGIN@10";
+	"Tapper::Base::BEGIN@11";
+	"Tapper::Base::BEGIN@14";
+	"Tapper::Base::BEGIN@2";
+	"Tapper::Base::BEGIN@16";
+}
+"Tapper::Base::BEGIN@11" -> "Fcntl::BEGIN@214";
+"Tapper::Base::BEGIN@11" -> "Exporter::import";
+"Tapper::Base::BEGIN@12" -> "Exporter::import";
+"Tapper::Base::BEGIN@14" -> "common::sense::import";
+"Tapper::Base::BEGIN@10" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+"Tapper::Base::BEGIN@12" -> "Tapper::Base::BEGIN@60";
+"Tapper::Base::BEGIN@11" -> "Fcntl::BEGIN@64";
+"base::import" -> "Tapper::Base::BEGIN@14";
+"Tapper::Base::BEGIN@12" -> "LockFile::Simple::BEGIN@16";
+"base::import" -> "Tapper::Base::BEGIN@10";
+"Tapper::Base::BEGIN@12" -> "LockFile::Lock::Simple::BEGIN@16";
+"base::import" -> "Tapper::Base::BEGIN@11";
+"base::import" -> "Tapper::Base::BEGIN@2";
+"Tapper::Base::BEGIN@12" -> "LockFile::Lock::Simple::BEGIN@23";
+"base::import" -> "Tapper::Base::BEGIN@16";
+"base::import" -> "Tapper::Base::BEGIN@12";
+"Tapper::Base::BEGIN@11" -> "Fcntl::BEGIN@58";
+"Tapper::Base::BEGIN@12" -> "LockFile::Simple::BEGIN@2";
+"Tapper::Base::BEGIN@16" -> "Tapper::Base::BEGIN@16.2";
+"Tapper::Base::BEGIN@11" -> "Fcntl::BEGIN@239";
+"Tapper::Base::BEGIN@12" -> "LockFile::Simple::BEGIN@70";
+"Tapper::Base::BEGIN@12" -> "LockFile::Simple::BEGIN@72";
+"Tapper::Base::BEGIN@16.2" -> "feature::import";
+"Tapper::Base::BEGIN@11" -> "Fcntl::BEGIN@62";
+}

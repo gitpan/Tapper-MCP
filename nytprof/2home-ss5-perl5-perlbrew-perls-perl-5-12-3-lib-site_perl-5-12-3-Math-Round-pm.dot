@@ -1,0 +1,31 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Math_Round {
+	label="Math::Round";
+	"Math::Round::BEGIN@4";
+	"Math::Round::BEGIN@3";
+	"Math::Round::BEGIN@5";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::BEGIN@13";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_POSIX {
+	label="POSIX";
+	"POSIX::import";
+}
+"DateTime::BEGIN@13" -> "Math::Round::BEGIN@3";
+"Math::Round::BEGIN@5" -> "vars::import";
+"DateTime::BEGIN@13" -> "Math::Round::BEGIN@4";
+"Math::Round::BEGIN@3" -> "strict::import";
+"DateTime::BEGIN@13" -> "Math::Round::BEGIN@5";
+"Math::Round::BEGIN@4" -> "POSIX::import";
+}

@@ -1,0 +1,90 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_Relationship_CascadeActions {
+	label="DBIx::Class::Relationship::CascadeActions";
+	"DBIx::Class::Relationship::CascadeActions::BEGIN@4";
+	"DBIx::Class::Relationship::CascadeActions::BEGIN@6";
+	"DBIx::Class::Relationship::CascadeActions::BEGIN@5";
+	"DBIx::Class::Relationship::CascadeActions::update";
+}
+subgraph cluster_DBIx_Class_Carp {
+	label="DBIx::Class::Carp";
+	"DBIx::Class::Carp::import";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::mark_as_running";
+}
+subgraph cluster_DBIx_Class_Storage_TxnScopeGuard {
+	label="DBIx::Class::Storage::TxnScopeGuard";
+	"DBIx::Class::Storage::TxnScopeGuard::DESTROY";
+	"DBIx::Class::Storage::TxnScopeGuard::commit";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Testrun {
+	label="Tapper::Schema::TestrunDB::Result::Testrun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::rerun";
+}
+subgraph cluster_DBIx_Class_ResultSource {
+	label="DBIx::Class::ResultSource";
+	"DBIx::Class::ResultSource::schema";
+	"DBIx::Class::ResultSource::relationships";
+	"DBIx::Class::ResultSource::relationship_info";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_next {
+	label="next";
+	"next::method";
+}
+subgraph cluster_Tapper_MCP_Scheduler_Algorithm_WFQ {
+	label="Tapper::MCP::Scheduler::Algorithm::WFQ";
+	"Tapper::MCP::Scheduler::Algorithm::WFQ::update_queue";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::txn_scope_guard";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::update";
+	"DBIx::Class::Row::result_source";
+}
+subgraph cluster_Tapper_MCP_Scheduler_Controller {
+	label="Tapper::MCP::Scheduler::Controller";
+	"Tapper::MCP::Scheduler::Controller::mark_job_as_running";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_main {
+	label="main";
+	"main::toggle_host_free";
+}
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Schema::txn_scope_guard";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Relationship::CascadeActions::BEGIN@6";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::ResultSource::relationships";
+"Tapper::MCP::Scheduler::Controller::mark_job_as_running" -> "DBIx::Class::Relationship::CascadeActions::update";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::mark_as_running" -> "DBIx::Class::Relationship::CascadeActions::update";
+"Tapper::Schema::TestrunDB::Result::Testrun::rerun" -> "DBIx::Class::Relationship::CascadeActions::update";
+"Tapper::MCP::Scheduler::Algorithm::WFQ::update_queue" -> "DBIx::Class::Relationship::CascadeActions::update";
+"main::toggle_host_free" -> "DBIx::Class::Relationship::CascadeActions::update";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Storage::TxnScopeGuard::DESTROY";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::ResultSource::schema";
+"DBIx::Class::Relationship::CascadeActions::BEGIN@5" -> "warnings::import";
+"DBIx::Class::Relationship::CascadeActions::BEGIN@4" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Relationship::CascadeActions::BEGIN@4";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::ResultSource::relationship_info";
+"DBIx::Class::Relationship::CascadeActions::BEGIN@6" -> "DBIx::Class::Carp::import";
+"DBIx::Class::Relationship::CascadeActions::update" -> "next::method";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Relationship::CascadeActions::BEGIN@5";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Storage::TxnScopeGuard::commit";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Row::update";
+}

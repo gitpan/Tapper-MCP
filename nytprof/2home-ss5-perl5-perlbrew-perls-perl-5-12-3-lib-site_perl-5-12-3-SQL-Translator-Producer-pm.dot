@@ -1,0 +1,46 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SQL_Translator {
+	label="SQL::Translator";
+	"SQL::Translator::BEGIN@38";
+}
+subgraph cluster_SQL_Translator_Schema_Field {
+	label="SQL::Translator::Schema::Field";
+	"SQL::Translator::Schema::Field::default_value";
+	"SQL::Translator::Schema::Field::data_type";
+}
+subgraph cluster_SQL_Translator_Producer {
+	label="SQL::Translator::Producer";
+	"SQL::Translator::Producer::BEGIN@23";
+	"SQL::Translator::Producer::_apply_default_value";
+	"SQL::Translator::Producer::BEGIN@22";
+	"SQL::Translator::Producer::CORE:match";
+	"SQL::Translator::Producer::BEGIN@21";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::looks_like_number";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_SQL_Translator_Producer_SQLite {
+	label="SQL::Translator::Producer::SQLite";
+	"SQL::Translator::Producer::SQLite::create_field";
+}
+"SQL::Translator::Producer::_apply_default_value" -> "SQL::Translator::Schema::Field::default_value";
+"SQL::Translator::BEGIN@38" -> "SQL::Translator::Producer::BEGIN@22";
+"SQL::Translator::Producer::_apply_default_value" -> "SQL::Translator::Schema::Field::data_type";
+"SQL::Translator::BEGIN@38" -> "SQL::Translator::Producer::BEGIN@21";
+"SQL::Translator::Producer::BEGIN@22" -> "vars::import";
+"SQL::Translator::Producer::BEGIN@21" -> "strict::import";
+"SQL::Translator::Producer::SQLite::create_field" -> "SQL::Translator::Producer::_apply_default_value";
+"SQL::Translator::Producer::_apply_default_value" -> "SQL::Translator::Producer::CORE:match";
+"SQL::Translator::Producer::_apply_default_value" -> "Scalar::Util::looks_like_number";
+"SQL::Translator::BEGIN@38" -> "SQL::Translator::Producer::BEGIN@23";
+}

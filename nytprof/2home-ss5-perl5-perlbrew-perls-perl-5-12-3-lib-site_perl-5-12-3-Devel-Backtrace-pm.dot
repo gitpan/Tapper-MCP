@@ -1,0 +1,73 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Devel_Backtrace_Point {
+	label="Devel::Backtrace::Point";
+	"Devel::Backtrace::Point::BEGIN@27";
+	"Devel::Backtrace::Point::BEGIN@25";
+	"Devel::Backtrace::Point::BEGIN@5";
+	"Devel::Backtrace::Point::BEGIN@2";
+	"Devel::Backtrace::Point::BEGIN@29";
+	"Devel::Backtrace::Point::BEGIN@26";
+	"Devel::Backtrace::Point::BEGIN@6";
+	"Devel::Backtrace::Point::BEGIN@3";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_Accessor {
+	label="Class::Accessor";
+	"Class::Accessor::mk_accessors";
+	"Class::Accessor::mk_ro_accessors";
+	"Class::Accessor::import";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::__ANON__[constant.pm:141]";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@24";
+}
+subgraph cluster_Devel_Backtrace {
+	label="Devel::Backtrace";
+	"Devel::Backtrace::BEGIN@2";
+	"Devel::Backtrace::BEGIN@5";
+	"Devel::Backtrace::BEGIN@7";
+	"Devel::Backtrace::BEGIN@4";
+	"Devel::Backtrace::BEGIN@3";
+}
+"Devel::Backtrace::BEGIN@5" -> "Exporter::import";
+"main::BEGIN@24" -> "Devel::Backtrace::BEGIN@3";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@29";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@3";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@25";
+"Devel::Backtrace::BEGIN@4" -> "Class::Accessor::import";
+"main::BEGIN@24" -> "Devel::Backtrace::BEGIN@4";
+"Devel::Backtrace::BEGIN@7" -> "overload::import";
+"Devel::Backtrace::BEGIN@3" -> "warnings::import";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@2";
+"Devel::Backtrace::BEGIN@4" -> "constant::__ANON__[constant.pm:141]";
+"Devel::Backtrace::BEGIN@2" -> "strict::import";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@27";
+"Devel::Backtrace::BEGIN@4" -> "Class::Accessor::mk_accessors";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@5";
+"main::BEGIN@24" -> "Devel::Backtrace::BEGIN@5";
+"main::BEGIN@24" -> "Devel::Backtrace::BEGIN@7";
+"main::BEGIN@24" -> "Devel::Backtrace::BEGIN@2";
+"Devel::Backtrace::BEGIN@4" -> "Class::Accessor::mk_ro_accessors";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@6";
+"Devel::Backtrace::BEGIN@4" -> "Devel::Backtrace::Point::BEGIN@26";
+}

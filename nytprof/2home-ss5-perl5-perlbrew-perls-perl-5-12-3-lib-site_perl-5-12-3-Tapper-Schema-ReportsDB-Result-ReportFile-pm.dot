@@ -1,0 +1,80 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_parent {
+	label="parent";
+	"parent::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Compress_Bzip2 {
+	label="Compress::Bzip2";
+	"Compress::Bzip2::BEGIN@16";
+	"Compress::Bzip2::BEGIN@156";
+	"Compress::Bzip2::BEGIN@19";
+	"Compress::Bzip2::BEGIN@146";
+	"Compress::Bzip2::BEGIN@160";
+	"Compress::Bzip2::BEGIN@150";
+	"Compress::Bzip2::BEGIN@24";
+	"Compress::Bzip2::BEGIN@158";
+	"Compress::Bzip2::BEGIN@143";
+	"Compress::Bzip2::BEGIN@21";
+	"Compress::Bzip2::BEGIN@153";
+	"Compress::Bzip2::BEGIN@20";
+	"Compress::Bzip2::BEGIN@17";
+	"Compress::Bzip2::BEGIN@14";
+	"Compress::Bzip2::BEGIN@175";
+	"Compress::Bzip2::BEGIN@141";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportFile {
+	label="Tapper::Schema::ReportsDB::Result::ReportFile";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@10";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@2";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@12";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@9";
+}
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Exporter::import";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@21";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@10";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@2";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@24";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@143";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@10" -> "warnings::import";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@160";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@9" -> "strict::import";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@158";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@14";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@150";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "XSLoader::load";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@20";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@146";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@175";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@16";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@153";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@156";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@19";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@17";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@12";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "Compress::Bzip2::BEGIN@141";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@9";
+}

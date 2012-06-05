@@ -1,0 +1,175 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_ResultSet {
+	label="DBIx::Class::ResultSet";
+	"DBIx::Class::ResultSet::next";
+	"DBIx::Class::ResultSet::reset";
+	"DBIx::Class::ResultSet::all";
+	"DBIx::Class::ResultSet::count";
+	"DBIx::Class::ResultSet::search";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::gen_schema_functions";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::fits";
+}
+subgraph cluster_Try_Tiny {
+	label="Try::Tiny";
+	"Try::Tiny::try";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_DBIx_Class_Storage_DBI_Cursor {
+	label="DBIx::Class::Storage::DBI::Cursor";
+	"DBIx::Class::Storage::DBI::Cursor::reset";
+	"DBIx::Class::Storage::DBI::Cursor::new";
+	"DBIx::Class::Storage::DBI::Cursor::DESTROY";
+	"DBIx::Class::Storage::DBI::Cursor::BEGIN@6";
+	"DBIx::Class::Storage::DBI::Cursor::_dbh_next";
+	"DBIx::Class::Storage::DBI::Cursor::BEGIN@9";
+	"DBIx::Class::Storage::DBI::Cursor::_dbh_all";
+	"DBIx::Class::Storage::DBI::Cursor::BEGIN@3";
+	"DBIx::Class::Storage::DBI::Cursor::BEGIN@8";
+	"DBIx::Class::Storage::DBI::Cursor::BEGIN@4";
+	"DBIx::Class::Storage::DBI::Cursor::sth";
+	"DBIx::Class::Storage::DBI::Cursor::_check_dbh_gen";
+	"DBIx::Class::Storage::DBI::Cursor::next";
+	"DBIx::Class::Storage::DBI::Cursor::_soft_reset";
+	"DBIx::Class::Storage::DBI::Cursor::all";
+	"DBIx::Class::Storage::DBI::Cursor::__ANON__[DBIx/Class/Storage/DBI/Cursor.pm:182]";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::import";
+}
+subgraph cluster_Tapper_MCP_Scheduler_PrioQueue {
+	label="Tapper::MCP::Scheduler::PrioQueue";
+	"Tapper::MCP::Scheduler::PrioQueue::get_first_fitting";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBI_common {
+	label="DBI::common";
+	"DBI::common::FETCH";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Testrun {
+	label="Tapper::Schema::TestrunDB::Result::Testrun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::rerun";
+}
+subgraph cluster_Moose_Meta_Attribute {
+	label="Moose::Meta::Attribute";
+	"Moose::Meta::Attribute::initialize_instance_slot";
+}
+subgraph cluster_Tapper_Model {
+	label="Tapper::Model";
+	"Tapper::Model::model";
+	"Tapper::Model::free_hosts_with_features";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Queue {
+	label="Tapper::Schema::TestrunDB::Result::Queue";
+	"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting";
+}
+subgraph cluster_DBIx_Class_Schema_Versioned {
+	label="DBIx::Class::Schema::Versioned";
+	"DBIx::Class::Schema::Versioned::__ANON__[DBIx/Class/Schema/Versioned.pm:752]";
+}
+subgraph cluster_DBIx_Class_ResultSetColumn {
+	label="DBIx::Class::ResultSetColumn";
+	"DBIx::Class::ResultSetColumn::next";
+}
+subgraph cluster_Tapper_MCP_Scheduler_Controller {
+	label="Tapper::MCP::Scheduler::Controller";
+	"Tapper::MCP::Scheduler::Controller::get_next_job";
+	"Tapper::MCP::Scheduler::Controller::toggle_bandwith_color";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DBI_st {
+	label="DBI::st";
+	"DBI::st::fetchrow_array";
+	"DBI::st::fetchall_arrayref";
+	"DBI::st::finish";
+}
+subgraph cluster_main {
+	label="main";
+	"main::toggle_host_free";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:790]";
+	"DBIx::Class::Storage::DBI::_select";
+	"DBIx::Class::Storage::DBI::select";
+	"DBIx::Class::Storage::DBI::dbh_do";
+}
+"DBIx::Class::Storage::DBI::Cursor::DESTROY" -> "Try::Tiny::try";
+"DBIx::Class::Storage::DBI::Cursor::BEGIN@8" -> "Exporter::import";
+"DBIx::Class::Schema::Versioned::__ANON__[DBIx/Class/Schema/Versioned.pm:752]" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Moose::Meta::Attribute::initialize_instance_slot" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::gen_schema_functions" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"DBIx::Class::ResultSet::search" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::Schema::TestrunDB::Result::Testrun::rerun" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"DBIx::Class::ResultSet::count" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::MCP::Scheduler::PrioQueue::get_first_fitting" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::MCP::Scheduler::Controller::get_next_job" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::fits" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::MCP::Scheduler::Controller::toggle_bandwith_color" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Try::Tiny::try" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::Model::free_hosts_with_features" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Tapper::Model::model" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"main::toggle_host_free" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_next" -> "DBI::st::fetchrow_array";
+"DBIx::Class::Storage::DBI::select" -> "DBIx::Class::Storage::DBI::Cursor::new";
+"DBIx::Class::Storage::DBI::Cursor::DESTROY" -> "DBI::common::FETCH";
+"Try::Tiny::try" -> "DBIx::Class::Storage::DBI::Cursor::__ANON__[DBIx/Class/Storage/DBI/Cursor.pm:182]";
+"DBIx::Class::ResultSet::all" -> "DBIx::Class::Storage::DBI::Cursor::all";
+"DBIx::Class::Storage::DBI::Cursor::all" -> "UNIVERSAL::can";
+"DBIx::Class::Storage::DBI::Cursor::next" -> "UNIVERSAL::can";
+"DBIx::Class::Storage::DBI::Cursor::BEGIN@6" -> "base::import";
+"DBIx::Class::Storage::DBI::Cursor::BEGIN@4" -> "warnings::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Storage::DBI::Cursor::BEGIN@4";
+"DBIx::Class::Storage::DBI::Cursor::__ANON__[DBIx/Class/Storage/DBI/Cursor.pm:182]" -> "DBI::st::finish";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_next" -> "DBIx::Class::Storage::DBI::_select";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_all" -> "DBIx::Class::Storage::DBI::_select";
+"DBIx::Class::Storage::DBI::Cursor::BEGIN@9" -> "namespace::clean::import";
+"DBIx::Class::Storage::DBI::Cursor::BEGIN@3" -> "strict::import";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_all" -> "DBI::st::fetchall_arrayref";
+"DBIx::Class::Storage::DBI::Cursor::reset" -> "DBIx::Class::Storage::DBI::Cursor::sth";
+"DBIx::Class::Storage::DBI::Cursor::DESTROY" -> "DBIx::Class::Storage::DBI::Cursor::sth";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_next" -> "DBIx::Class::Storage::DBI::Cursor::sth";
+"DBIx::Class::Storage::DBI::Cursor::_soft_reset" -> "DBIx::Class::Storage::DBI::Cursor::sth";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_all" -> "DBIx::Class::Storage::DBI::Cursor::sth";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_next" -> "DBIx::Class::Storage::DBI::Cursor::_check_dbh_gen";
+"DBIx::Class::Storage::DBI::Cursor::_dbh_all" -> "DBIx::Class::Storage::DBI::Cursor::_check_dbh_gen";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:790]" -> "DBIx::Class::Storage::DBI::Cursor::_dbh_next";
+"DBIx::Class::Storage::DBI::Cursor::reset" -> "DBIx::Class::Storage::DBI::Cursor::_soft_reset";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Storage::DBI::Cursor::BEGIN@3";
+"DBIx::Class::ResultSet::reset" -> "DBIx::Class::Storage::DBI::Cursor::reset";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Storage::DBI::Cursor::BEGIN@6";
+"DBIx::Class::Storage::DBI::__ANON__[DBIx/Class/Storage/DBI.pm:790]" -> "DBIx::Class::Storage::DBI::Cursor::_dbh_all";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Storage::DBI::Cursor::BEGIN@8";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::Storage::DBI::Cursor::BEGIN@9";
+"DBIx::Class::ResultSetColumn::next" -> "DBIx::Class::Storage::DBI::Cursor::next";
+"DBIx::Class::Schema::Versioned::__ANON__[DBIx/Class/Schema/Versioned.pm:752]" -> "DBIx::Class::Storage::DBI::Cursor::next";
+"DBIx::Class::ResultSet::next" -> "DBIx::Class::Storage::DBI::Cursor::next";
+"DBIx::Class::Storage::DBI::Cursor::next" -> "DBIx::Class::Storage::DBI::dbh_do";
+"DBIx::Class::Storage::DBI::Cursor::all" -> "DBIx::Class::Storage::DBI::dbh_do";
+}

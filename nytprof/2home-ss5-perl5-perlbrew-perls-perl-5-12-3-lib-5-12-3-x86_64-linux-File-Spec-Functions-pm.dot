@@ -1,0 +1,30 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_File_Spec_Functions {
+	label="File::Spec::Functions";
+	"File::Spec::Functions::BEGIN@3";
+	"File::Spec::Functions::BEGIN@6";
+	"File::Spec::Functions::BEGIN@42";
+	"File::Spec::Functions::BEGIN@4";
+}
+subgraph cluster_SQL_Translator {
+	label="SQL::Translator";
+	"SQL::Translator::BEGIN@35";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@6";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@42";
+"File::Spec::Functions::BEGIN@42" -> "strict::unimport";
+"File::Spec::Functions::BEGIN@6" -> "vars::import";
+"File::Spec::Functions::BEGIN@4" -> "strict::import";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@4";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@3";
+}

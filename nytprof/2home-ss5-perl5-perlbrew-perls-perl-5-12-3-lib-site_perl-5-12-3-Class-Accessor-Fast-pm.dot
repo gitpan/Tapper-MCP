@@ -1,0 +1,28 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Class_Accessor_Fast {
+	label="Class::Accessor::Fast";
+	"Class::Accessor::Fast::make_ro_accessor";
+	"Class::Accessor::Fast::BEGIN@2";
+	"Class::Accessor::Fast::make_accessor";
+	"Class::Accessor::Fast::BEGIN@3";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_Accessor {
+	label="Class::Accessor";
+	"Class::Accessor::_mk_accessors";
+}
+"base::import" -> "Class::Accessor::Fast::BEGIN@2";
+"Class::Accessor::Fast::BEGIN@2" -> "base::import";
+"base::import" -> "Class::Accessor::Fast::BEGIN@3";
+"Class::Accessor::_mk_accessors" -> "Class::Accessor::Fast::make_ro_accessor";
+"Class::Accessor::Fast::BEGIN@3" -> "strict::import";
+"Class::Accessor::_mk_accessors" -> "Class::Accessor::Fast::make_accessor";
+}

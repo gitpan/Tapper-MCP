@@ -1,0 +1,92 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12";
+}
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::SWASHNEW";
+}
+subgraph cluster_Opcode {
+	label="Opcode";
+	"Opcode::BEGIN@15";
+	"Opcode::BEGIN@29";
+	"Opcode::BEGIN@12";
+	"Opcode::BEGIN@13";
+	"Opcode::BEGIN@11";
+	"Opcode::BEGIN@5";
+	"Opcode::BEGIN@3";
+	"Opcode::_init_optags";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_Safe {
+	label="Safe";
+	"Safe::BEGIN@29";
+	"Safe::BEGIN@28";
+	"Safe::BEGIN@2";
+	"Safe::CORE:match";
+	"Safe::CORE:regcomp";
+	"Safe::CORE:pack";
+	"Safe::BEGIN@36";
+	"Safe::BEGIN@344";
+	"Safe::BEGIN@46";
+	"Safe::BEGIN@30";
+	"Safe::BEGIN@3";
+	"Safe::BEGIN@34";
+	"Safe::BEGIN@4";
+	"Safe::BEGIN@337";
+	"Safe::BEGIN@191";
+	"Safe::BEGIN@35";
+	"Safe::BEGIN@285";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@30";
+"Safe::BEGIN@4" -> "Exporter::import";
+"Safe::BEGIN@29" -> "Exporter::import";
+"Safe::BEGIN@46" -> "Exporter::import";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@3";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@36";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@15";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@5";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@34";
+"Safe::BEGIN@285" -> "strict::unimport";
+"Safe::BEGIN@36" -> "strict::unimport";
+"Safe::BEGIN@344" -> "strict::unimport";
+"Safe::BEGIN@337" -> "strict::unimport";
+"Safe::BEGIN@191" -> "strict::unimport";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@28";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@4";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@11";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@3";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@35";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::CORE:regcomp";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::CORE:pack";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@337";
+"Safe::BEGIN@28" -> "strict::import";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@13";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@29";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@285";
+"Safe::BEGIN@30" -> "Safe::BEGIN@2";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::CORE:match";
+"Safe::BEGIN@46" -> "XSLoader::load";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@29";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@344";
+"Safe::CORE:match" -> "utf8::SWASHNEW";
+"Safe::CORE:regcomp" -> "utf8::SWASHNEW";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@46";
+"Safe::BEGIN@46" -> "Opcode::BEGIN@12";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@12" -> "Safe::BEGIN@191";
+"Safe::BEGIN@46" -> "Opcode::_init_optags";
+}

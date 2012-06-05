@@ -1,5 +1,9 @@
 Revision history for Tapper-MCP
 
+4.0.2     2012-06-05
+        - timeout handling bit more lax to adapt PRC timing changes
+        - log files during test
+
 4.0.1     2012-05-16
         - *lots* of enhancements in whole automation layer
         - MCP is now a stop/resume-able state engine,

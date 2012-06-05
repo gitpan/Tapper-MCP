@@ -1,0 +1,107 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Fcntl {
+	label="Fcntl";
+	"Fcntl::AUTOLOAD";
+	"Fcntl::O_NOFOLLOW";
+	"Fcntl::O_LARGEFILE";
+	"Fcntl::O_BINARY";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+	"Exporter::export_tags";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+}
+subgraph cluster_Tapper_Producer_Temare {
+	label="Tapper::Producer::Temare";
+	"Tapper::Producer::Temare::BEGIN@23";
+	"Tapper::Producer::Temare::BEGIN@12";
+	"Tapper::Producer::Temare::BEGIN@13";
+	"Tapper::Producer::Temare::BEGIN@15";
+	"Tapper::Producer::Temare::BEGIN@11";
+	"Tapper::Producer::Temare::BEGIN@3";
+	"Tapper::Producer::Temare::BEGIN@14";
+}
+subgraph cluster_File_Temp_Dir {
+	label="File::Temp::Dir";
+	"File::Temp::Dir::BEGIN@2405";
+	"File::Temp::Dir::BEGIN@2407";
+	"File::Temp::Dir::BEGIN@2406";
+}
+subgraph cluster_Exporter_Heavy {
+	label="Exporter::Heavy";
+	"Exporter::Heavy::heavy_export_tags";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@19";
+}
+subgraph cluster_File_Temp {
+	label="File::Temp";
+	"File::Temp::BEGIN@230";
+	"File::Temp::BEGIN@144";
+	"File::Temp::BEGIN@142";
+	"File::Temp::BEGIN@224";
+	"File::Temp::BEGIN@147";
+	"File::Temp::BEGIN@229";
+	"File::Temp::BEGIN@217";
+	"File::Temp::BEGIN@162";
+	"File::Temp::BEGIN@141";
+	"File::Temp::BEGIN@148";
+	"File::Temp::BEGIN@163";
+	"File::Temp::BEGIN@166";
+	"File::Temp::BEGIN@220";
+	"File::Temp::BEGIN@143";
+	"File::Temp::BEGIN@228";
+	"File::Temp::BEGIN@146";
+	"File::Temp::BEGIN@173";
+	"File::Temp::BEGIN@241";
+	"File::Temp::BEGIN@145";
+	"File::Temp::BEGIN@271";
+}
+"Tapper::Producer::Temare::BEGIN@12" -> "Fcntl::O_LARGEFILE";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@229";
+"Tapper::Producer::Temare::BEGIN@12" -> "Exporter::export_tags";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@228";
+"Tapper::Producer::Temare::BEGIN@15" -> "Exporter::import";
+"Tapper::Producer::Temare::BEGIN@12" -> "Exporter::import";
+"Tapper::Producer::Temare::BEGIN@23" -> "Exporter::import";
+"Tapper::Producer::Temare::BEGIN@13" -> "Exporter::import";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@271";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@145";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::Dir::BEGIN@2406";
+"Tapper::Producer::Temare::BEGIN@12" -> "Fcntl::O_BINARY";
+"Tapper::Producer::Temare::BEGIN@11" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@162";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@141";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@230";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@142";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::Dir::BEGIN@2405";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@241";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@15";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::Dir::BEGIN@2407";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@220";
+"Tapper::Producer::Temare::BEGIN@12" -> "Fcntl::AUTOLOAD";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@217";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@146";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@147";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@3";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@143";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@173";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@11";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@12";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@14";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@23";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@144";
+"main::BEGIN@19" -> "Tapper::Producer::Temare::BEGIN@13";
+"Tapper::Producer::Temare::BEGIN@12" -> "Fcntl::O_NOFOLLOW";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@163";
+"Tapper::Producer::Temare::BEGIN@12" -> "Exporter::Heavy::heavy_export_tags";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@166";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@224";
+"Tapper::Producer::Temare::BEGIN@12" -> "File::Temp::BEGIN@148";
+}

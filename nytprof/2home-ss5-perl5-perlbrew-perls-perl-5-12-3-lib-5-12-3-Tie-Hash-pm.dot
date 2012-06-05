@@ -1,0 +1,33 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_POSIX_SigRt {
+	label="POSIX::SigRt";
+	"POSIX::SigRt::BEGIN@64";
+}
+subgraph cluster_Tie_StdHash {
+	label="Tie::StdHash";
+	"Tie::StdHash::TIEHASH";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_File_Slurp {
+	label="File::Slurp";
+	"File::Slurp::BEGIN@11";
+}
+subgraph cluster_Tie_Hash {
+	label="Tie::Hash";
+	"Tie::Hash::BEGIN@189";
+	"Tie::Hash::BEGIN@188";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+"Tie::Hash::BEGIN@188" -> "Exporter::import";
+"Tie::Hash::BEGIN@189" -> "warnings::register::import";
+"POSIX::SigRt::BEGIN@64" -> "Tie::Hash::BEGIN@188";
+"File::Slurp::BEGIN@11" -> "Tie::StdHash::TIEHASH";
+"POSIX::SigRt::BEGIN@64" -> "Tie::Hash::BEGIN@189";
+}

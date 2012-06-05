@@ -1,0 +1,31 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_IO_Select {
+	label="IO::Select";
+	"IO::Select::BEGIN@9";
+	"IO::Select::BEGIN@10";
+	"IO::Select::BEGIN@11";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+subgraph cluster_Net_SSH {
+	label="Net::SSH";
+	"Net::SSH::BEGIN@8";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Net::SSH::BEGIN@8" -> "IO::Select::BEGIN@11";
+"IO::Select::BEGIN@10" -> "warnings::register::import";
+"Net::SSH::BEGIN@8" -> "IO::Select::BEGIN@10";
+"IO::Select::BEGIN@11" -> "vars::import";
+"IO::Select::BEGIN@9" -> "strict::import";
+"Net::SSH::BEGIN@8" -> "IO::Select::BEGIN@9";
+}

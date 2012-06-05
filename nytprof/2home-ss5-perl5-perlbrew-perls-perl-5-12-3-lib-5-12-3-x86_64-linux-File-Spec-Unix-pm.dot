@@ -1,0 +1,93 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Module_Find {
+	label="Module::Find";
+	"Module::Find::_wanted";
+	"Module::Find::BEGIN@8";
+	"Module::Find::_find";
+}
+subgraph cluster_Class_Inspector {
+	label="Class::Inspector";
+	"Class::Inspector::filename";
+}
+subgraph cluster_File_ShareDir {
+	label="File::ShareDir";
+	"File::ShareDir::module_file";
+	"File::ShareDir::_module_dir_new";
+	"File::ShareDir::_module_dir_old";
+	"File::ShareDir::_FILE";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::ddl_filename";
+}
+subgraph cluster_Log_Log4perl_Util {
+	label="Log::Log4perl::Util";
+	"Log::Log4perl::Util::BEGIN@3";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_File_Spec_Unix {
+	label="File::Spec::Unix";
+	"File::Spec::Unix::canonpath";
+	"File::Spec::Unix::BEGIN@149";
+	"File::Spec::Unix::abs2rel";
+	"File::Spec::Unix::splitdir";
+	"File::Spec::Unix::splitpath";
+	"File::Spec::Unix::BEGIN@3";
+	"File::Spec::Unix::catdir";
+	"File::Spec::Unix::curdir";
+	"File::Spec::Unix::rel2abs";
+	"File::Spec::Unix::rootdir";
+	"File::Spec::Unix::CORE:match";
+	"File::Spec::Unix::catfile";
+	"File::Spec::Unix::_same";
+	"File::Spec::Unix::catpath";
+	"File::Spec::Unix::updir";
+	"File::Spec::Unix::file_name_is_absolute";
+	"File::Spec::Unix::BEGIN@4";
+	"File::Spec::Unix::CORE:subst";
+}
+"Log::Log4perl::Util::BEGIN@3" -> "File::Spec::Unix::BEGIN@149";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::canonpath";
+"File::Spec::Unix::rel2abs" -> "File::Spec::Unix::canonpath";
+"File::Spec::Unix::catfile" -> "File::Spec::Unix::canonpath";
+"File::Spec::Unix::catdir" -> "File::Spec::Unix::canonpath";
+"Log::Log4perl::Util::BEGIN@3" -> "File::Spec::Unix::BEGIN@3";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::rootdir";
+"File::Spec::Unix::file_name_is_absolute" -> "File::Spec::Unix::CORE:match";
+"File::Spec::Unix::BEGIN@149" -> "strict::unimport";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::_same";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::curdir";
+"Module::Find::BEGIN@8" -> "File::Spec::Unix::curdir";
+"Module::Find::_wanted" -> "File::Spec::Unix::curdir";
+"File::Spec::Unix::BEGIN@4" -> "vars::import";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::catpath";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::file_name_is_absolute";
+"File::Spec::Unix::rel2abs" -> "File::Spec::Unix::file_name_is_absolute";
+"File::ShareDir::_FILE" -> "File::Spec::Unix::file_name_is_absolute";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::catdir";
+"File::ShareDir::_module_dir_new" -> "File::Spec::Unix::catdir";
+"File::Spec::Unix::catfile" -> "File::Spec::Unix::catdir";
+"File::ShareDir::_module_dir_old" -> "File::Spec::Unix::catdir";
+"Module::Find::_find" -> "File::Spec::Unix::catdir";
+"File::ShareDir::module_file" -> "File::Spec::Unix::catfile";
+"DBIx::Class::Schema::ddl_filename" -> "File::Spec::Unix::catfile";
+"Class::Inspector::filename" -> "File::Spec::Unix::catfile";
+"File::Spec::Unix::BEGIN@3" -> "strict::import";
+"Log::Log4perl::Util::BEGIN@3" -> "File::Spec::Unix::BEGIN@4";
+"File::Spec::Unix::canonpath" -> "File::Spec::Unix::CORE:subst";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::updir";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::splitpath";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::splitdir";
+"Module::Find::_wanted" -> "File::Spec::Unix::splitdir";
+"File::Spec::Unix::abs2rel" -> "File::Spec::Unix::rel2abs";
+"Module::Find::_wanted" -> "File::Spec::Unix::abs2rel";
+}

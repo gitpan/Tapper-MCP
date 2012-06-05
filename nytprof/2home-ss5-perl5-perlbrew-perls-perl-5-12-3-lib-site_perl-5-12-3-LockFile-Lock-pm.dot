@@ -1,0 +1,17 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_LockFile_Lock_Simple {
+	label="LockFile::Lock::Simple";
+	"LockFile::Lock::Simple::BEGIN@16";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Tapper_Base {
+	label="Tapper::Base";
+	"Tapper::Base::BEGIN@12";
+}
+"Tapper::Base::BEGIN@12" -> "LockFile::Lock::Simple::BEGIN@16";
+"LockFile::Lock::Simple::BEGIN@16" -> "strict::import";
+}

@@ -41,6 +41,13 @@ Log::Log4perl->init(\$string);
 my $retval;
 my $srv = Tapper::MCP::Child->new(4);
 
+my $upload_dir = Tapper::Config->subconfig->{paths}{output_dir}."/4/install";
+if (not -e $upload_dir) {
+        $srv->makedir($upload_dir); # inherited from Tapper::Base;
+}
+open my $fh, ">", "$upload_dir/prove" or die "Can not create upload file:$!";
+print $fh "content\n";
+close $fh;
 
 
 my $pid;

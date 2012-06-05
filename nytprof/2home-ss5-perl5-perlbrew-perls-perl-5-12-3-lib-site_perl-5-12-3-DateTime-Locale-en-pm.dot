@@ -1,0 +1,34 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::import";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Locale_en {
+	label="DateTime::Locale::en";
+	"DateTime::Locale::en::BEGIN@21";
+	"DateTime::Locale::en::BEGIN@23";
+	"DateTime::Locale::en::BEGIN@25";
+	"DateTime::Locale::en::BEGIN@22";
+}
+"base::import" -> "DateTime::Locale::en::BEGIN@25";
+"DateTime::Locale::en::BEGIN@25" -> "base::import";
+"DateTime::Locale::en::BEGIN@22" -> "warnings::import";
+"DateTime::Locale::en::BEGIN@23" -> "utf8::import";
+"DateTime::Locale::en::BEGIN@21" -> "strict::import";
+"base::import" -> "DateTime::Locale::en::BEGIN@23";
+"base::import" -> "DateTime::Locale::en::BEGIN@21";
+"base::import" -> "DateTime::Locale::en::BEGIN@22";
+}

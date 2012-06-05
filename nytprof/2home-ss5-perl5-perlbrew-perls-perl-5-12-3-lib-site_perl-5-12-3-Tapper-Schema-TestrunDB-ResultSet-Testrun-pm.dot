@@ -1,0 +1,125 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_parent {
+	label="parent";
+	"parent::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_DateTime_Infinite_Future {
+	label="DateTime::Infinite::Future";
+	"DateTime::Infinite::Future::BEGIN@44";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::BEGIN@80";
+	"DateTime::BEGIN@59";
+	"DateTime::DefaultLocale";
+	"DateTime::BEGIN@46";
+	"DateTime::BEGIN@50";
+	"DateTime::BEGIN@76";
+	"DateTime::BEGIN@9";
+	"DateTime::CORE:qr";
+	"DateTime::BEGIN@86";
+	"DateTime::BEGIN@77";
+	"DateTime::BEGIN@13";
+	"DateTime::BEGIN@82";
+	"DateTime::BEGIN@47";
+	"DateTime::BEGIN@78";
+	"DateTime::BEGIN@6";
+	"DateTime::BEGIN@12";
+	"DateTime::BEGIN@1858";
+	"DateTime::_calc_utc_rd";
+	"DateTime::BEGIN@11";
+	"DateTime::_calc_local_rd";
+	"DateTime::BEGIN@49";
+	"DateTime::BEGIN@704";
+	"DateTime::BEGIN@8";
+	"DateTime::CORE:regcomp";
+	"DateTime::BEGIN@48";
+	"DateTime::BEGIN@74";
+}
+subgraph cluster_DateTime_Infinite_Past {
+	label="DateTime::Infinite::Past";
+	"DateTime::Infinite::Past::BEGIN@68";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::new";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Infinite {
+	label="DateTime::Infinite";
+	"DateTime::Infinite::BEGIN@12";
+	"DateTime::Infinite::BEGIN@15";
+	"DateTime::Infinite::BEGIN@10";
+	"DateTime::Infinite::BEGIN@7";
+	"DateTime::Infinite::BEGIN@9";
+	"DateTime::Infinite::BEGIN@6";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Testrun {
+	label="Tapper::Schema::TestrunDB::ResultSet::Testrun";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@2";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@15";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@10";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@9";
+}
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@15";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@10";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@76";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::_calc_local_rd";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@8";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@10";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@82";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@86";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@49";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@2";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@10" -> "warnings::import";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@46";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::CORE:qr";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@12";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@1858";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::_calc_utc_rd";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::DefaultLocale";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@6";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@13";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@9" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@9";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@59";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@12";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@6";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@15" -> "parent::import";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@9";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::CORE:regcomp";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@9";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@78";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@80";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "XSLoader::load";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@48";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::Future::BEGIN@44";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@47";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@7";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@11";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@77";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::Past::BEGIN@68";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::TimeZone::new";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@74";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@50";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@15";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::BEGIN@704";
+}

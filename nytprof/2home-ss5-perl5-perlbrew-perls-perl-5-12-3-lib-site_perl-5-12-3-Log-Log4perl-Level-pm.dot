@@ -1,0 +1,114 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Log_Log4perl_Appender {
+	label="Log::Log4perl::Appender";
+	"Log::Log4perl::Appender::BEGIN@9";
+}
+subgraph cluster_Log_Log4perl_Layout_SimpleLayout {
+	label="Log::Log4perl::Layout::SimpleLayout";
+	"Log::Log4perl::Layout::SimpleLayout::BEGIN@11";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Log_Log4perl_Filter_Boolean {
+	label="Log::Log4perl::Filter::Boolean";
+	"Log::Log4perl::Filter::Boolean::BEGIN@10";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Log_Log4perl_Logger {
+	label="Log::Log4perl::Logger";
+	"Log::Log4perl::Logger::BEGIN@10";
+	"Log::Log4perl::Logger::set_output_methods";
+}
+subgraph cluster_Log_Log4perl_Filter {
+	label="Log::Log4perl::Filter";
+	"Log::Log4perl::Filter::BEGIN@9";
+}
+subgraph cluster_Log_Log4perl {
+	label="Log::Log4perl";
+	"Log::Log4perl::BEGIN@13";
+}
+subgraph cluster_Log_Log4perl_Layout_PatternLayout {
+	label="Log::Log4perl::Layout::PatternLayout";
+	"Log::Log4perl::Layout::PatternLayout::BEGIN@14";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_Log_Log4perl_Level {
+	label="Log::Log4perl::Level";
+	"Log::Log4perl::Level::BEGIN@22";
+	"Log::Log4perl::Level::BEGIN@14";
+	"Log::Log4perl::Level::BEGIN@15";
+	"Log::Log4perl::Level::BEGIN@6";
+	"Log::Log4perl::Level::BEGIN@13";
+	"Log::Log4perl::Level::import";
+	"Log::Log4perl::Level::BEGIN@7";
+	"Log::Log4perl::Level::BEGIN@23";
+	"Log::Log4perl::Level::BEGIN@16";
+	"Log::Log4perl::Level::BEGIN@17";
+	"Log::Log4perl::Level::BEGIN@18";
+	"Log::Log4perl::Level::BEGIN@8";
+	"Log::Log4perl::Level::BEGIN@20";
+	"Log::Log4perl::Level::BEGIN@19";
+	"Log::Log4perl::Level::add_priority";
+	"Log::Log4perl::Level::BEGIN@5";
+	"Log::Log4perl::Level::isGreaterOrEqual";
+}
+subgraph cluster_Log_Log4perl_Config {
+	label="Log::Log4perl::Config";
+	"Log::Log4perl::Config::BEGIN@9";
+}
+"Log::Log4perl::Level::BEGIN@8" -> "Exporter::import";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@23";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@17";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@7";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@16";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@18";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@19";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@5";
+"Log::Log4perl::Logger::set_output_methods" -> "Log::Log4perl::Level::isGreaterOrEqual";
+"Log::Log4perl::Config::BEGIN@9" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Layout::PatternLayout::BEGIN@14" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Layout::SimpleLayout::BEGIN@11" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::BEGIN@13" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Filter::BEGIN@9" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Filter::Boolean::BEGIN@10" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Appender::BEGIN@9" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Level::BEGIN@14" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@13" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@20" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@17" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@16" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@18" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@19" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@15" -> "constant::import";
+"Log::Log4perl::Level::BEGIN@22" -> "strict::unimport";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@13";
+"Log::Log4perl::Level::BEGIN@7" -> "warnings::import";
+"Log::Log4perl::Level::BEGIN@23" -> "vars::import";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@8";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@15";
+"Log::Log4perl::Level::BEGIN@6" -> "strict::import";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@14";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@20";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@22";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::add_priority";
+"Log::Log4perl::Logger::BEGIN@10" -> "Log::Log4perl::Level::BEGIN@6";
+}

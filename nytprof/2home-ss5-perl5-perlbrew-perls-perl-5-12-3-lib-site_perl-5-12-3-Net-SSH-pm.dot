@@ -1,0 +1,96 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_IPC_Open2 {
+	label="IPC::Open2";
+	"IPC::Open2::BEGIN@3";
+}
+subgraph cluster_Tapper_MCP_Net {
+	label="Tapper::MCP::Net";
+	"Tapper::MCP::Net::BEGIN@11";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_IO_Select {
+	label="IO::Select";
+	"IO::Select::BEGIN@9";
+	"IO::Select::BEGIN@10";
+	"IO::Select::BEGIN@11";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_IPC_Open3 {
+	label="IPC::Open3";
+	"IPC::Open3::BEGIN@9";
+	"IPC::Open3::BEGIN@184";
+	"IPC::Open3::BEGIN@4";
+	"IPC::Open3::BEGIN@3";
+	"IPC::Open3::BEGIN@10";
+}
+subgraph cluster_IO_File {
+	label="IO::File";
+	"IO::File::BEGIN@128";
+	"IO::File::BEGIN@133";
+	"IO::File::BEGIN@130";
+	"IO::File::BEGIN@131";
+	"IO::File::CORE:match";
+	"IO::File::BEGIN@134";
+	"IO::File::BEGIN@132";
+	"IO::File::BEGIN@127";
+}
+subgraph cluster_Net_SSH {
+	label="Net::SSH";
+	"Net::SSH::BEGIN@6";
+	"Net::SSH::BEGIN@10";
+	"Net::SSH::BEGIN@5";
+	"Net::SSH::BEGIN@3";
+	"Net::SSH::BEGIN@9";
+	"Net::SSH::BEGIN@8";
+	"Net::SSH::BEGIN@4";
+	"Net::SSH::BEGIN@7";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_POSIX {
+	label="POSIX";
+	"POSIX::import";
+}
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@5";
+"Net::SSH::BEGIN@5" -> "Exporter::import";
+"Net::SSH::BEGIN@8" -> "Exporter::import";
+"Net::SSH::BEGIN@9" -> "Exporter::import";
+"Net::SSH::BEGIN@7" -> "Exporter::import";
+"Net::SSH::BEGIN@10" -> "Exporter::import";
+"Net::SSH::BEGIN@8" -> "IO::Select::BEGIN@11";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@131";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@8";
+"Net::SSH::BEGIN@9" -> "IPC::Open3::BEGIN@9";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@9";
+"Net::SSH::BEGIN@8" -> "IO::Select::BEGIN@10";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@6";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@132";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@4";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@3";
+"Net::SSH::BEGIN@4" -> "vars::import";
+"Net::SSH::BEGIN@3" -> "strict::import";
+"Net::SSH::BEGIN@9" -> "IPC::Open3::BEGIN@4";
+"Net::SSH::BEGIN@8" -> "IO::Select::BEGIN@9";
+"Net::SSH::BEGIN@9" -> "IPC::Open3::BEGIN@184";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@7";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@134";
+"Tapper::MCP::Net::BEGIN@11" -> "Net::SSH::BEGIN@10";
+"Net::SSH::BEGIN@9" -> "IPC::Open2::BEGIN@3";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@127";
+"Net::SSH::BEGIN@9" -> "IPC::Open3::BEGIN@10";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@130";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@128";
+"Net::SSH::BEGIN@6" -> "POSIX::import";
+"Net::SSH::BEGIN@7" -> "IO::File::BEGIN@133";
+"Net::SSH::BEGIN@7" -> "IO::File::CORE:match";
+"Net::SSH::BEGIN@9" -> "IPC::Open3::BEGIN@3";
+}

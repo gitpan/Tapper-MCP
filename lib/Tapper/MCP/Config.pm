@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Config::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Config::VERSION = '4.0.1';
+  $Tapper::MCP::Config::VERSION = '4.0.2';
 }
 
 use strict;
@@ -44,6 +44,7 @@ sub parse_simnow_preconditions
 {
         my ($self, $config, $precondition) = @_;
         $self->mcp_info->test_type('simnow');
+        $config->{log_to_file} = 1;
         return $config;
 }
 
@@ -51,6 +52,7 @@ sub parse_simnow_preconditions
 sub parse_hint_preconditions
 {
         my ($self, $config, $precondition) = @_;
+        $config->{log_to_file} = 1;
         if ($precondition->{simnow}) {
                 $self->mcp_info->test_type('simnow');
                 $config->{paths}{base_dir}='/';

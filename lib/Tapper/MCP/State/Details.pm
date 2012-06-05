@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::State::Details::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::State::Details::VERSION = '4.0.1';
+  $Tapper::MCP::State::Details::VERSION = '4.0.2';
 }
 
 use 5.010;
@@ -232,7 +232,7 @@ sub prc_next_timeout
 {
         my ($self, $num) = @_;
         my $prc = $self->state_details->{prcs}->[$num];
-        my $default_timeout = 60; # one minute for "end-testing"
+        my $default_timeout = 60 + 60; # (time between SIGTERM and SIGKILL in PRC) + (grace period for sending the message)
         my $next_timeout = $default_timeout;
         given ($prc->{current_state}){
                 when('preload') { $next_timeout = $prc->{timeout_boot_span}}

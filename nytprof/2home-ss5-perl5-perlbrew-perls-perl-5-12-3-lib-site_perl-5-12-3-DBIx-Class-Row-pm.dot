@@ -1,0 +1,310 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_Relationship_CascadeActions {
+	label="DBIx::Class::Relationship::CascadeActions";
+	"DBIx::Class::Relationship::CascadeActions::update";
+}
+subgraph cluster_DBIx_Class_InflateColumn_DateTime {
+	label="DBIx::Class::InflateColumn::DateTime";
+	"DBIx::Class::InflateColumn::DateTime::register_column";
+	"DBIx::Class::InflateColumn::DateTime::_datetime_parser";
+}
+subgraph cluster_DBIx_Class_InflateColumn_Object_Enum {
+	label="DBIx::Class::InflateColumn::Object::Enum";
+	"DBIx::Class::InflateColumn::Object::Enum::register_column";
+}
+subgraph cluster_DBIx_Class_ResultSet {
+	label="DBIx::Class::ResultSet";
+	"DBIx::Class::ResultSet::_construct_object";
+	"DBIx::Class::ResultSet::new_result";
+	"DBIx::Class::ResultSet::create";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::host";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::gen_schema_functions";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::prioqueue_seq";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::auto_rerun";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::host_id";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::queue_id";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::queue";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::testrun";
+}
+subgraph cluster_List_Util {
+	label="List::Util";
+	"List::Util::first";
+}
+subgraph cluster_Try_Tiny {
+	label="Try::Tiny";
+	"Try::Tiny::try";
+}
+subgraph cluster_DBIx_Class_InflateColumn {
+	label="DBIx::Class::InflateColumn";
+	"DBIx::Class::InflateColumn::set_inflated_column";
+	"DBIx::Class::InflateColumn::_deflated_column";
+}
+subgraph cluster_DBIx_Class_Storage_TxnScopeGuard {
+	label="DBIx::Class::Storage::TxnScopeGuard";
+	"DBIx::Class::Storage::TxnScopeGuard::DESTROY";
+	"DBIx::Class::Storage::TxnScopeGuard::commit";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::import";
+}
+subgraph cluster_DBIx_Class_Exception {
+	label="DBIx::Class::Exception";
+	"DBIx::Class::Exception::BEGIN@9";
+	"DBIx::Class::Exception::BEGIN@6";
+	"DBIx::Class::Exception::BEGIN@3";
+	"DBIx::Class::Exception::BEGIN@4";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBIx_Class_Storage {
+	label="DBIx::Class::Storage";
+	"DBIx::Class::Storage::txn_scope_guard";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Host {
+	label="Tapper::Schema::TestrunDB::Result::Host";
+	"Tapper::Schema::TestrunDB::Result::Host::free";
+	"Tapper::Schema::TestrunDB::Result::Host::id";
+	"Tapper::Schema::TestrunDB::Result::Host::name";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy {
+	label="DBIx::Class::ResultSourceProxy";
+	"DBIx::Class::ResultSourceProxy::primary_columns";
+	"DBIx::Class::ResultSourceProxy::column_info";
+	"DBIx::Class::ResultSourceProxy::has_column";
+	"DBIx::Class::ResultSourceProxy::add_columns";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Testrun {
+	label="Tapper::Schema::TestrunDB::Result::Testrun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::rerun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::shortname";
+	"Tapper::Schema::TestrunDB::Result::Testrun::owner_user_id";
+	"Tapper::Schema::TestrunDB::Result::Testrun::assign_preconditions";
+	"Tapper::Schema::TestrunDB::Result::Testrun::notes";
+	"Tapper::Schema::TestrunDB::Result::Testrun::scenario_element";
+	"Tapper::Schema::TestrunDB::Result::Testrun::id";
+	"Tapper::Schema::TestrunDB::Result::Testrun::topic_name";
+}
+subgraph cluster_DBIx_Class_PK {
+	label="DBIx::Class::PK";
+	"DBIx::Class::PK::_storage_ident_condition";
+	"DBIx::Class::PK::_ident_values";
+}
+subgraph cluster_DBIx_Class_ResultSource {
+	label="DBIx::Class::ResultSource";
+	"DBIx::Class::ResultSource::has_relationship";
+	"DBIx::Class::ResultSource::schema";
+	"DBIx::Class::ResultSource::_resolve_condition";
+	"DBIx::Class::ResultSource::storage";
+	"DBIx::Class::ResultSource::relationship_info";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+	"warnings::import";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Queue {
+	label="Tapper::Schema::TestrunDB::Result::Queue";
+	"Tapper::Schema::TestrunDB::Result::Queue::name";
+	"Tapper::Schema::TestrunDB::Result::Queue::runcount";
+	"Tapper::Schema::TestrunDB::Result::Queue::priority";
+	"Tapper::Schema::TestrunDB::Result::Queue::id";
+	"Tapper::Schema::TestrunDB::Result::Queue::active";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Precondition {
+	label="Tapper::Schema::TestrunDB::Result::Precondition";
+	"Tapper::Schema::TestrunDB::Result::Precondition::id";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::storage";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::blessed";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_QueueHost {
+	label="Tapper::Schema::TestrunDB::Result::QueueHost";
+	"Tapper::Schema::TestrunDB::Result::QueueHost::queue";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::_is_column_numeric";
+	"DBIx::Class::Row::BEGIN@3";
+	"DBIx::Class::Row::get_column";
+	"DBIx::Class::Row::_track_storage_value";
+	"DBIx::Class::Row::new";
+	"DBIx::Class::Row::BEGIN@10";
+	"DBIx::Class::Row::inflate_result";
+	"DBIx::Class::Row::in_storage";
+	"DBIx::Class::Row::update";
+	"DBIx::Class::Row::has_column_loaded";
+	"DBIx::Class::Row::result_source";
+	"DBIx::Class::Row::__ANON__[DBIx/Class/Row.pm:797]";
+	"DBIx::Class::Row::BEGIN@8";
+	"DBIx::Class::Row::insert";
+	"DBIx::Class::Row::_eq_column_values";
+	"DBIx::Class::Row::BEGIN@17";
+	"DBIx::Class::Row::BEGIN@4";
+	"DBIx::Class::Row::BEGIN@24";
+	"DBIx::Class::Row::BEGIN@343";
+	"DBIx::Class::Row::get_columns";
+	"DBIx::Class::Row::BEGIN@6";
+	"DBIx::Class::Row::get_dirty_columns";
+	"DBIx::Class::Row::store_column";
+	"DBIx::Class::Row::BEGIN@9";
+	"DBIx::Class::Row::register_column";
+	"DBIx::Class::Row::set_column";
+	"DBIx::Class::Row::BEGIN@11";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_Accessor_Grouped {
+	label="Class::Accessor::Grouped";
+	"Class::Accessor::Grouped::mk_group_accessors";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::insert";
+	"DBIx::Class::Storage::DBI::is_datatype_numeric";
+	"DBIx::Class::Storage::DBI::update";
+}
+subgraph cluster_DBIx_Class_Relationship_Base {
+	label="DBIx::Class::Relationship::Base";
+	"DBIx::Class::Relationship::Base::related_resultset";
+}
+"DBIx::Class::ResultSet::_construct_object" -> "DBIx::Class::Row::inflate_result";
+"DBIx::Class::Row::_is_column_numeric" -> "Try::Tiny::try";
+"base::import" -> "DBIx::Class::Row::BEGIN@4";
+"DBIx::Class::Row::BEGIN@10" -> "Exporter::import";
+"DBIx::Class::Row::BEGIN@11" -> "Exporter::import";
+"DBIx::Class::Row::BEGIN@9" -> "Exporter::import";
+"base::import" -> "DBIx::Class::Row::BEGIN@6";
+"Tapper::Schema::TestrunDB::Result::Queue::runcount" -> "DBIx::Class::Row::set_column";
+"DBIx::Class::InflateColumn::set_inflated_column" -> "DBIx::Class::Row::set_column";
+"Tapper::Schema::TestrunDB::Result::Host::free" -> "DBIx::Class::Row::set_column";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::prioqueue_seq" -> "DBIx::Class::Row::set_column";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::host_id" -> "DBIx::Class::Row::set_column";
+"DBIx::Class::Row::_is_column_numeric" -> "DBIx::Class::ResultSourceProxy::column_info";
+"DBIx::Class::Row::new" -> "DBIx::Class::ResultSourceProxy::column_info";
+"DBIx::Class::Row::insert" -> "Scalar::Util::blessed";
+"Try::Tiny::try" -> "DBIx::Class::Row::__ANON__[DBIx/Class/Row.pm:797]";
+"DBIx::Class::Row::insert" -> "DBIx::Class::ResultSource::storage";
+"DBIx::Class::Row::update" -> "DBIx::Class::ResultSource::storage";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Storage::TxnScopeGuard::DESTROY";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@3";
+"DBIx::Class::Row::__ANON__[DBIx/Class/Row.pm:797]" -> "DBIx::Class::ResultSource::schema";
+"DBIx::Class::Row::_is_column_numeric" -> "DBIx::Class::Storage::DBI::is_datatype_numeric";
+"base::import" -> "DBIx::Class::Row::BEGIN@343";
+"DBIx::Class::Row::_track_storage_value" -> "DBIx::Class::ResultSourceProxy::primary_columns";
+"DBIx::Class::Row::update" -> "DBIx::Class::PK::_storage_ident_condition";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::_track_storage_value";
+"DBIx::Class::Row::BEGIN@6" -> "base::import";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Row::in_storage";
+"DBIx::Class::Row::inflate_result" -> "DBIx::Class::Row::in_storage";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::in_storage";
+"DBIx::Class::Row::update" -> "DBIx::Class::Row::in_storage";
+"base::import" -> "DBIx::Class::Row::BEGIN@8";
+"DBIx::Class::Row::BEGIN@4" -> "warnings::import";
+"base::import" -> "DBIx::Class::Row::BEGIN@24";
+"DBIx::Class::Row::get_columns" -> "DBIx::Class::InflateColumn::_deflated_column";
+"Tapper::Schema::TestrunDB::Result::Queue::name" -> "DBIx::Class::Row::get_column";
+"DBIx::Class::PK::_ident_values" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::auto_rerun" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Testrun::shortname" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Queue::runcount" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Host::free" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Testrun::owner_user_id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Precondition::id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Testrun::id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Queue::id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Host::id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Queue::active" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::host_id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::queue_id" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Queue::priority" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Testrun::notes" -> "DBIx::Class::Row::get_column";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::get_column";
+"DBIx::Class::ResultSource::_resolve_condition" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Host::name" -> "DBIx::Class::Row::get_column";
+"Tapper::Schema::TestrunDB::Result::Testrun::topic_name" -> "DBIx::Class::Row::get_column";
+"DBIx::Class::Row::update" -> "DBIx::Class::Storage::DBI::update";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@4";
+"DBIx::Class::Row::__ANON__[DBIx/Class/Row.pm:797]" -> "DBIx::Class::Schema::storage";
+"DBIx::Class::Row::update" -> "DBIx::Class::Row::get_dirty_columns";
+"DBIx::Class::Row::_eq_column_values" -> "DBIx::Class::Row::_is_column_numeric";
+"DBIx::Class::ResultSet::new_result" -> "DBIx::Class::Row::new";
+"base::import" -> "DBIx::Class::Row::BEGIN@10";
+"base::import" -> "DBIx::Class::Row::BEGIN@17";
+"DBIx::Class::Row::BEGIN@24" -> "namespace::clean::import";
+"DBIx::Class::Row::BEGIN@3" -> "strict::import";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@6";
+"DBIx::Class::Row::BEGIN@343" -> "warnings::unimport";
+"Tapper::Schema::TestrunDB::Result::QueueHost::queue" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Row::new" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::InflateColumn::DateTime::_datetime_parser" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::Testrun::assign_preconditions" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Relationship::Base::related_resultset" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::queue" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Row::update" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::testrun" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Row::__ANON__[DBIx/Class/Row.pm:797]" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::host" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::gen_schema_functions" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::Testrun::rerun" -> "DBIx::Class::Row::result_source";
+"Tapper::Schema::TestrunDB::Result::Testrun::scenario_element" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Storage::txn_scope_guard";
+"base::import" -> "DBIx::Class::Row::BEGIN@11";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::has_column_loaded";
+"DBIx::Class::ResultSource::_resolve_condition" -> "DBIx::Class::Row::has_column_loaded";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Storage::DBI::insert";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::_eq_column_values";
+"base::import" -> "DBIx::Class::Row::BEGIN@3";
+"DBIx::Class::Row::register_column" -> "Class::Accessor::Grouped::mk_group_accessors";
+"Tapper::Schema::TestrunDB::Result::Testrun::assign_preconditions" -> "DBIx::Class::Row::insert";
+"DBIx::Class::ResultSet::create" -> "DBIx::Class::Row::insert";
+"Tapper::Schema::TestrunDB::Result::Testrun::rerun" -> "DBIx::Class::Row::insert";
+"main::RUNTIME" -> "DBIx::Class::Row::insert";
+"DBIx::Class::Row::new" -> "DBIx::Class::ResultSource::relationship_info";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Row::get_columns";
+"base::import" -> "DBIx::Class::Row::BEGIN@9";
+"DBIx::Class::Row::store_column" -> "DBIx::Class::ResultSourceProxy::has_column";
+"DBIx::Class::Row::new" -> "DBIx::Class::ResultSourceProxy::has_column";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::Row::register_column";
+"DBIx::Class::InflateColumn::Object::Enum::register_column" -> "DBIx::Class::Row::register_column";
+"DBIx::Class::ResultSourceProxy::add_columns" -> "DBIx::Class::Row::register_column";
+"DBIx::Class::Row::insert" -> "DBIx::Class::ResultSource::has_relationship";
+"DBIx::Class::Row::inflate_result" -> "UNIVERSAL::isa";
+"DBIx::Class::Row::insert" -> "UNIVERSAL::isa";
+"DBIx::Class::Row::get_columns" -> "DBIx::Class::Row::store_column";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Row::store_column";
+"DBIx::Class::Row::set_column" -> "DBIx::Class::Row::store_column";
+"DBIx::Class::Row::new" -> "DBIx::Class::Row::store_column";
+"DBIx::Class::Row::BEGIN@8" -> "DBIx::Class::Exception::BEGIN@9";
+"DBIx::Class::Row::insert" -> "DBIx::Class::Storage::TxnScopeGuard::commit";
+"DBIx::Class::Relationship::CascadeActions::update" -> "DBIx::Class::Row::update";
+"DBIx::Class::Row::_track_storage_value" -> "List::Util::first";
+}

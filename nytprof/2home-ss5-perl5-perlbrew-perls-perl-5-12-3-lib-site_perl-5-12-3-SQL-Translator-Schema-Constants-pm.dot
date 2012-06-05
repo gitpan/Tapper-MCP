@@ -1,0 +1,62 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_SQL_Translator_Schema_Constants {
+	label="SQL::Translator::Schema::Constants";
+	"SQL::Translator::Schema::Constants::BEGIN@85";
+	"SQL::Translator::Schema::Constants::BEGIN@60";
+	"SQL::Translator::Schema::Constants::BEGIN@61";
+	"SQL::Translator::Schema::Constants::BEGIN@83";
+	"SQL::Translator::Schema::Constants::BEGIN@93";
+	"SQL::Translator::Schema::Constants::BEGIN@97";
+	"SQL::Translator::Schema::Constants::BEGIN@89";
+	"SQL::Translator::Schema::Constants::BEGIN@87";
+	"SQL::Translator::Schema::Constants::BEGIN@95";
+	"SQL::Translator::Schema::Constants::BEGIN@91";
+	"SQL::Translator::Schema::Constants::BEGIN@62";
+	"SQL::Translator::Schema::Constants::BEGIN@81";
+}
+subgraph cluster_SQL_Translator_Schema {
+	label="SQL::Translator::Schema";
+	"SQL::Translator::Schema::BEGIN@48";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@97";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@93";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@81";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@60";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@91";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@83";
+"SQL::Translator::Schema::Constants::BEGIN@91" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@83" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@95" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@87" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@97" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@93" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@89" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@85" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@81" -> "constant::import";
+"SQL::Translator::Schema::Constants::BEGIN@61" -> "base::import";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@87";
+"SQL::Translator::Schema::Constants::BEGIN@62" -> "vars::import";
+"SQL::Translator::Schema::Constants::BEGIN@60" -> "strict::import";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@95";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@61";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@62";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@89";
+"SQL::Translator::Schema::BEGIN@48" -> "SQL::Translator::Schema::Constants::BEGIN@85";
+}

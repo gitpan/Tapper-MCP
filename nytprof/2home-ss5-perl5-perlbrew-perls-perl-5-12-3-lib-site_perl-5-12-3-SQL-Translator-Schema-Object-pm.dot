@@ -1,0 +1,174 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SQL_Translator {
+	label="SQL::Translator";
+	"SQL::Translator::BEGIN@39";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Class_MakeMethods_Utility_Ref {
+	label="Class::MakeMethods::Utility::Ref";
+	"Class::MakeMethods::Utility::Ref::BEGIN@27";
+	"Class::MakeMethods::Utility::Ref::BEGIN@96";
+	"Class::MakeMethods::Utility::Ref::BEGIN@41";
+	"Class::MakeMethods::Utility::Ref::import";
+}
+subgraph cluster_SQL_Translator_Schema_Constraint {
+	label="SQL::Translator::Schema::Constraint";
+	"SQL::Translator::Schema::Constraint::reference_fields";
+	"SQL::Translator::Schema::Constraint::on_delete";
+	"SQL::Translator::Schema::Constraint::on_update";
+	"SQL::Translator::Schema::Constraint::type";
+	"SQL::Translator::Schema::Constraint::fields";
+	"SQL::Translator::Schema::Constraint::reference_table";
+	"SQL::Translator::Schema::Constraint::name";
+	"SQL::Translator::Schema::Constraint::table";
+	"SQL::Translator::Schema::Constraint::init";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_SQL_Translator_Schema_Field {
+	label="SQL::Translator::Schema::Field";
+	"SQL::Translator::Schema::Field::is_nullable";
+	"SQL::Translator::Schema::Field::is_foreign_key";
+	"SQL::Translator::Schema::Field::default_value";
+	"SQL::Translator::Schema::Field::table";
+	"SQL::Translator::Schema::Field::is_auto_increment";
+	"SQL::Translator::Schema::Field::data_type";
+	"SQL::Translator::Schema::Field::size";
+	"SQL::Translator::Schema::Field::name";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::AddrRef";
+}
+subgraph cluster_Class_Data_Inheritable {
+	label="Class::Data::Inheritable";
+	"Class::Data::Inheritable::__ANON__[Class/Data/Inheritable.pm:23]";
+}
+subgraph cluster_SQL_Translator_Schema_Object {
+	label="SQL::Translator::Schema::Object";
+	"SQL::Translator::Schema::Object::equals";
+	"SQL::Translator::Schema::Object::BEGIN@38";
+	"SQL::Translator::Schema::Object::BEGIN@36";
+	"SQL::Translator::Schema::Object::BEGIN@40";
+	"SQL::Translator::Schema::Object::BEGIN@37";
+	"SQL::Translator::Schema::Object::_attributes";
+	"SQL::Translator::Schema::Object::BEGIN@42";
+	"SQL::Translator::Schema::Object::extra";
+	"SQL::Translator::Schema::Object::init";
+	"SQL::Translator::Schema::Object::BEGIN@39";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Class_Base {
+	label="Class::Base";
+	"Class::Base::new";
+}
+subgraph cluster_SQL_Translator_Schema_View {
+	label="SQL::Translator::Schema::View";
+	"SQL::Translator::Schema::View::sql";
+	"SQL::Translator::Schema::View::fields";
+	"SQL::Translator::Schema::View::name";
+	"SQL::Translator::Schema::View::schema";
+}
+subgraph cluster_SQL_Translator_Schema {
+	label="SQL::Translator::Schema";
+	"SQL::Translator::Schema::BEGIN@52";
+	"SQL::Translator::Schema::BEGIN@49";
+	"SQL::Translator::Schema::translator";
+	"SQL::Translator::Schema::BEGIN@50";
+	"SQL::Translator::Schema::BEGIN@51";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_SQL_Translator_Schema_Table {
+	label="SQL::Translator::Schema::Table";
+	"SQL::Translator::Schema::Table::BEGIN@43";
+	"SQL::Translator::Schema::Table::BEGIN@45";
+	"SQL::Translator::Schema::Table::name";
+	"SQL::Translator::Schema::Table::BEGIN@44";
+}
+subgraph cluster_SQL_Translator_Producer_SQLite {
+	label="SQL::Translator::Producer::SQLite";
+	"SQL::Translator::Producer::SQLite::create_view";
+}
+subgraph cluster_SQL_Translator_Schema_Index {
+	label="SQL::Translator::Schema::Index";
+	"SQL::Translator::Schema::Index::equals";
+	"SQL::Translator::Schema::Index::name";
+	"SQL::Translator::Schema::Index::table";
+	"SQL::Translator::Schema::Index::type";
+	"SQL::Translator::Schema::Index::fields";
+}
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::translator";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Object::extra";
+"SQL::Translator::Producer::SQLite::create_view" -> "SQL::Translator::Schema::Object::extra";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::default_value";
+"base::import" -> "SQL::Translator::Schema::Object::BEGIN@37";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Exporter::import";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::fields";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::reference_fields";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::on_update";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::is_foreign_key";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::data_type";
+"SQL::Translator::Schema::BEGIN@52" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::Table::BEGIN@43" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::Table::BEGIN@45" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::BEGIN@49" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::BEGIN@50" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::Table::BEGIN@44" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::Schema::BEGIN@51" -> "SQL::Translator::Schema::Object::_attributes";
+"base::import" -> "SQL::Translator::Schema::Object::BEGIN@36";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::is_auto_increment";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::name";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::schema";
+"SQL::Translator::Schema::Object::BEGIN@38" -> "base::import";
+"SQL::Translator::Schema::Object::BEGIN@39" -> "base::import";
+"base::import" -> "SQL::Translator::Schema::Object::BEGIN@40";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::BEGIN@27";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::is_nullable";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::type";
+"SQL::Translator::Schema::Object::BEGIN@42" -> "vars::import";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::on_delete";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::import";
+"SQL::Translator::Schema::Object::BEGIN@36" -> "strict::import";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::table";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::name";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::BEGIN@96";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::name";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::size";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Constraint::reference_table";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::sql";
+"base::import" -> "SQL::Translator::Schema::Object::BEGIN@39";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Index::table";
+"SQL::Translator::Schema::Object::_attributes" -> "Class::Data::Inheritable::__ANON__[Class/Data/Inheritable.pm:23]";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Table::name";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::fields";
+"SQL::Translator::Schema::Index::equals" -> "SQL::Translator::Schema::Object::equals";
+"SQL::Translator::Schema::Object::equals" -> "overload::AddrRef";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Index::type";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Field::table";
+"SQL::Translator::Schema::Object::equals" -> "UNIVERSAL::isa";
+"base::import" -> "SQL::Translator::Schema::Object::BEGIN@38";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Index::name";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::Index::fields";
+"Class::Base::new" -> "SQL::Translator::Schema::Object::init";
+"SQL::Translator::Schema::Constraint::init" -> "SQL::Translator::Schema::Object::init";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::BEGIN@41";
+"base::import" -> "SQL::Translator::Schema::Object::BEGIN@42";
+}

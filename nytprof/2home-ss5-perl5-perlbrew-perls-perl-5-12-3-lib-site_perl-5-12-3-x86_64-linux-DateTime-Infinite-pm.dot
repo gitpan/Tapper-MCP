@@ -1,0 +1,59 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DateTime_Infinite_Future {
+	label="DateTime::Infinite::Future";
+	"DateTime::Infinite::Future::BEGIN@44";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::_calc_local_components";
+}
+subgraph cluster_DateTime_Infinite_Past {
+	label="DateTime::Infinite::Past";
+	"DateTime::Infinite::Past::BEGIN@68";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_DateTime_Infinite {
+	label="DateTime::Infinite";
+	"DateTime::Infinite::_seconds_as_components";
+	"DateTime::Infinite::BEGIN@12";
+	"DateTime::Infinite::BEGIN@15";
+	"DateTime::Infinite::BEGIN@10";
+	"DateTime::Infinite::BEGIN@7";
+	"DateTime::Infinite::_rd2ymd";
+	"DateTime::Infinite::BEGIN@9";
+	"DateTime::Infinite::BEGIN@6";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Testrun {
+	label="Tapper::Schema::TestrunDB::ResultSet::Testrun";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12";
+}
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@10";
+"DateTime::_calc_local_components" -> "DateTime::Infinite::_rd2ymd";
+"DateTime::Infinite::BEGIN@15" -> "strict::unimport";
+"DateTime::Infinite::Future::BEGIN@44" -> "base::import";
+"DateTime::Infinite::BEGIN@12" -> "base::import";
+"DateTime::Infinite::Past::BEGIN@68" -> "base::import";
+"DateTime::Infinite::BEGIN@7" -> "warnings::import";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@6";
+"DateTime::Infinite::BEGIN@6" -> "strict::import";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@12";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@9";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::Future::BEGIN@44";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@7";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::Past::BEGIN@68";
+"DateTime::_calc_local_components" -> "DateTime::Infinite::_seconds_as_components";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "DateTime::Infinite::BEGIN@15";
+}

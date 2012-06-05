@@ -1,0 +1,57 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_InflateColumn_Object_Enum {
+	label="DBIx::Class::InflateColumn::Object::Enum";
+	"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Object_Enum {
+	label="Object::Enum";
+	"Object::Enum::BEGIN@5";
+	"Object::Enum::BEGIN@111";
+	"Object::Enum::BEGIN@27";
+	"Object::Enum::BEGIN@7";
+	"Object::Enum::BEGIN@8";
+	"Object::Enum::BEGIN@32";
+	"Object::Enum::BEGIN@4";
+	"Object::Enum::BEGIN@202";
+	"Object::Enum::BEGIN@3";
+	"Object::Enum::BEGIN@10";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@5";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@32";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@111";
+"Object::Enum::BEGIN@111" -> "strict::unimport";
+"Object::Enum::BEGIN@10" -> "base::import";
+"Object::Enum::BEGIN@27" -> "overload::import";
+"Object::Enum::BEGIN@4" -> "warnings::import";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@7";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@10";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@4";
+"Object::Enum::BEGIN@3" -> "strict::import";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@3";
+"Object::Enum::BEGIN@32" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@8";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@202";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@27";
+}

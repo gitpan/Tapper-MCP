@@ -1,0 +1,97 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Log_Log4perl_Appender {
+	label="Log::Log4perl::Appender";
+	"Log::Log4perl::Appender::BEGIN@12";
+	"Log::Log4perl::Appender::BEGIN@180";
+	"Log::Log4perl::Appender::BEGIN@6";
+	"Log::Log4perl::Appender::BEGIN@10";
+	"Log::Log4perl::Appender::BEGIN@5";
+	"Log::Log4perl::Appender::new";
+	"Log::Log4perl::Appender::BEGIN@7";
+	"Log::Log4perl::Appender::CORE:match";
+	"Log::Log4perl::Appender::BEGIN@266";
+	"Log::Log4perl::Appender::reset";
+	"Log::Log4perl::Appender::BEGIN@9";
+	"Log::Log4perl::Appender::layout";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Log_Log4perl_Logger {
+	label="Log::Log4perl::Logger";
+	"Log::Log4perl::Logger::reset";
+	"Log::Log4perl::Logger::BEGIN@12";
+}
+subgraph cluster_Log_Log4perl {
+	label="Log::Log4perl";
+	"Log::Log4perl::BEGIN@12";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Log_Log4perl_Appender_String {
+	label="Log::Log4perl::Appender::String";
+	"Log::Log4perl::Appender::String::new";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_Log_Log4perl_Level {
+	label="Log::Log4perl::Level";
+	"Log::Log4perl::Level::import";
+}
+subgraph cluster_Log_Log4perl_Config {
+	label="Log::Log4perl::Config";
+	"Log::Log4perl::Config::BEGIN@6";
+	"Log::Log4perl::Config::BEGIN@9";
+	"Log::Log4perl::Config::BEGIN@12";
+	"Log::Log4perl::Config::BEGIN@8";
+	"Log::Log4perl::Config::BEGIN@16";
+	"Log::Log4perl::Config::BEGIN@13";
+	"Log::Log4perl::Config::BEGIN@10";
+	"Log::Log4perl::Config::BEGIN@4";
+	"Log::Log4perl::Config::BEGIN@5";
+	"Log::Log4perl::Config::BEGIN@11";
+	"Log::Log4perl::Config::BEGIN@14";
+}
+"Log::Log4perl::Appender::new" -> "Log::Log4perl::Appender::CORE:match";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@12";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@13";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@5";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@4";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@9";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Appender::layout";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@180";
+"Log::Log4perl::Appender::BEGIN@9" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@266";
+"Log::Log4perl::Appender::new" -> "UNIVERSAL::can";
+"Log::Log4perl::Appender::BEGIN@12" -> "constant::import";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@12";
+"Log::Log4perl::Appender::BEGIN@180" -> "strict::unimport";
+"Log::Log4perl::Appender::BEGIN@266" -> "strict::unimport";
+"Log::Log4perl::Appender::new" -> "Log::Log4perl::Appender::String::new";
+"Log::Log4perl::Appender::BEGIN@7" -> "warnings::import";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@9";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@6";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@5";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@16";
+"Log::Log4perl::Logger::reset" -> "Log::Log4perl::Appender::reset";
+"Log::Log4perl::Appender::BEGIN@6" -> "strict::import";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@14";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@10";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@7";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@8";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Appender::new";
+"Log::Log4perl::Logger::BEGIN@12" -> "Log::Log4perl::Appender::BEGIN@6";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@10";
+"Log::Log4perl::Appender::BEGIN@10" -> "Log::Log4perl::Config::BEGIN@11";
+}

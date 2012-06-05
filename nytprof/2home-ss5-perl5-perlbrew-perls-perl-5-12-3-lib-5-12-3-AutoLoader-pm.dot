@@ -1,0 +1,71 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_POSIX_SigRt {
+	label="POSIX::SigRt";
+	"POSIX::SigRt::BEGIN@62";
+}
+subgraph cluster_POSIX_SigAction {
+	label="POSIX::SigAction";
+	"POSIX::SigAction::BEGIN@58";
+}
+subgraph cluster_AutoLoader {
+	label="AutoLoader";
+	"AutoLoader::BEGIN@138";
+	"AutoLoader::find_filename";
+	"AutoLoader::CORE:substcont";
+	"AutoLoader::CORE:subst";
+	"AutoLoader::BEGIN@186";
+	"AutoLoader::AUTOLOAD";
+	"AutoLoader::CORE:match";
+	"AutoLoader::CORE:fteread";
+	"AutoLoader::BEGIN@30";
+	"AutoLoader::BEGIN@4";
+	"AutoLoader::import";
+	"AutoLoader::CORE:regcomp";
+	"AutoLoader::BEGIN@3";
+	"AutoLoader::BEGIN@13";
+}
+subgraph cluster_Data_OptList {
+	label="Data::OptList";
+	"Data::OptList::BEGIN@10";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Compress_Bzip2 {
+	label="Compress::Bzip2";
+	"Compress::Bzip2::BEGIN@24";
+}
+subgraph cluster_POSIX {
+	label="POSIX";
+	"POSIX::import";
+	"POSIX::BEGIN@9";
+}
+"Data::OptList::BEGIN@10" -> "AutoLoader::BEGIN@138";
+"AutoLoader::find_filename" -> "AutoLoader::CORE:regcomp";
+"AutoLoader::import" -> "AutoLoader::CORE:regcomp";
+"AutoLoader::AUTOLOAD" -> "AutoLoader::find_filename";
+"AutoLoader::BEGIN@138" -> "strict::unimport";
+"AutoLoader::BEGIN@186" -> "strict::unimport";
+"AutoLoader::BEGIN@30" -> "strict::unimport";
+"POSIX::SigAction::BEGIN@58" -> "AutoLoader::import";
+"POSIX::SigRt::BEGIN@62" -> "AutoLoader::import";
+"Compress::Bzip2::BEGIN@24" -> "AutoLoader::import";
+"POSIX::BEGIN@9" -> "AutoLoader::import";
+"POSIX::import" -> "AutoLoader::AUTOLOAD";
+"Data::OptList::BEGIN@10" -> "AutoLoader::BEGIN@186";
+"AutoLoader::find_filename" -> "AutoLoader::CORE:match";
+"AutoLoader::import" -> "AutoLoader::CORE:match";
+"AutoLoader::BEGIN@3" -> "strict::import";
+"AutoLoader::find_filename" -> "AutoLoader::CORE:substcont";
+"AutoLoader::import" -> "AutoLoader::CORE:substcont";
+"Data::OptList::BEGIN@10" -> "AutoLoader::BEGIN@3";
+"AutoLoader::find_filename" -> "AutoLoader::CORE:subst";
+"AutoLoader::import" -> "AutoLoader::CORE:subst";
+"Data::OptList::BEGIN@10" -> "AutoLoader::BEGIN@13";
+"Data::OptList::BEGIN@10" -> "AutoLoader::BEGIN@4";
+"AutoLoader::find_filename" -> "AutoLoader::CORE:fteread";
+"Data::OptList::BEGIN@10" -> "AutoLoader::BEGIN@30";
+}

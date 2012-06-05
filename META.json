@@ -30,6 +30,7 @@
             "File::Basename" : "0",
             "File::Path" : "0",
             "File::Spec" : "0",
+            "File::Spec::Functions" : "0",
             "File::Temp" : "0",
             "Hash::Merge::Simple" : "0",
             "IO::Handle" : "0",
@@ -73,7 +74,6 @@
             "Class::C3" : "0",
             "Cwd" : "0",
             "Data::Dumper" : "0",
-            "File::Spec::Functions" : "0",
             "MRO::Compat" : "0",
             "String::Diff" : "0",
             "TAP::DOM" : "0",
@@ -103,7 +103,7 @@
          "web" : "http://github.com/amd/Tapper-MCP"
       }
    },
-   "version" : "4.0.1",
+   "version" : "4.0.2",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

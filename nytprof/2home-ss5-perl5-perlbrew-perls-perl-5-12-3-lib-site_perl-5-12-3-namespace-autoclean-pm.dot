@@ -1,0 +1,125 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_Traits {
+	label="MooseX::Traits";
+	"MooseX::Traits::BEGIN@2.6";
+	"MooseX::Traits::BEGIN@1";
+	"MooseX::Traits::BEGIN@9";
+}
+subgraph cluster_Variable_Magic {
+	label="Variable::Magic";
+	"Variable::Magic::wizard";
+}
+subgraph cluster_Class_MOP_Mixin_HasMethods {
+	label="Class::MOP::Mixin::HasMethods";
+	"Class::MOP::Mixin::HasMethods::get_method_list";
+}
+subgraph cluster_List_Util {
+	label="List::Util";
+	"List::Util::first";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+	"UNIVERSAL::VERSION";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::BEGIN@3";
+	"namespace::clean::BEGIN@168";
+	"namespace::clean::BEGIN@6";
+	"namespace::clean::BEGIN@4";
+	"namespace::clean::BEGIN@14";
+	"namespace::clean::clean_subroutines";
+	"namespace::clean::BEGIN@169";
+	"namespace::clean::BEGIN@467";
+	"namespace::clean::BEGIN@7";
+	"namespace::clean::import";
+	"namespace::clean::BEGIN@171";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_namespace_autoclean {
+	label="namespace::autoclean";
+	"namespace::autoclean::BEGIN@15";
+	"namespace::autoclean::BEGIN@5";
+	"namespace::autoclean::BEGIN@1";
+	"namespace::autoclean::BEGIN@14";
+	"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]";
+	"namespace::autoclean::BEGIN@2";
+	"namespace::autoclean::BEGIN@16";
+	"namespace::autoclean::import";
+	"namespace::autoclean::BEGIN@13";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+	"B::Hooks::EndOfScope::BEGIN@16";
+	"B::Hooks::EndOfScope::BEGIN@13";
+	"B::Hooks::EndOfScope::BEGIN@14";
+	"B::Hooks::EndOfScope::on_scope_end";
+	"B::Hooks::EndOfScope::BEGIN@5";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::initialize";
+}
+subgraph cluster_Class_MOP_Package {
+	label="Class::MOP::Package";
+	"Class::MOP::Package::get_all_package_symbols";
+}
+"namespace::autoclean::BEGIN@15" -> "Exporter::import";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@7";
+"namespace::autoclean::BEGIN@14" -> "Variable::Magic::wizard";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "namespace::clean::clean_subroutines";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@3";
+"namespace::autoclean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@13";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@171";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "Class::MOP::Package::get_all_package_symbols";
+"namespace::autoclean::BEGIN@14" -> "namespace::autoclean::BEGIN@1";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@14";
+"MooseX::Traits::BEGIN@9" -> "MooseX::Traits::BEGIN@1";
+"MooseX::Traits::BEGIN@2.6" -> "warnings::import";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@14";
+"namespace::autoclean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@16";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@168";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "Class::MOP::Class::initialize";
+"namespace::autoclean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@5";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@15";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::import";
+"MooseX::Traits::BEGIN@1" -> "strict::import";
+"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]" -> "namespace::autoclean::__ANON__[namespace/autoclean.pm:57]";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "UNIVERSAL::VERSION";
+"namespace::autoclean::BEGIN@16" -> "UNIVERSAL::VERSION";
+"namespace::autoclean::BEGIN@13" -> "UNIVERSAL::VERSION";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@467";
+"namespace::autoclean::BEGIN@14" -> "namespace::autoclean::BEGIN@2";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@4";
+"namespace::autoclean::BEGIN@14" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"MooseX::Traits::BEGIN@9" -> "MooseX::Traits::BEGIN@2.6";
+"namespace::autoclean::import" -> "B::Hooks::EndOfScope::on_scope_end";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "Class::MOP::Mixin::HasMethods::get_method_list";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@169";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@5";
+"namespace::autoclean::BEGIN@16" -> "namespace::clean::BEGIN@6";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@16";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "UNIVERSAL::isa";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::import";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@13";
+"namespace::autoclean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@14";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "List::Util::first";
+}

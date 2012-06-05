@@ -1,0 +1,52 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Params_Validate_Constants {
+	label="Params::Validate::Constants";
+	"Params::Validate::Constants::BEGIN@3";
+	"Params::Validate::Constants::BEGIN@4";
+}
+subgraph cluster_Test_Fixture_DBIC_Schema {
+	label="Test::Fixture::DBIC::Schema";
+	"Test::Fixture::DBIC::Schema::BEGIN@7";
+}
+subgraph cluster_Params_Validate {
+	label="Params::Validate";
+	"Params::Validate::BEGIN@15";
+	"Params::Validate::BEGIN@13";
+	"Params::Validate::BEGIN@8";
+	"Params::Validate::BEGIN@12";
+	"Params::Validate::BEGIN@9";
+	"Params::Validate::BEGIN@11";
+	"Params::Validate::BEGIN@6";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Params::Validate::BEGIN@11" -> "Exporter::import";
+"Params::Validate::BEGIN@13" -> "Exporter::import";
+"Params::Validate::BEGIN@13" -> "Params::Validate::Constants::BEGIN@4";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@6";
+"Params::Validate::BEGIN@9" -> "warnings::import";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@12";
+"Params::Validate::BEGIN@15" -> "vars::import";
+"Params::Validate::BEGIN@8" -> "strict::import";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@11";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@8";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@9";
+"Params::Validate::BEGIN@13" -> "Params::Validate::Constants::BEGIN@3";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@13";
+"Test::Fixture::DBIC::Schema::BEGIN@7" -> "Params::Validate::BEGIN@15";
+}

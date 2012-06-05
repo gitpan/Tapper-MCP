@@ -1,0 +1,40 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::import";
+}
+subgraph cluster_DateTime_Locale_en_US {
+	label="DateTime::Locale::en_US";
+	"DateTime::Locale::en_US::BEGIN@25";
+	"DateTime::Locale::en_US::BEGIN@23";
+	"DateTime::Locale::en_US::BEGIN@21";
+	"DateTime::Locale::en_US::cldr_version";
+	"DateTime::Locale::en_US::BEGIN@22";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Locale {
+	label="DateTime::Locale";
+	"DateTime::Locale::_load_class_from_id";
+}
+"DateTime::Locale::_load_class_from_id" -> "DateTime::Locale::en_US::BEGIN@23";
+"DateTime::Locale::_load_class_from_id" -> "DateTime::Locale::en_US::cldr_version";
+"DateTime::Locale::en_US::BEGIN@25" -> "base::import";
+"DateTime::Locale::en_US::BEGIN@22" -> "warnings::import";
+"DateTime::Locale::en_US::BEGIN@23" -> "utf8::import";
+"DateTime::Locale::en_US::BEGIN@21" -> "strict::import";
+"DateTime::Locale::_load_class_from_id" -> "DateTime::Locale::en_US::BEGIN@25";
+"DateTime::Locale::_load_class_from_id" -> "DateTime::Locale::en_US::BEGIN@22";
+"DateTime::Locale::_load_class_from_id" -> "DateTime::Locale::en_US::BEGIN@21";
+}

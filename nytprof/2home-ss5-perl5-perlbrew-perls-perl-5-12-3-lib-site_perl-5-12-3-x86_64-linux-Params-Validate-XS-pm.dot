@@ -1,0 +1,85 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Test_Fixture_DBIC_Schema {
+	label="Test::Fixture::DBIC::Schema";
+	"Test::Fixture::DBIC::Schema::construct_fixture";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_DateTime_Format_Builder_Parser {
+	label="DateTime::Format::Builder::Parser";
+	"DateTime::Format::Builder::Parser::create_single_parser";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Regex {
+	label="DateTime::Format::Builder::Parser::Regex";
+	"DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:98]";
+	"DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:84]";
+}
+subgraph cluster_Params_Validate_XS {
+	label="Params::Validate::XS";
+	"Params::Validate::XS::BEGIN@3";
+	"Params::Validate::XS::validate_pos";
+	"Params::Validate::XS::BEGIN@35";
+	"Params::Validate::XS::_check_regex_from_xs";
+	"Params::Validate::XS::BEGIN@4";
+	"Params::Validate::XS::validate";
+	"Params::Validate::XS::CORE:regcomp";
+	"Params::Validate::XS::CORE:match";
+}
+subgraph cluster_Module_Runtime {
+	label="Module::Runtime";
+	"Module::Runtime::require_module";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::from_epoch";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::new";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Format_Builder {
+	label="DateTime::Format::Builder";
+	"DateTime::Format::Builder::create_class";
+}
+subgraph cluster_DateTime_Locale {
+	label="DateTime::Locale";
+	"DateTime::Locale::load";
+	"DateTime::Locale::_registered_id";
+	"DateTime::Locale::_register";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_generic {
+	label="DateTime::Format::Builder::Parser::generic";
+	"DateTime::Format::Builder::Parser::generic::generic_parser";
+}
+"DateTime::Locale::load" -> "Params::Validate::XS::validate_pos";
+"DateTime::Locale::_registered_id" -> "Params::Validate::XS::validate_pos";
+"Params::Validate::XS::_check_regex_from_xs" -> "Params::Validate::XS::CORE:regcomp";
+"Module::Runtime::require_module" -> "Params::Validate::XS::BEGIN@35";
+"Module::Runtime::require_module" -> "Params::Validate::XS::BEGIN@4";
+"Params::Validate::XS::_check_regex_from_xs" -> "Params::Validate::XS::CORE:match";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "Params::Validate::XS::validate";
+"DateTime::Format::Builder::Parser::generic::generic_parser" -> "Params::Validate::XS::validate";
+"Test::Fixture::DBIC::Schema::construct_fixture" -> "Params::Validate::XS::validate";
+"DateTime::from_epoch" -> "Params::Validate::XS::validate";
+"DateTime::Format::Builder::create_class" -> "Params::Validate::XS::validate";
+"DateTime::TimeZone::new" -> "Params::Validate::XS::validate";
+"DateTime::Locale::_register" -> "Params::Validate::XS::validate";
+"Module::Runtime::require_module" -> "Params::Validate::XS::BEGIN@3";
+"Params::Validate::XS::BEGIN@4" -> "warnings::import";
+"Params::Validate::XS::validate" -> "DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:98]";
+"Params::Validate::XS::BEGIN@3" -> "strict::import";
+"Params::Validate::XS::validate" -> "UNIVERSAL::isa";
+"Params::Validate::XS::validate" -> "Params::Validate::XS::_check_regex_from_xs";
+"Params::Validate::XS::validate" -> "DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:84]";
+}

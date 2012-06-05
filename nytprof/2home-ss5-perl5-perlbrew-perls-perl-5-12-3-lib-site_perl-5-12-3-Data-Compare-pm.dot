@@ -1,0 +1,74 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Config {
+	label="Config";
+	"Config::FETCH";
+}
+subgraph cluster_DBIx_Class_ResultSet {
+	label="DBIx::Class::ResultSet";
+	"DBIx::Class::ResultSet::BEGIN@11";
+}
+subgraph cluster_Data_Compare {
+	label="Data::Compare";
+	"Data::Compare::BEGIN@12";
+	"Data::Compare::BEGIN@14";
+	"Data::Compare::BEGIN@9";
+	"Data::Compare::BEGIN@24";
+	"Data::Compare::BEGIN@15";
+	"Data::Compare::BEGIN@10";
+	"Data::Compare::BEGIN@13";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_Cwd {
+	label="Cwd";
+	"Cwd::BEGIN@811";
+	"Cwd::BEGIN@172";
+	"Cwd::BEGIN@170";
+	"Cwd::CORE:fteexec";
+	"Cwd::BEGIN@171";
+	"Cwd::BEGIN@209";
+	"Cwd::CORE:regcomp";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Data::Compare::BEGIN@13" -> "Exporter::import";
+"Data::Compare::BEGIN@24" -> "Exporter::import";
+"Data::Compare::BEGIN@15" -> "Exporter::import";
+"Data::Compare::BEGIN@14" -> "Exporter::import";
+"Data::Compare::BEGIN@24" -> "Cwd::BEGIN@209";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@13";
+"Data::Compare::BEGIN@24" -> "Cwd::CORE:regcomp";
+"Data::Compare::BEGIN@24" -> "Cwd::BEGIN@171";
+"Data::Compare::BEGIN@10" -> "warnings::import";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@12";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@24";
+"Data::Compare::BEGIN@12" -> "vars::import";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@15";
+"Data::Compare::BEGIN@24" -> "Cwd::BEGIN@172";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@9";
+"Data::Compare::BEGIN@24" -> "Config::FETCH";
+"Data::Compare::BEGIN@9" -> "strict::import";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@14";
+"Data::Compare::BEGIN@24" -> "Cwd::CORE:fteexec";
+"Data::Compare::BEGIN@24" -> "XSLoader::load";
+"Data::Compare::BEGIN@24" -> "Cwd::BEGIN@811";
+"DBIx::Class::ResultSet::BEGIN@11" -> "Data::Compare::BEGIN@10";
+"Data::Compare::BEGIN@24" -> "Cwd::BEGIN@170";
+}

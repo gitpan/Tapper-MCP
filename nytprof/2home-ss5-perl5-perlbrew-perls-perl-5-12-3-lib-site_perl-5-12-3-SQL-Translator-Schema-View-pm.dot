@@ -1,0 +1,74 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SQL_Translator_Utils {
+	label="SQL::Translator::Utils";
+	"SQL::Translator::Utils::parse_list_arg";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_SQL_Translator_Schema_Object {
+	label="SQL::Translator::Schema::Object";
+	"SQL::Translator::Schema::Object::init";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_SQL_Translator_Schema_View {
+	label="SQL::Translator::Schema::View";
+	"SQL::Translator::Schema::View::sql";
+	"SQL::Translator::Schema::View::fields";
+	"SQL::Translator::Schema::View::name";
+	"SQL::Translator::Schema::View::BEGIN@49";
+	"SQL::Translator::Schema::View::schema";
+	"SQL::Translator::Schema::View::CORE:match";
+	"SQL::Translator::Schema::View::BEGIN@47";
+	"SQL::Translator::Schema::View::BEGIN@45";
+	"SQL::Translator::Schema::View::order";
+	"SQL::Translator::Schema::View::BEGIN@44";
+}
+subgraph cluster_SQL_Translator_Schema {
+	label="SQL::Translator::Schema";
+	"SQL::Translator::Schema::BEGIN@52";
+	"SQL::Translator::Schema::add_view";
+	"SQL::Translator::Schema::get_views";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_SQL_Translator_Producer_SQLite {
+	label="SQL::Translator::Producer::SQLite";
+	"SQL::Translator::Producer::SQLite::create_view";
+}
+"SQL::Translator::Schema::BEGIN@52" -> "SQL::Translator::Schema::View::BEGIN@44";
+"SQL::Translator::Schema::View::order" -> "SQL::Translator::Schema::View::CORE:match";
+"SQL::Translator::Schema::View::BEGIN@45" -> "Exporter::import";
+"SQL::Translator::Schema::add_view" -> "SQL::Translator::Schema::View::order";
+"SQL::Translator::Schema::get_views" -> "SQL::Translator::Schema::View::order";
+"SQL::Translator::Schema::BEGIN@52" -> "SQL::Translator::Schema::View::BEGIN@47";
+"SQL::Translator::Schema::add_view" -> "SQL::Translator::Schema::View::name";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::name";
+"SQL::Translator::Producer::SQLite::create_view" -> "SQL::Translator::Schema::View::name";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::schema";
+"SQL::Translator::Schema::View::BEGIN@47" -> "base::import";
+"SQL::Translator::Schema::View::BEGIN@49" -> "vars::import";
+"SQL::Translator::Schema::View::BEGIN@44" -> "strict::import";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::sql";
+"SQL::Translator::Producer::SQLite::create_view" -> "SQL::Translator::Schema::View::sql";
+"SQL::Translator::Schema::Object::init" -> "SQL::Translator::Schema::View::fields";
+"SQL::Translator::Schema::BEGIN@52" -> "SQL::Translator::Schema::View::BEGIN@45";
+"SQL::Translator::Schema::View::fields" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Schema::View::schema" -> "UNIVERSAL::isa";
+"SQL::Translator::Schema::BEGIN@52" -> "SQL::Translator::Schema::View::BEGIN@49";
+}

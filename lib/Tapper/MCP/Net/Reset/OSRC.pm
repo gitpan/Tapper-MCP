@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::Reset::OSRC::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Net::Reset::OSRC::VERSION = '4.0.1';
+  $Tapper::MCP::Net::Reset::OSRC::VERSION = '4.0.2';
 }
 
 use strict;

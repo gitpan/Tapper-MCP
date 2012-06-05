@@ -1,0 +1,122 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SQL_Translator_Utils {
+	label="SQL::Translator::Utils";
+	"SQL::Translator::Utils::BEGIN@56";
+	"SQL::Translator::Utils::debug";
+	"SQL::Translator::Utils::CORE:match";
+	"SQL::Translator::Utils::parse_dbms_version";
+	"SQL::Translator::Utils::BEGIN@21";
+	"SQL::Translator::Utils::BEGIN@24";
+	"SQL::Translator::Utils::BEGIN@33";
+	"SQL::Translator::Utils::BEGIN@25";
+	"SQL::Translator::Utils::parse_list_arg";
+	"SQL::Translator::Utils::BEGIN@23";
+	"SQL::Translator::Utils::BEGIN@22";
+	"SQL::Translator::Utils::CORE:subst";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_SQL_Translator_Schema_Constraint {
+	label="SQL::Translator::Schema::Constraint";
+	"SQL::Translator::Schema::Constraint::reference_fields";
+	"SQL::Translator::Schema::Constraint::fields";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_SQL_Translator_Schema_Field {
+	label="SQL::Translator::Schema::Field";
+	"SQL::Translator::Schema::Field::size";
+}
+subgraph cluster_SQL_Translator_Schema_Procedure {
+	label="SQL::Translator::Schema::Procedure";
+	"SQL::Translator::Schema::Procedure::BEGIN@49";
+}
+subgraph cluster_Digest_base {
+	label="Digest::base";
+	"Digest::base::BEGIN@3";
+	"Digest::base::BEGIN@4";
+}
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::bootstrap";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Digest_SHA1 {
+	label="Digest::SHA1";
+	"Digest::SHA1::BEGIN@3";
+	"Digest::SHA1::BEGIN@4";
+}
+subgraph cluster_SQL_Translator_Schema_View {
+	label="SQL::Translator::Schema::View";
+	"SQL::Translator::Schema::View::fields";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_SQL_Translator_Schema_Table {
+	label="SQL::Translator::Schema::Table";
+	"SQL::Translator::Schema::Table::primary_key";
+}
+subgraph cluster_SQL_Translator_Producer_SQLite {
+	label="SQL::Translator::Producer::SQLite";
+	"SQL::Translator::Producer::SQLite::produce";
+	"SQL::Translator::Producer::SQLite::create_field";
+	"SQL::Translator::Producer::SQLite::create_table";
+	"SQL::Translator::Producer::SQLite::create_view";
+}
+subgraph cluster_SQL_Translator_Schema_Index {
+	label="SQL::Translator::Schema::Index";
+	"SQL::Translator::Schema::Index::fields";
+}
+"SQL::Translator::Producer::SQLite::create_field" -> "SQL::Translator::Utils::debug";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::Utils::debug";
+"SQL::Translator::Producer::SQLite::create_table" -> "SQL::Translator::Utils::debug";
+"SQL::Translator::Producer::SQLite::create_view" -> "SQL::Translator::Utils::debug";
+"SQL::Translator::Utils::BEGIN@25" -> "Exporter::import";
+"SQL::Translator::Utils::BEGIN@24" -> "Exporter::import";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@33";
+"SQL::Translator::Utils::parse_list_arg" -> "SQL::Translator::Utils::CORE:subst";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@22";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@56";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@21";
+"SQL::Translator::Utils::BEGIN@33" -> "constant::import";
+"SQL::Translator::Utils::BEGIN@56" -> "strict::unimport";
+"SQL::Translator::Utils::BEGIN@22" -> "base::import";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@23";
+"SQL::Translator::Utils::BEGIN@23" -> "vars::import";
+"SQL::Translator::Utils::BEGIN@21" -> "strict::import";
+"SQL::Translator::Utils::BEGIN@24" -> "Digest::SHA1::BEGIN@4";
+"SQL::Translator::Utils::BEGIN@24" -> "DynaLoader::bootstrap";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::Utils::parse_dbms_version";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@25";
+"SQL::Translator::Utils::BEGIN@24" -> "Digest::base::BEGIN@4";
+"SQL::Translator::Schema::Procedure::BEGIN@49" -> "SQL::Translator::Utils::BEGIN@24";
+"SQL::Translator::Schema::Constraint::reference_fields" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Schema::Field::size" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Schema::Constraint::fields" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Schema::View::fields" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Schema::Index::fields" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Schema::Table::primary_key" -> "SQL::Translator::Utils::parse_list_arg";
+"SQL::Translator::Utils::parse_list_arg" -> "UNIVERSAL::isa";
+"SQL::Translator::Utils::BEGIN@24" -> "Digest::base::BEGIN@3";
+"SQL::Translator::Utils::parse_dbms_version" -> "SQL::Translator::Utils::CORE:match";
+"SQL::Translator::Utils::BEGIN@24" -> "Digest::SHA1::BEGIN@3";
+}

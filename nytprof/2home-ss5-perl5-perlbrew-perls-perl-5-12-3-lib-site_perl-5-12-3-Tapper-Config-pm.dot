@@ -1,0 +1,172 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_feature {
+	label="feature";
+	"feature::import";
+}
+subgraph cluster_Tapper_Schema_TestTools {
+	label="Tapper::Schema::TestTools";
+	"Tapper::Schema::TestTools::setup_reportsdb";
+	"Tapper::Schema::TestTools::setup_testrundb";
+}
+subgraph cluster_YAML_Syck {
+	label="YAML::Syck";
+	"YAML::Syck::Load";
+	"YAML::Syck::BEGIN@15";
+	"YAML::Syck::BEGIN@4";
+	"YAML::Syck::BEGIN@36";
+	"YAML::Syck::BEGIN@5";
+	"YAML::Syck::BEGIN@12";
+	"YAML::Syck::LoadYAML";
+	"YAML::Syck::BEGIN@13";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_File_ShareDir {
+	label="File::ShareDir";
+	"File::ShareDir::BEGIN@109";
+	"File::ShareDir::BEGIN@443";
+	"File::ShareDir::BEGIN@110";
+	"File::ShareDir::module_file";
+	"File::ShareDir::BEGIN@117";
+	"File::ShareDir::BEGIN@111";
+	"File::ShareDir::BEGIN@114";
+	"File::ShareDir::BEGIN@116";
+	"File::ShareDir::BEGIN@113";
+	"File::ShareDir::BEGIN@108";
+	"File::ShareDir::BEGIN@133";
+	"File::ShareDir::BEGIN@112";
+}
+subgraph cluster_Tapper_Model {
+	label="Tapper::Model";
+	"Tapper::Model::model";
+	"Tapper::Model::BEGIN@25";
+}
+subgraph cluster_File_Slurp {
+	label="File::Slurp";
+	"File::Slurp::BEGIN@11";
+	"File::Slurp::BEGIN@15";
+	"File::Slurp::BEGIN@3";
+	"File::Slurp::BEGIN@9";
+	"File::Slurp::BEGIN@6";
+	"File::Slurp::BEGIN@263";
+	"File::Slurp::BEGIN@8";
+	"File::Slurp::BEGIN@12";
+	"File::Slurp::BEGIN@62";
+	"File::Slurp::BEGIN@5";
+	"File::Slurp::CORE:match";
+	"File::Slurp::read_file";
+	"File::Slurp::BEGIN@10";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+	"warnings::import";
+}
+subgraph cluster_Tapper_Config {
+	label="Tapper::Config";
+	"Tapper::Config::BEGIN@12";
+	"Tapper::Config::CORE:ftis";
+	"Tapper::Config::BEGIN@10";
+	"Tapper::Config::BEGIN@19";
+	"Tapper::Config::BEGIN@18";
+	"Tapper::Config::_switch_context";
+	"Tapper::Config::subconfig";
+	"Tapper::Config::_prepare_special_entries";
+	"Tapper::Config::BEGIN@92";
+	"Tapper::Config::BEGIN@13";
+	"Tapper::Config::default_merge";
+	"Tapper::Config::BEGIN@16";
+	"Tapper::Config::BEGIN@2";
+	"Tapper::Config::CORE:match";
+	"Tapper::Config::BEGIN@10.4";
+	"Tapper::Config::BEGIN@15";
+	"Tapper::Config::BEGIN@17";
+	"Tapper::Config::_getenv";
+	"Tapper::Config::BEGIN@33";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Hash_Merge_Simple {
+	label="Hash::Merge::Simple";
+	"Hash::Merge::Simple::BEGIN@8";
+	"Hash::Merge::Simple::merge";
+	"Hash::Merge::Simple::BEGIN@10";
+	"Hash::Merge::Simple::BEGIN@7";
+	"Hash::Merge::Simple::BEGIN@2";
+}
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@10";
+"Tapper::Config::BEGIN@92" -> "Tapper::Config::_switch_context";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@16";
+"Tapper::Config::BEGIN@16" -> "Exporter::import";
+"Tapper::Config::BEGIN@17" -> "Exporter::import";
+"Tapper::Config::BEGIN@19" -> "Exporter::import";
+"Tapper::Config::BEGIN@18" -> "Exporter::import";
+"Tapper::Config::BEGIN@15" -> "Exporter::import";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@12";
+"Tapper::Config::_prepare_special_entries" -> "File::ShareDir::module_file";
+"Tapper::Config::_switch_context" -> "File::ShareDir::module_file";
+"Tapper::Schema::TestTools::setup_reportsdb" -> "Tapper::Config::subconfig";
+"Tapper::Model::model" -> "Tapper::Config::subconfig";
+"Tapper::Schema::TestTools::setup_testrundb" -> "Tapper::Config::subconfig";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@117";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@36";
+"Tapper::Config::BEGIN@18" -> "Hash::Merge::Simple::BEGIN@10";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@13";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@110";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@9";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@2";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@5";
+"Tapper::Config::BEGIN@10" -> "Tapper::Config::BEGIN@10.4";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@10";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@5";
+"Tapper::Config::_switch_context" -> "Tapper::Config::_prepare_special_entries";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@13";
+"Tapper::Config::BEGIN@13" -> "warnings::import";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@12";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@62";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@92";
+"Tapper::Config::_prepare_special_entries" -> "Tapper::Config::CORE:match";
+"Tapper::Config::_switch_context" -> "Tapper::Config::CORE:match";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@17";
+"Tapper::Config::_switch_context" -> "Tapper::Config::_getenv";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@443";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@4";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@12";
+"Tapper::Config::BEGIN@12" -> "strict::import";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@15";
+"Tapper::Config::_switch_context" -> "Hash::Merge::Simple::merge";
+"Tapper::Config::BEGIN@33" -> "warnings::unimport";
+"Tapper::Config::_switch_context" -> "YAML::Syck::LoadYAML";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@19";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@113";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@8";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@18";
+"Tapper::Config::_switch_context" -> "YAML::Syck::Load";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@109";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@11";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@114";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@116";
+"Tapper::Config::default_merge" -> "Tapper::Config::CORE:ftis";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@15";
+"Tapper::Config::_switch_context" -> "File::Slurp::read_file";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@15";
+"Tapper::Model::BEGIN@25" -> "Tapper::Config::BEGIN@33";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@133";
+"Tapper::Config::BEGIN@18" -> "Hash::Merge::Simple::BEGIN@2";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@263";
+"Tapper::Config::_switch_context" -> "Tapper::Config::default_merge";
+"Tapper::Config::BEGIN@10.4" -> "feature::import";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@112";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@108";
+"Tapper::Config::BEGIN@18" -> "Hash::Merge::Simple::BEGIN@8";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@6";
+"Tapper::Config::BEGIN@18" -> "Hash::Merge::Simple::BEGIN@7";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@3";
+"Tapper::Config::BEGIN@17" -> "File::ShareDir::BEGIN@111";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::CORE:match";
+}

@@ -1,0 +1,122 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_InflateColumn_DateTime {
+	label="DBIx::Class::InflateColumn::DateTime";
+	"DBIx::Class::InflateColumn::DateTime::CORE:match";
+	"DBIx::Class::InflateColumn::DateTime::_flate_or_fallback";
+	"DBIx::Class::InflateColumn::DateTime::BEGIN@8";
+	"DBIx::Class::InflateColumn::DateTime::_pre_deflate_datetime";
+	"DBIx::Class::InflateColumn::DateTime::BEGIN@5";
+	"DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:187]";
+	"DBIx::Class::InflateColumn::DateTime::_datetime_parser";
+	"DBIx::Class::InflateColumn::DateTime::BEGIN@6";
+	"DBIx::Class::InflateColumn::DateTime::BEGIN@4";
+	"DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:202]";
+	"DBIx::Class::InflateColumn::DateTime::register_column";
+	"DBIx::Class::InflateColumn::DateTime::BEGIN@7";
+	"DBIx::Class::InflateColumn::DateTime::BEGIN@3";
+	"DBIx::Class::InflateColumn::DateTime::_deflate_from_datetime";
+}
+subgraph cluster_DBIx_Class_InflateColumn_Object_Enum {
+	label="DBIx::Class::InflateColumn::Object::Enum";
+	"DBIx::Class::InflateColumn::Object::Enum::register_column";
+}
+subgraph cluster_DBIx_Class_Carp {
+	label="DBIx::Class::Carp";
+	"DBIx::Class::Carp::import";
+}
+subgraph cluster_Try_Tiny {
+	label="Try::Tiny";
+	"Try::Tiny::catch";
+	"Try::Tiny::try";
+}
+subgraph cluster_DBIx_Class_InflateColumn {
+	label="DBIx::Class::InflateColumn";
+	"DBIx::Class::InflateColumn::_deflated_column";
+	"DBIx::Class::InflateColumn::inflate_column";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::import";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy {
+	label="DBIx::Class::ResultSourceProxy";
+	"DBIx::Class::ResultSourceProxy::add_columns";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_DBIx_Class_ResultSource {
+	label="DBIx::Class::ResultSource";
+	"DBIx::Class::ResultSource::storage";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_next {
+	label="next";
+	"next::method";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::register_column";
+	"DBIx::Class::Row::result_source";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Format_SQLite {
+	label="DateTime::Format::SQLite";
+	"DateTime::Format::SQLite::format_datetime";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::datetime_parser";
+}
+"DBIx::Class::InflateColumn::DateTime::_flate_or_fallback" -> "Try::Tiny::try";
+"DBIx::Class::InflateColumn::_deflated_column" -> "DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:187]";
+"DBIx::Class::InflateColumn::DateTime::BEGIN@7" -> "Exporter::import";
+"DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:202]" -> "DateTime::Format::SQLite::format_datetime";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::DateTime::BEGIN@8";
+"DBIx::Class::InflateColumn::DateTime::_datetime_parser" -> "DBIx::Class::ResultSource::storage";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::DateTime::BEGIN@5";
+"DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:187]" -> "DBIx::Class::InflateColumn::DateTime::_deflate_from_datetime";
+"DBIx::Class::InflateColumn::DateTime::_flate_or_fallback" -> "Try::Tiny::catch";
+"DBIx::Class::InflateColumn::DateTime::_flate_or_fallback" -> "UNIVERSAL::can";
+"DBIx::Class::InflateColumn::DateTime::BEGIN@5" -> "base::import";
+"DBIx::Class::InflateColumn::DateTime::BEGIN@4" -> "warnings::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::DateTime::BEGIN@7";
+"DBIx::Class::InflateColumn::DateTime::BEGIN@8" -> "namespace::clean::import";
+"DBIx::Class::InflateColumn::DateTime::BEGIN@3" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::DateTime::BEGIN@4";
+"DBIx::Class::InflateColumn::DateTime::_deflate_from_datetime" -> "DBIx::Class::InflateColumn::DateTime::_flate_or_fallback";
+"DBIx::Class::InflateColumn::DateTime::_datetime_parser" -> "DBIx::Class::Row::result_source";
+"DBIx::Class::InflateColumn::DateTime::_datetime_parser" -> "DBIx::Class::Storage::DBI::datetime_parser";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::DateTime::BEGIN@6";
+"DBIx::Class::ResultSourceProxy::add_columns" -> "DBIx::Class::InflateColumn::DateTime::register_column";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::InflateColumn::DateTime::CORE:match";
+"DBIx::Class::InflateColumn::DateTime::BEGIN@6" -> "DBIx::Class::Carp::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::DateTime::BEGIN@3";
+"DBIx::Class::InflateColumn::DateTime::_flate_or_fallback" -> "DBIx::Class::InflateColumn::DateTime::_datetime_parser";
+"Try::Tiny::try" -> "DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:202]";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::Row::register_column";
+"DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:187]" -> "DBIx::Class::InflateColumn::DateTime::_pre_deflate_datetime";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "next::method";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::InflateColumn::Object::Enum::register_column";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::InflateColumn::inflate_column";
+}

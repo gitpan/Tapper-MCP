@@ -1,0 +1,85 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Config {
+	label="Config";
+	"Config::FETCH";
+}
+subgraph cluster_Module_Find {
+	label="Module::Find";
+	"Module::Find::CORE:subst";
+	"Module::Find::findallmod";
+	"Module::Find::BEGIN@5";
+	"Module::Find::CORE:fteread";
+	"Module::Find::CORE:match";
+	"Module::Find::BEGIN@4";
+	"Module::Find::_wanted";
+	"Module::Find::BEGIN@8";
+	"Module::Find::BEGIN@3";
+	"Module::Find::CORE:ftdir";
+	"Module::Find::BEGIN@7";
+	"Module::Find::_find";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::_findallmod";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_File_Find {
+	label="File::Find";
+	"File::Find::BEGIN@2";
+	"File::Find::BEGIN@3";
+	"File::Find::BEGIN@4";
+	"File::Find::BEGIN@5";
+	"File::Find::CORE:qr";
+	"File::Find::find";
+	"File::Find::_find_dir_symlnk";
+	"File::Find::BEGIN@424";
+}
+subgraph cluster_File_Spec_Unix {
+	label="File::Spec::Unix";
+	"File::Spec::Unix::curdir";
+	"File::Spec::Unix::abs2rel";
+	"File::Spec::Unix::splitdir";
+	"File::Spec::Unix::catdir";
+}
+"DBIx::Class::Schema::_findallmod" -> "Module::Find::BEGIN@3";
+"Module::Find::BEGIN@8" -> "Exporter::import";
+"DBIx::Class::Schema::_findallmod" -> "Module::Find::BEGIN@8";
+"Module::Find::BEGIN@8" -> "File::Find::CORE:qr";
+"File::Find::_find_dir_symlnk" -> "Module::Find::_wanted";
+"DBIx::Class::Schema::_findallmod" -> "Module::Find::findallmod";
+"Module::Find::BEGIN@8" -> "File::Find::BEGIN@3";
+"DBIx::Class::Schema::_findallmod" -> "Module::Find::BEGIN@4";
+"DBIx::Class::Schema::_findallmod" -> "Module::Find::BEGIN@7";
+"DBIx::Class::Schema::_findallmod" -> "Module::Find::BEGIN@5";
+"Module::Find::BEGIN@5" -> "warnings::import";
+"Module::Find::_wanted" -> "Module::Find::CORE:fteread";
+"Module::Find::_wanted" -> "File::Spec::Unix::curdir";
+"Module::Find::BEGIN@8" -> "File::Spec::Unix::curdir";
+"Module::Find::BEGIN@8" -> "Config::FETCH";
+"Module::Find::_find" -> "File::Spec::Unix::catdir";
+"Module::Find::BEGIN@4" -> "strict::import";
+"Module::Find::findallmod" -> "Module::Find::_find";
+"Module::Find::BEGIN@8" -> "File::Find::BEGIN@2";
+"Module::Find::BEGIN@8" -> "File::Find::BEGIN@5";
+"Module::Find::_wanted" -> "Module::Find::CORE:subst";
+"Module::Find::_wanted" -> "Module::Find::CORE:ftdir";
+"Module::Find::_find" -> "Module::Find::CORE:ftdir";
+"Module::Find::_wanted" -> "File::Spec::Unix::splitdir";
+"Module::Find::_wanted" -> "Module::Find::CORE:match";
+"Module::Find::_wanted" -> "File::Spec::Unix::abs2rel";
+"Module::Find::_find" -> "File::Find::find";
+"Module::Find::BEGIN@8" -> "File::Find::BEGIN@424";
+"Module::Find::BEGIN@8" -> "File::Find::BEGIN@4";
+}

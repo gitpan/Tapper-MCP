@@ -1,0 +1,98 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Any_Moose {
+	label="Any::Moose";
+	"Any::Moose::BEGIN@69";
+	"Any::Moose::_is_moose_loaded";
+	"Any::Moose::any_moose";
+	"Any::Moose::import";
+	"Any::Moose::BEGIN@8";
+	"Any::Moose::moose_is_preferred";
+	"Any::Moose::BEGIN@9";
+	"Any::Moose::CORE:subst";
+	"Any::Moose::CORE:match";
+	"Any::Moose::_canonicalize_fragment";
+	"Any::Moose::_canonicalize_options";
+	"Any::Moose::BEGIN@7";
+	"Any::Moose::_install_module";
+	"Any::Moose::mouse_is_preferred";
+	"Any::Moose::_backer_of";
+	"Any::Moose::BEGIN@191";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::setup_import_methods";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+}
+subgraph cluster_MooseX_Log_Log4perl {
+	label="MooseX::Log::Log4perl";
+	"MooseX::Log::Log4perl::BEGIN@4";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::get_metaclass_by_name";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::BEGIN@22";
+	"Moose::Role::BEGIN@13";
+	"Moose::Role::BEGIN@2";
+	"Moose::Role::BEGIN@11";
+	"Moose::Role::BEGIN@9";
+	"Moose::Role::BEGIN@12";
+	"Moose::Role::BEGIN@20";
+	"Moose::Role::BEGIN@17";
+	"Moose::Role::BEGIN@21";
+	"Moose::Role::BEGIN@15";
+	"Moose::Role::BEGIN@18";
+	"Moose::Role::BEGIN@8";
+}
+"Any::Moose::_backer_of" -> "Any::Moose::_is_moose_loaded";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::_is_moose_loaded";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::BEGIN@9";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@12";
+"Any::Moose::_install_module" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@9";
+"Any::Moose::import" -> "Any::Moose::_canonicalize_options";
+"Any::Moose::any_moose" -> "Any::Moose::_backer_of";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::BEGIN@191";
+"Any::Moose::_install_module" -> "Moose::Exporter::setup_import_methods";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::import";
+"Any::Moose::BEGIN@191" -> "strict::unimport";
+"Any::Moose::BEGIN@69" -> "strict::unimport";
+"Any::Moose::_canonicalize_options" -> "Any::Moose::any_moose";
+"Any::Moose::BEGIN@9" -> "warnings::import";
+"Any::Moose::import" -> "warnings::import";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@8";
+"Any::Moose::import" -> "Any::Moose::_install_module";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::BEGIN@69";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@15";
+"Any::Moose::any_moose" -> "Any::Moose::mouse_is_preferred";
+"Any::Moose::import" -> "strict::import";
+"Any::Moose::BEGIN@8" -> "strict::import";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@11";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@22";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@2";
+"Any::Moose::any_moose" -> "Any::Moose::_canonicalize_fragment";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@18";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::BEGIN@7";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@20";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@13";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@17";
+"Any::Moose::any_moose" -> "Any::Moose::CORE:match";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::moose_is_preferred";
+"Any::Moose::_backer_of" -> "Class::MOP::get_metaclass_by_name";
+"MooseX::Log::Log4perl::BEGIN@4" -> "Any::Moose::BEGIN@8";
+"Any::Moose::_install_module" -> "Any::Moose::CORE:subst";
+"Any::Moose::_canonicalize_fragment" -> "Any::Moose::CORE:subst";
+"Any::Moose::_install_module" -> "Moose::Role::BEGIN@21";
+}

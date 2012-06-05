@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::State::Plugin::Dummy::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::State::Plugin::Dummy::VERSION = '4.0.1';
+  $Tapper::MCP::State::Plugin::Dummy::VERSION = '4.0.2';
 }
 
 use strict;

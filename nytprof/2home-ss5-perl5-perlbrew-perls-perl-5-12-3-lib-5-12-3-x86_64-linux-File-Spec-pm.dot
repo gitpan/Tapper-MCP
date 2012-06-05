@@ -1,0 +1,24 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_File_Spec {
+	label="File::Spec";
+	"File::Spec::BEGIN@4";
+	"File::Spec::BEGIN@3";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Log_Log4perl_Util {
+	label="Log::Log4perl::Util";
+	"Log::Log4perl::Util::BEGIN@3";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Log::Log4perl::Util::BEGIN@3" -> "File::Spec::BEGIN@4";
+"File::Spec::BEGIN@4" -> "vars::import";
+"File::Spec::BEGIN@3" -> "strict::import";
+"Log::Log4perl::Util::BEGIN@3" -> "File::Spec::BEGIN@3";
+}

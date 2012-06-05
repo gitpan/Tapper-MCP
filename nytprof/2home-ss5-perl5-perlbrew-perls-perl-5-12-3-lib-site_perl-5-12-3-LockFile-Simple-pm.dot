@@ -1,0 +1,40 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_LockFile_Simple {
+	label="LockFile::Simple";
+	"LockFile::Simple::BEGIN@72";
+	"LockFile::Simple::BEGIN@70";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Sys_Hostname {
+	label="Sys::Hostname";
+	"Sys::Hostname::BEGIN@17";
+	"Sys::Hostname::BEGIN@5";
+	"Sys::Hostname::BEGIN@3";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Tapper_Base {
+	label="Tapper::Base";
+	"Tapper::Base::BEGIN@12";
+	"Tapper::Base::BEGIN@60";
+}
+"LockFile::Simple::BEGIN@72" -> "Exporter::import";
+"Tapper::Base::BEGIN@12" -> "Tapper::Base::BEGIN@60";
+"LockFile::Simple::BEGIN@72" -> "Sys::Hostname::BEGIN@5";
+"LockFile::Simple::BEGIN@72" -> "Sys::Hostname::BEGIN@17";
+"LockFile::Simple::BEGIN@70" -> "vars::import";
+"Tapper::Base::BEGIN@60" -> "strict::import";
+"Tapper::Base::BEGIN@12" -> "LockFile::Simple::BEGIN@70";
+"Tapper::Base::BEGIN@12" -> "LockFile::Simple::BEGIN@72";
+"LockFile::Simple::BEGIN@72" -> "Sys::Hostname::BEGIN@3";
+}

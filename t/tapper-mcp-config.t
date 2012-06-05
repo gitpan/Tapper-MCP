@@ -74,7 +74,7 @@ is($config->{installer_stop}, 1, 'installer_stop');
 my $info = $producer->mcp_info;
 isa_ok($info, 'Tapper::MCP::Info', 'mcp_info');
 my @timeout = $info->get_testprogram_timeouts(1);
-is_deeply(\@timeout,[36000],'Timeout for testprogram in PRC 1');
+is_deeply(\@timeout,[36120],'Timeout for testprogram in PRC 1'); # timeout + grace period
 
 $producer = Tapper::MCP::Config->new(3);
 $config = $producer->create_config();

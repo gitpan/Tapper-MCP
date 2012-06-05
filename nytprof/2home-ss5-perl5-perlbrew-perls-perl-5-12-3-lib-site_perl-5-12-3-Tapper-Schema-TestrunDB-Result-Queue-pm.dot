@@ -1,0 +1,78 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_ResultSet {
+	label="DBIx::Class::ResultSet";
+	"DBIx::Class::ResultSet::all";
+	"DBIx::Class::ResultSet::search";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::fits";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::host_id";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::testrun";
+}
+subgraph cluster_parent {
+	label="parent";
+	"parent::import";
+}
+subgraph cluster_DBIx_Class_Storage_DBI_Cursor {
+	label="DBIx::Class::Storage::DBI::Cursor";
+	"DBIx::Class::Storage::DBI::Cursor::DESTROY";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Host {
+	label="Tapper::Schema::TestrunDB::Result::Host";
+	"Tapper::Schema::TestrunDB::Result::Host::id";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Testrun {
+	label="Tapper::Schema::TestrunDB::Result::Testrun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::scenario_element";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Queue {
+	label="Tapper::Schema::TestrunDB::Result::Queue";
+	"Tapper::Schema::TestrunDB::Result::Queue::queued_testruns";
+	"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting";
+	"Tapper::Schema::TestrunDB::Result::Queue::testrunschedulings";
+	"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@12";
+	"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@9";
+	"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@2";
+	"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@10";
+	"Tapper::Schema::TestrunDB::Result::Queue::CORE:subst";
+}
+subgraph cluster_Tapper_MCP_Scheduler_Controller {
+	label="Tapper::MCP::Scheduler::Controller";
+	"Tapper::MCP::Scheduler::Controller::get_next_job";
+	"Tapper::MCP::Scheduler::Controller::toggle_bandwith_color";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "DBIx::Class::Storage::DBI::Cursor::DESTROY";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::Result::Queue::BEGIN@2";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "Tapper::Schema::TestrunDB::Result::Queue::queued_testruns";
+"Tapper::MCP::Scheduler::Controller::toggle_bandwith_color" -> "Tapper::Schema::TestrunDB::Result::Queue::queued_testruns";
+"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@10" -> "warnings::import";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "DBIx::Class::ResultSet::all";
+"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@9" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::Result::Queue::CORE:subst";
+"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Queue::queued_testruns" -> "DBIx::Class::ResultSet::search";
+"Tapper::MCP::Scheduler::Controller::get_next_job" -> "Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::Result::Queue::BEGIN@12";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "Tapper::Schema::TestrunDB::Result::Testrun::scenario_element";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "Tapper::Schema::TestrunDB::Result::TestrunScheduling::testrun";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "Tapper::Schema::TestrunDB::Result::Host::id";
+"Tapper::Schema::TestrunDB::Result::Queue::queued_testruns" -> "Tapper::Schema::TestrunDB::Result::Queue::testrunschedulings";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "Tapper::Schema::TestrunDB::Result::TestrunScheduling::fits";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::Result::Queue::BEGIN@9";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::TestrunDB::Result::Queue::BEGIN@10";
+"Tapper::Schema::TestrunDB::Result::Queue::get_first_fitting" -> "Tapper::Schema::TestrunDB::Result::TestrunScheduling::host_id";
+}

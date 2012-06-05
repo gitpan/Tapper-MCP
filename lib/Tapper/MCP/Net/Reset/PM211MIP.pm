@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::Reset::PM211MIP::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.0.1';
+  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.0.2';
 }
 
 use strict;

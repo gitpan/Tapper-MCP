@@ -1,0 +1,78 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::import";
+}
+subgraph cluster_Class_Inspector {
+	label="Class::Inspector";
+	"Class::Inspector::CORE:match";
+	"Class::Inspector::loaded_filename";
+	"Class::Inspector::BEGIN@553";
+	"Class::Inspector::loaded";
+	"Class::Inspector::BEGIN@45";
+	"Class::Inspector::BEGIN@50";
+	"Class::Inspector::filename";
+	"Class::Inspector::BEGIN@51";
+	"Class::Inspector::CORE:qr";
+	"Class::Inspector::BEGIN@540";
+	"Class::Inspector::BEGIN@42";
+	"Class::Inspector::CORE:subst";
+	"Class::Inspector::CORE:regcomp";
+	"Class::Inspector::_inc_filename";
+	"Class::Inspector::BEGIN@47";
+	"Class::Inspector::_class";
+	"Class::Inspector::BEGIN@46";
+	"Class::Inspector::_loaded";
+}
+subgraph cluster_File_ShareDir {
+	label="File::ShareDir";
+	"File::ShareDir::_MODULE";
+	"File::ShareDir::BEGIN@114";
+	"File::ShareDir::_module_dir_old";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_File_Spec_Unix {
+	label="File::Spec::Unix";
+	"File::Spec::Unix::catfile";
+}
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@42";
+"Class::Inspector::loaded" -> "Class::Inspector::_class";
+"Class::Inspector::filename" -> "Class::Inspector::_class";
+"Class::Inspector::_inc_filename" -> "Class::Inspector::_class";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@50";
+"Class::Inspector::_class" -> "Class::Inspector::CORE:subst";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@51";
+"Class::Inspector::BEGIN@553" -> "strict::unimport";
+"Class::Inspector::BEGIN@540" -> "strict::unimport";
+"Class::Inspector::_class" -> "Class::Inspector::CORE:regcomp";
+"Class::Inspector::BEGIN@46" -> "warnings::import";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@46";
+"Class::Inspector::_class" -> "Class::Inspector::CORE:match";
+"File::ShareDir::_module_dir_old" -> "Class::Inspector::loaded_filename";
+"File::ShareDir::_module_dir_old" -> "Class::Inspector::filename";
+"Class::Inspector::BEGIN@50" -> "vars::import";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@540";
+"Class::Inspector::filename" -> "File::Spec::Unix::catfile";
+"Class::Inspector::BEGIN@51" -> "utf8::import";
+"Class::Inspector::BEGIN@45" -> "strict::import";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@47";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@553";
+"Class::Inspector::BEGIN@51" -> "Class::Inspector::CORE:qr";
+"Class::Inspector::loaded" -> "Class::Inspector::_loaded";
+"File::ShareDir::_MODULE" -> "Class::Inspector::loaded";
+"Class::Inspector::loaded_filename" -> "Class::Inspector::_inc_filename";
+"File::ShareDir::BEGIN@114" -> "Class::Inspector::BEGIN@45";
+}

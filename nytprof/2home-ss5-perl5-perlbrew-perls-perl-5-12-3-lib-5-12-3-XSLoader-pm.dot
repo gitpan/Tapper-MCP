@@ -1,0 +1,117 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Sub_Identify {
+	label="Sub::Identify";
+	"Sub::Identify::BEGIN@6";
+}
+subgraph cluster_Variable_Magic {
+	label="Variable::Magic";
+	"Variable::Magic::BEGIN@203";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@13";
+}
+subgraph cluster_Package_Stash {
+	label="Package::Stash";
+	"Package::Stash::BEGIN@11";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@197";
+}
+subgraph cluster_Fcntl {
+	label="Fcntl";
+	"Fcntl::BEGIN@214";
+}
+subgraph cluster_Tapper_MCP_Net {
+	label="Tapper::MCP::Net";
+	"Tapper::MCP::Net::BEGIN@10";
+}
+subgraph cluster_YAML_Syck {
+	label="YAML::Syck";
+	"YAML::Syck::BEGIN@15";
+}
+subgraph cluster_Data_Compare {
+	label="Data::Compare";
+	"Data::Compare::BEGIN@24";
+}
+subgraph cluster_Module_Runtime {
+	label="Module::Runtime";
+	"Module::Runtime::require_module";
+}
+subgraph cluster_Moose_Meta_Attribute {
+	label="Moose::Meta::Attribute";
+	"Moose::Meta::Attribute::BEGIN@13";
+}
+subgraph cluster_File_Slurp {
+	label="File::Slurp";
+	"File::Slurp::BEGIN@11";
+}
+subgraph cluster_Sys_Hostname {
+	label="Sys::Hostname";
+	"Sys::Hostname::BEGIN@17";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::BEGIN@13";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_IO_Handle {
+	label="IO::Handle";
+	"IO::Handle::BEGIN@266";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::BEGIN@614";
+}
+subgraph cluster_Safe {
+	label="Safe";
+	"Safe::BEGIN@46";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportFile {
+	label="Tapper::Schema::ReportsDB::Result::ReportFile";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13";
+}
+subgraph cluster_Class_Accessor_Grouped {
+	label="Class::Accessor::Grouped";
+	"Class::Accessor::Grouped::BEGIN@529";
+}
+subgraph cluster_Class_MOP_Package {
+	label="Class::MOP::Package";
+	"Class::MOP::Package::BEGIN@15";
+}
+subgraph cluster_Class_C3 {
+	label="Class::C3";
+	"Class::C3::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Testrun {
+	label="Tapper::Schema::TestrunDB::ResultSet::Testrun";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12";
+}
+"File::Slurp::BEGIN@11" -> "XSLoader::load";
+"Moose::Util::TypeConstraints::BEGIN@614" -> "XSLoader::load";
+"Module::Runtime::require_module" -> "XSLoader::load";
+"Moose::Meta::Attribute::BEGIN@13" -> "XSLoader::load";
+"YAML::Syck::BEGIN@15" -> "XSLoader::load";
+"Tapper::MCP::Net::BEGIN@10" -> "XSLoader::load";
+"Class::C3::BEGIN@12" -> "XSLoader::load";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@197" -> "XSLoader::load";
+"Sys::Hostname::BEGIN@17" -> "XSLoader::load";
+"Fcntl::BEGIN@214" -> "XSLoader::load";
+"Package::Stash::BEGIN@11" -> "XSLoader::load";
+"Safe::BEGIN@46" -> "XSLoader::load";
+"Data::Compare::BEGIN@24" -> "XSLoader::load";
+"IO::Handle::BEGIN@266" -> "XSLoader::load";
+"Class::Accessor::Grouped::BEGIN@529" -> "XSLoader::load";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@13" -> "XSLoader::load";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@12" -> "XSLoader::load";
+"Variable::Magic::BEGIN@203" -> "XSLoader::load";
+"Class::MOP::Package::BEGIN@15" -> "XSLoader::load";
+"Moose::BEGIN@13" -> "XSLoader::load";
+"Sub::Identify::BEGIN@6" -> "XSLoader::load";
+"Moose::Exporter::BEGIN@13" -> "XSLoader::load";
+}

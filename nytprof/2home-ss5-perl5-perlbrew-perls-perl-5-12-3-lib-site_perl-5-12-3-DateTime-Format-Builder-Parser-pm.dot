@@ -1,0 +1,102 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_DateTime_Format_Builder_Parser {
+	label="DateTime::Format::Builder::Parser";
+	"DateTime::Format::Builder::Parser::params_all";
+	"DateTime::Format::Builder::Parser::merge_callbacks";
+	"DateTime::Format::Builder::Parser::whose_params";
+	"DateTime::Format::Builder::Parser::set_parser";
+	"DateTime::Format::Builder::Parser::create_parser";
+	"DateTime::Format::Builder::Parser::create_multiple_parsers";
+	"DateTime::Format::Builder::Parser::BEGIN@8";
+	"DateTime::Format::Builder::Parser::BEGIN@1";
+	"DateTime::Format::Builder::Parser::BEGIN@626";
+	"DateTime::Format::Builder::Parser::set_maker";
+	"DateTime::Format::Builder::Parser::BEGIN@3";
+	"DateTime::Format::Builder::Parser::BEGIN@1.40";
+	"DateTime::Format::Builder::Parser::params";
+	"DateTime::Format::Builder::Parser::sort_parsers";
+	"DateTime::Format::Builder::Parser::BEGIN@1.41";
+	"DateTime::Format::Builder::Parser::create_single_parser";
+	"DateTime::Format::Builder::Parser::new";
+	"DateTime::Format::Builder::Parser::BEGIN@1.39";
+	"DateTime::Format::Builder::Parser::BEGIN@4";
+	"DateTime::Format::Builder::Parser::BEGIN@2";
+	"DateTime::Format::Builder::Parser::valid_params";
+	"DateTime::Format::Builder::Parser::BEGIN@5";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Regex {
+	label="DateTime::Format::Builder::Parser::Regex";
+	"DateTime::Format::Builder::Parser::Regex::create_parser";
+}
+subgraph cluster_Params_Validate_XS {
+	label="Params::Validate::XS";
+	"Params::Validate::XS::validate";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_Factory_Util {
+	label="Class::Factory::Util";
+	"Class::Factory::Util::BEGIN@17";
+	"Class::Factory::Util::BEGIN@4";
+	"Class::Factory::Util::import";
+	"Class::Factory::Util::BEGIN@6";
+	"Class::Factory::Util::BEGIN@3";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_Format_SQLite {
+	label="DateTime::Format::SQLite";
+	"DateTime::Format::SQLite::BEGIN@16";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Format_Builder {
+	label="DateTime::Format::Builder";
+	"DateTime::Format::Builder::create_parser";
+}
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@3";
+"DateTime::Format::Builder::Parser::create_multiple_parsers" -> "DateTime::Format::Builder::Parser::set_maker";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "DateTime::Format::Builder::Parser::params";
+"DateTime::Format::Builder::Parser::BEGIN@5" -> "Exporter::import";
+"DateTime::Format::Builder::Parser::BEGIN@4" -> "Exporter::import";
+"DateTime::Format::Builder::Parser::BEGIN@8" -> "Exporter::import";
+"DateTime::Format::SQLite::BEGIN@16" -> "DateTime::Format::Builder::Parser::BEGIN@5";
+"DateTime::Format::Builder::Parser::create_parser" -> "DateTime::Format::Builder::Parser::create_multiple_parsers";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@6";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "UNIVERSAL::can";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "Params::Validate::XS::validate";
+"DateTime::Format::SQLite::BEGIN@16" -> "DateTime::Format::Builder::Parser::BEGIN@4";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "DateTime::Format::Builder::Parser::params_all";
+"DateTime::Format::Builder::Parser::create_multiple_parsers" -> "DateTime::Format::Builder::Parser::set_parser";
+"DateTime::Format::Builder::create_parser" -> "DateTime::Format::Builder::Parser::create_parser";
+"DateTime::Format::SQLite::BEGIN@16" -> "DateTime::Format::Builder::Parser::BEGIN@8";
+"DateTime::Format::SQLite::BEGIN@16" -> "DateTime::Format::Builder::Parser::BEGIN@3";
+"DateTime::Format::Builder::Parser::create_multiple_parsers" -> "DateTime::Format::Builder::Parser::sort_parsers";
+"DateTime::Format::Builder::Parser::BEGIN@3" -> "vars::import";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::import";
+"DateTime::Format::Builder::Parser::BEGIN@2" -> "strict::import";
+"DateTime::Format::Builder::Parser::BEGIN@1.40" -> "DateTime::Format::Builder::Parser::valid_params";
+"DateTime::Format::Builder::Parser::BEGIN@1.39" -> "DateTime::Format::Builder::Parser::valid_params";
+"DateTime::Format::Builder::Parser::BEGIN@1.41" -> "DateTime::Format::Builder::Parser::valid_params";
+"DateTime::Format::Builder::Parser::BEGIN@1" -> "DateTime::Format::Builder::Parser::valid_params";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "DateTime::Format::Builder::Parser::Regex::create_parser";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@17";
+"DateTime::Format::SQLite::BEGIN@16" -> "DateTime::Format::Builder::Parser::BEGIN@626";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "DateTime::Format::Builder::Parser::whose_params";
+"DateTime::Format::Builder::Parser::sort_parsers" -> "DateTime::Format::Builder::Parser::create_single_parser";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "DateTime::Format::Builder::Parser::merge_callbacks";
+"DateTime::Format::Builder::Parser::create_multiple_parsers" -> "DateTime::Format::Builder::Parser::new";
+"DateTime::Format::Builder::Parser::BEGIN@626" -> "Class::Factory::Util::BEGIN@4";
+"DateTime::Format::SQLite::BEGIN@16" -> "DateTime::Format::Builder::Parser::BEGIN@2";
+}

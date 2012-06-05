@@ -1,0 +1,78 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Test_More {
+	label="Test::More";
+	"Test::More::is";
+	"Test::More::import_extra";
+	"Test::More::ok";
+	"Test::More::BEGIN@23";
+	"Test::More::done_testing";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::export_to_level";
+}
+subgraph cluster_Test_Builder_Module {
+	label="Test::Builder::Module";
+	"Test::Builder::Module::_strip_imports";
+	"Test::Builder::Module::builder";
+	"Test::Builder::Module::BEGIN@5";
+	"Test::Builder::Module::BEGIN@3";
+	"Test::Builder::Module::import";
+}
+subgraph cluster_Test_Builder {
+	label="Test::Builder";
+	"Test::Builder::BEGIN@916";
+	"Test::Builder::BEGIN@1221";
+	"Test::Builder::BEGIN@4";
+	"Test::Builder::new";
+	"Test::Builder::plan";
+	"Test::Builder::BEGIN@10";
+	"Test::Builder::BEGIN@5";
+	"Test::Builder::BEGIN@18";
+	"Test::Builder::BEGIN@19";
+	"Test::Builder::BEGIN@3";
+	"Test::Builder::exported_to";
+	"Test::Builder::BEGIN@2181";
+	"Test::Builder::BEGIN@1600";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter_Heavy {
+	label="Exporter::Heavy";
+	"Exporter::Heavy::heavy_export_to_level";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@21";
+}
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@4";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@18";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@916";
+"Test::Builder::Module::import" -> "Exporter::Heavy::heavy_export_to_level";
+"Test::Builder::Module::import" -> "Exporter::export_to_level";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@10";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@19";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@1600";
+"Test::Builder::Module::builder" -> "Test::Builder::new";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::new";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@5";
+"Test::Builder::Module::BEGIN@3" -> "strict::import";
+"Test::More::is" -> "Test::Builder::Module::builder";
+"Test::More::ok" -> "Test::Builder::Module::builder";
+"Test::Builder::Module::import" -> "Test::Builder::Module::builder";
+"Test::More::done_testing" -> "Test::Builder::Module::builder";
+"Test::More::BEGIN@23" -> "Test::Builder::Module::BEGIN@5";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@1221";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@3";
+"Test::Builder::Module::import" -> "Test::Builder::plan";
+"Test::Builder::Module::import" -> "Test::More::import_extra";
+"Test::More::BEGIN@23" -> "Test::Builder::Module::BEGIN@3";
+"Test::Builder::Module::BEGIN@5" -> "Test::Builder::BEGIN@2181";
+"Test::Builder::Module::import" -> "Test::Builder::Module::_strip_imports";
+"main::BEGIN@21" -> "Test::Builder::Module::import";
+"Test::More::BEGIN@23" -> "Test::Builder::Module::import";
+"Test::Builder::Module::import" -> "Test::Builder::exported_to";
+}

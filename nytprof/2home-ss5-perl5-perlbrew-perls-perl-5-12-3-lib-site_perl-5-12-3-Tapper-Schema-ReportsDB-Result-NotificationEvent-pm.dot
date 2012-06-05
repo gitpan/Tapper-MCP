@@ -1,0 +1,42 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_parent {
+	label="parent";
+	"parent::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_NotificationEvent {
+	label="Tapper::Schema::ReportsDB::Result::NotificationEvent";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@13";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@9";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::CORE:subst";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@2";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@12";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@10";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@13";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::NotificationEvent::CORE:subst";
+"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@13" -> "Exporter::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@10";
+"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@10" -> "warnings::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@12";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@9";
+"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@9" -> "strict::import";
+"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@12" -> "parent::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@2";
+}

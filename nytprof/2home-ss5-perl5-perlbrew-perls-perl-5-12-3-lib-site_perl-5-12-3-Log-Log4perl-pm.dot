@@ -1,0 +1,136 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Log_Log4perl_Appender {
+	label="Log::Log4perl::Appender";
+	"Log::Log4perl::Appender::new";
+	"Log::Log4perl::Appender::layout";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+	"warnings::import";
+}
+subgraph cluster_Log_Log4perl_Logger {
+	label="Log::Log4perl::Logger";
+	"Log::Log4perl::Logger::cleanup";
+	"Log::Log4perl::Logger::BEGIN@9";
+	"Log::Log4perl::Logger::BEGIN@15";
+	"Log::Log4perl::Logger::generate_coderef";
+	"Log::Log4perl::Logger::BEGIN@14";
+	"Log::Log4perl::Logger::BEGIN@7";
+	"Log::Log4perl::Logger::BEGIN@10";
+	"Log::Log4perl::Logger::BEGIN@5";
+	"Log::Log4perl::Logger::BEGIN@13";
+	"Log::Log4perl::Logger::BEGIN@6";
+	"Log::Log4perl::Logger::create_log_level_methods";
+	"Log::Log4perl::Logger::BEGIN@731";
+	"Log::Log4perl::Logger::BEGIN@791";
+	"Log::Log4perl::Logger::BEGIN@760";
+	"Log::Log4perl::Logger::reset";
+	"Log::Log4perl::Logger::BEGIN@738";
+	"Log::Log4perl::Logger::BEGIN@20";
+	"Log::Log4perl::Logger::BEGIN@12";
+	"Log::Log4perl::Logger::BEGIN@11";
+}
+subgraph cluster_Log_Log4perl {
+	label="Log::Log4perl";
+	"Log::Log4perl::BEGIN@96";
+	"Log::Log4perl::easy_closure_global_cleanup";
+	"Log::Log4perl::BEGIN@488";
+	"Log::Log4perl::BEGIN@526";
+	"Log::Log4perl::BEGIN@8";
+	"Log::Log4perl::BEGIN@110";
+	"Log::Log4perl::BEGIN@69";
+	"Log::Log4perl::BEGIN@7";
+	"Log::Log4perl::BEGIN@12";
+	"Log::Log4perl::BEGIN@11";
+	"Log::Log4perl::BEGIN@15";
+	"Log::Log4perl::END";
+	"Log::Log4perl::BEGIN@511";
+	"Log::Log4perl::BEGIN@13";
+	"Log::Log4perl::import";
+	"Log::Log4perl::BEGIN@525";
+	"Log::Log4perl::BEGIN@14";
+	"Log::Log4perl::BEGIN@9";
+}
+subgraph cluster_MooseX_Log_Log4perl {
+	label="MooseX::Log::Log4perl";
+	"MooseX::Log::Log4perl::BEGIN@5";
+}
+subgraph cluster_Log_Log4perl_Util {
+	label="Log::Log4perl::Util";
+	"Log::Log4perl::Util::BEGIN@3";
+}
+subgraph cluster_Log_Log4perl_Layout_PatternLayout {
+	label="Log::Log4perl::Layout::PatternLayout";
+	"Log::Log4perl::Layout::PatternLayout::new";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_Log_Log4perl_Level {
+	label="Log::Log4perl::Level";
+	"Log::Log4perl::Level::import";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@731";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::import";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@15";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@96";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@12";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@9";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@69";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@7";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@6";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@15";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@110";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@10";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@12";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Appender::layout";
+"main::RUNTIME" -> "Log::Log4perl::END";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@760";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@13";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::create_log_level_methods";
+"Log::Log4perl::BEGIN@13" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::BEGIN@69" -> "constant::import";
+"Log::Log4perl::BEGIN@96" -> "strict::unimport";
+"Log::Log4perl::BEGIN@110" -> "strict::unimport";
+"Log::Log4perl::BEGIN@511" -> "strict::unimport";
+"Log::Log4perl::BEGIN@526" -> "strict::unimport";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@488";
+"Log::Log4perl::BEGIN@9" -> "warnings::import";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@7";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::reset";
+"Log::Log4perl::BEGIN@11" -> "Log::Log4perl::Util::BEGIN@3";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@8";
+"Log::Log4perl::BEGIN@8" -> "strict::import";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@14";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@14";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@13";
+"Log::Log4perl::BEGIN@488" -> "warnings::unimport";
+"Log::Log4perl::BEGIN@525" -> "warnings::unimport";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@738";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Layout::PatternLayout::new";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@791";
+"Log::Log4perl::END" -> "Log::Log4perl::Logger::cleanup";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Appender::new";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@20";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@9";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::generate_coderef";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@511";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@525";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@11";
+"Log::Log4perl::BEGIN@12" -> "Log::Log4perl::Logger::BEGIN@5";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@11";
+"Log::Log4perl::Logger::cleanup" -> "Log::Log4perl::easy_closure_global_cleanup";
+"MooseX::Log::Log4perl::BEGIN@5" -> "Log::Log4perl::BEGIN@526";
+}

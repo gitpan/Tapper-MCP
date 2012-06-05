@@ -1,0 +1,83 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_InflateColumn_DateTime {
+	label="DBIx::Class::InflateColumn::DateTime";
+	"DBIx::Class::InflateColumn::DateTime::register_column";
+	"DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:187]";
+}
+subgraph cluster_DBIx_Class_InflateColumn_Object_Enum {
+	label="DBIx::Class::InflateColumn::Object::Enum";
+	"DBIx::Class::InflateColumn::Object::Enum::register_column";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::status";
+}
+subgraph cluster_DBIx_Class_InflateColumn {
+	label="DBIx::Class::InflateColumn";
+	"DBIx::Class::InflateColumn::set_inflated_column";
+	"DBIx::Class::InflateColumn::BEGIN@3";
+	"DBIx::Class::InflateColumn::BEGIN@4";
+	"DBIx::Class::InflateColumn::inflate_column";
+	"DBIx::Class::InflateColumn::_deflated_column";
+	"DBIx::Class::InflateColumn::BEGIN@6";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy {
+	label="DBIx::Class::ResultSourceProxy";
+	"DBIx::Class::ResultSourceProxy::column_info";
+	"DBIx::Class::ResultSourceProxy::has_column";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Testrun {
+	label="Tapper::Schema::TestrunDB::Result::Testrun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::starttime_testrun";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::get_columns";
+	"DBIx::Class::Row::set_column";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_Accessor_Grouped {
+	label="Class::Accessor::Grouped";
+	"Class::Accessor::Grouped::mk_group_accessors";
+}
+"DBIx::Class::InflateColumn::_deflated_column" -> "DBIx::Class::InflateColumn::DateTime::__ANON__[DBIx/Class/InflateColumn/DateTime.pm:187]";
+"DBIx::Class::InflateColumn::set_inflated_column" -> "DBIx::Class::Row::set_column";
+"DBIx::Class::InflateColumn::_deflated_column" -> "DBIx::Class::ResultSourceProxy::column_info";
+"DBIx::Class::InflateColumn::inflate_column" -> "DBIx::Class::ResultSourceProxy::column_info";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::BEGIN@6";
+"DBIx::Class::InflateColumn::BEGIN@6" -> "base::import";
+"DBIx::Class::InflateColumn::BEGIN@4" -> "warnings::import";
+"DBIx::Class::InflateColumn::set_inflated_column" -> "DBIx::Class::InflateColumn::_deflated_column";
+"DBIx::Class::Row::get_columns" -> "DBIx::Class::InflateColumn::_deflated_column";
+"DBIx::Class::InflateColumn::BEGIN@3" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::BEGIN@3";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::BEGIN@4";
+"DBIx::Class::InflateColumn::inflate_column" -> "Class::Accessor::Grouped::mk_group_accessors";
+"Tapper::Schema::TestrunDB::Result::Testrun::starttime_testrun" -> "DBIx::Class::InflateColumn::set_inflated_column";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::status" -> "DBIx::Class::InflateColumn::set_inflated_column";
+"DBIx::Class::InflateColumn::inflate_column" -> "DBIx::Class::ResultSourceProxy::has_column";
+"DBIx::Class::InflateColumn::inflate_column" -> "UNIVERSAL::isa";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::InflateColumn::inflate_column";
+"DBIx::Class::InflateColumn::Object::Enum::register_column" -> "DBIx::Class::InflateColumn::inflate_column";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::inflate_column";
+}

@@ -1,0 +1,134 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Config {
+	label="Config";
+	"Config::FETCH";
+}
+subgraph cluster_POSIX_SigRt {
+	label="POSIX::SigRt";
+	"POSIX::SigRt::BEGIN@66";
+	"POSIX::SigRt::BEGIN@62";
+	"POSIX::SigRt::BEGIN@64";
+}
+subgraph cluster_re {
+	label="re";
+	"re::import";
+}
+subgraph cluster_POSIX_SigAction {
+	label="POSIX::SigAction";
+	"POSIX::SigAction::BEGIN@58";
+}
+subgraph cluster_Tie_StdHash {
+	label="Tie::StdHash";
+	"Tie::StdHash::TIEHASH";
+}
+subgraph cluster_Errno {
+	label="Errno";
+	"Errno::BEGIN@9";
+	"Errno::BEGIN@8";
+	"Errno::TIEHASH";
+	"Errno::BEGIN@7";
+	"Errno::BEGIN@194";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_File_Slurp {
+	label="File::Slurp";
+	"File::Slurp::BEGIN@11";
+	"File::Slurp::BEGIN@15";
+	"File::Slurp::CORE:sysread";
+	"File::Slurp::BEGIN@3";
+	"File::Slurp::BEGIN@9";
+	"File::Slurp::BEGIN@6";
+	"File::Slurp::BEGIN@263";
+	"File::Slurp::CORE:sysopen";
+	"File::Slurp::BEGIN@8";
+	"File::Slurp::BEGIN@12";
+	"File::Slurp::BEGIN@62";
+	"File::Slurp::BEGIN@5";
+	"File::Slurp::CORE:match";
+	"File::Slurp::read_file";
+	"File::Slurp::CORE:ftsize";
+	"File::Slurp::CORE:ftis";
+	"File::Slurp::BEGIN@10";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_Tapper_Config {
+	label="Tapper::Config";
+	"Tapper::Config::BEGIN@16";
+	"Tapper::Config::_switch_context";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_POSIX {
+	label="POSIX";
+	"POSIX::BEGIN@39";
+	"POSIX::BEGIN@2";
+	"POSIX::BEGIN@40";
+	"POSIX::BEGIN@13";
+	"POSIX::BEGIN@11";
+	"POSIX::import";
+	"POSIX::BEGIN@9";
+	"POSIX::BEGIN@3";
+}
+"File::Slurp::BEGIN@12" -> "Errno::BEGIN@8";
+"File::Slurp::BEGIN@9" -> "Exporter::import";
+"File::Slurp::BEGIN@10" -> "Exporter::import";
+"File::Slurp::BEGIN@12" -> "Exporter::import";
+"File::Slurp::BEGIN@8" -> "Exporter::import";
+"File::Slurp::read_file" -> "File::Slurp::CORE:ftis";
+"File::Slurp::BEGIN@12" -> "Errno::BEGIN@7";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@11";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@9";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@9";
+"File::Slurp::BEGIN@11" -> "POSIX::SigRt::BEGIN@64";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@39";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@5";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@10";
+"File::Slurp::read_file" -> "File::Slurp::CORE:sysread";
+"File::Slurp::BEGIN@6" -> "warnings::import";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@62";
+"File::Slurp::BEGIN@15" -> "vars::import";
+"File::Slurp::BEGIN@11" -> "POSIX::SigRt::BEGIN@62";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@12";
+"File::Slurp::BEGIN@12" -> "Config::FETCH";
+"File::Slurp::BEGIN@5" -> "strict::import";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@15";
+"File::Slurp::BEGIN@11" -> "POSIX::SigRt::BEGIN@66";
+"File::Slurp::BEGIN@11" -> "Tie::StdHash::TIEHASH";
+"File::Slurp::BEGIN@11" -> "POSIX::SigAction::BEGIN@58";
+"File::Slurp::read_file" -> "File::Slurp::CORE:sysopen";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@8";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@2";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@11";
+"File::Slurp::BEGIN@11" -> "XSLoader::load";
+"File::Slurp::BEGIN@12" -> "Errno::BEGIN@194";
+"File::Slurp::BEGIN@12" -> "Errno::BEGIN@9";
+"Tapper::Config::_switch_context" -> "File::Slurp::read_file";
+"File::Slurp::read_file" -> "File::Slurp::CORE:ftsize";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@263";
+"File::Slurp::BEGIN@12" -> "Errno::TIEHASH";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@3";
+"File::Slurp::BEGIN@263" -> "re::import";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@6";
+"File::Slurp::BEGIN@11" -> "POSIX::import";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@13";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::BEGIN@3";
+"Tapper::Config::BEGIN@16" -> "File::Slurp::CORE:match";
+"File::Slurp::BEGIN@11" -> "POSIX::BEGIN@40";
+}

@@ -1,0 +1,17 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_IPC_Open2 {
+	label="IPC::Open2";
+	"IPC::Open2::BEGIN@3";
+}
+subgraph cluster_Net_SSH {
+	label="Net::SSH";
+	"Net::SSH::BEGIN@9";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"IPC::Open2::BEGIN@3" -> "strict::import";
+"Net::SSH::BEGIN@9" -> "IPC::Open2::BEGIN@3";
+}

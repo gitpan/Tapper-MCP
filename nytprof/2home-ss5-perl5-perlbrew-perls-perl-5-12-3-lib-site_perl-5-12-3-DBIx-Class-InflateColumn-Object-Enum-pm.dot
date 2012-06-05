@@ -1,0 +1,99 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_InflateColumn_DateTime {
+	label="DBIx::Class::InflateColumn::DateTime";
+	"DBIx::Class::InflateColumn::DateTime::register_column";
+}
+subgraph cluster_DBIx_Class_InflateColumn_Object_Enum {
+	label="DBIx::Class::InflateColumn::Object::Enum";
+	"DBIx::Class::InflateColumn::Object::Enum::BEGIN@4";
+	"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6";
+	"DBIx::Class::InflateColumn::Object::Enum::register_column";
+	"DBIx::Class::InflateColumn::Object::Enum::BEGIN@5";
+	"DBIx::Class::InflateColumn::Object::Enum::BEGIN@3";
+}
+subgraph cluster_DBIx_Class_InflateColumn {
+	label="DBIx::Class::InflateColumn";
+	"DBIx::Class::InflateColumn::inflate_column";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy {
+	label="DBIx::Class::ResultSourceProxy";
+	"DBIx::Class::ResultSourceProxy::add_columns";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_Object_Enum {
+	label="Object::Enum";
+	"Object::Enum::BEGIN@5";
+	"Object::Enum::BEGIN@111";
+	"Object::Enum::BEGIN@27";
+	"Object::Enum::BEGIN@7";
+	"Object::Enum::BEGIN@8";
+	"Object::Enum::BEGIN@32";
+	"Object::Enum::BEGIN@4";
+	"Object::Enum::BEGIN@202";
+	"Object::Enum::BEGIN@3";
+	"Object::Enum::BEGIN@10";
+}
+subgraph cluster_Class_Data_Inheritable {
+	label="Class::Data::Inheritable";
+	"Class::Data::Inheritable::__ANON__[Class/Data/Inheritable.pm:23]";
+	"Class::Data::Inheritable::mk_classdata";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_next {
+	label="next";
+	"next::method";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::register_column";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_Accessor {
+	label="Class::Accessor";
+	"Class::Accessor::mk_accessors";
+}
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@5";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@5" -> "Exporter::import";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@32";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@111";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::Object::Enum::BEGIN@3";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@3" -> "warnings::import";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@7";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@10";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Class::Data::Inheritable::mk_classdata";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@4";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@4" -> "strict::import";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@3";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::Object::Enum::BEGIN@6";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Class::Accessor::mk_accessors";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@8";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Class::Data::Inheritable::__ANON__[Class/Data/Inheritable.pm:23]";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@202";
+"DBIx::Class::InflateColumn::Object::Enum::register_column" -> "DBIx::Class::Row::register_column";
+"DBIx::Class::InflateColumn::Object::Enum::BEGIN@6" -> "Object::Enum::BEGIN@27";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::Object::Enum::BEGIN@5";
+"DBIx::Class::InflateColumn::Object::Enum::register_column" -> "next::method";
+"DBIx::Class::InflateColumn::DateTime::register_column" -> "DBIx::Class::InflateColumn::Object::Enum::register_column";
+"DBIx::Class::ResultSourceProxy::add_columns" -> "DBIx::Class::InflateColumn::Object::Enum::register_column";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::InflateColumn::Object::Enum::BEGIN@4";
+"DBIx::Class::InflateColumn::Object::Enum::register_column" -> "DBIx::Class::InflateColumn::inflate_column";
+}

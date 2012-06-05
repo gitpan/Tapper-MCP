@@ -1,0 +1,31 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_YAML_Node {
+	label="YAML::Node";
+	"YAML::Node::BEGIN@2";
+	"YAML::Node::BEGIN@7";
+	"YAML::Node::BEGIN@1";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_YAML_Tag {
+	label="YAML::Tag";
+	"YAML::Tag::BEGIN@7";
+}
+"YAML::Tag::BEGIN@7" -> "overload::import";
+"YAML::Node::BEGIN@2" -> "warnings::import";
+"YAML::Node::BEGIN@1" -> "strict::import";
+"YAML::Node::BEGIN@7" -> "YAML::Tag::BEGIN@7";
+"YAML::Node::BEGIN@7" -> "YAML::Node::BEGIN@1";
+"YAML::Node::BEGIN@7" -> "YAML::Node::BEGIN@2";
+}

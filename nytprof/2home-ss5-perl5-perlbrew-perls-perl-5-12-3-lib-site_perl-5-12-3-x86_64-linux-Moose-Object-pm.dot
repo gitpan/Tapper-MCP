@@ -1,0 +1,132 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_Traits {
+	label="MooseX::Traits";
+	"MooseX::Traits::new_with_traits";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@34";
+}
+subgraph cluster_Try_Tiny {
+	label="Try::Tiny";
+	"Try::Tiny::catch";
+	"Try::Tiny::try";
+}
+subgraph cluster_metaclass {
+	label="metaclass";
+	"metaclass::import";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_Moose_Meta_Class {
+	label="Moose::Meta::Class";
+	"Moose::Meta::Class::new_object";
+	"Moose::Meta::Class::does_role";
+}
+subgraph cluster_Devel_GlobalDestruction {
+	label="Devel::GlobalDestruction";
+	"Devel::GlobalDestruction::in_global_destruction";
+}
+subgraph cluster_if {
+	label="if";
+	"if::import";
+	"if::work";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_MooseX_Traits_Util {
+	label="MooseX::Traits::Util";
+	"MooseX::Traits::Util::check_class";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::blessed";
+}
+subgraph cluster_Tapper_MCP_Scheduler_Controller {
+	label="Tapper::MCP::Scheduler::Controller";
+	"Tapper::MCP::Scheduler::Controller::__ANON__[lib/Tapper/MCP/Scheduler/Controller.pm:14]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::initialize";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::does";
+	"Moose::Object::new";
+	"Moose::Object::BEGIN@108";
+	"Moose::Object::BEGIN@14";
+	"Moose::Object::BEGIN@3";
+	"Moose::Object::BEGIN@16";
+	"Moose::Object::BUILDARGS";
+	"Moose::Object::BEGIN@20";
+	"Moose::Object::BUILDALL";
+	"Moose::Object::BEGIN@15";
+	"Moose::Object::BEGIN@17";
+	"Moose::Object::DESTROY";
+	"Moose::Object::BEGIN@13";
+	"Moose::Object::BEGIN@85";
+	"Moose::Object::BEGIN@11";
+	"Moose::Object::DEMOLISHALL";
+	"Moose::Object::BEGIN@19";
+	"Moose::Object::__ANON__[Moose/Object.pm:99]";
+	"Moose::Object::BEGIN@10";
+}
+subgraph cluster_main {
+	label="main";
+	"main::NULL";
+	"main::RUNTIME";
+}
+"Moose::Object::DESTROY" -> "Try::Tiny::try";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@17";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@11";
+"Try::Tiny::try" -> "Moose::Object::__ANON__[Moose/Object.pm:99]";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@16";
+"Moose::Object::new" -> "Moose::Object::BUILDARGS";
+"Moose::Object::does" -> "Scalar::Util::blessed";
+"Moose::Object::new" -> "Scalar::Util::blessed";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@15";
+"Moose::Object::BEGIN@20" -> "metaclass::import";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@20";
+"Moose::Object::DESTROY" -> "Try::Tiny::catch";
+"main::NULL" -> "Moose::Object::DESTROY";
+"Moose::Object::BEGIN@108" -> "UNIVERSAL::can";
+"Moose::Object::does" -> "UNIVERSAL::can";
+"Moose::Object::DEMOLISHALL" -> "UNIVERSAL::can";
+"Moose::Object::BUILDALL" -> "UNIVERSAL::can";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@10";
+"Moose::Object::BEGIN@85" -> "strict::unimport";
+"Moose::Object::BEGIN@11" -> "warnings::import";
+"Moose::Object::does" -> "Moose::Meta::Class::does_role";
+"Moose::Object::new" -> "Moose::Meta::Class::new_object";
+"Moose::Object::does" -> "Class::MOP::Class::initialize";
+"Moose::Object::new" -> "Class::MOP::Class::initialize";
+"Moose::Meta::Class::new_object" -> "Moose::Object::BUILDALL";
+"Moose::Object::BEGIN@10" -> "strict::import";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@108";
+"Moose::Object::__ANON__[Moose/Object.pm:99]" -> "Moose::Object::DEMOLISHALL";
+"MooseX::Traits::new_with_traits" -> "Moose::Object::new";
+"Tapper::MCP::Scheduler::Controller::__ANON__[lib/Tapper/MCP/Scheduler/Controller.pm:14]" -> "Moose::Object::new";
+"main::RUNTIME" -> "Moose::Object::new";
+"Moose::Object::BEGIN@19" -> "if::work";
+"Moose::Object::BEGIN@20" -> "if::work";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@3";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@13";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@19";
+"MooseX::Traits::Util::check_class" -> "Moose::Object::does";
+"Moose::Object::__ANON__[Moose/Object.pm:99]" -> "Devel::GlobalDestruction::in_global_destruction";
+"Moose::Object::BEGIN@20" -> "if::import";
+"Moose::Object::BEGIN@19" -> "if::import";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@14";
+"Moose::BEGIN@34" -> "Moose::Object::BEGIN@85";
+}

@@ -1,0 +1,360 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportSection {
+	label="Tapper::Schema::ReportsDB::Result::ReportSection";
+	"Tapper::Schema::ReportsDB::Result::ReportSection::BEGIN@12";
+}
+subgraph cluster_DateTime_TimeZone_Floating {
+	label="DateTime::TimeZone::Floating";
+	"DateTime::TimeZone::Floating::BEGIN@9";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Topic {
+	label="Tapper::Schema::TestrunDB::Result::Topic";
+	"Tapper::Schema::TestrunDB::Result::Topic::BEGIN@25";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestplanInstance {
+	label="Tapper::Schema::TestrunDB::Result::TestplanInstance";
+	"Tapper::Schema::TestrunDB::Result::TestplanInstance::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::Result::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@15";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_State {
+	label="Tapper::Schema::TestrunDB::Result::State";
+	"Tapper::Schema::TestrunDB::Result::State::BEGIN@12";
+}
+subgraph cluster_parent {
+	label="parent";
+	"parent::BEGIN@25";
+	"parent::BEGIN@2";
+	"parent::CORE:subst";
+	"parent::import";
+	"parent::BEGIN@3";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Precondition {
+	label="Tapper::Schema::TestrunDB::ResultSet::Precondition";
+	"Tapper::Schema::TestrunDB::ResultSet::Precondition::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportgroupTestrunStats {
+	label="Tapper::Schema::ReportsDB::Result::ReportgroupTestrunStats";
+	"Tapper::Schema::ReportsDB::Result::ReportgroupTestrunStats::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Notification {
+	label="Tapper::Schema::ReportsDB::Result::Notification";
+	"Tapper::Schema::ReportsDB::Result::Notification::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB {
+	label="Tapper::Schema::TestrunDB";
+	"Tapper::Schema::TestrunDB::BEGIN@24";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Tap {
+	label="Tapper::Schema::ReportsDB::Result::Tap";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_ReportsDB {
+	label="Tapper::Schema::ReportsDB";
+	"Tapper::Schema::ReportsDB::BEGIN@25";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_HostFeature {
+	label="Tapper::Schema::TestrunDB::Result::HostFeature";
+	"Tapper::Schema::TestrunDB::Result::HostFeature::BEGIN@13";
+}
+subgraph cluster_DateTime_TimeZone_UTC {
+	label="DateTime::TimeZone::UTC";
+	"DateTime::TimeZone::UTC::BEGIN@9";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportTopic {
+	label="Tapper::Schema::ReportsDB::Result::ReportTopic";
+	"Tapper::Schema::ReportsDB::Result::ReportTopic::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Contact {
+	label="Tapper::Schema::ReportsDB::Result::Contact";
+	"Tapper::Schema::ReportsDB::Result::Contact::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Host {
+	label="Tapper::Schema::TestrunDB::Result::Host";
+	"Tapper::Schema::TestrunDB::Result::Host::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_TestrunScheduling {
+	label="Tapper::Schema::TestrunDB::ResultSet::TestrunScheduling";
+	"Tapper::Schema::TestrunDB::ResultSet::TestrunScheduling::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Testrun {
+	label="Tapper::Schema::TestrunDB::Result::Testrun";
+	"Tapper::Schema::TestrunDB::Result::Testrun::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportgroupTestrun {
+	label="Tapper::Schema::ReportsDB::Result::ReportgroupTestrun";
+	"Tapper::Schema::ReportsDB::Result::ReportgroupTestrun::BEGIN@13";
+}
+subgraph cluster_Tapper_Model {
+	label="Tapper::Model";
+	"Tapper::Model::BEGIN@26";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Queue {
+	label="Tapper::Schema::TestrunDB::ResultSet::Queue";
+	"Tapper::Schema::TestrunDB::ResultSet::Queue::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportComment {
+	label="Tapper::Schema::ReportsDB::Result::ReportComment";
+	"Tapper::Schema::ReportsDB::Result::ReportComment::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Queue {
+	label="Tapper::Schema::TestrunDB::Result::Queue";
+	"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@12";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Precondition {
+	label="Tapper::Schema::TestrunDB::Result::Precondition";
+	"Tapper::Schema::TestrunDB::Result::Precondition::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_View020TestrunOverview {
+	label="Tapper::Schema::ReportsDB::Result::View020TestrunOverview";
+	"Tapper::Schema::ReportsDB::Result::View020TestrunOverview::BEGIN@14";
+}
+subgraph cluster_DBIx_Class {
+	label="DBIx::Class";
+	"DBIx::Class::BEGIN@66";
+	"DBIx::Class::_skip_namespace_frames";
+	"DBIx::Class::BEGIN@71";
+	"DBIx::Class::BEGIN@70";
+	"DBIx::Class::BEGIN@4";
+	"DBIx::Class::BEGIN@68";
+	"DBIx::Class::BEGIN@18";
+	"DBIx::Class::mk_classdata";
+	"DBIx::Class::CORE:match";
+	"DBIx::Class::BEGIN@3";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_NotificationEvent {
+	label="Tapper::Schema::ReportsDB::Result::NotificationEvent";
+	"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@12";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunRequestedFeature {
+	label="Tapper::Schema::TestrunDB::Result::TestrunRequestedFeature";
+	"Tapper::Schema::TestrunDB::Result::TestrunRequestedFeature::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunRequestedHost {
+	label="Tapper::Schema::TestrunDB::Result::TestrunRequestedHost";
+	"Tapper::Schema::TestrunDB::Result::TestrunRequestedHost::BEGIN@12";
+}
+subgraph cluster_DBIx_Class_Schema {
+	label="DBIx::Class::Schema";
+	"DBIx::Class::Schema::BEGIN@1516";
+	"DBIx::Class::Schema::BEGIN@916";
+	"DBIx::Class::Schema::BEGIN@11";
+	"DBIx::Class::Schema::BEGIN@4";
+	"DBIx::Class::Schema::BEGIN@943";
+	"DBIx::Class::Schema::BEGIN@174";
+	"DBIx::Class::Schema::BEGIN@378";
+	"DBIx::Class::Schema::BEGIN@7";
+	"DBIx::Class::Schema::BEGIN@1284";
+	"DBIx::Class::Schema::BEGIN@10";
+	"DBIx::Class::Schema::BEGIN@8";
+	"DBIx::Class::Schema::BEGIN@14";
+	"DBIx::Class::Schema::BEGIN@242";
+	"DBIx::Class::Schema::BEGIN@380";
+	"DBIx::Class::Schema::BEGIN@12";
+	"DBIx::Class::Schema::BEGIN@920";
+	"DBIx::Class::Schema::BEGIN@240";
+	"DBIx::Class::Schema::BEGIN@9";
+	"DBIx::Class::Schema::BEGIN@3";
+	"DBIx::Class::Schema::BEGIN@6";
+	"DBIx::Class::Schema::BEGIN@918";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_View010TestrunOverviewReports {
+	label="Tapper::Schema::ReportsDB::Result::View010TestrunOverviewReports";
+	"Tapper::Schema::ReportsDB::Result::View010TestrunOverviewReports::BEGIN@14";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Preconditiontype {
+	label="Tapper::Schema::TestrunDB::Result::Preconditiontype";
+	"Tapper::Schema::TestrunDB::Result::Preconditiontype::BEGIN@25";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_QueueHost {
+	label="Tapper::Schema::TestrunDB::Result::QueueHost";
+	"Tapper::Schema::TestrunDB::Result::QueueHost::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_User {
+	label="Tapper::Schema::TestrunDB::Result::User";
+	"Tapper::Schema::TestrunDB::Result::User::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_ResultSet_ReportgroupTestrun {
+	label="Tapper::Schema::ReportsDB::ResultSet::ReportgroupTestrun";
+	"Tapper::Schema::ReportsDB::ResultSet::ReportgroupTestrun::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_User {
+	label="Tapper::Schema::ReportsDB::Result::User";
+	"Tapper::Schema::ReportsDB::Result::User::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Suite {
+	label="Tapper::Schema::ReportsDB::Result::Suite";
+	"Tapper::Schema::ReportsDB::Result::Suite::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportgroupArbitrary {
+	label="Tapper::Schema::ReportsDB::Result::ReportgroupArbitrary";
+	"Tapper::Schema::ReportsDB::Result::ReportgroupArbitrary::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Scenario {
+	label="Tapper::Schema::TestrunDB::Result::Scenario";
+	"Tapper::Schema::TestrunDB::Result::Scenario::BEGIN@13";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_ScenarioElement {
+	label="Tapper::Schema::TestrunDB::Result::ScenarioElement";
+	"Tapper::Schema::TestrunDB::Result::ScenarioElement::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_ReportFile {
+	label="Tapper::Schema::ReportsDB::Result::ReportFile";
+	"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@12";
+}
+subgraph cluster_Class_Singleton {
+	label="Class::Singleton";
+	"Class::Singleton::BEGIN@19";
+	"Class::Singleton::BEGIN@20";
+	"Class::Singleton::BEGIN@56";
+	"Class::Singleton::BEGIN@73";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_PrePrecondition {
+	label="Tapper::Schema::TestrunDB::Result::PrePrecondition";
+	"Tapper::Schema::TestrunDB::Result::PrePrecondition::BEGIN@12";
+}
+subgraph cluster_DateTime_TimeZone_OffsetOnly {
+	label="DateTime::TimeZone::OffsetOnly";
+	"DateTime::TimeZone::OffsetOnly::BEGIN@7";
+	"DateTime::TimeZone::OffsetOnly::BEGIN@9";
+	"DateTime::TimeZone::OffsetOnly::BEGIN@12";
+	"DateTime::TimeZone::OffsetOnly::BEGIN@11";
+	"DateTime::TimeZone::OffsetOnly::BEGIN@6";
+}
+subgraph cluster_Class_Accessor_Grouped {
+	label="Class::Accessor::Grouped";
+	"Class::Accessor::Grouped::mk_group_accessors";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_TestrunPrecondition {
+	label="Tapper::Schema::TestrunDB::Result::TestrunPrecondition";
+	"Tapper::Schema::TestrunDB::Result::TestrunPrecondition::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Report {
+	label="Tapper::Schema::ReportsDB::Result::Report";
+	"Tapper::Schema::ReportsDB::Result::Report::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Host {
+	label="Tapper::Schema::TestrunDB::ResultSet::Host";
+	"Tapper::Schema::TestrunDB::ResultSet::Host::BEGIN@13";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_Result_Message {
+	label="Tapper::Schema::TestrunDB::Result::Message";
+	"Tapper::Schema::TestrunDB::Result::Message::BEGIN@12";
+}
+subgraph cluster_Tapper_Schema_TestrunDB_ResultSet_Testrun {
+	label="Tapper::Schema::TestrunDB::ResultSet::Testrun";
+	"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@15";
+}
+"parent::import" -> "DBIx::Class::Schema::BEGIN@1284";
+"parent::import" -> "Class::Singleton::BEGIN@56";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@9";
+"parent::import" -> "DBIx::Class::BEGIN@71";
+"parent::import" -> "DateTime::TimeZone::OffsetOnly::BEGIN@12";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@943";
+"parent::import" -> "DBIx::Class::BEGIN@66";
+"parent::import" -> "DBIx::Class::BEGIN@70";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@8";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@14";
+"parent::import" -> "B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+"parent::import" -> "DBIx::Class::BEGIN@4";
+"parent::import" -> "DBIx::Class::BEGIN@68";
+"parent::BEGIN@25" -> "strict::unimport";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@10";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@240";
+"parent::import" -> "Class::Singleton::BEGIN@20";
+"parent::BEGIN@3" -> "vars::import";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@916";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@4";
+"parent::import" -> "DBIx::Class::BEGIN@18";
+"parent::BEGIN@2" -> "strict::import";
+"parent::import" -> "DateTime::TimeZone::OffsetOnly::BEGIN@11";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@242";
+"Tapper::Model::BEGIN@26" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportComment::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::PrePrecondition::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@13" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::Report::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Preconditiontype::BEGIN@25" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::ScenarioElement::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::User::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::Notification::BEGIN@12" -> "parent::import";
+"DateTime::TimeZone::Floating::BEGIN@9" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportSection::BEGIN@12" -> "parent::import";
+"DateTime::TimeZone::UTC::BEGIN@9" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Testrun::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::TestplanInstance::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Message::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::BEGIN@24" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::View020TestrunOverview::BEGIN@14" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::TestrunScheduling::BEGIN@15" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportTopic::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::Suite::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::ResultSet::Testrun::BEGIN@15" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::QueueHost::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::ResultSet::TestrunScheduling::BEGIN@13" -> "parent::import";
+"DateTime::TimeZone::OffsetOnly::BEGIN@9" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::User::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::TestrunPrecondition::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportgroupTestrunStats::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::ResultSet::Queue::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Host::BEGIN@13" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::Contact::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::TestrunRequestedHost::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::ResultSet::ReportgroupTestrun::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::HostFeature::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::ResultSet::Precondition::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::State::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::TestrunRequestedFeature::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportgroupTestrun::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::ResultSet::Host::BEGIN@13" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Queue::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportFile::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Topic::BEGIN@25" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Scenario::BEGIN@13" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::ReportgroupArbitrary::BEGIN@12" -> "parent::import";
+"Tapper::Schema::TestrunDB::Result::Precondition::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::View010TestrunOverviewReports::BEGIN@14" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::NotificationEvent::BEGIN@12" -> "parent::import";
+"Tapper::Schema::ReportsDB::BEGIN@25" -> "parent::import";
+"parent::import" -> "DBIx::Class::CORE:match";
+"Tapper::Model::BEGIN@26" -> "parent::BEGIN@25";
+"parent::import" -> "DBIx::Class::_skip_namespace_frames";
+"parent::import" -> "DateTime::TimeZone::OffsetOnly::BEGIN@7";
+"parent::import" -> "parent::CORE:subst";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@174";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@3";
+"Tapper::Model::BEGIN@26" -> "parent::BEGIN@2";
+"parent::import" -> "Class::Accessor::Grouped::mk_group_accessors";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@11";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@7";
+"parent::import" -> "DBIx::Class::BEGIN@3";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@920";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@1516";
+"parent::import" -> "Class::Singleton::BEGIN@73";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@918";
+"parent::import" -> "Class::Singleton::BEGIN@19";
+"Tapper::Model::BEGIN@26" -> "parent::BEGIN@3";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@378";
+"parent::import" -> "DBIx::Class::mk_classdata";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@12";
+"parent::import" -> "DateTime::TimeZone::OffsetOnly::BEGIN@9";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@380";
+"parent::import" -> "DateTime::TimeZone::OffsetOnly::BEGIN@6";
+"parent::import" -> "DBIx::Class::Schema::BEGIN@6";
+}

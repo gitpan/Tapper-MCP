@@ -1,0 +1,48 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Log_Log4perl_Logger {
+	label="Log::Log4perl::Logger";
+	"Log::Log4perl::Logger::reset";
+}
+subgraph cluster_Log_Log4perl_Filter {
+	label="Log::Log4perl::Filter";
+	"Log::Log4perl::Filter::BEGIN@9";
+	"Log::Log4perl::Filter::BEGIN@6";
+	"Log::Log4perl::Filter::BEGIN@12";
+	"Log::Log4perl::Filter::BEGIN@5";
+	"Log::Log4perl::Filter::BEGIN@7";
+	"Log::Log4perl::Filter::BEGIN@10";
+	"Log::Log4perl::Filter::reset";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_Log_Log4perl_Level {
+	label="Log::Log4perl::Level";
+	"Log::Log4perl::Level::import";
+}
+subgraph cluster_Log_Log4perl_Config {
+	label="Log::Log4perl::Config";
+	"Log::Log4perl::Config::BEGIN@12";
+}
+"Log::Log4perl::Config::BEGIN@12" -> "Log::Log4perl::Filter::BEGIN@5";
+"Log::Log4perl::Config::BEGIN@12" -> "Log::Log4perl::Filter::BEGIN@9";
+"Log::Log4perl::Logger::reset" -> "Log::Log4perl::Filter::reset";
+"Log::Log4perl::Config::BEGIN@12" -> "Log::Log4perl::Filter::BEGIN@12";
+"Log::Log4perl::Filter::BEGIN@9" -> "Log::Log4perl::Level::import";
+"Log::Log4perl::Filter::BEGIN@12" -> "constant::import";
+"Log::Log4perl::Filter::BEGIN@7" -> "warnings::import";
+"Log::Log4perl::Config::BEGIN@12" -> "Log::Log4perl::Filter::BEGIN@6";
+"Log::Log4perl::Filter::BEGIN@6" -> "strict::import";
+"Log::Log4perl::Config::BEGIN@12" -> "Log::Log4perl::Filter::BEGIN@10";
+"Log::Log4perl::Config::BEGIN@12" -> "Log::Log4perl::Filter::BEGIN@7";
+}

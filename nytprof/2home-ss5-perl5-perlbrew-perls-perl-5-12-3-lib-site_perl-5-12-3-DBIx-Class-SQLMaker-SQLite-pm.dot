@@ -1,0 +1,29 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_Storage_DBIHacks {
+	label="DBIx::Class::Storage::DBIHacks";
+	"DBIx::Class::Storage::DBIHacks::_resolve_aliastypes_from_select_args";
+}
+subgraph cluster_DBIx_Class_SQLMaker {
+	label="DBIx::Class::SQLMaker";
+	"DBIx::Class::SQLMaker::select";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_DBIx_Class_SQLMaker_SQLite {
+	label="DBIx::Class::SQLMaker::SQLite";
+	"DBIx::Class::SQLMaker::SQLite::BEGIN@4";
+	"DBIx::Class::SQLMaker::SQLite::name_sep";
+	"DBIx::Class::SQLMaker::SQLite::limit_dialect";
+}
+"DBIx::Class::Storage::DBIHacks::_resolve_aliastypes_from_select_args" -> "DBIx::Class::SQLMaker::SQLite::name_sep";
+"DBIx::Class::SQLMaker::SQLite::BEGIN@4" -> "base::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::SQLMaker::SQLite::BEGIN@4";
+"DBIx::Class::SQLMaker::select" -> "DBIx::Class::SQLMaker::SQLite::limit_dialect";
+}

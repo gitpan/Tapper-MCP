@@ -1,0 +1,62 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Tapper_MCP_Net {
+	label="Tapper::MCP::Net";
+	"Tapper::MCP::Net::BEGIN@16";
+	"Tapper::MCP::Net::BEGIN@1";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+}
+subgraph cluster_YAML_Mo {
+	label="YAML::Mo";
+	"YAML::Mo::BEGIN@5.11";
+	"YAML::Mo::BEGIN@11";
+	"YAML::Mo::BEGIN@5.10";
+	"YAML::Mo::BEGIN@5";
+	"YAML::Mo::__ANON__[YAML/Mo.pm:5]";
+}
+subgraph cluster_YAML_Node {
+	label="YAML::Node";
+	"YAML::Node::BEGIN@10";
+	"YAML::Node::BEGIN@7";
+}
+subgraph cluster_YAML {
+	label="YAML";
+	"YAML::BEGIN@7";
+	"YAML::BEGIN@3";
+	"YAML::BEGIN@12";
+	"YAML::BEGIN@15";
+	"YAML::BEGIN@38";
+	"YAML::BEGIN@1";
+	"YAML::BEGIN@2";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+"YAML::BEGIN@12" -> "Exporter::import";
+"YAML::BEGIN@7" -> "Exporter::import";
+"Tapper::MCP::Net::BEGIN@16" -> "YAML::BEGIN@15";
+"YAML::BEGIN@15" -> "constant::import";
+"YAML::BEGIN@3" -> "YAML::Mo::__ANON__[YAML/Mo.pm:5]";
+"Tapper::MCP::Net::BEGIN@16" -> "YAML::BEGIN@12";
+"YAML::BEGIN@3" -> "YAML::Mo::BEGIN@5.10";
+"YAML::BEGIN@12" -> "YAML::BEGIN@1";
+"YAML::BEGIN@3" -> "YAML::Mo::BEGIN@11";
+"YAML::BEGIN@38" -> "warnings::unimport";
+"YAML::BEGIN@3" -> "YAML::Mo::BEGIN@5";
+"Tapper::MCP::Net::BEGIN@16" -> "YAML::BEGIN@3";
+"YAML::BEGIN@12" -> "YAML::Node::BEGIN@7";
+"YAML::BEGIN@12" -> "YAML::BEGIN@2";
+"YAML::BEGIN@3" -> "YAML::Mo::BEGIN@5.11";
+"Tapper::MCP::Net::BEGIN@16" -> "YAML::BEGIN@7";
+"YAML::BEGIN@12" -> "YAML::Node::BEGIN@10";
+"Tapper::MCP::Net::BEGIN@16" -> "YAML::BEGIN@38";
+"Tapper::MCP::Net::BEGIN@16" -> "Tapper::MCP::Net::BEGIN@1";
+}

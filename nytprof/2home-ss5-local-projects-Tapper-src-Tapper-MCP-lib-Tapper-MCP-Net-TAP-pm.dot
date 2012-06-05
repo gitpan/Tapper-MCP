@@ -1,0 +1,40 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_feature {
+	label="feature";
+	"feature::import";
+}
+subgraph cluster_Module_Runtime {
+	label="Module::Runtime";
+	"Module::Runtime::require_module";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Tapper_MCP_Net_TAP {
+	label="Tapper::MCP::Net::TAP";
+	"Tapper::MCP::Net::TAP::BEGIN@3";
+	"Tapper::MCP::Net::TAP::BEGIN@5";
+	"Tapper::MCP::Net::TAP::BEGIN@7";
+	"Tapper::MCP::Net::TAP::BEGIN@3.13";
+	"Tapper::MCP::Net::TAP::BEGIN@4";
+}
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@7";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@3";
+"Tapper::MCP::Net::TAP::BEGIN@7" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+"Tapper::MCP::Net::TAP::BEGIN@5" -> "warnings::import";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@4";
+"Tapper::MCP::Net::TAP::BEGIN@4" -> "strict::import";
+"Module::Runtime::require_module" -> "Tapper::MCP::Net::TAP::BEGIN@5";
+"Tapper::MCP::Net::TAP::BEGIN@3" -> "Tapper::MCP::Net::TAP::BEGIN@3.13";
+"Tapper::MCP::Net::TAP::BEGIN@3.13" -> "feature::import";
+}

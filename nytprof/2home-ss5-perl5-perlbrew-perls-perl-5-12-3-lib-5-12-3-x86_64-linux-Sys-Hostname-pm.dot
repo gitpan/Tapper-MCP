@@ -1,0 +1,39 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_LockFile_Simple {
+	label="LockFile::Simple";
+	"LockFile::Simple::BEGIN@72";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Sys_Hostname {
+	label="Sys::Hostname";
+	"Sys::Hostname::hostname";
+	"Sys::Hostname::BEGIN@17";
+	"Sys::Hostname::ghname";
+	"Sys::Hostname::BEGIN@5";
+	"Sys::Hostname::BEGIN@3";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_Log_Log4perl_Layout_PatternLayout {
+	label="Log::Log4perl::Layout::PatternLayout";
+	"Log::Log4perl::Layout::PatternLayout::BEGIN@29";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Sys::Hostname::BEGIN@5" -> "Exporter::import";
+"LockFile::Simple::BEGIN@72" -> "Sys::Hostname::BEGIN@5";
+"LockFile::Simple::BEGIN@72" -> "Sys::Hostname::BEGIN@17";
+"Sys::Hostname::BEGIN@3" -> "strict::import";
+"Sys::Hostname::hostname" -> "Sys::Hostname::ghname";
+"Log::Log4perl::Layout::PatternLayout::BEGIN@29" -> "Sys::Hostname::hostname";
+"Sys::Hostname::BEGIN@17" -> "XSLoader::load";
+"LockFile::Simple::BEGIN@72" -> "Sys::Hostname::BEGIN@3";
+}

@@ -1,0 +1,72 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Test_Fixture_DBIC_Schema {
+	label="Test::Fixture::DBIC::Schema";
+	"Test::Fixture::DBIC::Schema::_load_fixture";
+}
+subgraph cluster_YAML_Syck {
+	label="YAML::Syck";
+	"YAML::Syck::Load";
+	"YAML::Syck::CORE:ftis";
+	"YAML::Syck::LoadFile";
+	"YAML::Syck::BEGIN@15";
+	"YAML::Syck::CORE:open";
+	"YAML::Syck::BEGIN@4";
+	"YAML::Syck::_is_glob";
+	"YAML::Syck::BEGIN@36";
+	"YAML::Syck::BEGIN@5";
+	"YAML::Syck::CORE:match";
+	"YAML::Syck::CORE:ftzero";
+	"YAML::Syck::LoadYAML";
+	"YAML::Syck::BEGIN@12";
+	"YAML::Syck::CORE:readline";
+	"YAML::Syck::BEGIN@13";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_Tapper_Config {
+	label="Tapper::Config";
+	"Tapper::Config::BEGIN@15";
+	"Tapper::Config::_switch_context";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+"YAML::Syck::BEGIN@13" -> "Exporter::import";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@12";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@36";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@13";
+"YAML::Syck::_is_glob" -> "YAML::Syck::CORE:match";
+"YAML::Syck::LoadFile" -> "YAML::Syck::_is_glob";
+"YAML::Syck::LoadFile" -> "YAML::Syck::CORE:ftzero";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@5";
+"YAML::Syck::LoadFile" -> "YAML::Syck::CORE:readline";
+"YAML::Syck::BEGIN@36" -> "constant::import";
+"YAML::Syck::BEGIN@5" -> "vars::import";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@4";
+"YAML::Syck::LoadFile" -> "YAML::Syck::CORE:open";
+"YAML::Syck::BEGIN@4" -> "strict::import";
+"YAML::Syck::Load" -> "YAML::Syck::LoadYAML";
+"Tapper::Config::_switch_context" -> "YAML::Syck::LoadYAML";
+"YAML::Syck::LoadFile" -> "YAML::Syck::Load";
+"Tapper::Config::_switch_context" -> "YAML::Syck::Load";
+"YAML::Syck::LoadFile" -> "YAML::Syck::CORE:ftis";
+"YAML::Syck::BEGIN@15" -> "XSLoader::load";
+"Tapper::Config::BEGIN@15" -> "YAML::Syck::BEGIN@15";
+"Test::Fixture::DBIC::Schema::_load_fixture" -> "YAML::Syck::LoadFile";
+}

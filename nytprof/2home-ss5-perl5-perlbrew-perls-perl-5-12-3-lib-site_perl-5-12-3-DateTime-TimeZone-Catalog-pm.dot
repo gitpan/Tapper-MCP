@@ -1,0 +1,24 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DateTime_TimeZone_Catalog {
+	label="DateTime::TimeZone::Catalog";
+	"DateTime::TimeZone::Catalog::BEGIN@15";
+	"DateTime::TimeZone::Catalog::BEGIN@13";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::BEGIN@11";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Catalog::BEGIN@13";
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Catalog::BEGIN@15";
+"DateTime::TimeZone::Catalog::BEGIN@15" -> "vars::import";
+"DateTime::TimeZone::Catalog::BEGIN@13" -> "strict::import";
+}

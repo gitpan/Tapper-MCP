@@ -1,0 +1,30 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SQL_Translator_Utils {
+	label="SQL::Translator::Utils";
+	"SQL::Translator::Utils::BEGIN@24";
+}
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::bootstrap";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Digest_SHA1 {
+	label="Digest::SHA1";
+	"Digest::SHA1::BEGIN@3";
+	"Digest::SHA1::BEGIN@4";
+	"Digest::SHA1::bootstrap";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"DynaLoader::bootstrap" -> "Digest::SHA1::bootstrap";
+"Digest::SHA1::BEGIN@4" -> "vars::import";
+"Digest::SHA1::BEGIN@3" -> "strict::import";
+"SQL::Translator::Utils::BEGIN@24" -> "Digest::SHA1::BEGIN@4";
+"SQL::Translator::Utils::BEGIN@24" -> "Digest::SHA1::BEGIN@3";
+}

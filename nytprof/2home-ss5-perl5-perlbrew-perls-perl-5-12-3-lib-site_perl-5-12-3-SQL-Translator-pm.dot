@@ -1,0 +1,271 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_File_Spec_Functions {
+	label="File::Spec::Functions";
+	"File::Spec::Functions::BEGIN@3";
+	"File::Spec::Functions::BEGIN@6";
+	"File::Spec::Functions::BEGIN@42";
+	"File::Spec::Functions::BEGIN@4";
+}
+subgraph cluster_SQL_Translator {
+	label="SQL::Translator";
+	"SQL::Translator::BEGIN@22";
+	"SQL::Translator::BEGIN@39";
+	"SQL::Translator::BEGIN@23";
+	"SQL::Translator::quote_table_names";
+	"SQL::Translator::CORE:subst";
+	"SQL::Translator::BEGIN@38";
+	"SQL::Translator::trace";
+	"SQL::Translator::BEGIN@33";
+	"SQL::Translator::CORE:regcomp";
+	"SQL::Translator::producer_args";
+	"SQL::Translator::BEGIN@35";
+	"SQL::Translator::BEGIN@37";
+	"SQL::Translator::isa";
+	"SQL::Translator::translate";
+	"SQL::Translator::no_comments";
+	"SQL::Translator::show_warnings";
+	"SQL::Translator::add_drop_table";
+	"SQL::Translator::parser_args";
+	"SQL::Translator::producer";
+	"SQL::Translator::CORE:match";
+	"SQL::Translator::BEGIN@21";
+	"SQL::Translator::parser";
+	"SQL::Translator::load";
+	"SQL::Translator::_args";
+	"SQL::Translator::BEGIN@36";
+	"SQL::Translator::BEGIN@31";
+	"SQL::Translator::data";
+	"SQL::Translator::BEGIN@34";
+	"SQL::Translator::producer_type";
+	"SQL::Translator::quote_field_names";
+	"SQL::Translator::init";
+	"SQL::Translator::parser_type";
+	"SQL::Translator::schema";
+	"SQL::Translator::_tool";
+	"SQL::Translator::validate";
+	"SQL::Translator::_load_sub";
+	"SQL::Translator::filters";
+}
+subgraph cluster_IO_Dir {
+	label="IO::Dir";
+	"IO::Dir::BEGIN@12";
+	"IO::Dir::BEGIN@13";
+	"IO::Dir::BEGIN@15";
+	"IO::Dir::BEGIN@42";
+	"IO::Dir::BEGIN@18";
+	"IO::Dir::BEGIN@19";
+	"IO::Dir::BEGIN@14";
+	"IO::Dir::BEGIN@17";
+	"IO::Dir::BEGIN@9";
+	"IO::Dir::BEGIN@11";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+	"UNIVERSAL::can";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_SQL_Translator_Producer {
+	label="SQL::Translator::Producer";
+	"SQL::Translator::Producer::BEGIN@23";
+	"SQL::Translator::Producer::BEGIN@22";
+	"SQL::Translator::Producer::BEGIN@21";
+}
+subgraph cluster_SQL_Translator_Schema_Object {
+	label="SQL::Translator::Schema::Object";
+	"SQL::Translator::Schema::Object::_attributes";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Class_Base {
+	label="Class::Base";
+	"Class::Base::new";
+	"Class::Base::debug";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+}
+subgraph cluster_Data_Dumper {
+	label="Data::Dumper";
+	"Data::Dumper::Dumper";
+}
+subgraph cluster_SQL_Translator_Parser_DBIx_Class {
+	label="SQL::Translator::Parser::DBIx::Class";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@9";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@20";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@15";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@16";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@21";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@385";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@10";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@17";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@18";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@19";
+	"SQL::Translator::Parser::DBIx::Class::parse";
+	"SQL::Translator::Parser::DBIx::Class::BEGIN@23";
+}
+subgraph cluster_SQL_Translator_Schema {
+	label="SQL::Translator::Schema";
+	"SQL::Translator::Schema::BEGIN@52";
+	"SQL::Translator::Schema::BEGIN@49";
+	"SQL::Translator::Schema::BEGIN@48";
+	"SQL::Translator::Schema::BEGIN@50";
+	"SQL::Translator::Schema::BEGIN@47";
+	"SQL::Translator::Schema::BEGIN@57";
+	"SQL::Translator::Schema::new";
+	"SQL::Translator::Schema::BEGIN@56";
+	"SQL::Translator::Schema::BEGIN@54";
+	"SQL::Translator::Schema::BEGIN@51";
+}
+subgraph cluster_DBIx_Class_Optional_Dependencies {
+	label="DBIx::Class::Optional::Dependencies";
+	"DBIx::Class::Optional::Dependencies::_check_deps";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_SQL_Translator_Producer_SQLite {
+	label="SQL::Translator::Producer::SQLite";
+	"SQL::Translator::Producer::SQLite::BEGIN@40";
+	"SQL::Translator::Producer::SQLite::BEGIN@41";
+	"SQL::Translator::Producer::SQLite::BEGIN@39";
+	"SQL::Translator::Producer::SQLite::BEGIN@38";
+	"SQL::Translator::Producer::SQLite::BEGIN@44";
+	"SQL::Translator::Producer::SQLite::produce";
+	"SQL::Translator::Producer::SQLite::BEGIN@42";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::deployment_statements";
+}
+"SQL::Translator::translate" -> "Data::Dumper::Dumper";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@385";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@6";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@50";
+"SQL::Translator::BEGIN@37" -> "Exporter::import";
+"SQL::Translator::load" -> "Exporter::import";
+"SQL::Translator::BEGIN@34" -> "Exporter::import";
+"SQL::Translator::BEGIN@33" -> "Exporter::import";
+"SQL::Translator::BEGIN@35" -> "Exporter::import";
+"SQL::Translator::BEGIN@31" -> "Exporter::import";
+"SQL::Translator::BEGIN@36" -> "Exporter::import";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@37";
+"SQL::Translator::translate" -> "SQL::Translator::Producer::SQLite::produce";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@14";
+"SQL::Translator::producer_args" -> "SQL::Translator::_args";
+"SQL::Translator::parser_args" -> "SQL::Translator::_args";
+"SQL::Translator::load" -> "SQL::Translator::Producer::SQLite::BEGIN@44";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@23";
+"SQL::Translator::load" -> "SQL::Translator::CORE:subst";
+"SQL::Translator::init" -> "SQL::Translator::trace";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@15";
+"SQL::Translator::BEGIN@38" -> "SQL::Translator::Producer::BEGIN@22";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@54";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::Object::_attributes";
+"SQL::Translator::data" -> "SQL::Translator::isa";
+"SQL::Translator::_args" -> "SQL::Translator::isa";
+"SQL::Translator::_tool" -> "SQL::Translator::isa";
+"SQL::Translator::translate" -> "SQL::Translator::producer_type";
+"SQL::Translator::producer" -> "SQL::Translator::_tool";
+"SQL::Translator::parser" -> "SQL::Translator::_tool";
+"SQL::Translator::translate" -> "SQL::Translator::filters";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@18";
+"SQL::Translator::load" -> "SQL::Translator::Producer::SQLite::BEGIN@42";
+"SQL::Translator::load" -> "B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@49";
+"SQL::Translator::BEGIN@35" -> "UNIVERSAL::can";
+"SQL::Translator::BEGIN@38" -> "SQL::Translator::Producer::BEGIN@21";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@42";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::show_warnings";
+"SQL::Translator::init" -> "SQL::Translator::show_warnings";
+"SQL::Translator::load" -> "Class::Base::debug";
+"SQL::Translator::translate" -> "Class::Base::debug";
+"SQL::Translator::_tool" -> "Class::Base::debug";
+"SQL::Translator::init" -> "SQL::Translator::producer";
+"SQL::Translator::translate" -> "SQL::Translator::producer";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@13";
+"SQL::Translator::BEGIN@23" -> "base::import";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@19";
+"SQL::Translator::_load_sub" -> "SQL::Translator::load";
+"SQL::Translator::schema" -> "SQL::Translator::Schema::new";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@17";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@34";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::schema";
+"SQL::Translator::translate" -> "SQL::Translator::schema";
+"SQL::Translator::Parser::DBIx::Class::parse" -> "SQL::Translator::schema";
+"SQL::Translator::init" -> "SQL::Translator::validate";
+"SQL::Translator::translate" -> "SQL::Translator::validate";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@19";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@22";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@38";
+"SQL::Translator::load" -> "SQL::Translator::Producer::SQLite::BEGIN@38";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@33";
+"SQL::Translator::BEGIN@22" -> "vars::import";
+"SQL::Translator::load" -> "SQL::Translator::Producer::SQLite::BEGIN@39";
+"DBIx::Class::Storage::DBI::deployment_statements" -> "SQL::Translator::translate";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@9";
+"SQL::Translator::init" -> "SQL::Translator::quote_field_names";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@20";
+"SQL::Translator::BEGIN@21" -> "strict::import";
+"SQL::Translator::init" -> "SQL::Translator::quote_table_names";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@23";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@35";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::producer_args";
+"SQL::Translator::init" -> "SQL::Translator::producer_args";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@17";
+"SQL::Translator::translate" -> "SQL::Translator::Parser::DBIx::Class::parse";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@42";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@52";
+"SQL::Translator::load" -> "SQL::Translator::Producer::SQLite::BEGIN@41";
+"SQL::Translator::translate" -> "SQL::Translator::parser_type";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@12";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@39";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@9";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@48";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@21";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::no_comments";
+"SQL::Translator::init" -> "SQL::Translator::no_comments";
+"SQL::Translator::init" -> "SQL::Translator::parser";
+"SQL::Translator::translate" -> "SQL::Translator::parser";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@10";
+"Class::Base::new" -> "SQL::Translator::init";
+"SQL::Translator::_tool" -> "SQL::Translator::_load_sub";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@56";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@4";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@51";
+"SQL::Translator::Producer::SQLite::produce" -> "SQL::Translator::add_drop_table";
+"SQL::Translator::init" -> "SQL::Translator::add_drop_table";
+"SQL::Translator::_load_sub" -> "SQL::Translator::CORE:match";
+"SQL::Translator::load" -> "SQL::Translator::CORE:match";
+"SQL::Translator::_args" -> "SQL::Translator::CORE:match";
+"SQL::Translator::_tool" -> "SQL::Translator::CORE:match";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@21";
+"SQL::Translator::load" -> "SQL::Translator::Parser::DBIx::Class::BEGIN@16";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@15";
+"SQL::Translator::isa" -> "UNIVERSAL::isa";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@31";
+"SQL::Translator::init" -> "SQL::Translator::data";
+"SQL::Translator::translate" -> "SQL::Translator::data";
+"SQL::Translator::load" -> "SQL::Translator::Producer::SQLite::BEGIN@40";
+"SQL::Translator::BEGIN@35" -> "File::Spec::Functions::BEGIN@3";
+"SQL::Translator::load" -> "SQL::Translator::CORE:regcomp";
+"SQL::Translator::BEGIN@38" -> "SQL::Translator::Producer::BEGIN@23";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@47";
+"SQL::Translator::BEGIN@39" -> "SQL::Translator::Schema::BEGIN@57";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@11";
+"SQL::Translator::Parser::DBIx::Class::parse" -> "SQL::Translator::parser_args";
+"SQL::Translator::BEGIN@37" -> "IO::Dir::BEGIN@18";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@36";
+}

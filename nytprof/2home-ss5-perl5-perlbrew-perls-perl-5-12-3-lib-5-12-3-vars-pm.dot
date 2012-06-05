@@ -1,0 +1,371 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_File_Path {
+	label="File::Path";
+	"File::Path::BEGIN@19";
+}
+subgraph cluster_String_ShellQuote {
+	label="String::ShellQuote";
+	"String::ShellQuote::BEGIN@29";
+}
+subgraph cluster_File_stat {
+	label="File::stat";
+	"File::stat::BEGIN@28";
+}
+subgraph cluster_File_Spec_Functions {
+	label="File::Spec::Functions";
+	"File::Spec::Functions::BEGIN@6";
+}
+subgraph cluster_SQL_Translator {
+	label="SQL::Translator";
+	"SQL::Translator::BEGIN@22";
+}
+subgraph cluster_POSIX_SigRt {
+	label="POSIX::SigRt";
+	"POSIX::SigRt::BEGIN@66";
+}
+subgraph cluster_Params_Validate {
+	label="Params::Validate";
+	"Params::Validate::BEGIN@15";
+}
+subgraph cluster_SQL_Translator_Utils {
+	label="SQL::Translator::Utils";
+	"SQL::Translator::Utils::BEGIN@23";
+}
+subgraph cluster_Try_Tiny {
+	label="Try::Tiny";
+	"Try::Tiny::BEGIN@6";
+}
+subgraph cluster_parent {
+	label="parent";
+	"parent::BEGIN@3";
+}
+subgraph cluster_DateTime_TimeZone_Catalog {
+	label="DateTime::TimeZone::Catalog";
+	"DateTime::TimeZone::Catalog::BEGIN@15";
+}
+subgraph cluster_DateTime_Format_Builder_Parser {
+	label="DateTime::Format::Builder::Parser";
+	"DateTime::Format::Builder::Parser::BEGIN@3";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Regex {
+	label="DateTime::Format::Builder::Parser::Regex";
+	"DateTime::Format::Builder::Parser::Regex::BEGIN@69";
+}
+subgraph cluster_Hash_Merge {
+	label="Hash::Merge";
+	"Hash::Merge::BEGIN@8";
+}
+subgraph cluster_YAML_Syck {
+	label="YAML::Syck";
+	"YAML::Syck::BEGIN@5";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::BEGIN@6";
+}
+subgraph cluster_base {
+	label="base";
+	"base::BEGIN@4";
+}
+subgraph cluster_LockFile_Simple {
+	label="LockFile::Simple";
+	"LockFile::Simple::BEGIN@70";
+}
+subgraph cluster_Data_Compare {
+	label="Data::Compare";
+	"Data::Compare::BEGIN@12";
+}
+subgraph cluster_Class_MakeMethods_Utility_Ref {
+	label="Class::MakeMethods::Utility::Ref";
+	"Class::MakeMethods::Utility::Ref::BEGIN@96";
+	"Class::MakeMethods::Utility::Ref::BEGIN@41";
+}
+subgraph cluster_Math_Round {
+	label="Math::Round";
+	"Math::Round::BEGIN@5";
+}
+subgraph cluster_SQL_Translator_Schema_Constraint {
+	label="SQL::Translator::Schema::Constraint";
+	"SQL::Translator::Schema::Constraint::BEGIN@50";
+}
+subgraph cluster_LockFile_Lock_Simple {
+	label="LockFile::Lock::Simple";
+	"LockFile::Lock::Simple::BEGIN@23";
+}
+subgraph cluster_SQL_Translator_Schema_Field {
+	label="SQL::Translator::Schema::Field";
+	"SQL::Translator::Schema::Field::BEGIN@49";
+}
+subgraph cluster_Test_MockModule {
+	label="Test::MockModule";
+	"Test::MockModule::BEGIN@4";
+}
+subgraph cluster_Class_Factory_Util {
+	label="Class::Factory::Util";
+	"Class::Factory::Util::BEGIN@4";
+}
+subgraph cluster_Time_Local {
+	label="Time::Local";
+	"Time::Local::BEGIN@8";
+}
+subgraph cluster_SQL_Translator_Schema_Procedure {
+	label="SQL::Translator::Schema::Procedure";
+	"SQL::Translator::Schema::Procedure::BEGIN@53";
+}
+subgraph cluster_Digest_base {
+	label="Digest::base";
+	"Digest::base::BEGIN@4";
+}
+subgraph cluster_IO_Select {
+	label="IO::Select";
+	"IO::Select::BEGIN@11";
+}
+subgraph cluster_String_Escape {
+	label="String::Escape";
+	"String::Escape::BEGIN@516";
+	"String::Escape::BEGIN@13";
+	"String::Escape::BEGIN@364";
+	"String::Escape::BEGIN@255";
+	"String::Escape::BEGIN@57";
+	"String::Escape::BEGIN@182";
+}
+subgraph cluster_Class_Inspector {
+	label="Class::Inspector";
+	"Class::Inspector::BEGIN@50";
+}
+subgraph cluster_File_Spec {
+	label="File::Spec";
+	"File::Spec::BEGIN@4";
+}
+subgraph cluster_File_ShareDir {
+	label="File::ShareDir";
+	"File::ShareDir::BEGIN@116";
+}
+subgraph cluster_Class_Data_Inheritable {
+	label="Class::Data::Inheritable";
+	"Class::Data::Inheritable::BEGIN@4";
+}
+subgraph cluster_File_Slurp {
+	label="File::Slurp";
+	"File::Slurp::BEGIN@15";
+}
+subgraph cluster_Time_HiRes {
+	label="Time::HiRes";
+	"Time::HiRes::BEGIN@4";
+}
+subgraph cluster_SQL_Translator_Producer {
+	label="SQL::Translator::Producer";
+	"SQL::Translator::Producer::BEGIN@22";
+}
+subgraph cluster_List_MoreUtils {
+	label="List::MoreUtils";
+	"List::MoreUtils::BEGIN@8";
+}
+subgraph cluster_SQL_Translator_Schema_Object {
+	label="SQL::Translator::Schema::Object";
+	"SQL::Translator::Schema::Object::BEGIN@42";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::BEGIN@8";
+	"vars::BEGIN@3";
+	"vars::import";
+	"vars::CORE:match";
+	"vars::BEGIN@7";
+}
+subgraph cluster_Params_Util {
+	label="Params::Util";
+	"Params::Util::BEGIN@65";
+}
+subgraph cluster_Net_SCP {
+	label="Net::SCP";
+	"Net::SCP::BEGIN@4";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Quick {
+	label="DateTime::Format::Builder::Parser::Quick";
+	"DateTime::Format::Builder::Parser::Quick::BEGIN@3";
+}
+subgraph cluster_SQL_Translator_Schema_Constants {
+	label="SQL::Translator::Schema::Constants";
+	"SQL::Translator::Schema::Constants::BEGIN@62";
+}
+subgraph cluster_DBD_SQLite {
+	label="DBD::SQLite";
+	"DBD::SQLite::BEGIN@9";
+	"DBD::SQLite::BEGIN@10";
+	"DBD::SQLite::BEGIN@8";
+}
+subgraph cluster_Digest_SHA1 {
+	label="Digest::SHA1";
+	"Digest::SHA1::BEGIN@4";
+}
+subgraph cluster_SQL_Translator_Schema_View {
+	label="SQL::Translator::Schema::View";
+	"SQL::Translator::Schema::View::BEGIN@49";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+subgraph cluster_Cwd {
+	label="Cwd";
+	"Cwd::BEGIN@172";
+}
+subgraph cluster_SQL_Translator_Schema {
+	label="SQL::Translator::Schema";
+	"SQL::Translator::Schema::BEGIN@57";
+}
+subgraph cluster_Net_SSH {
+	label="Net::SSH";
+	"Net::SSH::BEGIN@4";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Dispatch {
+	label="DateTime::Format::Builder::Parser::Dispatch";
+	"DateTime::Format::Builder::Parser::Dispatch::BEGIN@3";
+}
+subgraph cluster_DateTime_Format_SQLite {
+	label="DateTime::Format::SQLite";
+	"DateTime::Format::SQLite::BEGIN@6";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_SQL_Translator_Schema_Trigger {
+	label="SQL::Translator::Schema::Trigger";
+	"SQL::Translator::Schema::Trigger::BEGIN@55";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::BEGIN@6";
+}
+subgraph cluster_File_Spec_Unix {
+	label="File::Spec::Unix";
+	"File::Spec::Unix::BEGIN@4";
+}
+subgraph cluster_DateTime_Format_Builder {
+	label="DateTime::Format::Builder";
+	"DateTime::Format::Builder::BEGIN@17";
+}
+subgraph cluster_Log_Log4perl_Level {
+	label="Log::Log4perl::Level";
+	"Log::Log4perl::Level::BEGIN@23";
+}
+subgraph cluster_SQL_Translator_Schema_Table {
+	label="SQL::Translator::Schema::Table";
+	"SQL::Translator::Schema::Table::BEGIN@50";
+}
+subgraph cluster_SQL_Translator_Producer_SQLite {
+	label="SQL::Translator::Producer::SQLite";
+	"SQL::Translator::Producer::SQLite::BEGIN@44";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_generic {
+	label="DateTime::Format::Builder::Parser::generic";
+	"DateTime::Format::Builder::Parser::generic::BEGIN@3";
+}
+subgraph cluster_SQL_Translator_Schema_Index {
+	label="SQL::Translator::Schema::Index";
+	"SQL::Translator::Schema::Index::BEGIN@52";
+}
+subgraph cluster_Hash_Merge_Simple {
+	label="Hash::Merge::Simple";
+	"Hash::Merge::Simple::BEGIN@10";
+}
+subgraph cluster_Kwalify {
+	label="Kwalify";
+	"Kwalify::BEGIN@19";
+}
+subgraph cluster_File_Temp {
+	label="File::Temp";
+	"File::Temp::BEGIN@166";
+}
+subgraph cluster_Memoize {
+	label="Memoize";
+	"Memoize::BEGIN@27";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Strptime {
+	label="DateTime::Format::Builder::Parser::Strptime";
+	"DateTime::Format::Builder::Parser::Strptime::BEGIN@28";
+}
+"base::BEGIN@4" -> "vars::BEGIN@3";
+"vars::BEGIN@7" -> "warnings::register::import";
+"SQL::Translator::Schema::Index::BEGIN@52" -> "vars::import";
+"File::Slurp::BEGIN@15" -> "vars::import";
+"POSIX::SigRt::BEGIN@66" -> "vars::import";
+"List::MoreUtils::BEGIN@8" -> "vars::import";
+"String::Escape::BEGIN@364" -> "vars::import";
+"namespace::clean::BEGIN@6" -> "vars::import";
+"YAML::Syck::BEGIN@5" -> "vars::import";
+"Time::HiRes::BEGIN@4" -> "vars::import";
+"Class::MakeMethods::Utility::Ref::BEGIN@96" -> "vars::import";
+"DateTime::Format::Builder::BEGIN@17" -> "vars::import";
+"SQL::Translator::Schema::Trigger::BEGIN@55" -> "vars::import";
+"Math::Round::BEGIN@5" -> "vars::import";
+"File::Spec::Functions::BEGIN@6" -> "vars::import";
+"LockFile::Simple::BEGIN@70" -> "vars::import";
+"base::BEGIN@4" -> "vars::import";
+"Test::MockModule::BEGIN@4" -> "vars::import";
+"Class::Factory::Util::BEGIN@4" -> "vars::import";
+"SQL::Translator::Schema::Table::BEGIN@50" -> "vars::import";
+"IO::Select::BEGIN@11" -> "vars::import";
+"constant::BEGIN@6" -> "vars::import";
+"SQL::Translator::Schema::Constants::BEGIN@62" -> "vars::import";
+"Digest::SHA1::BEGIN@4" -> "vars::import";
+"Net::SSH::BEGIN@4" -> "vars::import";
+"Try::Tiny::BEGIN@6" -> "vars::import";
+"DBD::SQLite::BEGIN@9" -> "vars::import";
+"Params::Util::BEGIN@65" -> "vars::import";
+"Net::SCP::BEGIN@4" -> "vars::import";
+"String::Escape::BEGIN@255" -> "vars::import";
+"parent::BEGIN@3" -> "vars::import";
+"String::Escape::BEGIN@57" -> "vars::import";
+"Hash::Merge::BEGIN@8" -> "vars::import";
+"DateTime::Format::Builder::Parser::Dispatch::BEGIN@3" -> "vars::import";
+"Log::Log4perl::Level::BEGIN@23" -> "vars::import";
+"DateTime::Format::Builder::Parser::generic::BEGIN@3" -> "vars::import";
+"Kwalify::BEGIN@19" -> "vars::import";
+"String::Escape::BEGIN@182" -> "vars::import";
+"File::stat::BEGIN@28" -> "vars::import";
+"SQL::Translator::Producer::SQLite::BEGIN@44" -> "vars::import";
+"SQL::Translator::Utils::BEGIN@23" -> "vars::import";
+"Hash::Merge::Simple::BEGIN@10" -> "vars::import";
+"DBD::SQLite::BEGIN@8" -> "vars::import";
+"String::Escape::BEGIN@516" -> "vars::import";
+"SQL::Translator::BEGIN@22" -> "vars::import";
+"DateTime::Format::Builder::Parser::Quick::BEGIN@3" -> "vars::import";
+"Digest::base::BEGIN@4" -> "vars::import";
+"Data::Compare::BEGIN@12" -> "vars::import";
+"Class::Inspector::BEGIN@50" -> "vars::import";
+"SQL::Translator::Schema::Procedure::BEGIN@53" -> "vars::import";
+"Memoize::BEGIN@27" -> "vars::import";
+"SQL::Translator::Producer::BEGIN@22" -> "vars::import";
+"DateTime::Format::Builder::Parser::Strptime::BEGIN@28" -> "vars::import";
+"SQL::Translator::Schema::Constraint::BEGIN@50" -> "vars::import";
+"DateTime::Format::Builder::Parser::BEGIN@3" -> "vars::import";
+"File::Temp::BEGIN@166" -> "vars::import";
+"SQL::Translator::Schema::BEGIN@57" -> "vars::import";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@69" -> "vars::import";
+"Class::MakeMethods::Utility::Ref::BEGIN@41" -> "vars::import";
+"SQL::Translator::Schema::Field::BEGIN@49" -> "vars::import";
+"Time::Local::BEGIN@8" -> "vars::import";
+"Params::Validate::BEGIN@15" -> "vars::import";
+"DBD::SQLite::BEGIN@10" -> "vars::import";
+"Class::Data::Inheritable::BEGIN@4" -> "vars::import";
+"Cwd::BEGIN@172" -> "vars::import";
+"DateTime::Format::SQLite::BEGIN@6" -> "vars::import";
+"DateTime::TimeZone::Catalog::BEGIN@15" -> "vars::import";
+"File::ShareDir::BEGIN@116" -> "vars::import";
+"File::Path::BEGIN@19" -> "vars::import";
+"SQL::Translator::Schema::View::BEGIN@49" -> "vars::import";
+"String::Escape::BEGIN@13" -> "vars::import";
+"File::Spec::BEGIN@4" -> "vars::import";
+"File::Spec::Unix::BEGIN@4" -> "vars::import";
+"SQL::Translator::Schema::Object::BEGIN@42" -> "vars::import";
+"LockFile::Lock::Simple::BEGIN@23" -> "vars::import";
+"String::ShellQuote::BEGIN@29" -> "vars::import";
+"vars::BEGIN@8" -> "strict::import";
+"base::BEGIN@4" -> "vars::BEGIN@7";
+"base::BEGIN@4" -> "vars::BEGIN@8";
+"vars::import" -> "vars::CORE:match";
+}

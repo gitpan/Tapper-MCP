@@ -1,0 +1,49 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_feature {
+	label="feature";
+	"feature::import";
+}
+subgraph cluster_parent {
+	label="parent";
+	"parent::import";
+}
+subgraph cluster_Tapper_Schema_ReportsDB_Result_Tap {
+	label="Tapper::Schema::ReportsDB::Result::Tap";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@9.29";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@15";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@13";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@10";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@2";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@9";
+	"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@11";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@15" -> "Exporter::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@11";
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@11" -> "warnings::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@9";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@10";
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@10" -> "strict::import";
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@13" -> "parent::import";
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@9" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@9.29";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@15";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@13";
+"Tapper::Schema::ReportsDB::Result::Tap::BEGIN@9.29" -> "feature::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "Tapper::Schema::ReportsDB::Result::Tap::BEGIN@2";
+}

@@ -1,0 +1,109 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_Traits {
+	label="MooseX::Traits";
+	"MooseX::Traits::BEGIN@6";
+	"MooseX::Traits::with_traits";
+	"MooseX::Traits::BEGIN@2.6";
+	"MooseX::Traits::BEGIN@2";
+	"MooseX::Traits::BEGIN@1";
+	"MooseX::Traits::BEGIN@9";
+	"MooseX::Traits::BEGIN@7";
+	"MooseX::Traits::new_with_traits";
+	"MooseX::Traits::BEGIN@4";
+	"MooseX::Traits::BEGIN@86";
+}
+subgraph cluster_Module_Runtime {
+	label="Module::Runtime";
+	"Module::Runtime::require_module";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:678]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+}
+subgraph cluster_namespace_autoclean {
+	label="namespace::autoclean";
+	"namespace::autoclean::BEGIN@14";
+	"namespace::autoclean::BEGIN@15";
+	"namespace::autoclean::import";
+	"namespace::autoclean::BEGIN@16";
+	"namespace::autoclean::BEGIN@5";
+	"namespace::autoclean::BEGIN@13";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+}
+subgraph cluster_MooseX_Traits_Util {
+	label="MooseX::Traits::Util";
+	"MooseX::Traits::Util::BEGIN@5";
+	"MooseX::Traits::Util::new_class_with_traits";
+	"MooseX::Traits::Util::BEGIN@3";
+	"MooseX::Traits::Util::BEGIN@2";
+	"MooseX::Traits::Util::BEGIN@9";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::constructor_name";
+}
+subgraph cluster_MooseX_Traits___ANON___SERIAL_1 {
+	label="MooseX::Traits::__ANON__::SERIAL::1";
+	"MooseX::Traits::__ANON__::SERIAL::1::meta";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::new";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+subgraph cluster_Class_MOP_Package {
+	label="Class::MOP::Package";
+	"Class::MOP::Package::name";
+}
+"MooseX::Traits::with_traits" -> "MooseX::Traits::Util::new_class_with_traits";
+"MooseX::Traits::new_with_traits" -> "Class::MOP::Class::constructor_name";
+"MooseX::Traits::BEGIN@2" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:492]";
+"MooseX::Traits::BEGIN@4" -> "MooseX::Traits::Util::BEGIN@2";
+"main::RUNTIME" -> "MooseX::Traits::new_with_traits";
+"MooseX::Traits::BEGIN@4" -> "MooseX::Traits::Util::BEGIN@5";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@2";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@9";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@7";
+"MooseX::Traits::BEGIN@7" -> "warnings::register::import";
+"MooseX::Traits::BEGIN@9" -> "B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:26]";
+"MooseX::Traits::BEGIN@9" -> "MooseX::Traits::BEGIN@1";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@4";
+"MooseX::Traits::BEGIN@6" -> "warnings::import";
+"MooseX::Traits::BEGIN@86" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:678]";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@14";
+"MooseX::Traits::with_traits" -> "Class::MOP::Package::name";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@15";
+"MooseX::Traits::BEGIN@4" -> "MooseX::Traits::Util::BEGIN@3";
+"MooseX::Traits::BEGIN@4" -> "MooseX::Traits::Util::BEGIN@9";
+"MooseX::Traits::new_with_traits" -> "Moose::Object::new";
+"MooseX::Traits::BEGIN@4" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"MooseX::Traits::BEGIN@9" -> "MooseX::Traits::BEGIN@2.6";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@5";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@16";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::import";
+"MooseX::Traits::BEGIN@9" -> "namespace::autoclean::BEGIN@13";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@86";
+"Module::Runtime::require_module" -> "MooseX::Traits::BEGIN@6";
+"MooseX::Traits::new_with_traits" -> "MooseX::Traits::with_traits";
+"MooseX::Traits::new_with_traits" -> "MooseX::Traits::__ANON__::SERIAL::1::meta";
+}

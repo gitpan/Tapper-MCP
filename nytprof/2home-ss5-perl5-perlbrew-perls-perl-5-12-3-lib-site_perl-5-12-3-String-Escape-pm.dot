@@ -1,0 +1,62 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_String_Escape {
+	label="String::Escape";
+	"String::Escape::BEGIN@516";
+	"String::Escape::BEGIN@11";
+	"String::Escape::BEGIN@364";
+	"String::Escape::_define_backslash_escapes";
+	"String::Escape::BEGIN@55";
+	"String::Escape::BEGIN@182";
+	"String::Escape::add";
+	"String::Escape::CORE:unpack";
+	"String::Escape::BEGIN@13";
+	"String::Escape::BEGIN@255";
+	"String::Escape::BEGIN@9";
+	"String::Escape::BEGIN@57";
+	"String::Escape::BEGIN@10";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Devel_Backtrace_Point {
+	label="Devel::Backtrace::Point";
+	"Devel::Backtrace::Point::BEGIN@6";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@11";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@364";
+"String::Escape::BEGIN@11" -> "Exporter::import";
+"String::Escape::BEGIN@55" -> "Exporter::import";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@10";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::add";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@255";
+"String::Escape::BEGIN@10" -> "warnings::import";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@55";
+"String::Escape::BEGIN@364" -> "vars::import";
+"String::Escape::BEGIN@255" -> "vars::import";
+"String::Escape::BEGIN@57" -> "vars::import";
+"String::Escape::BEGIN@182" -> "vars::import";
+"String::Escape::BEGIN@516" -> "vars::import";
+"String::Escape::BEGIN@13" -> "vars::import";
+"String::Escape::BEGIN@9" -> "strict::import";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@516";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::CORE:unpack";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::_define_backslash_escapes";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@13";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@57";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@9";
+"Devel::Backtrace::Point::BEGIN@6" -> "String::Escape::BEGIN@182";
+}

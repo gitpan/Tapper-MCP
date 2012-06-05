@@ -1,0 +1,66 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SQL_Translator {
+	label="SQL::Translator";
+	"SQL::Translator::BEGIN@35";
+	"SQL::Translator::BEGIN@22";
+	"SQL::Translator::BEGIN@39";
+	"SQL::Translator::BEGIN@23";
+	"SQL::Translator::BEGIN@34";
+	"SQL::Translator::BEGIN@38";
+	"SQL::Translator::BEGIN@21";
+	"SQL::Translator::BEGIN@37";
+	"SQL::Translator::BEGIN@33";
+	"SQL::Translator::BEGIN@36";
+	"SQL::Translator::BEGIN@31";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::VERSION";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DBIx_Class {
+	label="DBIx::Class";
+	"DBIx::Class::BEGIN@68";
+}
+subgraph cluster_DBIx_Class_Optional_Dependencies {
+	label="DBIx::Class::Optional::Dependencies";
+	"DBIx::Class::Optional::Dependencies::req_list_for";
+	"DBIx::Class::Optional::Dependencies::_check_deps";
+	"DBIx::Class::Optional::Dependencies::BEGIN@4";
+	"DBIx::Class::Optional::Dependencies::req_ok_for";
+	"DBIx::Class::Optional::Dependencies::BEGIN@3";
+	"DBIx::Class::Optional::Dependencies::BEGIN@6";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::deployment_statements";
+}
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@37";
+"DBIx::Class::BEGIN@68" -> "DBIx::Class::Optional::Dependencies::BEGIN@3";
+"DBIx::Class::BEGIN@68" -> "DBIx::Class::Optional::Dependencies::BEGIN@6";
+"DBIx::Class::Optional::Dependencies::req_ok_for" -> "DBIx::Class::Optional::Dependencies::_check_deps";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@34";
+"DBIx::Class::Optional::Dependencies::BEGIN@3" -> "warnings::import";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@22";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@38";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@33";
+"DBIx::Class::Storage::DBI::deployment_statements" -> "DBIx::Class::Optional::Dependencies::req_ok_for";
+"DBIx::Class::BEGIN@68" -> "DBIx::Class::Optional::Dependencies::BEGIN@4";
+"DBIx::Class::Optional::Dependencies::BEGIN@4" -> "strict::import";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "UNIVERSAL::VERSION";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@23";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@35";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@39";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "DBIx::Class::Optional::Dependencies::req_list_for";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@21";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@31";
+"DBIx::Class::Optional::Dependencies::_check_deps" -> "SQL::Translator::BEGIN@36";
+}

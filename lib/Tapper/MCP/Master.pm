@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Master::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Master::VERSION = '4.0.1';
+  $Tapper::MCP::Master::VERSION = '4.0.2';
 }
 # ABSTRACT: Wait for new testruns and start a new child when needed
 
@@ -19,6 +19,7 @@ BEGIN {
         use POSIX ":sys_wait_h";
         use Try::Tiny;
         use UNIVERSAL;
+        use constant HARNESS_ACTIVE => $ENV{HARNESS_ACTIVE};
 
         use Tapper::Cmd::Testrun;
         use Tapper::MCP::Child;
@@ -313,7 +314,7 @@ sub BUILD
                                         # children being started close
                                         # to each other and trying to
                                         # reset simulataneously
-                                        sleep 2;
+                                        sleep 2 unless HARNESS_ACTIVE;
                                         $self->run_due_tests($job);
                                 }
                                 $lastrun = time();

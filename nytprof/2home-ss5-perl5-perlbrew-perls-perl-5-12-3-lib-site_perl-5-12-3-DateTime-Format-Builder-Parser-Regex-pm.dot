@@ -1,0 +1,61 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DateTime_Format_Builder_Parser {
+	label="DateTime::Format::Builder::Parser";
+	"DateTime::Format::Builder::Parser::create_single_parser";
+	"DateTime::Format::Builder::Parser::BEGIN@1.40";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_Regex {
+	label="DateTime::Format::Builder::Parser::Regex";
+	"DateTime::Format::Builder::Parser::Regex::create_parser";
+	"DateTime::Format::Builder::Parser::Regex::BEGIN@70";
+	"DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:98]";
+	"DateTime::Format::Builder::Parser::Regex::BEGIN@73";
+	"DateTime::Format::Builder::Parser::Regex::BEGIN@68";
+	"DateTime::Format::Builder::Parser::Regex::BEGIN@69";
+	"DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:84]";
+}
+subgraph cluster_Params_Validate_XS {
+	label="Params::Validate::XS";
+	"Params::Validate::XS::validate";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_Format_Builder_Parser_generic {
+	label="DateTime::Format::Builder::Parser::generic";
+	"DateTime::Format::Builder::Parser::generic::BEGIN@2";
+	"DateTime::Format::Builder::Parser::generic::generic_parser";
+	"DateTime::Format::Builder::Parser::generic::BEGIN@4";
+	"DateTime::Format::Builder::Parser::generic::BEGIN@171";
+	"DateTime::Format::Builder::Parser::generic::BEGIN@5";
+	"DateTime::Format::Builder::Parser::generic::BEGIN@3";
+	"DateTime::Format::Builder::Parser::generic::new";
+}
+"DateTime::Format::Builder::Parser::Regex::create_parser" -> "DateTime::Format::Builder::Parser::generic::new";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@70" -> "Exporter::import";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@73" -> "DateTime::Format::Builder::Parser::generic::BEGIN@3";
+"DateTime::Format::Builder::Parser::BEGIN@1.40" -> "DateTime::Format::Builder::Parser::Regex::BEGIN@73";
+"Params::Validate::XS::validate" -> "DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:98]";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@69" -> "vars::import";
+"DateTime::Format::Builder::Parser::BEGIN@1.40" -> "DateTime::Format::Builder::Parser::Regex::BEGIN@69";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@68" -> "strict::import";
+"DateTime::Format::Builder::Parser::create_single_parser" -> "DateTime::Format::Builder::Parser::Regex::create_parser";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@73" -> "DateTime::Format::Builder::Parser::generic::BEGIN@171";
+"DateTime::Format::Builder::Parser::BEGIN@1.40" -> "DateTime::Format::Builder::Parser::Regex::BEGIN@70";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@73" -> "DateTime::Format::Builder::Parser::generic::BEGIN@2";
+"DateTime::Format::Builder::Parser::BEGIN@1.40" -> "DateTime::Format::Builder::Parser::Regex::BEGIN@68";
+"DateTime::Format::Builder::Parser::Regex::create_parser" -> "DateTime::Format::Builder::Parser::generic::generic_parser";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@73" -> "DateTime::Format::Builder::Parser::generic::BEGIN@4";
+"Params::Validate::XS::validate" -> "DateTime::Format::Builder::Parser::Regex::__ANON__[DateTime/Format/Builder/Parser/Regex.pm:84]";
+"DateTime::Format::Builder::Parser::Regex::BEGIN@73" -> "DateTime::Format::Builder::Parser::generic::BEGIN@5";
+}

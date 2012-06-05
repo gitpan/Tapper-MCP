@@ -1,0 +1,49 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_DBIx_Class_ResultSourceProxy {
+	label="DBIx::Class::ResultSourceProxy";
+	"DBIx::Class::ResultSourceProxy::_pri_cols";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::ensure_class_loaded";
+}
+subgraph cluster_DBIx_Class_PK {
+	label="DBIx::Class::PK";
+	"DBIx::Class::PK::BEGIN@3";
+	"DBIx::Class::PK::BEGIN@6";
+	"DBIx::Class::PK::_storage_ident_condition";
+	"DBIx::Class::PK::BEGIN@4";
+	"DBIx::Class::PK::_mk_ident_cond";
+	"DBIx::Class::PK::_ident_values";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::get_column";
+	"DBIx::Class::Row::update";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"DBIx::Class::PK::_mk_ident_cond" -> "DBIx::Class::PK::_ident_values";
+"DBIx::Class::PK::_storage_ident_condition" -> "DBIx::Class::PK::_mk_ident_cond";
+"DBIx::Class::Row::update" -> "DBIx::Class::PK::_storage_ident_condition";
+"DBIx::Class::PK::BEGIN@6" -> "base::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::PK::BEGIN@6";
+"DBIx::Class::PK::BEGIN@4" -> "warnings::import";
+"DBIx::Class::PK::_ident_values" -> "DBIx::Class::Row::get_column";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::PK::BEGIN@3";
+"DBIx::Class::PK::BEGIN@3" -> "strict::import";
+"Class::C3::Componentised::ensure_class_loaded" -> "DBIx::Class::PK::BEGIN@4";
+"DBIx::Class::PK::_ident_values" -> "DBIx::Class::ResultSourceProxy::_pri_cols";
+"DBIx::Class::PK::_mk_ident_cond" -> "DBIx::Class::ResultSourceProxy::_pri_cols";
+}

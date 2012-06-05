@@ -1,0 +1,76 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DBIx_Class_ResultSet {
+	label="DBIx::Class::ResultSet";
+	"DBIx::Class::ResultSet::_resolved_attrs";
+	"DBIx::Class::ResultSet::search_rs";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@13";
+}
+subgraph cluster_List_Util {
+	label="List::Util";
+	"List::Util::BEGIN@11";
+	"List::Util::first";
+}
+subgraph cluster_Class_C3_Componentised {
+	label="Class::C3::Componentised";
+	"Class::C3::Componentised::inject_base";
+}
+subgraph cluster_DBIx_Class_ResultSource {
+	label="DBIx::Class::ResultSource";
+	"DBIx::Class::ResultSource::_resolve_join";
+	"DBIx::Class::ResultSource::columns_info";
+}
+subgraph cluster_Data_OptList {
+	label="Data::OptList";
+	"Data::OptList::__is_a";
+}
+subgraph cluster_namespace_autoclean {
+	label="namespace::autoclean";
+	"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]";
+}
+subgraph cluster_DBIx_Class_ResultSetColumn {
+	label="DBIx::Class::ResultSetColumn";
+	"DBIx::Class::ResultSetColumn::new";
+}
+subgraph cluster_SQL_Abstract {
+	label="SQL::Abstract";
+	"SQL::Abstract::_where_hashpair_HASHREF";
+	"SQL::Abstract::CORE:regcomp";
+	"SQL::Abstract::CORE:match";
+	"SQL::Abstract::_where_HASHREF";
+	"SQL::Abstract::_where_unary_op";
+}
+subgraph cluster_DBIx_Class_Row {
+	label="DBIx::Class::Row";
+	"DBIx::Class::Row::_track_storage_value";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DBIx_Class_Storage_DBI {
+	label="DBIx::Class::Storage::DBI";
+	"DBIx::Class::Storage::DBI::_gen_sql_bind";
+}
+"Moose::BEGIN@13" -> "List::Util::BEGIN@11";
+"List::Util::first" -> "SQL::Abstract::CORE:match";
+"List::Util::first" -> "Data::OptList::__is_a";
+"List::Util::first" -> "SQL::Abstract::CORE:regcomp";
+"List::Util::BEGIN@11" -> "strict::import";
+"Class::C3::Componentised::inject_base" -> "List::Util::first";
+"SQL::Abstract::_where_hashpair_HASHREF" -> "List::Util::first";
+"DBIx::Class::Row::_track_storage_value" -> "List::Util::first";
+"DBIx::Class::ResultSource::columns_info" -> "List::Util::first";
+"DBIx::Class::ResultSet::_resolved_attrs" -> "List::Util::first";
+"SQL::Abstract::_where_HASHREF" -> "List::Util::first";
+"SQL::Abstract::_where_unary_op" -> "List::Util::first";
+"DBIx::Class::ResultSource::_resolve_join" -> "List::Util::first";
+"DBIx::Class::Storage::DBI::_gen_sql_bind" -> "List::Util::first";
+"namespace::autoclean::__ANON__[namespace/autoclean.pm:57]" -> "List::Util::first";
+"DBIx::Class::ResultSet::search_rs" -> "List::Util::first";
+"Data::OptList::__is_a" -> "List::Util::first";
+"DBIx::Class::ResultSetColumn::new" -> "List::Util::first";
+}

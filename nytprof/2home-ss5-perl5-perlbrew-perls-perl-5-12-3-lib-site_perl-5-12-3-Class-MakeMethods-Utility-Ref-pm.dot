@@ -1,0 +1,29 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Class_MakeMethods_Utility_Ref {
+	label="Class::MakeMethods::Utility::Ref";
+	"Class::MakeMethods::Utility::Ref::BEGIN@27";
+	"Class::MakeMethods::Utility::Ref::BEGIN@96";
+	"Class::MakeMethods::Utility::Ref::BEGIN@41";
+	"Class::MakeMethods::Utility::Ref::import";
+}
+subgraph cluster_SQL_Translator_Schema_Object {
+	label="SQL::Translator::Schema::Object";
+	"SQL::Translator::Schema::Object::BEGIN@40";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::BEGIN@27";
+"Class::MakeMethods::Utility::Ref::BEGIN@96" -> "vars::import";
+"Class::MakeMethods::Utility::Ref::BEGIN@41" -> "vars::import";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::import";
+"Class::MakeMethods::Utility::Ref::BEGIN@27" -> "strict::import";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::BEGIN@96";
+"SQL::Translator::Schema::Object::BEGIN@40" -> "Class::MakeMethods::Utility::Ref::BEGIN@41";
+}
