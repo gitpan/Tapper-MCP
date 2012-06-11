@@ -1,9 +1,12 @@
-package DbUser;
+package # hide from PAUSE indexer
+ DbUser;
 
 use strict;
 use warnings;
 
 use parent 'DBIx::Class';
+
+use lib "xt/";
 
 __PACKAGE__->load_components("Core");
 __PACKAGE__->table("dbuser");

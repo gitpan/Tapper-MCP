@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Config::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Config::VERSION = '4.0.2';
+  $Tapper::MCP::Config::VERSION = '4.0.3';
 }
 
 use strict;
@@ -513,12 +513,14 @@ sub grub_substitute_variables
         my $kernel             = $config->{files}{installer_kernel};
         my $tftp_server        = $self->cfg->{tftp_server_address};
         my $hostoptions        = $self->cfg->{grub_completion_HOSTOPTIONS}{$config->{hostname}} || $self->cfg->{grub_completion_HOSTOPTIONS}{_default};
+        my $xenhostoptions     = $self->cfg->{grub_completion_XENHOSTOPTIONS}{$config->{hostname}} || $self->cfg->{grub_completion_XENHOSTOPTIONS}{_default};
 
         $grubtext =~ s|\$TAPPER_OPTIONS\b|tapper_ip=$tapper_ip tapper_port=$tapper_port testrun=$testrun tapper_host=$tapper_host tapper_environment=$tapper_environment|g;
         $grubtext =~ s|\$TAPPER_NFSROOT\b|$nfsroot|g;
         $grubtext =~ s|\$TAPPER_TFTPSERVER\b|$tftp_server|g;
         $grubtext =~ s|\$TAPPER_KERNEL\b|$kernel|g;
         $grubtext =~ s|\$HOSTOPTIONS\b|$hostoptions|g;
+        $grubtext =~ s|\$XENHOSTOPTIONS\b|$xenhostoptions|g;
 
         return $grubtext;
 }

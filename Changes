@@ -1,5 +1,8 @@
 Revision history for Tapper-MCP
 
+4.0.3     2012-06-11
+        - hide test modules from PAUSE
+
 4.0.2     2012-06-05
         - timeout handling bit more lax to adapt PRC timing changes
         - log files during test

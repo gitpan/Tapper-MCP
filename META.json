@@ -103,7 +103,7 @@
          "web" : "http://github.com/amd/Tapper-MCP"
       }
    },
-   "version" : "4.0.2",
+   "version" : "4.0.3",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

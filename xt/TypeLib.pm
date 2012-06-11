@@ -1,4 +1,5 @@
-package TypeLib;
+package # hide from PAUSE indexer
+ TypeLib;
 
 use MooseX::Types
     -declare => [ qw( XAccount ) ];

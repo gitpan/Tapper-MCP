@@ -1,4 +1,5 @@
-package BusinessLogic;
+package # hide from PAUSE indexer
+ BusinessLogic;
         use 5.010;
         use Moose;
         use TypeLib;

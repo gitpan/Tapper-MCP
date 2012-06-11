@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Algorithm::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::VERSION = '4.0.2';
+  $Tapper::MCP::Scheduler::Algorithm::VERSION = '4.0.3';
 }
 # ABSTRACT: name of the queue has to be unique
 

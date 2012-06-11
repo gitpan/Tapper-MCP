@@ -1,4 +1,5 @@
-package MFoo;
+package # hide from PAUSE indexer
+ MFoo;
         use Moose;
 
         use MUser;

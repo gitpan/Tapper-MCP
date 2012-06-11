@@ -1,4 +1,5 @@
-package Account;
+package # hide from PAUSE indexer
+ Account;
 
 use 5.010;
 
