@@ -21,6 +21,7 @@
       },
       "runtime" : {
          "requires" : {
+            "AAAA::Crypt::DH" : "0",
             "App::Daemon" : "0",
             "Class::Load" : "0",
             "Data::DPath" : "0",
@@ -103,7 +104,7 @@
          "web" : "http://github.com/amd/Tapper-MCP"
       }
    },
-   "version" : "4.0.3",
+   "version" : "4.0.4",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -260,6 +261,17 @@
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "@AMD/@Git/Push",
             "version" : "1.121010"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Prereqs",
+            "config" : {
+               "Dist::Zilla::Plugin::Prereqs" : {
+                  "phase" : "runtime",
+                  "type" : "requires"
+               }
+            },
+            "name" : "Prereqs",
+            "version" : "4.300016"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",

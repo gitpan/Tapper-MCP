@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Builder::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Builder::VERSION = '4.0.3';
+  $Tapper::MCP::Scheduler::Builder::VERSION = '4.0.4';
 }
 # ABSTRACT: Generate Testruns
 

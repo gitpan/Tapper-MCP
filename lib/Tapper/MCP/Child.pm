@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Child::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Child::VERSION = '4.0.3';
+  $Tapper::MCP::Child::VERSION = '4.0.4';
 }
 # ABSTRACT: Control one specific testrun on MCP side
 

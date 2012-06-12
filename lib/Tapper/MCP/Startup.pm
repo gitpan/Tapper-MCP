@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Startup::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Startup::VERSION = '4.0.3';
+  $Tapper::MCP::Startup::VERSION = '4.0.4';
 }
 # ABSTRACT: the central "Master Control Program" starter
 

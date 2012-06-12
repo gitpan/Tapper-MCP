@@ -1,5 +1,8 @@
 Revision history for Tapper-MCP
 
+4.0.4     2012-06-12
+        - help with Crypt::DH deps via AAAA::Crypt::DH
+
 4.0.3     2012-06-11
         - hide test modules from PAUSE
 

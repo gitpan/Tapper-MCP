@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Config::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Config::VERSION = '4.0.3';
+  $Tapper::MCP::Config::VERSION = '4.0.4';
 }
 
 use strict;

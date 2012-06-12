@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::PrioQueue::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::PrioQueue::VERSION = '4.0.3';
+  $Tapper::MCP::Scheduler::PrioQueue::VERSION = '4.0.4';
 }
 # ABSTRACT: Object for test queue abstraction
 
