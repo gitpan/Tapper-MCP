@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Algorithm::WFQ::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.0.4';
+  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.0.5';
 }
 # ABSTRACT: Scheduling algorithm "Weighted Fair Queueing"
 

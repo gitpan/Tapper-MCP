@@ -8,17 +8,30 @@ use warnings;
 # TODO: redirect STDERR/STDOUT
 
 use File::Spec::Functions 'tmpdir';
-use File::Temp "tempfile";
+use File::Temp qw"tempfile tempdir";
 use Tapper::MCP::Master;
 use App::Daemon 'daemonize';
 
-my ($tmpfh, $tmpfile) = tempfile("tapper-mcp-daemon.log-XXXXX", UNLINK => 1);
+my $tmpdir;
+my $tmpfh;
+my $tmpfile;
+my $logfile;
+my $pidfile;
+
 $App::Daemon::as_user = "root";
-$App::Daemon::logfile = $ENV{HARNESS_ACTIVE} ? $tmpfile : "/var/log/tapper-mcp-daemon.log";
-$App::Daemon::pidfile = tmpdir()."/tapper-mcp-daemon.pid";
+if ($ENV{HARNESS_ACTIVE}) {
+        $tmpdir = tempdir( CLEANUP => 1 );
+        ($tmpfh, $tmpfile) = tempfile("tapper-mcp-daemon.log-XXXXX", DIR => $tmpdir, UNLINK => 1);
+        $pidfile = "$tmpdir/tapper-mcp-daemon.pid";
+        $logfile = $tmpfile;
+} else {
+        $pidfile = tmpdir."/tapper-mcp-daemon.pid";
+        $logfile = "/var/log/tapper-mcp-daemon.log";
+}
+$App::Daemon::logfile = $logfile;
+$App::Daemon::pidfile = $pidfile;
 daemonize();
-my $mcp = new Tapper::MCP::Master;
-$mcp->run;
+Tapper::MCP::Master->new->run;
 
 __END__
 =pod

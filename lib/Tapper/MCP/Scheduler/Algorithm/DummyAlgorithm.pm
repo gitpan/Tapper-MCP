@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::VERSION = '4.0.4';
+  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::VERSION = '4.0.5';
 }
 # ABSTRACT: Dummy algorithm for testing
 

@@ -22,7 +22,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300016, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 4.300019, CPAN::Meta::Converter version 2.120921'
 license: open_source
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -80,77 +80,77 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Tapper-MCP
   homepage: http://metacpan.org/release/Tapper-MCP
   repository: git://github.com/amd/Tapper-MCP.git
-version: 4.0.4
+version: 4.0.5
 x_Dist_Zilla:
   plugins:
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@AMD/GatherDir'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@AMD/PruneCruft'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@AMD/ManifestSkip'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@AMD/MetaYAML'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::Readme
       name: '@AMD/Readme'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::ExtraTests
       name: '@AMD/ExtraTests'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@AMD/ExecDir'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@AMD/ShareDir'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@AMD/MakeMaker'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@AMD/Manifest'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@AMD/TestRelease'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@AMD/ConfirmRelease'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@AMD/UploadToCPAN'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@AMD/MetaConfig'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@AMD/MetaJSON'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@AMD/PkgVersion'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@AMD/PodSyntaxTests'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::NoTabsTests
       name: '@AMD/NoTabsTests'
@@ -158,7 +158,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaResources
       name: '@AMD/MetaResources'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::Authority
       name: '@AMD/Authority'
@@ -174,7 +174,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@AMD/AutoPrereqs'
-      version: 4.300016
+      version: 4.300019
+    -
+      class: Dist::Zilla::Plugin::Git::Describe
+      name: '@AMD/Git::Describe'
+      version: 0.001
     -
       class: Dist::Zilla::Plugin::CheckChangesHasContent
       name: '@AMD/CheckChangesHasContent'
@@ -182,7 +186,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@AMD/NextRelease'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch
       name: '@AMD/Git::CheckFor::CorrectBranch'
@@ -214,34 +218,34 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: Prereqs
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 4.300016
+      version: 4.300019
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 4.300016
+      version: 4.300019
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: 0
-    version: 4.300016
+    version: 4.300019
 x_authority: cpan:AMD

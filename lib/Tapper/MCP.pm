@@ -1,9 +1,11 @@
 package Tapper::MCP;
+# git description: v4.0.4-4-g679a691
+
 BEGIN {
   $Tapper::MCP::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::VERSION = '4.0.4';
+  $Tapper::MCP::VERSION = '4.0.5';
 }
 # ABSTRACT: Tapper - Central master control program of Tapper automation
 

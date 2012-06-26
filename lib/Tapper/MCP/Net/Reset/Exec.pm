@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::Reset::Exec::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Net::Reset::Exec::VERSION = '4.0.4';
+  $Tapper::MCP::Net::Reset::Exec::VERSION = '4.0.5';
 }
 
 use strict;
