@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: sschwigo
   data:
     id: 12
@@ -24,7 +24,7 @@
   name: perfmon
   data:
     id: 23
-    owner_user_id: 12
+    owner_id: 12
     shortname: perfmon
     notes: perfmon
     topic_name: Software

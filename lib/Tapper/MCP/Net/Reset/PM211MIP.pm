@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::Reset::PM211MIP::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.0.5';
+  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.1.0';
 }
 
 use strict;
@@ -22,7 +22,7 @@ sub reset_host
 
         my $ip       = $options->{ip};
         my $user     = $options->{user};
-        my $passwd   = $options->{user};
+        my $passwd   = $options->{passwd};
         my $outletnr = $options->{outletnr}{$host};
         my $uri      = "http://$ip/sw?u=$user&p=$passwd&o=$outletnr&f=";
         my $uri_off  = $uri."off";

@@ -7,6 +7,9 @@ use warnings;
 use Class::C3;
 use MRO::Compat;
 
+use Test::Fixture::DBIC::Schema;
+use Tapper::Schema::TestTools;
+
 use aliased 'Tapper::MCP::Scheduler::Controller';
 use aliased 'Tapper::MCP::Scheduler::Algorithm';
 use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
@@ -14,8 +17,6 @@ use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
 use Tapper::Model 'model';
 
 use Data::Dumper;
-use Test::Fixture::DBIC::Schema;
-use Tapper::Schema::TestTools;
 
 use Test::More;
 use Test::Deep;

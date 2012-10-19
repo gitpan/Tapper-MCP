@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: sschwigo
   data:
     id: 12
@@ -84,7 +84,7 @@
   name: tr_ecc1
   data:
     id: 1001
-    owner_user_id: 12
+    owner_id: 12
     shortname: ecc1
     notes: has_ecc
     topic_name: ecc_topic
@@ -105,7 +105,7 @@
   name: tr_ecc2
   data:
     id: 1002
-    owner_user_id: 12
+    owner_id: 12
     shortname: ecc2
     notes: has_ecc
     topic_name: ecc_topic

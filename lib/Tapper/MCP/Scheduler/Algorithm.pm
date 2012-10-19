@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Algorithm::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::VERSION = '4.0.5';
+  $Tapper::MCP::Scheduler::Algorithm::VERSION = '4.1.0';
 }
 # ABSTRACT: name of the queue has to be unique
 
@@ -12,39 +12,7 @@ BEGIN {
         use Moose;
         use Tapper::Model 'model';
 
-        has queues => (
-                       is         => 'rw',
-                       isa        => 'HashRef',
-                       default    => sub { model('TestrunDB')->resultset('Queue')->official_queuelist },
-                      );
 
-        sub queue_count {
-                my ($self) = @_;
-
-                scalar keys %{$self->queues}
-        }
-
-        sub add_queue {
-                my ($self,  $q) = @_;
-
-                my $qname = $q->name;
-                if ($self->queues->{$qname}) {
-                        warn "Queue with name '$qname' already exists";
-                        return;
-                }
-
-                foreach (keys %{$self->queues})
-                {
-                        $self->queues->{$_}->runcount( 0 );
-                }
-
-                $self->queues->{$qname} = $q;
-        }
-
-        sub remove_queue {
-                my ($self,  $q) = @_;
-                delete $self->queues->{$q->name};
-        }
 
         sub update_queue {
                 my ($self,  $q) = @_;
@@ -53,13 +21,13 @@ BEGIN {
         }
 
         sub lookup_next_queue {
-                my ($self) = @_;
+                my ($self, $queues) = @_;
                 # interface
                 die "Interface lookup_next_queue not implemented";
         }
 
         sub get_next_queue {
-                my ($self) = @_;
+                my ($self, $queues) = @_;
                 # interface
                 die "Interface get_next_queue not implemented";
         }

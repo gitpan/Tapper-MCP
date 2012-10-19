@@ -25,7 +25,11 @@ lib/Tapper/MCP/Scheduler/Algorithm/DummyAlgorithm.pm
 lib/Tapper/MCP/Scheduler/Algorithm/WFQ.pm
 lib/Tapper/MCP/Scheduler/Builder.pm
 lib/Tapper/MCP/Scheduler/Controller.pm
+lib/Tapper/MCP/Scheduler/Host.pm
+lib/Tapper/MCP/Scheduler/Job.pm
+lib/Tapper/MCP/Scheduler/ObjectBuilder.pm
 lib/Tapper/MCP/Scheduler/PrioQueue.pm
+lib/Tapper/MCP/Scheduler/Queue.pm
 lib/Tapper/MCP/Startup.pm
 lib/Tapper/MCP/State.pm
 lib/Tapper/MCP/State/Details.pm
@@ -48,8 +52,11 @@ t/fixtures/testrundb/scenario_testruns.yml
 t/fixtures/testrundb/testrun_double.yml
 t/fixtures/testrundb/testrun_empty.yml
 t/fixtures/testrundb/testrun_with_autoinstall.yml
+t/fixtures/testrundb/testrun_with_circle.yml
+t/fixtures/testrundb/testrun_with_cobbler.yml
 t/fixtures/testrundb/testrun_with_preconditions.yml
 t/fixtures/testrundb/testrun_with_scheduling.yml
+t/fixtures/testrundb/testrun_with_scheduling_deny.yml
 t/fixtures/testrundb/testrun_with_scheduling_features.yml
 t/fixtures/testrundb/testrun_with_scheduling_long.yml
 t/fixtures/testrundb/testrun_with_scheduling_run1.yml
@@ -76,6 +83,7 @@ t/tapper-mcp-child-quit.t
 t/tapper-mcp-child-wait.t
 t/tapper-mcp-child.t
 t/tapper-mcp-config-autoinstall.t
+t/tapper-mcp-config-cobbler.t
 t/tapper-mcp-config-producer.t
 t/tapper-mcp-config-simnow.t
 t/tapper-mcp-config.t
@@ -90,6 +98,7 @@ t/tapper-mcp-producer-newest-package.t
 t/tapper-mcp-producer-simnow-kernel.t
 t/tapper-mcp-scheduler-algorithm-dummy.t
 t/tapper-mcp-scheduler-algorithm-wfq.t
+t/tapper-mcp-scheduler-denyhost.t
 t/tapper-mcp-scheduler-interdep.t
 t/tapper-mcp-scheduler-requested-features.t
 t/tapper-mcp-scheduler-with-db-run1.t
@@ -106,6 +115,8 @@ t/tapper-mcp-state-valid.t
 t/tapper-mcp-state.t
 t/tapper-mcp-testprogram-virt-guest.t
 t/tapper-mcp.t
+t/tapper_schema_reportsdb_test.sqlite
+t/tapper_schema_testrundb_test.sqlite
 xt/Account.pm
 xt/BusinessLogic.pm
 xt/DbUser.pm
@@ -113,6 +124,12 @@ xt/MFoo.pm
 xt/MUser.pm
 xt/TypeLib.pm
 xt/critic.t
+xt/fixtures/testrundb/testrun_with_circle.yml
 xt/moose_dbic.t
 xt/moose_types.t
+xt/tapper-mcp-memory.t
+xt/tapper-mcp-scheduler-benchmark.t
+xt/tapper-mcp-scheduler-memory.t
 xt/tapper-mcp-scheduler-with-db-longrun.t
+xt/tapper-mcp-scheduler-with-db-longrun_circular.t
+xt/tapper-mcp-scheduler-with-db-longrun_verbose.t

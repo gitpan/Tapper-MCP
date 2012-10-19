@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: sschwigo
   data:
     id: 12
@@ -24,7 +24,7 @@
   name: perfmon
   data:
     id: 23
-    owner_user_id: 12
+    owner_id: 12
     shortname: perfmon
     notes: perfmon
     topic_name: Software
@@ -33,7 +33,7 @@
   name: lmbench
   data:
     id: 24
-    owner_user_id: 12
+    owner_id: 12
     shortname: lmbench
     notes: tapper test suite lmbench wrapper
     topic_name: Distribution
@@ -42,7 +42,7 @@
   name: foobar
   data:
     id: 4
-    owner_user_id: 12
+    owner_id: 12
     shortname: foobar
     topic_name: Software
     wait_after_tests: 5
@@ -51,7 +51,7 @@
   name: foobar
   data:
     id: 100
-    owner_user_id: 12
+    owner_id: 12
     shortname: autoinstall
     notes: this testrun only exists to test autoinstall preconditions
     topic_name: Software
@@ -245,7 +245,7 @@
   name: aaa-xen
   data:
     id: 1001
-    owner_user_id: 12
+    owner_id: 12
     shortname: aaa-xen
     notes: aaa
     topic_name: Distribution
@@ -271,7 +271,7 @@
   name: aaa2-xen
   data:
     id: 1002
-    owner_user_id: 12
+    owner_id: 12
     shortname: aaa2-xen
     notes: aaa2
     topic_name: Distribution
@@ -296,7 +296,7 @@
   name: aaa3-xen
   data:
     id: 1003
-    owner_user_id: 12
+    owner_id: 12
     shortname: aaa3-xen
     notes: aaa3
     topic_name: Distribution
@@ -324,7 +324,7 @@
   name: bbb-kvm
   data:
     id: 2001
-    owner_user_id: 12
+    owner_id: 12
     shortname: bbb-kvm
     notes: bbb
     topic_name: Distribution
@@ -349,7 +349,7 @@
   name: bbb2-kvm
   data:
     id: 2002
-    owner_user_id: 12
+    owner_id: 12
     shortname: bbb2-kvm
     notes: bbb2
     topic_name: Distribution
@@ -374,7 +374,7 @@
   name: bbb3-kvm
   data:
     id: 2003
-    owner_user_id: 12
+    owner_id: 12
     shortname: bbb3-kvm
     notes: bbb3
     topic_name: Distribution
@@ -401,7 +401,7 @@
   name: ccc-kvm
   data:
     id: 3001
-    owner_user_id: 12
+    owner_id: 12
     shortname: ccc-kvm
     notes: ccc
     topic_name: Distribution
@@ -426,7 +426,7 @@
   name: ccc2-kvm
   data:
     id: 3002
-    owner_user_id: 12
+    owner_id: 12
     shortname: ccc2-kvm
     notes: ccc2
     topic_name: Distribution
@@ -451,7 +451,7 @@
   name: ccc3-kvm
   data:
     id: 3003
-    owner_user_id: 12
+    owner_id: 12
     shortname: ccc3-kvm
     notes: ccc3
     topic_name: Distribution

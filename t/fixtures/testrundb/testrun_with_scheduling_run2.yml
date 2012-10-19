@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: sschwigo
   data:
     id: 12
@@ -37,7 +37,7 @@
   name: perfmon
   data:
     id: 23
-    owner_user_id: 12
+    owner_id: 12
     shortname: perfmon
     notes: perfmon
     topic_name: Software
@@ -46,7 +46,7 @@
   name: lmbench
   data:
     id: 24
-    owner_user_id: 12
+    owner_id: 12
     shortname: lmbench
     notes: tapper test suite lmbench wrapper
     topic_name: Distribution
@@ -55,7 +55,7 @@
   name: foobar
   data:
     id: 4
-    owner_user_id: 12
+    owner_id: 12
     shortname: foobar
     topic_name: Software
     wait_after_tests: 5
@@ -64,7 +64,7 @@
   name: foobar
   data:
     id: 100
-    owner_user_id: 12
+    owner_id: 12
     shortname: autoinstall
     notes: this testrun only exists to test autoinstall preconditions
     topic_name: Software
@@ -290,7 +290,7 @@
   name: ccc-kernel
   data:
     id: 3001
-    owner_user_id: 12
+    owner_id: 12
     shortname: ccc-kernel
     notes: ccc
     topic_name: old_topic
@@ -317,7 +317,7 @@
   name: ccc2-kernel
   data:
     id: 3002
-    owner_user_id: 12
+    owner_id: 12
     shortname: ccc2-kernel
     notes: ccc2
     topic_name: old_topic
@@ -445,7 +445,7 @@
   name: bound-kernel
   data:
     id: 3010
-    owner_user_id: 12
+    owner_id: 12
     shortname: bound-kernel
     notes: bound
     topic_name: old_topic

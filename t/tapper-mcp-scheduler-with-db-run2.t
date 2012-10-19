@@ -12,9 +12,6 @@ use warnings;
 use Class::C3;
 use MRO::Compat;
 
-use aliased 'Tapper::MCP::Scheduler::Controller';
-use aliased 'Tapper::MCP::Scheduler::Algorithm';
-use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
 
 use Tapper::Model 'model';
 
@@ -25,9 +22,15 @@ use Tapper::Schema::TestTools;
 use Test::More;
 use Test::Deep;
 
-# --------------------------------------------------------------------------------
-construct_fixture( schema  => testrundb_schema,  fixture => 't/fixtures/testrundb/testrun_with_scheduling_run2.yml' );
-# --------------------------------------------------------------------------------
+BEGIN{
+        # --------------------------------------------------------------------------------
+        construct_fixture( schema  => testrundb_schema,  fixture => 't/fixtures/testrundb/testrun_with_scheduling_run2.yml' );
+        # --------------------------------------------------------------------------------
+}
+
+use aliased 'Tapper::MCP::Scheduler::Controller';
+use aliased 'Tapper::MCP::Scheduler::Algorithm';
+use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
 
 # --------------------------------------------------
 
@@ -174,9 +177,9 @@ $scheduler->mark_job_as_finished($next_job);
 
 # Queue bound tests
 $free_hosts = model("TestrunDB")->resultset("Host")->free_hosts;
-while (my $host = $free_hosts->next) {
-        $host->free(0);
-        $host->update;
+while (my $free_host = $free_hosts->next) {
+        $free_host->free(0);
+        $free_host->update;
 }
 
 $host = model("TestrunDB")->resultset("Host")->find(10);

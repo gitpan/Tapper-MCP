@@ -7,22 +7,22 @@ use warnings;
 use Class::C3;
 use MRO::Compat;
 
-use aliased 'Tapper::MCP::Scheduler::Controller';
-use aliased 'Tapper::MCP::Scheduler::Algorithm';
-use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
-
 use Tapper::Model 'model';
 
 use Data::Dumper;
 use Test::Fixture::DBIC::Schema;
 use Tapper::Schema::TestTools;
-
+BEGIN{
+        # --------------------------------------------------------------------------------
+        construct_fixture( schema  => testrundb_schema,  fixture => 't/fixtures/testrundb/testrun_with_scheduling_features.yml' );
+        # --------------------------------------------------------------------------------
+}
+use aliased 'Tapper::MCP::Scheduler::Controller';
+use aliased 'Tapper::MCP::Scheduler::Algorithm';
+use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
 use Test::More;
 use Test::Deep;
 
-# --------------------------------------------------------------------------------
-construct_fixture( schema  => testrundb_schema,  fixture => 't/fixtures/testrundb/testrun_with_scheduling_features.yml' );
-# --------------------------------------------------------------------------------
 
 # --------------------------------------------------
 

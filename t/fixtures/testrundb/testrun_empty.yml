@@ -2,9 +2,9 @@
 
 # empty DB, just one dummy because empty file does not work
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: sschwigo
   data:
     id: 12

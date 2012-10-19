@@ -34,8 +34,8 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Tapper-MCP",
   "EXE_FILES" => [
-    "bin/tapper-mcp",
-    "bin/tapper-mcp-daemon"
+    "bin/tapper-mcp-daemon",
+    "bin/tapper-mcp"
   ],
   "LICENSE" => "open_source",
   "NAME" => "Tapper::MCP",
@@ -62,15 +62,20 @@ my %WriteMakefileArgs = (
     "Log::Log4perl" => 0,
     "Moose" => 0,
     "Moose::Role" => 0,
+    "MooseX::ClassAttribute" => 0,
+    "MooseX::Singleton" => 0,
     "MooseX::Traits" => 0,
     "Net::OpenSSH" => 0,
     "Net::SCP" => 0,
     "Net::SSH" => 0,
     "POSIX" => 0,
     "Perl6::Junction" => 0,
+    "Safe" => 0,
+    "Scalar::Util" => 0,
     "Socket" => 0,
     "Sys::Hostname" => 0,
     "Tapper::Base" => 0,
+    "Tapper::Cmd::Cobbler" => 0,
     "Tapper::Cmd::Testrun" => 0,
     "Tapper::Config" => 0,
     "Tapper::Model" => 0,
@@ -87,7 +92,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "4.0.5",
+  "VERSION" => "4.1.0",
   "test" => {
     "TESTS" => "t/*.t"
   }

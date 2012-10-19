@@ -9,6 +9,7 @@ use Class::C3;
 use MRO::Compat;
 
 use Test::More;
+use Tapper::Schema::TestTools;
 
 my @modules = ('Tapper::MCP',
                'Tapper::MCP::Child',

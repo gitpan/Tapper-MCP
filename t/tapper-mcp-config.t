@@ -46,6 +46,7 @@ cmp_deeply($config->{preconditions},
                                                   'exec' => '/usr/share/tapper/packages/mhentsc3/startkvm.pl'
                                                  }
                                                 ],
+                                    'guest_number' => 0,
                                     'guest_count' => 1
                                    },
                        'precondition_type' => 'prc'
@@ -129,6 +130,7 @@ cmp_deeply($config->{preconditions},
                       },
                       {
                        'config' => {
+                                    'guest_number' => 0,
                                     'guests' => [
                                                  {
                                                   'exec' => '/usr/share/tapper/packages/mhentsc3/startkvm.pl'
@@ -197,6 +199,7 @@ cmp_deeply($config->{preconditions},
                                                           'svm'      => '/xen/images//002-uruk-1268101895.svm'
                                                          }
                                                         ],
+                                    'guest_number' => 0,
                                     'guest_count'    => 1
                                    },
                        'precondition_type' => 'prc'
@@ -226,10 +229,14 @@ $producer = Tapper::MCP::Config->new(7);
 $config = $producer->create_config(1337);   # expects a port number
 is(ref($config),'HASH', 'Config created');
 
+
 cmp_deeply($config->{preconditions},
            supersetof( {
-                        'testprogram_list' => [],
-                        'precondition_type' => 'prc'
+                        'testprogram_list'  => [],
+                        'precondition_type' => 'prc',
+                        'config'            => {
+                                                'guest_number'  => 0,
+                                               },
                        }
                      ),
            'PRC installed even without test program(s)');

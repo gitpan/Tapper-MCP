@@ -4,60 +4,46 @@ BEGIN {
   $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::VERSION = '4.0.5';
+  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::VERSION = '4.1.0';
 }
 # ABSTRACT: Dummy algorithm for testing
 
         use 5.010;
         use Moose::Role;
-        requires 'queues';
 
-        has current_queue => (is => "rw");
-
-        sub get_new_pos {
-                my ($self, $Q) = @_;
-
-                my @Q = @$Q;
-                my %Q = map { $Q[$_] => $_ } 0..$#Q;
-
-                if (not $self->current_queue) {
-                        return 0;
-                }
-
-                my $cur_name = $self->current_queue->name;
-                my $new_pos = (($Q{$cur_name} || 0) + 1) % @Q;
-                return $new_pos;
-
-        }
+        has current_queue_name => (is => "rw");
 
         sub lookup_next_queue {
                 my ($self, $queues) = @_;
 
-                my @Q = sort keys %{$queues};
-                my $pos = $self->get_new_pos(\@Q);
+                my @ordered_queues   = map { $queues->{$_} } sort keys %{$queues};
+                return shift @ordered_queues if not $self->current_queue_name;
 
-                return $self->queues->{$Q[$pos]};
+                for my $i (0 .. $#ordered_queues) {
+                        if ($self->current_queue_name eq $ordered_queues[$i]->name) {
+                                return $ordered_queues[($i+1) % int @ordered_queues];
+                        }
+                }
+                return shift @ordered_queues;
         }
 
         sub get_next_queue {
-                my ($self) = @_;
+                my ($self, $queues) = @_;
 
-                my @Q = sort keys %{$self->queues};
-                my $pos = $self->get_new_pos(\@Q);
+                my $return_queue = $self->lookup_next_queue($queues);
 
-                my $name = $Q[$pos];
-                $self->update_queue($self->queues->{$name});
-                return $self->current_queue;
+                $self->update_queue($return_queue);
+                return $return_queue;
         }
 
         sub update_queue {
                 my ($self, $Q) = @_;
 
-                $self->current_queue( $self->queues->{$Q->name} );
+                $self->current_queue_name( $Q->name );
                 return 0;
         }
 
-1; # End of Tapper::MCP::Scheduler::Algorithm::WFQ
+1; # End of Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm
 
 
 
@@ -71,7 +57,11 @@ Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm - Dummy algorithm for testing
 
 =head1 SYNOPSIS
 
-Algorithm that returns queues in order it received it.
+Algorithm that returns queues in order it received it. It sorts all
+queues it gets by name an remembers which queue it gave out last
+time. When the queue chosen last time is still in the list of given
+queues the algorithm returns its successor in the order. Otherwise it
+returns the first queue in the order.
 
 =head1 FUNCTIONS
 

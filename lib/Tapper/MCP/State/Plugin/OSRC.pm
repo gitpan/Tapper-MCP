@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::State::Plugin::OSRC::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::State::Plugin::OSRC::VERSION = '4.0.5';
+  $Tapper::MCP::State::Plugin::OSRC::VERSION = '4.1.0';
 }
 
 use strict;

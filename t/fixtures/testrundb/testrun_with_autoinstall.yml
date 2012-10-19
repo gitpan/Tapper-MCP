@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: mhentsc3
   data:
     id: 12
@@ -24,7 +24,7 @@
   name: Autoinstall
   data:
     id: 1
-    owner_user_id: 12
+    owner_id: 12
     shortname: Autoinstall
     notes: autoinstall
     topic_name: Software

@@ -1,5 +1,33 @@
 Revision history for Tapper-MCP
 
+4.1.0     2012-10-19
+        * Speedup rework (factor 5)
+        - [FEAT] Scheduler with non-DBIC objects
+        - [FEAT] scheduler in separate process
+        - [TEST] for memory growth
+        - make package immutable
+
+        * PostgreSQL support
+        - [FIX] slow first() usage
+        - rename USER into OWNER
+
+        * Cobbler integration (first part)
+        - [FEAT] new precondition_type "cobbler"
+
+        * Features
+        - [FEAT] host blacklists per queue ("denied host")
+        - [FEAT] poor mans nesting for SimNow
+        - [FEAT] new precondition "testrun_stop"
+
+        * Misc
+        - [FIX] condition to grep for forbidden hosts
+        - [FIX] job has only one queue
+        - [FIX] report correct testrun id to notification framework
+        - [FIX] add hostname feature if not in DB
+        - [FIX] wrong 'passwd' parameter name
+        - [FIX] deprecated "use UNIVERSAL"
+        - [RFK] adapt API to WFQ API
+
 4.0.5     2012-06-26
         - rework tmp/log/pid file handling in daemon and reset plugin
 

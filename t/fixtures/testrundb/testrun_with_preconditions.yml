@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: sschwigo
   data:
     id: 12
@@ -24,7 +24,7 @@
   name: perfmon
   data:
     id: 23
-    owner_user_id: 12
+    owner_id: 12
     shortname: perfmon
     notes: perfmon
     topic_name: Software
@@ -41,7 +41,7 @@
   name: lmbench
   data:
     id: 24
-    owner_user_id: 12
+    owner_id: 12
     shortname: lmbench
     notes: tapper test suite lmbench wrapper
     topic_name: Distribution
@@ -50,7 +50,7 @@
   name: foobar
   data:
     id: 4
-    owner_user_id: 12
+    owner_id: 12
     shortname: foobar
     topic_name: Software
     wait_after_tests: 5
@@ -67,7 +67,7 @@
   name: foobar
   data:
     id: 100
-    owner_user_id: 12
+    owner_id: 12
     shortname: autoinstall
     notes: this testrun only exists to test autoinstall preconditions
     topic_name: Software
@@ -77,7 +77,7 @@
   name: foobar
   data:
     id: 112
-    owner_user_id: 12
+    owner_id: 12
     shortname: hw_report
     notes: testrun used to test sending hw_report
     topic_name: Software
@@ -87,7 +87,7 @@
   name: foobar
   data:
     id: 113
-    owner_user_id: 12
+    owner_id: 12
     shortname: fail_config
     notes: testrun with a broken precondition, fails to install
     topic_name: Software
@@ -98,7 +98,7 @@
   name: perfmon
   data:
     id: 114
-    owner_user_id: 12
+    owner_id: 12
     shortname: ssh_test
     notes: ssh_test
     topic_name: Software

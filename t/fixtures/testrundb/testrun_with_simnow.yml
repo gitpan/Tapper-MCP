@@ -1,8 +1,8 @@
 ---
 
-# -------------------- users
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: mhentsc3
   data:
     id: 12
@@ -24,7 +24,7 @@
   name: Simnow
   data:
     id: 1
-    owner_user_id: 12
+    owner_id: 12
     shortname: Simnow
     notes: Simnow
     topic_name: Software

@@ -43,7 +43,10 @@ is_deeply($retval->{preconditions}->[0],
                                                 'timeout' => '90',
                                                 'program' => '/bin/uname_tap.sh'
                                                }
-                                              ]},
+                                              ],
+                        'guest_number' => 0,
+
+                       },
            'precondition_type' => 'prc',
            'skip_startscript' => 1
           }, 'Config for PRC');

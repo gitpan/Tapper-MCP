@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Master::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Master::VERSION = '4.0.5';
+  $Tapper::MCP::Master::VERSION = '4.1.0';
 }
 # ABSTRACT: Wait for new testruns and start a new child when needed
 
@@ -140,10 +140,6 @@ sub BUILD
         CHILD: while ($self->dead_child) {
                         $self->log->debug("Number of dead children is ".$self->dead_child);
                         my $dead_pid = waitpid(-1, WNOHANG);  # don't use wait(); qx() sends a SIGCHLD and increases $self->deadchild, but wait() for the return value and thus our wait would block
-                        if ($dead_pid <= 0) { # got here because of qx()
-                                $self->dead_child($self->dead_child - 1);
-                                next CHILD;
-                        }
                 CHILDREN_CHECK: foreach my $this_child (keys %{$self->child})
                         {
                                 if ($self->child->{$this_child}->{pid} == $dead_pid) {
@@ -151,10 +147,10 @@ sub BUILD
                                         $self->scheduler->mark_job_as_finished( $self->child->{$this_child}->{job} );
                                         $self->console_close( $self->child->{$this_child}->{console} );
                                         delete $self->child->{$this_child};
-                                        $self->dead_child($self->dead_child - 1);
                                         last CHILDREN_CHECK;
                                 }
                         }
+                        $self->dead_child($self->dead_child - 1);
                 }
         }
 
@@ -236,7 +232,7 @@ sub BUILD
                         };
                         $retval = $@ if $@;
 
-                        $self->notify_event('testrun_finished', {testrun_id => 42});
+                        $self->notify_event('testrun_finished', {testrun_id => $id});
 
                         if ( ($retval or $child->rerun) and $job->testrun->rerun_on_error) {
                                 my $cmd  = Tapper::Cmd::Testrun->new();
@@ -308,18 +304,33 @@ sub BUILD
                 }
 
                 if (($timeout <= 0) or (not @ready)) {
-                        while ( my @jobs = $self->scheduler->get_next_job() ) {
-                                foreach my $job (@jobs) {
-                                        # (WORKAROUND) try to avoid to
-                                        # children being started close
-                                        # to each other and trying to
-                                        # reset simulataneously
-                                        sleep 2 unless HARNESS_ACTIVE;
-                                        $self->run_due_tests($job);
+                        my @jobs;
+                        my $pid = open(my $fh, "-|");
+                        if ($pid == 0) {
+                                my @jobs = $self->scheduler->get_next_job;
+                                print join ",", map {$_->id} @jobs;
+                                exit;
+                        } else {
+                                my $ids_joined = <$fh>;
+                                {
+                                        no warnings 'uninitialized'; # we may not have ids_joined when no test is due
+                                        foreach my $next_id (split ',', $ids_joined) {
+                                                push @jobs, model('TestrunDB')->resultset('TestrunScheduling')->find($next_id);
+                                        }
                                 }
-                                $lastrun = time();
                         }
+
+                        foreach my $job (@jobs) {
+                                # (WORKAROUND) try to avoid to
+                                # children being started close
+                                # to each other and trying to
+                                # reset simulataneously
+                                sleep 2 unless HARNESS_ACTIVE;
+                                $self->run_due_tests($job);
+                        }
+                        $lastrun = time();
                 }
+
                 return $lastrun;
         }
 

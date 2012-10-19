@@ -4,15 +4,12 @@ BEGIN {
   $Tapper::MCP::Scheduler::Algorithm::WFQ::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.0.5';
+  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.1.0';
 }
 # ABSTRACT: Scheduling algorithm "Weighted Fair Queueing"
 
         use Moose::Role;
         use 5.010;
-        requires 'queues';
-
-#        use aliased 'Tapper::Schema::TestrunDB::Result::Queue';
 
         sub get_virtual_finishing_time {
                 my ($self, $queue) = @_;
@@ -53,19 +50,20 @@ BEGIN {
 
         sub get_next_queue
         {
-                my ($self) = @_;
+                my ($self, $queues) = @_;
 
                 my $vft;
-                my $queue = $self->lookup_next_queue($self->queues);
+                my $queue = $self->lookup_next_queue( $queues);
                 $self->update_queue($queue);
                 return $queue;
         }
 
         sub update_queue {
                 my ($self, $q) = @_;
-
                 $q->runcount ( $q->runcount + 1 );
-                $q->update;
+                if ($q->can('update')) {
+                        $q->update;
+                }
         }
 
 1;
@@ -82,7 +80,7 @@ Tapper::MCP::Scheduler::Algorithm::WFQ - Scheduling algorithm "Weighted Fair Que
 
 =head1 SYNOPSIS
 
-Implements a test for weighted fair queueing scheduling algorithm.
+Implements weighted fair queueing scheduling algorithm.
 
 =head1 FUNCTIONS
 

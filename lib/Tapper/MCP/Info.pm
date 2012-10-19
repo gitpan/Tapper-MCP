@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Info::AUTHORITY = 'cpan:AMD';
 }
 {
-  $Tapper::MCP::Info::VERSION = '4.0.5';
+  $Tapper::MCP::Info::VERSION = '4.1.0';
 }
 use 5.010;
 

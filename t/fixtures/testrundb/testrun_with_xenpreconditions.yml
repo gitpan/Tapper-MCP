@@ -1,10 +1,10 @@
 ---
 # This fixture is currently only used by MCP::Config unit test.
 # Since these tests need to check a lot, its better not to reuse
-# it for other tests to make sure config tests don't interfere.
-# -------------------- users
+# it for other tests to make sure config tests do not interfere.
+# -------------------- owners
 
-- schema: User
+- schema: Owner
   name: mhentsc3
   data:
     id: 12
@@ -26,7 +26,7 @@
   name: Xen
   data:
     id: 1
-    owner_user_id: 12
+    owner_id: 12
     shortname: Xen
     notes: Xen test
     topic_name: Software
@@ -45,7 +45,7 @@
   name: Xen
   data:
     id: 2
-    owner_user_id: 12
+    owner_id: 12
     shortname: KVM
     notes: KVM test
     topic_name: Software
@@ -55,7 +55,7 @@
   name: Reboot
   data:
     id: 3
-    owner_user_id: 12
+    owner_id: 12
     shortname: reboot
     topic_name: Misc
 
@@ -63,7 +63,7 @@
   name: KVM_autoinstall
   data:
     id: 4
-    owner_user_id: 12
+    owner_id: 12
     shortname: KVM_auto
     notes: Install KVM using autoinstaller
     topic_name: Software
@@ -72,7 +72,7 @@
   name: KVM_alt_images
   data:
     id: 5
-    owner_user_id: 12
+    owner_id: 12
     shortname: alt_img
     notes: Tests virt precondition with multiple alternatives for partition name
     topic_name: KVM
@@ -81,7 +81,7 @@
   name: Xen_Windows
   data:
     id: 6
-    owner_user_id: 12
+    owner_id: 12
     shortname: xen_win
     notes: Tests virt precondition with windows guest
     topic_name: Xen
@@ -90,7 +90,7 @@
   name: kernel_no_test
   data:
     id: 7
-    owner_user_id: 12
+    owner_id: 12
     shortname: kernel_no_test
     notes: kernel test without test program
     topic_name: kernel
@@ -99,7 +99,7 @@
   name: test_with_single_producer
   data:
     id: 8
-    owner_user_id: 12
+    owner_id: 12
     shortname: test_with_single_producer
     notes: a test with one single producer precondition
     topic_name: kernel
@@ -118,7 +118,7 @@
   name: virt_testrun_with_producers
   data:
     id: 9
-    owner_user_id: 12
+    owner_id: 12
     shortname: virt_testrun_with_producers
     notes: A testrun with producers in a virt preconditions
     topic_name: Xen

@@ -10,14 +10,19 @@ use MRO::Compat;
 use File::Temp 'tempdir';
 use Log::Log4perl;
 use Test::Fixture::DBIC::Schema;
+use Tapper::Schema::TestTools;
 use YAML;
+BEGIN{
+        # -----------------------------------------------------------------------------------------------------------------
+        construct_fixture( schema  => testrundb_schema, fixture => 't/fixtures/testrundb/scenario_testruns.yml' );
+        # -----------------------------------------------------------------------------------------------------------------
+}
 
 use aliased 'Tapper::MCP::Scheduler::Algorithm';
 use aliased 'Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm';
 use aliased 'Tapper::MCP::Scheduler::Controller';
 
 use Tapper::Model 'model';
-use Tapper::Schema::TestTools;
 use Tapper::Config;
 use Tapper::MCP::Config;
 
@@ -32,9 +37,6 @@ Log::Log4perl->init(\$string);
 
 
 
-# -----------------------------------------------------------------------------------------------------------------
-construct_fixture( schema  => testrundb_schema, fixture => 't/fixtures/testrundb/scenario_testruns.yml' );
-# -----------------------------------------------------------------------------------------------------------------
 
 # Scheduling order: (KVM, Kernel, Xen)*
 
