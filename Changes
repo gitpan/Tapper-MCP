@@ -1,5 +1,8 @@
 Revision history for Tapper-MCP
 
+4.1.1     2012-11-20
+        - dzil pluginbundle TAPPER
+
 4.1.0     2012-10-19
         * Speedup rework (factor 5)
         - [FEAT] Scheduler with non-DBIC objects

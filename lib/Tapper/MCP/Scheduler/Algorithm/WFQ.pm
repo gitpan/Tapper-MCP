@@ -1,10 +1,10 @@
 ## no critic (RequireUseStrict)
 package Tapper::MCP::Scheduler::Algorithm::WFQ;
 BEGIN {
-  $Tapper::MCP::Scheduler::Algorithm::WFQ::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::Algorithm::WFQ::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::Algorithm::WFQ::VERSION = '4.1.1';
 }
 # ABSTRACT: Scheduling algorithm "Weighted Fair Queueing"
 

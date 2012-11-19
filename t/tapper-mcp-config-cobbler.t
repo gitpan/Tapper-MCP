@@ -53,7 +53,7 @@ $config = $producer->create_config();
 is(ref($config),'HASH', 'Config created');
 is($config->{cobbler},'ubuntu-for-testing','Cobbler key in config');
 is_deeply(\@commands, [ { host_list => { name => "iring"}},
-                        { host_new  => { name => "iring"}},
+                        { host_new  => "iring"},
                         { host_update => [ {
                                             name    => "iring",
                                             profile =>   "ubuntu-for-testing",

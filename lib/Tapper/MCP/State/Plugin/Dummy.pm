@@ -1,9 +1,9 @@
 package Tapper::MCP::State::Plugin::Dummy;
 BEGIN {
-  $Tapper::MCP::State::Plugin::Dummy::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::State::Plugin::Dummy::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::State::Plugin::Dummy::VERSION = '4.1.0';
+  $Tapper::MCP::State::Plugin::Dummy::VERSION = '4.1.1';
 }
 
 use strict;

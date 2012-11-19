@@ -1,9 +1,9 @@
 package Tapper::MCP::Scheduler::Host;
 BEGIN {
-  $Tapper::MCP::Scheduler::Host::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::Host::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Host::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::Host::VERSION = '4.1.1';
 }
 
 use strict;

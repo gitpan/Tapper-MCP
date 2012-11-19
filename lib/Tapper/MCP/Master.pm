@@ -1,10 +1,10 @@
 ## no critic (RequireUseStrict)
 package Tapper::MCP::Master;
 BEGIN {
-  $Tapper::MCP::Master::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Master::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Master::VERSION = '4.1.0';
+  $Tapper::MCP::Master::VERSION = '4.1.1';
 }
 # ABSTRACT: Wait for new testruns and start a new child when needed
 

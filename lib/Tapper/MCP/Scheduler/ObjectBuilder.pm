@@ -1,9 +1,9 @@
 package Tapper::MCP::Scheduler::ObjectBuilder;
 BEGIN {
-  $Tapper::MCP::Scheduler::ObjectBuilder::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::ObjectBuilder::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::ObjectBuilder::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::ObjectBuilder::VERSION = '4.1.1';
 }
 
 use strict;

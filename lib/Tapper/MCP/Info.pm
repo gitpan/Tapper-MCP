@@ -1,9 +1,9 @@
 package Tapper::MCP::Info;
 BEGIN {
-  $Tapper::MCP::Info::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Info::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Info::VERSION = '4.1.0';
+  $Tapper::MCP::Info::VERSION = '4.1.1';
 }
 use 5.010;
 

@@ -1,10 +1,10 @@
 ## no critic (RequireUseStrict)
 package Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm;
 BEGIN {
-  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::Algorithm::DummyAlgorithm::VERSION = '4.1.1';
 }
 # ABSTRACT: Dummy algorithm for testing
 

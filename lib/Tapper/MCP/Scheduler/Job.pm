@@ -1,9 +1,9 @@
 package Tapper::MCP::Scheduler::Job;
 BEGIN {
-  $Tapper::MCP::Scheduler::Job::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::Job::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Job::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::Job::VERSION = '4.1.1';
 }
 
 use strict;

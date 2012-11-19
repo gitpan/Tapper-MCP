@@ -1,9 +1,9 @@
 package Tapper::MCP::Startup;
 BEGIN {
-  $Tapper::MCP::Startup::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Startup::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Startup::VERSION = '4.1.0';
+  $Tapper::MCP::Startup::VERSION = '4.1.1';
 }
 # ABSTRACT: the central "Master Control Program" starter
 

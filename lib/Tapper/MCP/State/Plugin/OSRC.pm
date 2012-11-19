@@ -1,9 +1,9 @@
 package Tapper::MCP::State::Plugin::OSRC;
 BEGIN {
-  $Tapper::MCP::State::Plugin::OSRC::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::State::Plugin::OSRC::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::State::Plugin::OSRC::VERSION = '4.1.0';
+  $Tapper::MCP::State::Plugin::OSRC::VERSION = '4.1.1';
 }
 
 use strict;

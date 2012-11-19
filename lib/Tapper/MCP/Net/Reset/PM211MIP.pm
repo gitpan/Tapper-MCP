@@ -1,9 +1,9 @@
 package Tapper::MCP::Net::Reset::PM211MIP;
 BEGIN {
-  $Tapper::MCP::Net::Reset::PM211MIP::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Net::Reset::PM211MIP::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.1.0';
+  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.1.1';
 }
 
 use strict;

@@ -1,10 +1,10 @@
 ## no critic (RequireUseStrict)
 package Tapper::MCP::Scheduler::Builder;
 BEGIN {
-  $Tapper::MCP::Scheduler::Builder::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::Builder::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Builder::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::Builder::VERSION = '4.1.1';
 }
 # ABSTRACT: Generate Testruns
 

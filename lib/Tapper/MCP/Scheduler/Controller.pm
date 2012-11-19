@@ -1,10 +1,10 @@
 ## no critic (RequireUseStrict)
 package Tapper::MCP::Scheduler::Controller;
 BEGIN {
-  $Tapper::MCP::Scheduler::Controller::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Scheduler::Controller::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Controller::VERSION = '4.1.0';
+  $Tapper::MCP::Scheduler::Controller::VERSION = '4.1.1';
 }
 # ABSTRACT: Main class of the scheduler
 

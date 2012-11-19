@@ -1,9 +1,9 @@
 package Tapper::MCP::Config;
 BEGIN {
-  $Tapper::MCP::Config::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Config::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Config::VERSION = '4.1.0';
+  $Tapper::MCP::Config::VERSION = '4.1.1';
 }
 
 use strict;
@@ -285,11 +285,12 @@ sub parse_cobbler_preconditions
 
 
         # add host if not already known to Cobbler
-        my @hosts = $cmd->host_list({name => $host});
+        my @hosts = eval{ $cmd->host_list({name => $host})};
+        return $@ if $@;
         if (not @hosts) {
                 # one possible error is a race condition between list and host_new
                 # this should be rare enough to justify the issue for easier development
-                $error = $cmd->host_new({name => $host});
+                $error = $cmd->host_new($host);
                 return $error if $error;
         }
 

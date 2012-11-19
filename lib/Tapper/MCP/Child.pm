@@ -1,9 +1,9 @@
 package Tapper::MCP::Child;
 BEGIN {
-  $Tapper::MCP::Child::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Child::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Child::VERSION = '4.1.0';
+  $Tapper::MCP::Child::VERSION = '4.1.1';
 }
 # ABSTRACT: Control one specific testrun on MCP side
 

@@ -1,9 +1,9 @@
 package Tapper::MCP::Control;
 BEGIN {
-  $Tapper::MCP::Control::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Control::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Control::VERSION = '4.1.0';
+  $Tapper::MCP::Control::VERSION = '4.1.1';
 }
 
 use strict;

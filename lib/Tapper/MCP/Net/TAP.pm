@@ -1,9 +1,9 @@
 package Tapper::MCP::Net::TAP;
 BEGIN {
-  $Tapper::MCP::Net::TAP::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Net::TAP::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Net::TAP::VERSION = '4.1.0';
+  $Tapper::MCP::Net::TAP::VERSION = '4.1.1';
 }
 
 use 5.010;

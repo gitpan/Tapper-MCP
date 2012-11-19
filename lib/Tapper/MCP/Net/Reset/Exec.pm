@@ -1,9 +1,9 @@
 package Tapper::MCP::Net::Reset::Exec;
 BEGIN {
-  $Tapper::MCP::Net::Reset::Exec::AUTHORITY = 'cpan:AMD';
+  $Tapper::MCP::Net::Reset::Exec::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Net::Reset::Exec::VERSION = '4.1.0';
+  $Tapper::MCP::Net::Reset::Exec::VERSION = '4.1.1';
 }
 
 use strict;
