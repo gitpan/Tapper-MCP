@@ -1,5 +1,10 @@
 Revision history for Tapper-MCP
 
+4.1.2     2012-11-23
+        - new precondition hint 'local' to run a PRC locally
+          around any program which is then your hook to any testing
+          (kind of a lightweight machine automation)
+
 4.1.1     2012-11-20
         - dzil pluginbundle TAPPER
 

@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Config::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Config::VERSION = '4.1.1';
+  $Tapper::MCP::Config::VERSION = '4.1.2';
 }
 
 use strict;
@@ -67,6 +67,10 @@ sub parse_hint_preconditions
                                              arch      => $precondition->{arch},
                                              dest_path => $precondition->{dest_path},
                                             } if $precondition->{arch};
+        } elsif ($precondition->{local}) {
+                $self->mcp_info->test_type('local');
+                $config->{prcs}->[0]->{skip_startscript} = 1;
+                $self->mcp_info->skip_install(1) if $precondition->{skip_install};
         }
         return $config;
 }
@@ -713,7 +717,9 @@ sub write_config
 {
         my ($self, $config, $cfg_file) = @_;
         my $cfg = YAML::Dump($config);
-        $cfg_file = $self->cfg->{paths}{localdata_path}.$cfg_file if not $cfg_file =~ m(/);
+        $cfg_file = $self->cfg->{paths}{localdata_path}."/$cfg_file" if not $cfg_file =~ m(^/);
+        my $dir = dirname($cfg_file);
+        $self->makedir($dir);
         open (my $file, ">", $cfg_file)
           or return "Can't open config file $cfg_file for writing: $!";
         print $file $cfg;

@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::State::Details::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::State::Details::VERSION = '4.1.1';
+  $Tapper::MCP::State::Details::VERSION = '4.1.2';
 }
 
 use 5.010;
@@ -76,12 +76,20 @@ sub state_init
 
 sub takeoff
 {
-        my ($self) = @_;
-        $self->current_state('reboot_install');
-        my $install = $self->state_details->{install};
-        $install->{timeout_current_date} = $install->{timeout_boot_span} + time();
+        my ($self, $skip_install) = @_;
+        my $timeout_current_date;
+        if ($skip_install) {
+                $self->current_state('reboot_test');
+                my $prc = $self->state_details->{prcs}->[0];
+                $timeout_current_date = $prc->{timeout_current_date} = $prc->{timeout_boot_span} + time();
+        } else {
+                $self->current_state('reboot_install');
+                my $install = $self->state_details->{install};
+                $timeout_current_date = $install->{timeout_current_date} = $install->{timeout_boot_span} + time();
+        }
+
         $self->db_update();
-        return ($install->{timeout_current_date});
+        return ($timeout_current_date);
 }
 
 

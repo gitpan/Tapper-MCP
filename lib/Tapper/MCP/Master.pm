@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Master::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Master::VERSION = '4.1.1';
+  $Tapper::MCP::Master::VERSION = '4.1.2';
 }
 # ABSTRACT: Wait for new testruns and start a new child when needed
 

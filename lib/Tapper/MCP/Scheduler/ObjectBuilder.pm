@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::ObjectBuilder::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::ObjectBuilder::VERSION = '4.1.1';
+  $Tapper::MCP::Scheduler::ObjectBuilder::VERSION = '4.1.2';
 }
 
 use strict;

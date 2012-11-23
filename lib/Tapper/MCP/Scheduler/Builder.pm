@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Builder::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Builder::VERSION = '4.1.1';
+  $Tapper::MCP::Scheduler::Builder::VERSION = '4.1.2';
 }
 # ABSTRACT: Generate Testruns
 

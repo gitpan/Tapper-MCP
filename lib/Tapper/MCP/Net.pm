@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Net::VERSION = '4.1.1';
+  $Tapper::MCP::Net::VERSION = '4.1.2';
 }
 
 use strict;
@@ -120,10 +120,22 @@ sub start_ssh
 
         my $tapper_script = $self->cfg->{files}{tapper_prc};
         my $tftp_host = $self->cfg->{mcp_host};
-        my $error = Net::SSH::ssh("$hostname","$tapper_script --host $tftp_host");
+        my $error = Net::SSH::ssh("$hostname","TAPPER_TEST_TYPE=ssh $tapper_script --host $tftp_host");
         return "Can not start PRC with ssh: $error" if $error;
         return 0;
 }
+
+
+sub start_local
+{
+        my ($self, $path_to_config) = @_;
+
+        my $error = qx(tapper-client --config $path_to_config);
+        return "Can not start PRC locally: $error" if $error;
+        return 0;
+}
+
+
 
 
 sub install_client_package
@@ -281,6 +293,15 @@ start the simnow controller in turn.
 Start a ssh testrun on given host. This starts both the Installer and PRC.
 
 @param string - hostname
+
+@return success - 0
+@return error   - error string
+
+=head2 start_local
+
+Start a testrun locally. This starts both the Installer and PRC.
+
+@param string - path to config
 
 @return success - 0
 @return error   - error string

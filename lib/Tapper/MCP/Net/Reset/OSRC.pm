@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::Reset::OSRC::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Net::Reset::OSRC::VERSION = '4.1.1';
+  $Tapper::MCP::Net::Reset::OSRC::VERSION = '4.1.2';
 }
 
 use strict;

@@ -92,7 +92,41 @@ is_deeply($state->state_details->state_details->{results},
            }
           ], 'MCP results');
 
+###########################################################
+#                                                         #
+# Check state handling for tests without Tapper Installer #
+#                                                         #
+###########################################################
 
 
+
+
+my $no_install_state = {
+                        'current_state' => 'started',
+                        'prcs' => [
+                                   {
+                                    'timeout_boot_span' => $timeout_span,
+                                    'timeout_current_date' => undef,
+                                    'results' => [],
+                                    'current_state' => 'preload',
+                                    # not evaluated, just needed to know the number of testprograms
+                                    'timeout_testprograms_span' => [ 5, 5 ],
+                                   },
+                                  ],
+                        'results' => []
+
+                       };
+$error = $state->state_init($no_install_state);
+is($error, 0, 'Init succeeded');
+($error, $timeout) = $state->update_state(message_create({state => 'takeoff', skip_install => 1}));
+is($error, 0, 'State takeoff');
+($error, $timeout) = $state->update_state(message_create({state => 'start-testing', prc_number=> 0}));
+is($error, 0, 'State start-testing');
+($error, $timeout) = $state->update_state(message_create({state => 'end-testprogram', prc_number=> 0, testprogram=> 0}));
+is($error, 0, 'End first testprogram');
+($error, $timeout) = $state->update_state(message_create({state => 'end-testprogram', prc_number=> 0, testprogram=> 1}));
+is($error, 0, 'End second testprogram');
+($error, $timeout) = $state->update_state(message_create({state => 'end-testing', prc_number=> 0}));
+is($error, 1, 'End testing');
 
 done_testing();

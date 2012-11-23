@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Info::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Info::VERSION = '4.1.1';
+  $Tapper::MCP::Info::VERSION = '4.1.2';
 }
 use 5.010;
 
@@ -188,6 +188,11 @@ sub get_state_config
 }
 
 
+sub skip_install {
+        my ($self, $skip_install) = @_;
+        $self->mcp_info->{skip_install} = $skip_install if $skip_install;
+        return $self->mcp_info->{skip_install};
+}
 
 1;
 
@@ -339,6 +344,11 @@ test_type variants like ssh or SimNow.
 =head2 get_state_config
 
 Returns a hash structure suitable for feeding it into
+
+=head2 skip_install
+
+Setter and getter for skip_install. This element is used to signal tests
+without any installer at all.
 
 =head1 AUTHOR
 

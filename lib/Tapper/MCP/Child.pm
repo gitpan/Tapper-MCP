@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Child::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Child::VERSION = '4.1.1';
+  $Tapper::MCP::Child::VERSION = '4.1.2';
 }
 # ABSTRACT: Control one specific testrun on MCP side
 
@@ -75,8 +75,8 @@ sub generate_configs
         my ($self, $hostname ) = @_;
         my $retval;
 
-        my $mcpconfig = Tapper::MCP::Config->new($self->testrun);
 
+        my $mcpconfig = Tapper::MCP::Config->new($self->testrun);
         $self->log->debug("Create install config for $hostname");
         my $config   = $mcpconfig->create_config();
         return $config if not ref($config) eq 'HASH';
@@ -84,14 +84,14 @@ sub generate_configs
         $retval = $mcpconfig->write_config($config, "$hostname-install");
         return $retval if $retval;
 
-        if ($config->{autoinstall}) {
+        if ($config->{autoinstall} or $mcpconfig->mcp_info->skip_install) {
                 my $common_config = $mcpconfig->get_common_config();
-                $common_config->{hostname} = $hostname;  # allows guest systems to know their host system name
+                $common_config->{hostname} = $hostname; # allows guest systems to know their host system name
 
                 my $testconfigs = $mcpconfig->get_test_config();
                 return $testconfigs if not ref $testconfigs eq 'ARRAY';
 
-                for (my $i=0; $i<= $#{$testconfigs}; $i++ ){
+                for (my $i=0; $i<= $#{$testconfigs}; $i++ ) {
                         my $prc_config = merge($common_config, $testconfigs->[$i]);
                         $prc_config->{guest_number} = $i;
                         my $suffix = "test-prc$i";
@@ -150,8 +150,7 @@ sub start_testrun
 
         my $net    = Tapper::MCP::Net->new();
         $net->cfg->{testrun_id} = $self->testrun->id;
-
-        given($self->mcp_info->test_type){
+        given(lc($self->mcp_info->test_type)){
                 when('simnow'){
                         $self->log->debug("Starting Simnow on $hostname");
                         my $simnow_retval = $net->start_simnow($hostname);
@@ -170,6 +169,18 @@ sub start_testrun
                         if ($ssh_retval) {
                                 $self->handle_error("Starting Tapper on testmachine with SSH", $ssh_retval);
                                 return ("Starting Tapper on testmachine with SSH failed: $ssh_retval");
+                        }
+                }
+                when('local') {
+                        $self->log->debug("Starting LOCAL testrun on $hostname");
+                        my $local_retval;
+                        my $path_to_config = $self->mcp_info->skip_install ?
+                          $config->{paths}{localdata_path}."/$hostname-test-prc0" :
+                            $config->{paths}{localdata_path}."/$hostname-install";
+                        $local_retval = $net->start_local($path_to_config);
+                        if ($local_retval) {
+                                $self->handle_error("Starting Tapper on testmachine with SSH", $local_retval);
+                                return ("Starting Tapper on testmachine with SSH failed: $local_retval");
                         }
                 }
                 default {
@@ -192,6 +203,7 @@ sub start_testrun
                         }
                 }
         }
+
         return 0;
 }
 
@@ -227,13 +239,15 @@ sub runtest_handling
         $self->state(Tapper::MCP::State->new(testrun_id => $self->testrun->id, cfg => $config));
         $self->state->state_init($self->mcp_info->get_state_config, $revive );
 
-        if ($self->state->compare_given_state('reboot_install') == 1) {
+        if ($self->state->compare_given_state('reboot_install') == 1) { # before reboot_install?
                 my $error = $self->start_testrun($hostname, $config);
                 return $error if $error;
 
                 my $message = model('TestrunDB')->resultset('Message')->new
                   ({
-                    message => {state => 'takeoff'},
+                    message => {state => 'takeoff',
+                                skip_install => $self->mcp_info->skip_install,
+                               },
                     testrun_id => $self->testrun->id,
                    });
                 $message->insert;

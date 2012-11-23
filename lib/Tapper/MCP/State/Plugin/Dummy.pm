@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::State::Plugin::Dummy::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::State::Plugin::Dummy::VERSION = '4.1.1';
+  $Tapper::MCP::State::Plugin::Dummy::VERSION = '4.1.2';
 }
 
 use strict;

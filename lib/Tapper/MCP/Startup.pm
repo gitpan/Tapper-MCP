@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Startup::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Startup::VERSION = '4.1.1';
+  $Tapper::MCP::Startup::VERSION = '4.1.2';
 }
 # ABSTRACT: the central "Master Control Program" starter
 

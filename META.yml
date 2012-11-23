@@ -85,7 +85,7 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Tapper-MCP
   homepage: http://metacpan.org/release/Tapper-MCP
   repository: git://github.com/tapper/Tapper-MCP.git
-version: 4.1.1
+version: 4.1.2
 x_Dist_Zilla:
   plugins:
     -

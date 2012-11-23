@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Net::Reset::PM211MIP::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.1.1';
+  $Tapper::MCP::Net::Reset::PM211MIP::VERSION = '4.1.2';
 }
 
 use strict;

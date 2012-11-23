@@ -4,7 +4,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Controller::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Controller::VERSION = '4.1.1';
+  $Tapper::MCP::Scheduler::Controller::VERSION = '4.1.2';
 }
 # ABSTRACT: Main class of the scheduler
 

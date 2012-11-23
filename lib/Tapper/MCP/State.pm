@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::State::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::State::VERSION = '4.1.1';
+  $Tapper::MCP::State::VERSION = '4.1.2';
 }
 
 use 5.010;
@@ -331,8 +331,8 @@ sub update_timeouts {
 
 sub msg_takeoff
 {
-        my ($self) = @_;
-        my $timeout_span = $self->state_details->takeoff();
+        my ($self, $msg) = @_;
+        my $timeout_span = $self->state_details->takeoff($msg->{skip_install});
         return (0, $timeout_span);
 }
 
@@ -744,6 +744,8 @@ Update the timeouts in $self->state_details structure.
 
 The reboot call was successfully executed, now update the state for
 waiting for the first message.
+
+@param hash ref - message
 
 @return success - (0, timeout span for next state change)
 

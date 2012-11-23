@@ -37,6 +37,7 @@ lib/Tapper/MCP/State/Plugin/Dummy.pm
 lib/Tapper/MCP/State/Plugin/OSRC.pm
 t/00-load.t
 t/01-instance.t
+t/bin/sleep.sh
 t/command_files/install-error-msg.txt
 t/command_files/install-error.txt
 t/command_files/install-success.txt
@@ -51,6 +52,7 @@ t/command_files/test-two-prc.txt
 t/fixtures/testrundb/scenario_testruns.yml
 t/fixtures/testrundb/testrun_double.yml
 t/fixtures/testrundb/testrun_empty.yml
+t/fixtures/testrundb/testrun_local.yml
 t/fixtures/testrundb/testrun_with_autoinstall.yml
 t/fixtures/testrundb/testrun_with_circle.yml
 t/fixtures/testrundb/testrun_with_cobbler.yml
@@ -88,6 +90,7 @@ t/tapper-mcp-config-producer.t
 t/tapper-mcp-config-simnow.t
 t/tapper-mcp-config.t
 t/tapper-mcp-info.t
+t/tapper-mcp-local.t
 t/tapper-mcp-master-memory.t
 t/tapper-mcp-master.t
 t/tapper-mcp-net-reset.t

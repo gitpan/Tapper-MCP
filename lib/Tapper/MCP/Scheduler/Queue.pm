@@ -3,7 +3,7 @@ BEGIN {
   $Tapper::MCP::Scheduler::Queue::AUTHORITY = 'cpan:TAPPER';
 }
 {
-  $Tapper::MCP::Scheduler::Queue::VERSION = '4.1.1';
+  $Tapper::MCP::Scheduler::Queue::VERSION = '4.1.2';
 }
 
 use strict;
